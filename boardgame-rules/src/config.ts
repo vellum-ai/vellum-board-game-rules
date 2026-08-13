@@ -19,6 +19,22 @@ const configPath = join(
   "config.json",
 );
 
+/**
+ * Web-search fallback on coverage abstentions is on by default; set
+ * `"web_fallback": false` in config.json to disable it.
+ */
+export function webFallbackEnabled(): boolean {
+  if (!existsSync(configPath)) return true;
+  try {
+    const parsed = JSON.parse(readFileSync(configPath, "utf8")) as {
+      web_fallback?: unknown;
+    };
+    return parsed.web_fallback !== false;
+  } catch {
+    return true;
+  }
+}
+
 export function configKnownGames(): string[] {
   if (!existsSync(configPath)) return [];
   try {

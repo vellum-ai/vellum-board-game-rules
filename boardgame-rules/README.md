@@ -128,8 +128,15 @@ Every `boardgame_ask_rules` result includes:
 - `analog_hooks[]` — hooks from the top evidence filtered to the sitting's
   known games; always `[]` with no sitting, no known-game match, or on
   abstention
+- `web_fallback` — on coverage abstentions only, live web-search results
+  fetched in the same call (answer, sources, and a mandatory disclaimer);
+  `null` on answered results and input-error abstentions. Requires the
+  assistant runtime and a provider with native web search; fails open to the
+  plain abstention. Disable with `"web_fallback": false` in `config.json`.
 
 If `abstention` is true, do not invent a ruling — and no analogy is offered.
+Web-fallback content is table guidance with sources, never a corpus-cited
+ruling; `abstention` stays true when it is present.
 
 `boardgame_check_scenario` returns worked-example matches or hard-abstains:
 

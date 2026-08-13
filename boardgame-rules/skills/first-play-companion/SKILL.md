@@ -64,7 +64,10 @@ citation; with a sitting active you may omit `game_id`.
   exception, and never analogize an abstention.
 - **Abstain honestly.** If `abstention` is true, say the corpus cannot answer
   and give the abstention reason. Do not guess, and do not soften it with an
-  analogy.
+  analogy. If the result carries `web_fallback` with `used: true`, relay that
+  answer with its sources, prefixed so the table knows it is live web
+  information rather than a cited ruling ("the corpus doesn't cover this, but
+  the web says..."). Never present web results as corpus rulings.
 
 ## Staying available during play
 

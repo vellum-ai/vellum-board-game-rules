@@ -246,6 +246,29 @@ export type AskResult = {
    * ruling; these are teaching aids only.
    */
   analog_hooks: AnalogHook[];
+  /**
+   * Live web-search fallback, attached by boardgame_ask_rules when the
+   * corpus abstains for lack of coverage. Null on every answered result and
+   * on abstentions that are input errors (unknown game/edition, no query).
+   * `abstention` stays true when this is present — web results are table
+   * guidance, never a corpus-cited ruling.
+   */
+  web_fallback?: WebFallback | null;
+};
+
+export type WebFallbackSource = { url: string; title?: string };
+
+/** Result of the inline web-search fallback on a coverage abstention. */
+export type WebFallback = {
+  /** True whenever the fallback ran (even if it produced nothing). */
+  attempted: boolean;
+  /** True only when live web results actually came back. */
+  used: boolean;
+  /** Why it ran, or why it produced nothing (fail-open reason). */
+  note: string;
+  answer: string | null;
+  sources: WebFallbackSource[];
+  disclaimer: string;
 };
 
 export type ScenarioMatch = {
