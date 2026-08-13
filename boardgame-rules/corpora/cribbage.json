@@ -621,7 +621,7 @@
         "counting",
         "example"
       ],
-      "summary": "Given a five-card set of 8, 7, 7, 6, 2 (four hand cards plus starter): the fifteens are 8+7, 8+7, 6+2, and 6+2, for four fifteens at 2 each (8 points). The two 7s form one pair (2 points). The runs 8-7-6 can be built two ways because either 7 can complete the sequence, for two runs of three (6 points). Total: 16 points.",
+      "summary": "Given a five-card set of 8, 7, 7, 6, 2 (four hand cards plus starter): the fifteens are 8+7, 8+7, 7+6+2, and 7+6+2, for four fifteens at 2 each (8 points). The two 7s form one pair (2 points). The runs 8-7-6 can be built two ways because either 7 can complete the sequence, for two runs of three (6 points). Total: 16 points.",
       "interpretation_type": "example",
       "confidence": "high",
       "source_locator": {
@@ -638,7 +638,22 @@
         "full_text_included": false,
         "redistribution_permitted": false,
         "internal_only": false
-      }
+      },
+      "worked_example": {
+        "scenario": "4-card hand of 8, 7, 7, 6, starter is 2 — counting set 8-7-7-6-2",
+        "expected_outcome": "16 points",
+        "decomposition": [
+          "Fifteens (4 × 2 = 8): 8+7 (twice, one per 7), 7+6+2 (twice, one per 7)",
+          "Pairs (2): the pair of 7s",
+          "Runs (6): two runs of 8-7-6, one per 7",
+          "Total: 16"
+        ]
+      },
+      "applies_when": [
+        "8 7 7 6 2 scoring",
+        "double run counting",
+        "how many points for 8-7-7-6-2"
+      ]
     },
     {
       "id": "counting-common-formulas",
@@ -700,7 +715,24 @@
         "full_text_included": false,
         "redistribution_permitted": false,
         "internal_only": false
-      }
+      },
+      "worked_example": {
+        "scenario": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit — counting set J-5-5-5-5",
+        "expected_outcome": "29 points (the maximum possible score in a Cribbage show)",
+        "decomposition": [
+          "Fifteens (16): four 5+5+5 combinations (8 pts) + four Jack+5 combinations (8 pts)",
+          "Pairs (12): double pair royal on the four 5s",
+          "Nobs (1): Jack matches the suit of the starter",
+          "Runs (0): no run of 3 in J-5-5-5-5",
+          "Total: 29"
+        ]
+      },
+      "applies_when": [
+        "perfect 29 cribbage",
+        "maximum cribbage hand",
+        "four fives and a jack",
+        "did I score 29"
+      ]
     },
     {
       "id": "counting-play-vs-show-restrictions",

@@ -145,6 +145,49 @@ function validateCorpus(corpus: Corpus, filename: string): ValidationError[] {
       });
     }
 
+    // worked_example (optional) — if present, must have scenario + expected_outcome,
+    // and decomposition (if present) must be a non-empty array of strings.
+    if (entry.worked_example !== undefined) {
+      const we = entry.worked_example;
+      if (!we || typeof we !== "object") {
+        errors.push({
+          entry: entry.id,
+          message: `${filename}: entry "${entry.id}" worked_example must be an object with scenario + expected_outcome`,
+        });
+      } else {
+        if (!we.scenario || typeof we.scenario !== "string") {
+          errors.push({
+            entry: entry.id,
+            message: `${filename}: entry "${entry.id}" worked_example.scenario missing or not a string`,
+          });
+        }
+        if (!we.expected_outcome || typeof we.expected_outcome !== "string") {
+          errors.push({
+            entry: entry.id,
+            message: `${filename}: entry "${entry.id}" worked_example.expected_outcome missing or not a string`,
+          });
+        }
+        if (we.decomposition !== undefined) {
+          if (!Array.isArray(we.decomposition) || we.decomposition.some((step) => typeof step !== "string" || step.trim() === "")) {
+            errors.push({
+              entry: entry.id,
+              message: `${filename}: entry "${entry.id}" worked_example.decomposition must be an array of non-empty strings`,
+            });
+          }
+        }
+      }
+    }
+
+    // applies_when (optional) — must be a non-empty string array when present.
+    if (entry.applies_when !== undefined) {
+      if (!Array.isArray(entry.applies_when) || entry.applies_when.some((t) => typeof t !== "string" || t.trim() === "")) {
+        errors.push({
+          entry: entry.id,
+          message: `${filename}: entry "${entry.id}" applies_when must be an array of non-empty trigger strings`,
+        });
+      }
+    }
+
     // analog_hooks are optional, but a present hook must be complete —
     // a hook missing its exception reads as "this analogy has no caveats",
     // which is exactly the failure mode analog hooks exist to prevent.

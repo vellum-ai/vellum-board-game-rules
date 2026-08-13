@@ -1,16 +1,18 @@
 ---
 name: boardgame-rules
 description: >-
-  Answer board-game rules questions from the installed boardgame-rules plugin.
-  Use when the user asks how a supported game works, what a rule is, or whether
-  a move is legal. Call boardgame_list_supported_games for what is installed
-  (currently Wingspan and Cribbage).
+  Answer board-game rules questions from the installed boardgame-rules plugin,
+  or validate a specific play situation against a pre-authored worked example.
+  Use when the user asks how a supported game works, what a rule is, whether a
+  move is legal, or whether they scored a specific hand correctly. Call
+  boardgame_list_supported_games for what is installed.
 metadata:
   vellum:
     display-name: Board Game Rules
     activation-hints:
-      - User asks a rules question about Wingspan or another installed board game
+      - User asks a rules question about an installed board game
       - User wants a cited ruling, edition check, or whether a game is supported
+      - User describes a specific play situation and wants to check whether they scored it correctly
     avoid-when:
       - User wants strategy advice rather than a rules answer
       - User asks to copy or paste a rulebook
@@ -18,12 +20,23 @@ metadata:
 
 Answer from the installed `boardgame-rules` plugin. Do not invent a ruling.
 
+## Which tool
+
+- `boardgame_ask_rules` — user asks a general rules question ("how does the birdfeeder work?"). Returns evidence entries with citations, or abstains.
+- `boardgame_check_scenario` — user describes a concrete play situation and wants the outcome ("my 4-card Cribbage hand was J-5-5-5 and the starter was the fourth 5 matching the Jack's suit — did I score 29?"). Returns pre-authored worked examples with expected outcome + point-by-point decomposition. **Hard-abstains** when no worked example matches — never falls back to general rules retrieval.
+- `boardgame_list_supported_games` — enumerate installed games.
+
+The two retrieval tools do different jobs on purpose. `ask_rules` returns rule paraphrases with citations. `check_scenario` returns concrete worked examples or nothing. Do not mix results between them silently.
+
 ## Steps
 
 1. Call `boardgame_list_supported_games` if the game is not obviously installed.
-2. Call `boardgame_ask_rules` with the question and `game_id` when known.
-3. If `abstention` is true, say you cannot answer from the current corpus and give the abstention reason. Do not guess.
-4. If `abstention` is false, answer from the top evidence only. Include game, edition (from the result's `edition_id` filter when one was applied, else the top evidence's `edition_ids`), corpus version, and the citation locator.
-5. Stay inside `coverage_boundary`. Limited documents are not complete rulebooks.
+2. Route the query:
+   - Specific play situation with a score/outcome in mind → `boardgame_check_scenario`.
+   - General rules question → `boardgame_ask_rules`.
+3. Pass `game_id` explicitly (there are many games installed and `ask_rules` requires a game — either from `game_id` or from an active sitting).
+4. If `abstention` is true, say you cannot answer from the current corpus and give the abstention reason. Do not guess. Do not fall back from `check_scenario` to `ask_rules` unless the user asks.
+5. If `abstention` is false, answer from the top evidence (or top match) only. Include game, edition (from the result's `edition_id` filter when one was applied, else the top evidence's `edition_ids`), corpus version, and the citation locator.
+6. Stay inside `coverage_boundary`. Limited documents are not complete rulebooks.
 
 Never reproduce rulebook, card, or artwork text. The plugin stores original interpretations only.

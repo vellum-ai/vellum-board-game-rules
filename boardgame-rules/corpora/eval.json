@@ -578,6 +578,38 @@
           "query": "how do I count fifteens",
           "edition": "no-such-edition",
           "expect_abstention": true
+        },
+        {
+          "label": "deck and card rank basics",
+          "query": "how are cards ranked in cribbage",
+          "expect_hit_1": true,
+          "expect_ids": [
+            "setup-deck-and-rank"
+          ]
+        },
+        {
+          "label": "8-7-7-6-2 ask-mode summary uses 7+6+2 not the wrong 6+2 fifteen",
+          "query": "how many points for 8 7 7 6 2",
+          "expect_hit_1": true,
+          "expect_ids": [
+            "counting-example-8-7-7-6-2"
+          ],
+          "expect_summary_contains": [
+            "7+6+2"
+          ]
+        },
+        {
+          "label": "starter card and his heels",
+          "query": "starter card cut his heels",
+          "expect_hit_1": true,
+          "expect_ids": [
+            "setup-starter-cut-and-his-heels"
+          ]
+        },
+        {
+          "label": "empty query abstention",
+          "query": "",
+          "expect_abstention": true
         }
       ]
     },
@@ -816,6 +848,68 @@
           ],
           "expect_hit_1": true,
           "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "cribbage",
+      "edition": "two-player-standard-en",
+      "mode": "scenario",
+      "tests": [
+        {
+          "label": "perfect 29 direct scenario",
+          "query": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit \u2014 counting set J-5-5-5-5",
+          "expect_ids": [
+            "counting-perfect-29"
+          ],
+          "expect_hit_1": true,
+          "expect_outcome_contains": [
+            "29"
+          ],
+          "expect_decomposition_contains": [
+            "double pair royal",
+            "nobs"
+          ]
+        },
+        {
+          "label": "perfect 29 fuzzy phrasing",
+          "query": "did I score 29 with four fives and a jack matching the starter",
+          "expect_ids": [
+            "counting-perfect-29"
+          ],
+          "expect_hit_1": true,
+          "expect_outcome_contains": [
+            "29"
+          ]
+        },
+        {
+          "label": "8-7-7-6-2 direct scenario",
+          "query": "4-card hand of 8, 7, 7, 6, starter is 2 \u2014 counting set 8-7-7-6-2",
+          "expect_ids": [
+            "counting-example-8-7-7-6-2"
+          ],
+          "expect_hit_1": true,
+          "expect_outcome_contains": [
+            "16"
+          ],
+          "expect_decomposition_contains": [
+            "7+6+2"
+          ]
+        },
+        {
+          "label": "no-example abstention on rules-only question",
+          "query": "when does the dealer count their crib",
+          "expect_abstention": true
+        },
+        {
+          "label": "single-token scenario abstention (was: leaked via normalized score)",
+          "query": "cribbage",
+          "expect_abstention": true
+        },
+        {
+          "label": "wrong-game abstention",
+          "query": "how does the birdfeeder work in wingspan",
+          "expect_abstention": true
         }
       ]
     }

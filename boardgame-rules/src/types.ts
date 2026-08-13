@@ -55,6 +55,20 @@ export type AnalogHook = {
   exception: string;
 };
 
+/**
+ * Optional structured worked-example payload used by check_scenario retrieval.
+ * Additive: entries without this field are ignored by check_scenario, but still
+ * participate in ask_rules retrieval as normal.
+ */
+export type WorkedExample = {
+  /** Natural-language scenario description the user query is matched against. */
+  scenario: string;
+  /** The ruling / total / outcome (e.g. "Total: 16 points"). */
+  expected_outcome: string;
+  /** Optional point-by-point breakdown of how the outcome was reached. */
+  decomposition?: string[];
+};
+
 export type CorpusEntry = {
   id: string;
   title: string;
@@ -70,6 +84,10 @@ export type CorpusEntry = {
   rights_flags: RightsFlags;
   /** Optional. Present only on entries with a real mapping to a common game. */
   analog_hooks?: AnalogHook[];
+  /** Optional structured worked example. Only consumed by check_scenario. */
+  worked_example?: WorkedExample;
+  /** Optional trigger phrases that describe when this entry is relevant. Used by check_scenario retrieval. */
+  applies_when?: string[];
 };
 
 export type Corpus = {
@@ -154,6 +172,34 @@ export type AskResult = {
    * ruling; these are teaching aids only.
    */
   analog_hooks: AnalogHook[];
+};
+
+export type ScenarioMatch = {
+  entry_id: string;
+  title: string;
+  section?: string;
+  subsection?: string;
+  edition_ids: string[];
+  scenario: string;
+  expected_outcome: string;
+  decomposition?: string[];
+  score: number;
+  distinct_matches: number;
+  citation: Citation;
+  rights_flags: RightsFlags;
+};
+
+export type CheckScenarioResult = {
+  game_id: string | null;
+  game_title: string | null;
+  edition_id: string | null;
+  corpus_version: string | null;
+  coverage_boundary: string | null;
+  query: string;
+  abstention: boolean;
+  abstention_reason: string | null;
+  matches: ScenarioMatch[];
+  supported_games: string[];
 };
 
 /** The last ruling cited to the table, recorded on the sitting. */
