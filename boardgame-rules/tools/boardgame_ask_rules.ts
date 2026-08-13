@@ -3,7 +3,7 @@ import { askRules } from "../src/retrieve.ts";
 
 export default {
   description:
-    "Answer a board-game rules question from the installed corpora, or abstain. Always returns game and edition identity, corpus version, citations, rights flags, and an explicit abstention field. Do not invent a ruling when abstention is true. Wingspan is currently the only installed game.",
+    "Answer a board-game rules question from the installed corpora, or abstain. Always returns game and edition identity, corpus version, citations, rights flags, and an explicit abstention field. Do not invent a ruling when abstention is true. Currently installed games: Wingspan, Cribbage. Call boardgame_list_supported_games first if you are not certain the game is installed; pass game_id explicitly rather than relying on the default.",
   defaultRiskLevel: "low" as const,
   input_schema: {
     type: "object",
@@ -14,7 +14,7 @@ export default {
       },
       game_id: {
         type: "string",
-        description: "Optional game id or exact title. Defaults to the first installed game (currently wingspan).",
+        description: "Optional game id or exact title. When omitted, resolves to the plugin's default game (currently wingspan). Pass this explicitly whenever the user names a game.",
       },
       edition_id: {
         type: "string",

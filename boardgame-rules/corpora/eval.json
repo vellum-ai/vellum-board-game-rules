@@ -73,6 +73,76 @@
           "expect_hit_1": true
         }
       ]
+    },
+    {
+      "game": "cribbage",
+      "edition": "two-player-standard-en",
+      "tests": [
+        {
+          "label": "deck and card rank",
+          "query": "standard 52 card deck cribbage",
+          "expect_ids": ["setup-deck-and-rank"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "starter card and his heels",
+          "query": "starter card his heels jack",
+          "expect_ids": ["setup-starter-cut-and-his-heels"],
+          "expect_hit_3": true
+        },
+        {
+          "label": "empty query abstention",
+          "query": "",
+          "expect_abstention": true
+        }
+      ]
+    },
+    {
+      "game": "cribbage",
+      "edition": "two-player-standard-en",
+      "type": "scenario",
+      "tests": [
+        {
+          "label": "perfect 29 direct scenario",
+          "scenario": "J-5-5-5 hand with starter as fourth 5 matching the Jack's suit",
+          "expect_ids": ["counting-perfect-29"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "perfect 29 fuzzy phrasing",
+          "scenario": "how do I score 29 points with three fives and a jack matching the starter",
+          "expect_ids": ["counting-perfect-29"],
+          "expect_hit_3": true
+        },
+        {
+          "label": "8-7-7-6-2 direct scenario",
+          "scenario": "hand of 8 7 7 6 2 with the starter counted",
+          "expect_ids": ["counting-example-8-7-7-6-2"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "no-example abstention on rules-only question",
+          "scenario": "how does dealing work in cribbage",
+          "expect_abstention": true
+        },
+        {
+          "label": "single-token scenario abstention (was: leaked via normalized score)",
+          "scenario": "cribbage",
+          "expect_abstention": true
+        },
+        {
+          "label": "wrong-game abstention",
+          "game": "wingspan",
+          "scenario": "J-5-5-5 hand with starter as fourth 5 matching the Jack's suit",
+          "expect_abstention": true
+        },
+        {
+          "label": "unsupported game abstention",
+          "game": "catan",
+          "scenario": "longest road tie broken with previous holder",
+          "expect_abstention": true
+        }
+      ]
     }
   ]
 }

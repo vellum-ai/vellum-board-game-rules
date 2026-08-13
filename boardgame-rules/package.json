@@ -1,6 +1,6 @@
 {
   "name": "boardgame-rules",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Answer supported board-game rules questions with game and edition identity, citations, and explicit abstention. Games are versioned corpora; Wingspan is the first.",
   "private": true,
   "license": "UNLICENSED",

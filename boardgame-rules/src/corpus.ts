@@ -15,7 +15,21 @@ export function listCorpusFiles(): string[] {
 }
 
 export function loadCorpora(): Corpus[] {
-  return listCorpusFiles().map((file) => JSON.parse(readFileSync(file, "utf8")) as Corpus);
+  const corpora = listCorpusFiles().map((file) => JSON.parse(readFileSync(file, "utf8")) as Corpus);
+  // Sort default-flagged corpora first so the default game is declarative and
+  // does not depend on filesystem order. Ties (unflagged) preserve alphabetical order.
+  return corpora.sort((a, b) => {
+    const aDefault = a.is_default === true ? 0 : 1;
+    const bDefault = b.is_default === true ? 0 : 1;
+    if (aDefault !== bDefault) return aDefault - bDefault;
+    return a.corpus_id.localeCompare(b.corpus_id);
+  });
+}
+
+export function defaultCorpusId(): string | null {
+  const corpora = loadCorpora();
+  const flagged = corpora.find((c) => c.is_default === true);
+  return flagged?.corpus_id ?? corpora[0]?.corpus_id ?? null;
 }
 
 export function loadCorpus(gameId: string): Corpus | undefined {

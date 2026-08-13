@@ -5,7 +5,7 @@ const ABSTAIN_THRESHOLD = 2.0;
 const DEFAULT_LIMIT = 5;
 const MAX_LIMIT = 10;
 
-function tokenize(text: string): string[] {
+export function tokenize(text: string): string[] {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s'-]/g, " ")

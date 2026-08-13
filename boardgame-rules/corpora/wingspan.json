@@ -5,6 +5,7 @@
   "generated_at": "2026-08-13",
   "description": "Walking-skeleton Wingspan fixture for the installable boardgame-rules plugin. Original interpretations of setup, turn structure, scoring, habitats, and a few edge cases. Not a complete rulebook and not the FAQ/errata overlay in wingspan-rules/.",
   "full_rulebook_text_included": false,
+  "is_default": true,
   "coverage_boundary": "Covers setup, the four basic actions, scoring, habitats, bird-power types, Automa overview, and selected edge cases for the English 1st Edition / 2020 printing. Exact card text, later printings, and expansion minutiae are out of scope. The European Expansion entry is overview-only.",
   "default_source": {
     "publisher": "Stonemaier Games",

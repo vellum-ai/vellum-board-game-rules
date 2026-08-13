@@ -6,11 +6,10 @@ This is a **fixture-first rules product**, not a live BGG copier. The installabl
 
 ## Contents
 
-- `boardgame-rules/`: the installable plugin. Tools, shared return contract, and the first Wingspan corpus.
+- `boardgame-rules/`: the installable plugin. Tools, shared return contract, and Wingspan + Cribbage corpora.
 - `source-audit/`: fixed BGG top-50 identity snapshot and official publisher-source audit metadata.
 - `interpreters/`: original-interpretation game packages and shared search/validation layer.
 - `wingspan-rules/`: Wingspan FAQ/errata overlay. Not the installable plugin.
-- `cribbage-rules/`: additional per-game inventory, not yet a plugin corpus.
 
 ## Rights boundary
 
@@ -24,8 +23,9 @@ As of 2026-08-13, this branch adds the installable plugin on top of current inve
 
 | Layer | What is here | What it is not |
 | --- | --- | --- |
-| Plugin `boardgame-rules` `0.1.0` | One installable package with `boardgame_list_supported_games` and `boardgame_ask_rules` | Not five games, not compare/refresh, not a live index |
+| Plugin `boardgame-rules` `0.2.0` | Installable package with `boardgame_list_supported_games`, `boardgame_ask_rules`, and `boardgame_check_scenario` (worked-example scenario check) | Not five games, not compare/refresh, not a live index |
 | Wingspan corpus `0.1.0` | 27 walking-skeleton fixture chunks plus 11-test eval | Not the FAQ/errata overlay in `wingspan-rules/` |
+| Cribbage corpus `0.1.0` | 27 paraphrase chunks (4 editions), 2 pre-authored worked examples, plus 10-test eval | Not a full rulebook; original paraphrases only |
 | Source audit `1.3.0` | Fixed #1–#50 snapshot from BGG Geeklist 372705, plus publisher-source leads | Not a live ranking and not permission to ingest PDFs |
 | Interpreters `0.1.0` | 16 original-interpretation packages plus a shared search tool | Not the public plugin contract |
 | Catalogue `1.0.0` | 17 games / 169 interpretation entries | Not exhaustive coverage; Scythe has no package |
@@ -54,6 +54,7 @@ Recommended V1 operations:
 | --- | --- |
 | `boardgame_list_supported_games` | List installed games, editions, coverage limits, and corpus versions |
 | `boardgame_ask_rules` | Answer a question or abstain with evidence |
+| `boardgame_check_scenario` | Return matching worked examples for a "did I score this right?" scenario, or hard-abstain |
 | `boardgame_find_rule` | Retrieve matching chunks without composing a ruling |
 | `boardgame_compare_rules` | Compare supported games or editions using the same citation contract |
 | `boardgame_refresh_index` | Operator/guardian-only. Rebuild from permitted sources and keep last-known-good on failure |
@@ -62,6 +63,7 @@ Shipped public tools live in `boardgame-rules/`:
 
 - `boardgame_list_supported_games`
 - `boardgame_ask_rules`
+- `boardgame_check_scenario`
 
 Inventory search tools remain in `wingspan-rules/` and `interpreters/`. They are not the public contract. Compare and refresh stay deferred.
 
@@ -93,7 +95,7 @@ The first evaluation set should cover:
 
 Measure hit@k, ruling and citation correctness, identity resolution, abstention quality, unsupported-claim rate, latency, and last-known-good preservation.
 
-The first in-repo eval lives at `boardgame-rules/corpora/eval.json` and runs with `cd boardgame-rules && bun scripts/evaluate.ts`. Baseline: 27 Wingspan fixture chunks, 11 tests, **8/11 passing**, 3 documented lexical gaps, 0 unexpected failures.
+The first in-repo eval lives at `boardgame-rules/corpora/eval.json` and runs with `cd boardgame-rules && bun scripts/evaluate.ts`. Baseline: 27 Wingspan chunks + 27 Cribbage chunks, 21 tests across ask and scenario suites, **18/21 passing** (Wingspan 8/11, Cribbage ask 3/3, Cribbage scenario 7/7), 3 documented lexical gaps in Wingspan, 0 unexpected failures.
 
 ## Demo gates
 
