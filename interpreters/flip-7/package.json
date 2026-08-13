@@ -1,0 +1,12 @@
+{
+  "name": "flip-7-rules-interpreter",
+  "version": "0.1.0",
+  "description": "Bounded original-interpretation package for the uploaded Flip 7 rules artifact; no source rulebook text bundled.",
+  "scripts": {
+    "validate": "bun ../tools/validate.mjs"
+  },
+  "vellum": {
+    "corpus_version": "0.1.0",
+    "source_full_text_included": false
+  }
+}

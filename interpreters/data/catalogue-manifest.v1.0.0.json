@@ -4,10 +4,10 @@
   "title": "Board-Game Rules Interpretation Catalogue",
   "purpose": "Canonical inventory of the current original-interpretation knowledge layer for uploaded board-game sources.",
   "totals": {
-    "games": 17,
-    "interpretation_entries": 169,
+    "games": 18,
+    "interpretation_entries": 183,
     "fixed_snapshot_games": 6,
-    "non_snapshot_or_candidate_games": 11
+    "non_snapshot_or_candidate_games": 12
   },
   "knowledge_representation": {
     "included": [
@@ -378,6 +378,26 @@
         "rights_status": "internal_reference_only",
         "local_path": "/workspace/plugins/wingspan-rules-internal/WS_Rulebook_r23-LR.pdf",
         "sha256": "bf409041c0537729d6ce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Flip 7",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/flip-7",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/flip-7/data/flip-7-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 14,
+      "snapshot_status": "ad_hoc_uploaded_game",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Covers broad setup, round flow, hit/stay and bust timing, Flip 7 round termination, score concepts, high-level player interaction, round transition, and game end. Exact card or action effects, complete special-card resolution, artwork, variants, edge cases, and exhaustive rules coverage remain outside the package.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "uploaded rulebook",
+        "pages": 14,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/ad-hoc-flip-7/26_FLIP_7_VENGEANCE_RULES_C.pdf",
+        "sha256": "45d0140b69d6f8f322a7bc2bb5a80bf5f03746151f62215da2c79e381dcb83c9"
       },
       "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
     }
