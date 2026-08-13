@@ -774,6 +774,20 @@
           "expect_abstention": false
         }
       ]
+    },
+    {
+      "game": "flip-7",
+      "tests": [
+        {
+          "label": "migration smoke: flip-7-press-your-luck-objective retrievable",
+          "query": "Push for points without repeating a number",
+          "expect_ids": [
+            "flip-7-press-your-luck-objective"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
     }
   ]
 }

@@ -1,8 +1,7 @@
 {
-  "corpus_id": "flip-7-rules-interpreter",
+  "corpus_id": "flip-7",
   "corpus_version": "0.1.0",
   "generated_at": "2026-08-13",
-  "game": "Flip 7",
   "description": "Bounded original-interpretation aid for the uploaded Flip 7 rules artifact. No source rulebook text, exact card or action text, artwork, or long quotations are bundled.",
   "full_rulebook_text_included": false,
   "source": {
@@ -107,7 +106,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -138,7 +140,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -170,7 +175,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -202,7 +210,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -233,7 +244,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -264,7 +278,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -295,7 +312,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -326,7 +346,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -358,7 +381,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -389,7 +415,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -420,7 +449,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -451,7 +483,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -482,7 +517,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     },
     {
@@ -513,7 +551,10 @@
         "full_text_included": false,
         "long_quotation_included": false,
         "artwork_included": false,
-        "redistribution_permitted": false
+        "redistribution_permitted": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "internal_only": true
       }
     }
   ],
@@ -523,5 +564,12 @@
     "long_quotation_included": false,
     "artwork_included": false,
     "redistribution_permitted": false
+  },
+  "game_title": "Flip 7",
+  "migration": {
+    "migrated_from": "interpreters/flip-7",
+    "original_corpus_id": "flip-7-rules-interpreter",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
   }
 }

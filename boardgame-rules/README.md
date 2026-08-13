@@ -7,8 +7,8 @@ One plugin owns the contract. Games are versioned corpora under `corpora/`. Wing
 
 ## Supported games
 
-18 games, one schema. Two are **reference corpora** with first-play analog
-hooks; sixteen are **bounded interpreter corpora** migrated from the former
+19 games, one schema. Two are **reference corpora** with first-play analog
+hooks; seventeen are **bounded interpreter corpora** migrated from the former
 `interpreters/` packages — document-scoped, limited coverage, sources with
 unresolved rights, entries marked `internal_only`. Every corpus abstains
 outside its coverage boundary.
@@ -17,7 +17,7 @@ outside its coverage boundary.
 | --- | --- | --- | --- |
 | Wingspan (reference) | Base (2020), EU Expansion (2019), FAQ/errata overlay editions | 37 | 0.4.0 |
 | Cribbage (reference) | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.2.0 |
-| A Feast for Odin · Ark Nova · Brass: Birmingham · Dune: Imperium · Dune: Imperium – Uprising · Gaia Project · Gloomhaven · Gloomhaven: JotL · Lost Ruins of Arnak · Nemesis · Pandemic Legacy S1 · Sky Team · Star Wars: Rebellion · Terraforming Mars · Twilight Imperium 4E · War of the Ring 2E | document-scoped | 7–15 each | 0.1.0–0.2.0 |
+| A Feast for Odin · Ark Nova · Brass: Birmingham · Dune: Imperium · Dune: Imperium – Uprising · Gaia Project · Gloomhaven · Gloomhaven: JotL · Lost Ruins of Arnak · Nemesis · Pandemic Legacy S1 · Sky Team · Star Wars: Rebellion · Terraforming Mars · Twilight Imperium 4E · War of the Ring 2E · Flip 7 | document-scoped | 7–15 each | 0.1.0–0.2.0 |
 
 Each migrated corpus carries a `migration` block naming its origin package;
 run `boardgame_list_supported_games` for live coverage details.
@@ -122,8 +122,8 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 216 entries, 28 editions, 18 games, 0 validation errors,
-72/72 eval tests passing (retrieval + factual assertions + analog filtering +
+Current baseline: 230 entries, 29 editions, 19 games, 0 validation errors,
+73/73 eval tests passing (retrieval + factual assertions + analog filtering +
 sitting store/tool flow + a migration smoke test per migrated game).
 
 ## Contributing

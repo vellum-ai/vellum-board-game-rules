@@ -57,6 +57,7 @@ coverage boundary:
 | Gaia Project | 7 | | Terraforming Mars | 7 |
 | Gloomhaven | 8 | | Twilight Imperium: Fourth Edition | 7 |
 | Gloomhaven: Jaws of the Lion | 7 | | War of the Ring: Second Edition | 7 |
+| Flip 7 | 14 | | | |
 
 Want to add a game or deepen a bounded corpus? See
 **[CONTRIBUTING.md](CONTRIBUTING.md)** — you write one JSON file, validate it,
@@ -112,7 +113,7 @@ cd boardgame-rules && bun scripts/validate-corpus.ts   # validate all corpora
 cd boardgame-rules && bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: **216 entries, 28 editions, 18 games, 0 validation errors, 72/72 eval tests passing.**
+Current baseline: **230 entries, 29 editions, 19 games, 0 validation errors, 73/73 eval tests passing.**
 
 ## Sequencing
 
@@ -120,7 +121,7 @@ The project grows in gates:
 
 1. **One-game gate** — one game can answer cited, edition-aware questions and abstain honestly. ✅ (Wingspan)
 2. **Two-game gate** — the schema and tool contract work across multiple games without per-game hacks. ✅ (Wingspan + Cribbage)
-3. **Five-game gate** — varied games prove the schema generalizes across complexity, mechanics, and publisher styles. ✅ (18 games after the interpreter migration — though 16 are bounded, limited-coverage corpora, not reference depth)
+3. **Five-game gate** — varied games prove the schema generalizes across complexity, mechanics, and publisher styles. ✅ (19 games after the interpreter migration — though 16 are bounded, limited-coverage corpora, not reference depth)
 4. **Fifty-game gate** — repeatable contribution with provenance, stratified evaluation, and observability.
 
 The schema is stable and every game in the repo now speaks it. The next step
