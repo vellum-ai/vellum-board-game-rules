@@ -1,0 +1,1060 @@
+{
+  "corpus_id": "wingspan",
+  "game_title": "Wingspan",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "description": "Walking-skeleton Wingspan fixture for the installable boardgame-rules plugin. Original interpretations of setup, turn structure, scoring, habitats, and a few edge cases. Not a complete rulebook and not the FAQ/errata overlay in wingspan-rules/.",
+  "full_rulebook_text_included": false,
+  "coverage_boundary": "Covers setup, the four basic actions, scoring, habitats, bird-power types, Automa overview, and selected edge cases for the English 1st Edition / 2020 printing. Exact card text, later printings, and expansion minutiae are out of scope. The European Expansion entry is overview-only.",
+  "default_source": {
+    "publisher": "Stonemaier Games",
+    "title": "Wingspan Rules & FAQ",
+    "url": "https://stonemaiergames.com/games/wingspan/rules/",
+    "accessed_at": "2026-08-13",
+    "source_type": "official_publisher_webpage",
+    "rights_status": "original-interpretation-only",
+    "permission_note": "Only original fixture paraphrases and metadata are stored. No rulebook or card text is redistributed."
+  },
+  "editions": [
+    {
+      "edition_id": "base-en-1st-2020",
+      "game": "Wingspan",
+      "scope": "base game",
+      "language": "en",
+      "status": "walking-skeleton-fixture",
+      "notes": "1st Edition (2020 printing)",
+      "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "rights_status": "original-interpretation-only",
+      "full_text_included": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "wingspan-setup-001",
+      "title": "General",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "setup",
+        "general"
+      ],
+      "section": "Setup",
+      "subsection": "General",
+      "summary": "Each player takes a player mat, 8 action cubes of one color, a birdfeeder die, a scorepad, and a starting hand of 5 bird cards. Deal 4 face-up bird cards into the bird tray. Shuffle the deck and place it face-down. Place the birdfeeder with the 4 food dice inside. Give each player 2 food tokens of their choice from the birdfeeder (or from the supply if the feeder is empty). Give each player 1 bonus card face-down; they may look at it. Randomly determine the first player and give them the automa token (or start player token in non-solo games).",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.3-4",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "3-4",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-setup-002",
+      "title": "Bonus Cards",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "setup",
+        "bonus",
+        "cards"
+      ],
+      "section": "Setup",
+      "subsection": "Bonus Cards",
+      "summary": "After receiving your starting bonus card, you may draw 2 more bonus cards and keep 1 of them. Return the unchosen bonus cards to the bottom of the bonus card deck. You begin the game with 2 active bonus cards: the one you were dealt and the one you chose.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.4",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "4",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-turn-001",
+      "title": "Overview",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "turn",
+        "structure",
+        "overview"
+      ],
+      "section": "Turn Structure",
+      "subsection": "Overview",
+      "summary": "The game lasts 4 rounds. Each round, players take turns in clockwise order, taking one of 4 possible actions: Gain Food, Lay Eggs, Draw Bird Cards, or Play a Bird. Each round ends when all players have passed (used all their action cubes). Between rounds, the start player passes clockwise. At the end of round 4, scoring occurs. Players have a decreasing number of actions per round: Round 1: 8 actions, Round 2: 7 actions, Round 3: 6 actions, Round 4: 5 actions. These correspond to the action cubes on each player's mat.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.5",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "5",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-turn-002",
+      "title": "Gain Food",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "actions",
+        "gain",
+        "food"
+      ],
+      "section": "Actions",
+      "subsection": "Gain Food",
+      "summary": "To gain food, roll the birdfeeder die. Gain 1 food token matching the rolled face from the birdfeeder (not the supply). If the birdfeeder is empty, reroll all dice and refill the feeder. If the food you want is not available (e.g., rolled fruit but no fruit left), gain 1 food from the supply of your choice instead. There is no limit to how many food tokens you may store.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.5",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "5",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-turn-003",
+      "title": "Lay Eggs",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "actions",
+        "lay",
+        "eggs"
+      ],
+      "section": "Actions",
+      "subsection": "Lay Eggs",
+      "summary": "Take 1 egg from the supply and place it on any bird in your habitat that has capacity. Most birds have an egg capacity printed on their card. If the nest is full, you cannot place an egg there. Eggs can also be removed via bird powers (e.g., Brown-headed Cowbird). There is no limit to total eggs in your supply beyond what your birds can hold.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.6",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "6",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-turn-004",
+      "title": "Draw Bird Cards",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "actions",
+        "draw",
+        "bird",
+        "cards"
+      ],
+      "section": "Actions",
+      "subsection": "Draw Bird Cards",
+      "summary": "Draw 2 bird cards from the deck and add them to your hand. There is no hand size limit. You may instead take 1 face-up bird card from the bird tray. If the bird tray ever has fewer than 4 cards, immediately refill it from the deck. If the deck runs out, face-up cards in the tray are still available but the tray is not refilled.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.6",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "6",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-turn-005",
+      "title": "Play a Bird",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "actions",
+        "play",
+        "a",
+        "bird"
+      ],
+      "section": "Actions",
+      "subsection": "Play a Bird",
+      "summary": "To play a bird, pay its food cost (matching food tokens from your supply) and place it in an empty slot in one of your three habitats (Forest, Grassland, Wetland). You must have enough eggs on birds already in that habitat to pay the egg cost printed on the slot you are filling. The bird's nest type must match its habitat column's nest type bonus for end-of-round goals. Playing a bird costs 1 action cube regardless of how many slots remain.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.7",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "7",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-001",
+      "title": "End of Game",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "scoring",
+        "end",
+        "of",
+        "game"
+      ],
+      "section": "Scoring",
+      "subsection": "End of Game",
+      "summary": "At the end of the game (after round 4), score points in the following categories: (1) Points from birds: the sum of victory points (the number in the upper left of each bird card) for all birds you have played. (2) Points from bonus cards: points earned from your active bonus cards. (3) Points from end-of-round goals: points earned from being ranked 1st, 2nd, or tied in each round's goal. (4) Eggs: 1 point per egg on your birds at end of game. (5) Food tokens and bird cards in hand: 0 points. The player with the most total points wins. In case of a tie, the player with the most leftover food wins; if still tied, the player with the most leftover bird cards wins.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.10",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "10",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-002",
+      "title": "End-of-Round Goals",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "scoring",
+        "end",
+        "of",
+        "round",
+        "goals"
+      ],
+      "section": "Scoring",
+      "subsection": "End-of-Round Goals",
+      "summary": "Each round has a goal revealed at the start of that round. Goals vary; examples include 'Birds with 3+ eggs in your Forest,' 'Most birds in the Grassland,' or 'Birds in the Wetland with a wingspan over 50cm.' The first-place player in the goal earns the top-point token from the goal tile, second place earns the middle token, and ties split the combined points. Points are cumulative across rounds.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.3, 10",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "3, 10",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-003",
+      "title": "Forest",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "habitats",
+        "forest"
+      ],
+      "section": "Habitats",
+      "subsection": "Forest",
+      "summary": "The Forest habitat is used for gaining food. Each time you take the Gain Food action in the Forest, you gain 1 food token from the birdfeeder. Any bird powers (brown powers) in the Forest activate from left to right. The first bird in the Forest has no power; the second and third slots have brown power icons and activate when any action cube is placed in the Forest.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.8",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "8",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-004",
+      "title": "Grassland",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "habitats",
+        "grassland"
+      ],
+      "section": "Habitats",
+      "subsection": "Grassland",
+      "summary": "The Grassland habitat is used for laying eggs. Each time you take the Lay Eggs action in the Grassland, you add 1 egg to a bird in your Grassland. Any bird powers (brown powers) in the Grassland activate from left to right. The first bird in the Grassland has no power; the second and third slots have brown power icons.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.8",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "8",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-005",
+      "title": "Wetland",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "habitats",
+        "wetland"
+      ],
+      "section": "Habitats",
+      "subsection": "Wetland",
+      "summary": "The Wetland habitat is used for drawing bird cards. Each time you take the Draw Bird Cards action in the Wetland, you draw 2 bird cards from the deck (not the tray). Any bird powers (brown powers) in the Wetland activate from left to right. The first bird in the Wetland has no power; the second and third slots have brown power icons.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.9",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "9",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-006",
+      "title": "Power Types",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "bird",
+        "cards",
+        "power",
+        "types"
+      ],
+      "section": "Bird Cards",
+      "subsection": "Power Types",
+      "summary": "Bird powers come in three types: (1) Brown powers (nesting icon) activate when a cube is placed in the bird's habitat; they trigger from left to right each time that habitat action is taken. (2) Pink powers (predator icon) activate once per round when the conditions on the card are met. (3) White powers (end-of-round icon) trigger at the end of the round or end of game as described on the card. Not all birds have a power; birds in the first slot of any habitat never have a power icon.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.7-8",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "7-8",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-007",
+      "title": "Egg Capacity and Nests",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "bird",
+        "cards",
+        "egg",
+        "capacity",
+        "and",
+        "nests"
+      ],
+      "section": "Bird Cards",
+      "subsection": "Egg Capacity and Nests",
+      "summary": "Each bird card shows an egg capacity (small nest icons on the card face). The number of eggs a bird can hold is printed on the card and is fixed; it does not change. Birds in the Grassland often have higher egg capacity. When a bird reaches its capacity, no more eggs may be placed on it. Eggs provide 1 VP each at end of game. Egg types (cavity, platform, cup, ground, star) matter for nest-type goals and certain bird powers.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.6, 10",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "6, 10",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-008",
+      "title": "Food Costs",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "bird",
+        "cards",
+        "food",
+        "costs"
+      ],
+      "section": "Bird Cards",
+      "subsection": "Food Costs",
+      "summary": "Bird food costs are shown by icons on the left side of the card. Each food type required must be spent from your supply. Wild (star) icons can be any food type. For example, a bird costing two invertebrates requires you to spend any 2 invertebrate tokens. A bird with a food cost of 'any 2' requires 2 food tokens of any type. A bird with '1 invertebrate + 1 wild' requires 1 invertebrate and 1 any-type token. Food tokens are spent from personal supply back to the birdfeeder or general supply.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.7",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "7",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-009",
+      "title": "Dice Rolling",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "birdfeeder",
+        "dice",
+        "rolling"
+      ],
+      "section": "Birdfeeder",
+      "subsection": "Dice Rolling",
+      "summary": "The birdfeeder contains 4 dice, each with 5 possible faces: invertebrate, seed, fruit, rodent, and fish (wild). In a 2-player game, the birdfeeder starts with 4 food dice. You may reroll the die if you don't like the result, but each reroll costs 1 food token from the supply. After rolling, take 1 food matching the rolled face from the feeder, not the general supply. If the rolled resource is unavailable in the feeder, you may take any 1 food from the general supply instead.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.5-6",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "5-6",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-010",
+      "title": "Wingspan and Placement",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "bird",
+        "cards",
+        "wingspan",
+        "and",
+        "placement"
+      ],
+      "section": "Bird Cards",
+      "subsection": "Wingspan and Placement",
+      "summary": "Some birds have a minimum wingspan requirement (printed on the card) that limits where they can be placed \u2014 they must go in a habitat slot with enough space. Wingspan also affects end-of-round goals that measure total wingspan in a habitat. Each bird card's wingspan in centimeters is printed on the card. Most birds have no minimum wingspan for placement beyond being in an available slot.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.7",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "7",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-011",
+      "title": "Passing and Reset",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "end",
+        "of",
+        "round",
+        "passing",
+        "and",
+        "reset"
+      ],
+      "section": "End of Round",
+      "subsection": "Passing and Reset",
+      "summary": "When you cannot or do not wish to take further actions in a round, you pass by discarding your remaining action cubes. Passing ends your turn for the round; you take no further actions. After all players have passed, resolve the end-of-round goal, then: remove all eggs from the goal tile, pass the start player token to the next player clockwise, reveal the next round's goal tile (if any), and begin the next round.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.9",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "9",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-rule-012",
+      "title": "Automa",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "solo",
+        "mode",
+        "automa"
+      ],
+      "section": "Solo Mode",
+      "subsection": "Automa",
+      "summary": "In solo mode, you play against the Automa, a deck of cards simulating an opponent. Set up normally. The Automa does not have a player mat, bird cards, or food. Instead, the Automa scores points each round based on its Automa cards. You take your turn as normal; after your turn, draw and reveal the top card of the Automa deck and resolve its effects. The Automa gains points shown on the card. At end of game, compare your score to the Automa's total. Beat the Automa to win.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.11",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "11",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-001",
+      "title": "Tied End-of-Round Goals",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "tied",
+        "end",
+        "of",
+        "round",
+        "goals"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Tied End-of-Round Goals",
+      "summary": "If two or more players tie for first place in an end-of-round goal, they split the combined points of the first- and second-place tokens, rounded up. Ties for second place split the second-place token only. Example: 2 tied for first = (4+2)/2 = 3 points each. 3 tied for first = (4+2)/3 = 2 points each (round up). The next player(s) receive nothing.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.10",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "10",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-002",
+      "title": "Empty Birdfeeder",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "empty",
+        "birdfeeder"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Empty Birdfeeder",
+      "summary": "If the birdfeeder is empty when you take the Gain Food action (all dice cannot produce food because the food type is fully depleted), instead of rolling: reroll all 4 dice simultaneously and refill the birdfeeder. Then proceed with the normal Gain Food action using the new face-up results. This is a forced reroll and does not cost a food token.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.5",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "5",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-003",
+      "title": "Deck Exhaustion",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "deck",
+        "exhaustion"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Deck Exhaustion",
+      "summary": "If the bird card deck runs out, bird cards can still be taken from the face-up bird tray, but the tray is not refilled. Players can still draw from the tray (as their Draw action), take cards via bird powers that draw cards, and use the Wetland action (which draws from the deck \u2014 if the deck is empty, you receive nothing from the Wetland draw portion).",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.6",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "6",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-004",
+      "title": "Brown Power Timing",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "brown",
+        "power",
+        "timing"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Brown Power Timing",
+      "summary": "Brown powers activate from left to right, one at a time. Each bird's power resolves fully before the next activates. When a brown power generates an egg, food, or card, that resource is available immediately (e.g., a food gained from a brown power can be used to pay for a bird being played in the same action). If a brown power allows you to gain an additional action (e.g., 'lay 1 egg on this bird'), that bonus does NOT place an additional action cube.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.8",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "8",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-005",
+      "title": "Duplicate Bird Names",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "duplicate",
+        "bird",
+        "names"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Duplicate Bird Names",
+      "summary": "There is no rule preventing you from playing multiple copies of the same bird species. Each bird card is a distinct individual bird, even if it shares a species name with another bird card. The nesting pair/harem rule common in other games does not apply to Wingspan.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/faq/",
+        "locator": "faq Can I have two of the same bird?",
+        "source_kind": "official_web",
+        "source_ref": "faq",
+        "page": null,
+        "question": "Can I have two of the same bird?",
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-006",
+      "title": "Hand Limit and Discarding",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "hand",
+        "limit",
+        "and",
+        "discarding"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Hand Limit and Discarding",
+      "summary": "There is no hand limit for bird cards or food tokens. You may hold as many bird cards and food tokens as you wish. You are never forced to discard cards or food. The only way to reduce your hand or supply is through game effects or spending.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.6",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "6",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-007",
+      "title": "Food Die Wild Face",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "edge",
+        "cases",
+        "food",
+        "die",
+        "wild",
+        "face"
+      ],
+      "section": "Edge Cases",
+      "subsection": "Food Die Wild Face",
+      "summary": "The fish face on the birdfeeder die is the wild face. When rolled, you may take any 1 food token of your choice from the birdfeeder (or from the supply if that food is not in the feeder). The wild face is NOT a specific food type \u2014 it represents your choice.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.5",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "5",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "wingspan-edgecase-008",
+      "title": "European Expansion Overview",
+      "kind": "original_interpretation",
+      "interpretation_type": "fixture_interpretation",
+      "edition_ids": [
+        "base-en-1st-2020"
+      ],
+      "topics": [
+        "expansions",
+        "european",
+        "expansion",
+        "overview"
+      ],
+      "section": "Expansions",
+      "subsection": "European Expansion Overview",
+      "summary": "The Wingspan: European Expansion adds 81 new bird cards, a new player color (purple), additional bonus cards, additional end-of-round goal tiles, and a new 'round-end' power type represented by a purple/orange power icon background. It also introduces the 'Tea' component as a resource used for activating certain bird powers. The expansion is fully compatible with the base game and can be shuffled directly into the deck.",
+      "confidence": "medium",
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "locator": "rulebook p.2 (European Expansion rulebook)",
+        "source_kind": "official_pdf",
+        "source_ref": "rulebook",
+        "page": "2 (European Expansion rulebook)",
+        "question": null,
+        "accessed_at": "2026-08-13",
+        "official_source": true
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    }
+  ]
+}
