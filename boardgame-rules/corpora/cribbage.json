@@ -1,6 +1,6 @@
 {
   "corpus_id": "cribbage-rules-reference",
-  "corpus_version": "0.1.0",
+  "corpus_version": "0.2.0",
   "generated_at": "2026-08-13",
   "description": "Compact structured reference and original interpretation aids for the two-player standard Cribbage game and three common scoring variants. This is not a reproduction of any publisher's rulebook.",
   "full_rulebook_text_included": false,
@@ -313,6 +313,14 @@
         "pegging"
       ],
       "summary": "If a player cannot add a card without pushing the running total past 31, they say 'Go' and the opponent pegs 1 for the Go. If the opponent can still play cards under 31 they do so before the reset. Landing on exactly 31 scores 2 (instead of 1 for the Go). Whoever plays the last card of a subsequence (that does not reach 31) also pegs 1 for the Go. After a Go or a 31, the count resets to zero and the player who did not play the last card leads next.",
+      "analog_hooks": [
+        {
+          "known_game_id": "blackjack",
+          "known_game_title": "Blackjack",
+          "likeness": "The running total works like blackjack's 21: cards add up toward a hard ceiling (31 here), and landing exactly on it is the best outcome.",
+          "exception": "You can never bust — a card that would pass 31 simply cannot be played, you say 'Go' instead and the opponent pegs. The count also resets to zero and play continues, rather than the hand ending."
+        }
+      ],
       "interpretation_type": "rule_atom",
       "confidence": "high",
       "source_locator": {
@@ -469,6 +477,14 @@
         "pair"
       ],
       "summary": "Every distinct combination of cards from the five-card set that sums to 15 counts 2 points, and every distinct pair (two cards of the same rank) counts 2 points. Combinations are counted separately, so the same card can participate in more than one fifteen or pair.",
+      "analog_hooks": [
+        {
+          "known_game_id": "poker",
+          "known_game_title": "Poker",
+          "likeness": "The show scores card combinations you already know from poker — pairs, and (in other entries) runs like straights and flushes.",
+          "exception": "You score EVERY distinct combination in the same five cards cumulatively, not just one best hand — a card can be part of several fifteens and pairs at once — and fifteens (combinations summing to 15) have no poker equivalent at all."
+        }
+      ],
       "interpretation_type": "scoring_atom",
       "confidence": "high",
       "source_locator": {
@@ -499,6 +515,14 @@
         "run"
       ],
       "summary": "A run in the show is three or more cards whose ranks form a consecutive sequence (order irrelevant). Each run counts 1 point per card. Ace is always low; there is no wrap from King back to Ace. If the same run appears more than once because a rank in it is duplicated, each distinct version is scored — see the 'common formulas' entry.",
+      "analog_hooks": [
+        {
+          "known_game_id": "poker",
+          "known_game_title": "Poker",
+          "likeness": "A run is consecutive ranks like a poker straight, and the order you hold the cards in doesn't matter.",
+          "exception": "Runs start at just three cards, Ace is always low (no King-Ace wrap, no A-2-3-4-5 vs 10-J-Q-K-A choice), and a duplicated rank scores each version of the run separately instead of one best straight."
+        }
+      ],
       "interpretation_type": "scoring_atom",
       "confidence": "high",
       "source_locator": {
@@ -529,6 +553,14 @@
         "flush"
       ],
       "summary": "A hand flush requires all four cards in the player's hand to share a suit and scores 4 points; if the starter is also of that same suit, the flush scores 5. The crib is stricter: a crib flush only counts if all four crib cards AND the starter share the same suit, and in that case it scores 5. A four-card-only crib flush does not score.",
+      "analog_hooks": [
+        {
+          "known_game_id": "poker",
+          "known_game_title": "Poker",
+          "likeness": "A flush is all cards of one suit, exactly as in poker.",
+          "exception": "It scores points additively (4 for the hand, 5 with the starter) rather than winning a showdown, and the crib is stricter — a crib flush needs all five cards including the starter, where a poker flush is any five of a suit."
+        }
+      ],
       "interpretation_type": "scoring_atom",
       "confidence": "high",
       "source_locator": {

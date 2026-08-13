@@ -4,6 +4,10 @@
  * set — the module default (`<pluginDir>/data/`) is the same path for a user
  * plugin. Live sittings survive a plain daemon restart on purpose: the table
  * may still be mid-game when the daemon bounces.
+ *
+ * `ctx.reason` is populated at every 0.11.x dispatch site: "shutdown" from
+ * the daemon's exit path (shutdown-handlers.ts), "uninstall"/"reload" from
+ * the mtime cache when a plugin directory disappears or changes.
  */
 
 import type { HookFunction, ShutdownContext } from "@vellumai/plugin-api";

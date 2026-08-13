@@ -242,6 +242,59 @@
           "expect_analog_empty": true
         }
       ]
+    },
+    {
+      "game": "cribbage",
+      "edition": "two-player-standard-en",
+      "tests": [
+        {
+          "label": "analog poker hook on fifteens and pairs",
+          "query": "how do I count fifteens and pairs in my hand",
+          "known_games": ["Poker"],
+          "expect_ids": ["counting-fifteens-and-pairs"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["poker"]
+        },
+        {
+          "label": "analog poker hook on flush",
+          "query": "counting flush hand crib suit",
+          "known_games": ["poker"],
+          "expect_ids": ["counting-flush"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["poker"]
+        },
+        {
+          "label": "analog poker hook on runs",
+          "query": "runs in the show consecutive cards",
+          "known_games": ["poker"],
+          "expect_ids": ["counting-runs-in-show"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["poker"]
+        },
+        {
+          "label": "analog blackjack hook on go and thirty-one",
+          "query": "go thirty-one running total play",
+          "known_games": ["blackjack"],
+          "expect_ids": ["play-go-and-thirty-one"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["blackjack"]
+        },
+        {
+          "label": "cribbage has no forced hooks for the wingspan target games",
+          "query": "how do I count fifteens and pairs in my hand",
+          "known_games": ["catan", "ticket-to-ride", "dominion", "azul"],
+          "expect_ids": ["counting-fifteens-and-pairs"],
+          "expect_hit_1": true,
+          "expect_analog_empty": true
+        },
+        {
+          "label": "cribbage abstention never analogizes",
+          "query": "quantum entanglement scoring rule",
+          "known_games": ["poker", "blackjack"],
+          "expect_abstention": true,
+          "expect_analog_empty": true
+        }
+      ]
     }
   ]
 }
