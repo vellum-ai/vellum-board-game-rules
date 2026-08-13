@@ -1,0 +1,176 @@
+{
+  "corpus_id": "gaia-project-rules-corpus",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "game": "Gaia Project",
+  "catalogue_identity": "Matched fixed top-50 identity (BGG 220308); document completeness and edition remain uncertain",
+  "bgg_snapshot": true,
+  "description": "Compact original-interpretation and play-aid corpus for Gaia Project; it is not a reproduction of a rulebook or guide.",
+  "full_rulebook_text_included": false,
+  "coverage_disclaimer": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+  "editions": [
+    {
+      "edition_id": "gaia-project-condensed-unpinned",
+      "label": "Uploaded seven-page condensed Gaia Project reference; edition not pinned",
+      "scope_status": "document_scope_only",
+      "edition_uncertainty": "Matched fixed top-50 identity (BGG 220308); document completeness and edition remain uncertain"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "gaia-project-upload-2026-08-12",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Gaia-Project-Rulebook.pdf",
+    "manifest_path": "/workspace/plugins/board-game-rules-source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+    "sha256": "86304d54fbcb510f8b7eff8c22b1d6bbab04b207060143e01d703910c491c6e7",
+    "pages": 7,
+    "language": "English",
+    "document_type": "condensed rules reference or abbreviated rulebook; completeness unverified",
+    "edition": "Edition not pinned",
+    "provenance": "user_uploaded; third-party 1jour-1jeu listing is a public lead only; exact local-PDF URL linkage and publisher attribution are unverified",
+    "pdf_metadata": {
+      "creator": "Adobe InDesign 16.3 (Macintosh)",
+      "producer": "macOS Version 10.15.7 Quartz PDFContext",
+      "creation_date": "2025-10-10",
+      "page_size": "765.354 x 566.929 pts"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "The local PDF is a quarantined internal reference. Upload possession, public availability, or third-party hosting does not establish permission to index or redistribute source text.",
+  "entries": [
+    {
+      "id": "play-flow-six-rounds",
+      "interpretation_type": "play_flow",
+      "title": "Six-round operating rhythm",
+      "summary": "Run six rounds. Each round proceeds through income, Gaia processing, player actions, and cleanup; at the end of round six, skip cleanup and move to final scoring.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Gameplay / round structure",
+        "page_locator": "The document’s four-phase gameplay summary and round-six exception"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "setup-board-and-track-randomization",
+      "interpretation_type": "setup_checklist",
+      "title": "Setup is randomized, not a fixed puzzle",
+      "summary": "Build the player-count board, prepare research spaces, scoring tiles, round boosters, factions, resources, and starting structures. Preserve the document’s randomization steps rather than assuming a fixed tech or scoring layout.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Setup",
+        "page_locator": "Setup section"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "build-mine-range-and-cost",
+      "interpretation_type": "timing",
+      "title": "A mine needs both reach and an immediate payment",
+      "summary": "Treat a mine as legal only when the planet is empty, reachable from a colonized planet, and habitable after any required terraforming. Navigation sets the base range; QIC can extend it. The mine cost must be paid in full when the action is taken.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Actions / Build a Mine",
+        "page_locator": "Build a Mine action"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "gaia-project-completion-delay",
+      "interpretation_type": "timing",
+      "title": "A Gaia project is a delayed conversion",
+      "summary": "Starting a Gaia project moves the required power and places a Gaiaformer, but the conversion is completed in the following round’s Gaia phase. A project begun in the final round will not finish before scoring.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Actions / Start a Gaia Project; Gaia phase",
+        "page_locator": "Start a Gaia Project and final-round timing"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "structure-upgrade-one-step",
+      "interpretation_type": "play_flow",
+      "title": "Upgrades replace one structure at a time",
+      "summary": "Only mines go directly onto empty planets. Other structures are upgrades that replace an existing structure and advance one step per upgrade action; pay the listed ore and credit cost at the moment of upgrade.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Actions / Upgrade Existing Structures",
+        "page_locator": "Upgrade action"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "round-and-final-scoring-tiles",
+      "interpretation_type": "scoring",
+      "title": "Separate round bonuses from final ranking",
+      "summary": "A round scoring tile applies for one round and is then removed. Final scoring tiles are evaluated after the six-round game, with ranking tracks and neutral-player markers affecting the comparison.",
+      "confidence": "medium",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Cleanup; Final Scoring",
+        "page_locator": "Scoring board and final scoring sections"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "coverage-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "Condensed-document boundary",
+      "summary": "This seven-page upload is identified as a condensed reference or abbreviated rulebook, and completeness is unverified. Do not use it as a complete authority for faction exceptions, every technology, advanced scoring edge case, or later printings.",
+      "confidence": "high",
+      "edition_ids": [
+        "gaia-project-condensed-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Artifact metadata / document scope",
+        "page_locator": "Manifest records low provenance and completeness confidence"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,1360 @@
+{
+  "schema_version": "1.0.0",
+  "registry_version": "v1.2.0",
+  "registry_kind": "board_game_publisher_source_audit",
+  "audit_run_date": "2026-08-12",
+  "scope": {
+    "rank_start": 1,
+    "rank_end": 50,
+    "game_count": 50
+  },
+  "list_provenance": {
+    "geeklist_id": "372705",
+    "geeklist_title": "Top 100 Games of all time - 2026 Edition",
+    "human_facing_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition",
+    "metadata_api_url": "https://api.geekdo.com/api/geeklists/372705",
+    "items_api_template": "https://api.geekdo.com/api/listitems?page={page}&listid=372705",
+    "snapshot_files": [
+      "/workspace/scratch/bgg-372705/page-1.json",
+      "/workspace/scratch/bgg-372705/page-2.json",
+      "/workspace/scratch/bgg-372705/page-3.json",
+      "/workspace/scratch/bgg-372705/page-4.json"
+    ],
+    "api_snapshot_total": 100,
+    "api_snapshot_pages": 4,
+    "api_per_page": 25,
+    "api_metadata": {
+      "ordinalDirection": "descending",
+      "sortType": "user"
+    },
+    "rank_method": "Reverse the returned array position across the four API pages. For one-based sequence position p, derived list rank = 101 - p.",
+    "rank_method_status": "verified_derived",
+    "rank_method_evidence": [
+      "The API metadata reports ordinalDirection=descending and sortType=user.",
+      "The API returned 100 unique list items over four pages in user-defined order.",
+      "The final API item is The Castles of Burgundy and its body says it is the author's number 1.",
+      "Boundary checks map API positions 51, 75, 76, and 100 to list ranks 50, 26, 25, and 1 respectively."
+    ],
+    "rank_field_warning": "Nested item.descriptors rank and stats.rank are global BGG ranks, not this Geeklist rank. Do not sort by postdate or numeric list-item ID."
+  },
+  "source_policy": {
+    "publisher_preference": "Prefer publisher/developer-hosted rules pages, PDFs, FAQs, and structured references.",
+    "public_reference_is_not_permission": true,
+    "full_text_ingestion_requires": "Explicit permission or a source license that permits indexing and redistribution in this plugin.",
+    "edition_is_first_class": true,
+    "conflict_behavior": "Ask for the edition when it affects the answer; distinguish direct source support from interpretation.",
+    "source_status_vocabulary": [
+      "official_rules_material_located",
+      "official_source_located_rules_not_confirmed",
+      "no_official_rules_source_located_after_pass",
+      "official_source_candidate",
+      "third_party_or_user_source_only"
+    ],
+    "rights_status_vocabulary": [
+      "explicit_indexing_permission",
+      "permission_not_granted_or_unclear",
+      "license_allows_indexing",
+      "restricted_personal_use",
+      "unknown"
+    ],
+    "audit_pass_note": "This pass searched official publisher/developer domains and excluded BGG-hosted files, aggregators, and third-party rule hosts from official-source counts."
+  },
+  "user_submitted_source_policy": {
+    "accepted_as_fallback": true,
+    "authority": "User-submitted material is not authoritative merely because it is hosted on BGG or another public site.",
+    "initial_state": "quarantined_pending_review",
+    "required_metadata": [
+      "game_title_and_bgg_id",
+      "edition_and_printing",
+      "language",
+      "uploader_or_source_identity",
+      "provenance_and_chain_of_custody",
+      "stable_url_or_content_checksum",
+      "permission_or_rights_status",
+      "capture_date",
+      "document_title_and_page_count_if_applicable"
+    ],
+    "review_gates": [
+      "verify game and edition identity",
+      "check for publisher/developer source first",
+      "record permission evidence or keep out of full-text index",
+      "compare against known errata and edition conflicts",
+      "approve only the minimum permitted content for ingestion"
+    ],
+    "unreviewed_behavior": "Do not index, redistribute, or present as authoritative. Recommend live lookup or ask the user for a permitted source."
+  },
+  "fallback_tiers": [
+    {
+      "tier": 1,
+      "name": "permitted_official_full_text",
+      "action": "Index section chunks with edition and citation metadata."
+    },
+    {
+      "tier": 2,
+      "name": "official_public_reference_rights_unclear",
+      "action": "Keep metadata and source locator; use live lookup; do not ingest full text."
+    },
+    {
+      "tier": 3,
+      "name": "reviewed_permissioned_user_source",
+      "action": "Quarantine until review, then index only within documented permission scope."
+    },
+    {
+      "tier": 4,
+      "name": "unpermissioned_user_or_third_party_source",
+      "action": "Do not index or redistribute; may be a lead for locating an authorized source."
+    },
+    {
+      "tier": 5,
+      "name": "source_not_located",
+      "action": "Use live lookup fallback and record the gap for another research pass."
+    }
+  ],
+  "games": [
+    {
+      "rank": 1,
+      "bgg_id": "84876",
+      "title": "The Castles of Burgundy",
+      "list_item_id": "12530462",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530462#12530462",
+      "postdate": "2026-01-29T20:47:33+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Alea / Ravensburger",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 2,
+      "bgg_id": "34219",
+      "title": "Biblios",
+      "list_item_id": "12530460",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530460#12530460",
+      "postdate": "2026-01-29T20:48:34+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Dr. Finn's Games / Steve Finn",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 3,
+      "bgg_id": "182874",
+      "title": "Grand Austria Hotel",
+      "list_item_id": "12530458",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530458#12530458",
+      "postdate": "2026-01-29T20:54:18+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Lookout Games",
+          "official_url": "https://www.lookout-spiele.de/en/games/grandaustriahotel.html",
+          "source_type": "official_publisher_game_page_with_downloads_and_faq",
+          "edition_scope": "Retail Edition 2022 rules; English and German resources listed",
+          "language": "English and German",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 4,
+      "bgg_id": "342942",
+      "title": "Ark Nova",
+      "list_item_id": "12530455",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530455#12530455",
+      "postdate": "2026-01-29T20:55:32+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Capstone Games / Feuerland Spiele",
+          "official_url": "https://capstone-games.com/products/ark-nova",
+          "source_type": "official_publisher_resources_page",
+          "edition_scope": "Capstone English retail; rulebook, guide, glossary, and FAQ listed",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official product/resources page verified."
+        },
+        {
+          "publisher": "Feuerland Spiele",
+          "official_url": "https://feuerland-spiele.de/fileadmin/game/Arche_Nova/Arche_Nova_FAQ_V2_EN_A4_low.pdf",
+          "source_type": "official_developer_hosted_faq_pdf",
+          "edition_scope": "Ark Nova FAQ v2",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official English FAQ PDF. This is supplementary material, not a substitute for the base rulebook."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review",
+      "source_search_notes": {
+        "publisher_or_developer": "Feuerland Spiele",
+        "result": "Official English rulebook PDF confirmed on Feuerland Spiele publisher site. Already a known source.",
+        "found_urls": [
+          "https://www.feuerland-spiele.de/fileadmin/game/Arche_Nova/AN_Rules_Print_EN_V2web.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 5,
+      "bgg_id": "177736",
+      "title": "A Feast for Odin",
+      "list_item_id": "12530454",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530454#12530454",
+      "postdate": "2026-01-29T20:46:09+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Feuerland Spiele",
+        "result": "Official 2nd edition English rulebook, appendix, and almanac PDFs found on publisher site.",
+        "found_urls": [
+          "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_rules_2nd_Web.pdf",
+          "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_Appendix_Web.pdf",
+          "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_almanach_Web.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 6,
+      "bgg_id": "251247",
+      "title": "Barrage",
+      "list_item_id": "12530453",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530453#12530453",
+      "postdate": "2026-01-29T20:45:28+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Cranio Creations",
+        "result": "Official rules PDF found on Cranio Creations storage CDN. PDF redirects to storage.craniocreations.it.",
+        "found_urls": [
+          "https://storage.craniocreations.it/media/product_downloads/34/485/2022_Barrage.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 7,
+      "bgg_id": "245934",
+      "title": "Carpe Diem",
+      "list_item_id": "12530450",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530450#12530450",
+      "postdate": "2026-01-29T20:30:51+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Alea / Ravensburger",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 8,
+      "bgg_id": "224517",
+      "title": "Brass: Birmingham",
+      "list_item_id": "12530449",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530449#12530449",
+      "postdate": "2026-01-29T20:29:40+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Roxley Games",
+          "official_url": "https://roxley.com/products/brass-birmingham",
+          "source_type": "official_publisher_game_page_with_downloadable_rulebooks",
+          "edition_scope": "Retail edition; English, Spanish, Italian, French, and German downloads listed",
+          "language": "English, Spanish, Italian, French, and German",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text.",
+          "document_inventory": [
+            {
+              "language": "English",
+              "label": "Brass: Birmingham Rulebook - 2018.11.20",
+              "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281"
+            },
+            {
+              "language": "Spanish",
+              "label": "Brass: Birmingham Rulebook (Spanish) - 2018.09.16",
+              "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-SP-2018.09.16.pdf"
+            },
+            {
+              "language": "Italian",
+              "label": "Brass: Birmingham Rulebook (Italian) - 2018.07.11",
+              "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook-IT-2018.07.11.pdf?v=1606762758"
+            },
+            {
+              "language": "French",
+              "label": "Brass: Birmingham Rulebook (French) - 2018.07.11",
+              "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-FR-2018.07.11.pdf"
+            },
+            {
+              "language": "German",
+              "label": "Brass: Birmingham Rulebook (German) - 2018.07.11",
+              "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-DE-2018.07.11.pdf"
+            }
+          ]
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review",
+      "source_artifacts": [
+        {
+          "artifact_id": "roxley-brass-birmingham-rulebook-en-2018-11-20",
+          "document_type": "official_rulebook_pdf",
+          "language": "English",
+          "publisher_page": "https://roxley.com/products/brass-birmingham",
+          "source_url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+          "page_listed_label": "Brass: Birmingham Rulebook - 2018.11.20",
+          "edition_scope": "Retail and Deluxe gameplay content; Roxley states both variants include all gameplay content, but the PDF is not explicitly edition-labelled",
+          "retrieved_on": "2026-08-12",
+          "local_path": "sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+          "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+          "local_use_status": "downloaded_for_internal_reference_only",
+          "full_text_indexing_status": "blocked_pending_explicit_permission",
+          "redistribution_status": "blocked_pending_explicit_permission",
+          "notes": "Publicly downloadable official source. Local possession does not establish permission to reproduce, redistribute, or ingest the full text."
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "bgg_id": "332772",
+      "title": "Revive",
+      "list_item_id": "12530448",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530448#12530448",
+      "postdate": "2026-01-29T20:29:06+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Aporta Games",
+        "result": "Official Aporta game site located, but no official Revive rules page or PDF confirmed.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 10,
+      "bgg_id": "276025",
+      "title": "Maracaibo",
+      "list_item_id": "12530447",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530447#12530447",
+      "postdate": "2026-01-29T20:26:34+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "dlp games / Game Brewer",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 11,
+      "bgg_id": "396790",
+      "title": "Nucleum",
+      "list_item_id": "12530446",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530446#12530446",
+      "postdate": "2026-01-29T20:15:53+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Board&Dice / Giant Roc",
+        "result": "Official publisher game page located, but no official rules page or PDF confirmed.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 12,
+      "bgg_id": "203993",
+      "title": "Lorenzo il Magnifico",
+      "list_item_id": "12530445",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530445#12530445",
+      "postdate": "2026-01-29T20:13:01+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Cranio Creations",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 13,
+      "bgg_id": "102680",
+      "title": "Trajan",
+      "list_item_id": "12530443",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530443#12530443",
+      "postdate": "2026-01-29T20:11:38+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "HUCH! / Ammonit Spiele",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 14,
+      "bgg_id": "47",
+      "title": "Chinatown",
+      "list_item_id": "12530442",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530442#12530442",
+      "postdate": "2026-01-29T20:05:55+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Z-Man Games",
+        "result": "No current official rules page or PDF confirmed; indexed product URL returned 404.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 15,
+      "bgg_id": "400602",
+      "title": "Civolution",
+      "list_item_id": "12530441",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530441#12530441",
+      "postdate": "2026-01-29T20:02:13+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Deep Print Games",
+          "official_url": "https://deep-print-games.com/en/spiele/civolution/",
+          "source_type": "official_publisher_game_page_with_rulebook_glossary_and_errata",
+          "edition_scope": "English Rulebook v1.0; German and French also listed",
+          "language": "English, German, and French",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 16,
+      "bgg_id": "418059",
+      "title": "SETI: Search for Extraterrestrial Intelligence",
+      "list_item_id": "12530440",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530440#12530440",
+      "postdate": "2026-01-29T20:01:27+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Czech Games Edition",
+          "official_url": "https://www.czechgames.com/games/seti-search-for-extraterrestrial-intelligence#downloads",
+          "source_type": "official_publisher_game_and_downloads_page",
+          "edition_scope": "Base game; official downloads section; exact language scope to pin",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "An indexed rules PDF URL redirected to the official SETI page."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 17,
+      "bgg_id": "391137",
+      "title": "Galactic Cruise",
+      "list_item_id": "12530438",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530438#12530438",
+      "postdate": "2026-01-29T19:59:08+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Kinson Key Games",
+          "official_url": "https://www.kinsonkeygames.com/galactic-cruise-achievements-single-page-rulebook",
+          "source_type": "official_supplementary_achievement_pdf_page",
+          "edition_scope": "Base-game campaign achievement materials; not the base rulebook",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official source, but not a base rules document."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 18,
+      "bgg_id": "217398",
+      "title": "Path of Light and Shadow",
+      "list_item_id": "12530431",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530431#12530431",
+      "postdate": "2026-01-29T19:57:45+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Stronghold Games",
+          "official_url": "https://strongholdgames.com/our-games/path-of-light-and-shadow/",
+          "source_type": "official_publisher_game_page",
+          "edition_scope": "English; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official game page located; rules PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 19,
+      "bgg_id": "182028",
+      "title": "Through the Ages: A New Story of Civilization",
+      "list_item_id": "12530428",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530428#12530428",
+      "postdate": "2026-01-29T18:55:47+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Czech Games Edition",
+          "official_url": "https://czechgames.com/files/rules/through-the-ages-new-story-rules-en.pdf",
+          "source_type": "official_publisher_rules_pdf",
+          "edition_scope": "New Story of Civilization / revised 2015 edition",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Direct official English rules PDF."
+        },
+        {
+          "publisher": "Czech Games Edition",
+          "official_url": "https://czechgames.com/en/through-the-ages/downloads",
+          "source_type": "official_publisher_downloads_page",
+          "edition_scope": "New Story of Civilization; English downloads",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official downloads page."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 20,
+      "bgg_id": "246784",
+      "title": "Cryptid",
+      "list_item_id": "12530427",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530427#12530427",
+      "postdate": "2026-01-29T18:54:02+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Osprey Games",
+          "official_url": "https://ospreypublishing.com/ca/discover/gaming-resources/learn-to-play-cryptid/",
+          "source_type": "official_publisher_how_to_play_resource",
+          "edition_scope": "Base game; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official rules/how-to-play resource page."
+        },
+        {
+          "publisher": "Osprey Games",
+          "official_url": "https://www.ospreypublishing.com/uk/osprey-blog/2018/cryptid-go-head-to-head-with-these-2-player-rules/",
+          "source_type": "official_publisher_rules_article",
+          "edition_scope": "Two-player rules variant",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Supplementary two-player rules, not the complete base rulebook."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 21,
+      "bgg_id": "167791",
+      "title": "Terraforming Mars",
+      "list_item_id": "12530425",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530425#12530425",
+      "postdate": "2026-01-29T18:38:23+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "FryxGames",
+          "official_url": "https://fryxgames.se/product/terraforming-mars/",
+          "source_type": "official_publisher_product_page",
+          "edition_scope": "Base game; English product page",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "The discovered TMDG_RULES_ENGi.pdf was excluded because it appears to be Terraforming Mars: The Dice Game, not the BGG base game. No official base-game rules PDF was confirmed in this pass."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 22,
+      "bgg_id": "329839",
+      "title": "So Clover!",
+      "list_item_id": "12530423",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530423#12530423",
+      "postdate": "2026-01-29T18:31:11+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Repos Production",
+          "official_url": "https://rprod.com/en/press/so-clover",
+          "source_type": "official_publisher_press_and_game_page",
+          "edition_scope": "English; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official page located; rules PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 23,
+      "bgg_id": "256916",
+      "title": "Concordia Venus",
+      "list_item_id": "12530422",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530422#12530422",
+      "postdate": "2026-01-29T18:30:42+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Rio Grande Games",
+          "official_url": "https://www.riograndegames.com/wp-content/uploads/2018/11/Concordia-Venus-Rules-V11.pdf",
+          "source_type": "official_publisher_hosted_rules_pdf",
+          "edition_scope": "Concordia Venus, English Rules V1.1",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 24,
+      "bgg_id": "262215",
+      "title": "Blackout: Hong Kong",
+      "list_item_id": "12530420",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530420#12530420",
+      "postdate": "2026-01-29T18:29:25+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Lookout Games",
+        "result": "No official publisher/developer rules page or PDF located after the pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 25,
+      "bgg_id": "159675",
+      "title": "Fields of Arle",
+      "list_item_id": "12530419",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530419#12530419",
+      "postdate": "2026-01-29T16:37:13+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Feuerland Spiele",
+          "official_url": "https://www.feuerland-spiele.de/fileadmin/game/Arler_Erde/Regelbuch_englisch.pdf",
+          "source_type": "official_publisher_or_developer_hosted_rules_pdf",
+          "edition_scope": "Fields of Arle; English; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 26,
+      "bgg_id": "220308",
+      "title": "Gaia Project",
+      "list_item_id": "12530417",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530417#12530417",
+      "postdate": "2026-01-29T16:20:15+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Feuerland Spiele",
+        "result": "Official English rulebook and automa rulebook PDFs found on publisher site.",
+        "found_urls": [
+          "https://www.feuerland-spiele.de/fileadmin/game/Gaia_Project/GAIA_PROJECT_EN_rules_Web.pdf",
+          "https://www.feuerland-spiele.de/fileadmin/game/Gaia_Project/Gaia_Project_Automa_rules_EN_Web.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 27,
+      "bgg_id": "310873",
+      "title": "Carnegie",
+      "list_item_id": "12530416",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530416#12530416",
+      "postdate": "2026-01-29T16:19:05+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Quined Games",
+          "official_url": "https://www.quined.nl/wp-content/uploads/2022/05/Carnegie-rules-EN-WEB.pdf",
+          "source_type": "official_publisher_hosted_rules_pdf",
+          "edition_scope": "Carnegie; English; 2022 web PDF",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        },
+        {
+          "publisher": "Quined Games",
+          "official_url": "https://quined.nl/featured_item/carnegie",
+          "source_type": "official_publisher_game_page",
+          "edition_scope": "Carnegie; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 28,
+      "bgg_id": "143693",
+      "title": "Glass Road",
+      "list_item_id": "12530414",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530414#12530414",
+      "postdate": "2026-01-29T16:16:06+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Lookout Games / Feuerland Spiele (published by Lookout, hosted on Feuerland site)",
+        "result": "Official English rulebook and mini-expansions rules PDFs found on Feuerland Spiele publisher site.",
+        "found_urls": [
+          "https://www.feuerland-spiele.de/fileadmin/game/Die_Glasstrasse/EN_glass_road_rules_EN_22_Web.pdf",
+          "https://www.feuerland-spiele.de/fileadmin/game/Die_Glasstrasse/Promo_Regelbuch_Englisch.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 29,
+      "bgg_id": "281442",
+      "title": "Trismegistus: The Ultimate Formula",
+      "list_item_id": "12530412",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530412#12530412",
+      "postdate": "2026-01-29T16:13:39+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Cranio Creations",
+        "result": "No official rules source located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 30,
+      "bgg_id": "173346",
+      "title": "7 Wonders Duel",
+      "list_item_id": "12530411",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530411#12530411",
+      "postdate": "2026-01-29T16:03:50+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "Repos Production",
+        "result": "Repos Production site (rprod.com) has a Downloads section for 7 Wonders Duel with rules in 8 languages. Base rules URL on Asmodee CDN pattern; helpsheet verified accessible.",
+        "found_urls": [
+          "https://www.rprod.com/en/games/7-wonders-duel",
+          "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/7wonders-duel/en/7du-en01-helpsheet-15992105300NB8Y.pdf"
+        ]
+      }
+    },
+    {
+      "rank": 31,
+      "bgg_id": "220",
+      "title": "High Society",
+      "list_item_id": "12530409",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530409#12530409",
+      "postdate": "2026-01-29T16:00:08+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Osprey Games",
+          "official_url": "https://ospreypublishing.com/us/high-society-9781472827777",
+          "source_type": "official_publisher_product_page",
+          "edition_scope": "English; edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official product page located; no rules PDF found."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 32,
+      "bgg_id": "397385",
+      "title": "Pirates of Maracaibo",
+      "list_item_id": "12530407",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530407#12530407",
+      "postdate": "2026-01-29T15:52:59+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Board&Dice / dlp games",
+          "official_url": "https://boardanddice.com/our-games/pirates-of-maracaibo/",
+          "source_type": "official_publisher_game_page_candidate",
+          "edition_scope": "Edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "No official rules PDF located; this record should remain a candidate until the URL is independently rechecked."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 33,
+      "bgg_id": "351913",
+      "title": "Tiletum",
+      "list_item_id": "12530404",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530404#12530404",
+      "postdate": "2026-01-29T15:52:00+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Board&Dice",
+          "official_url": "https://boardanddice.com/our-games/tiletum/",
+          "source_type": "official_publisher_game_page",
+          "edition_scope": "Edition not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official game page located; no rules PDF confirmed."
+        },
+        {
+          "publisher": "Board&Dice",
+          "official_url": "https://boardanddice.com/download/",
+          "source_type": "official_publisher_downloads_page",
+          "edition_scope": "Downloads hub; Tiletum document not identified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official downloads page located; exact Tiletum rules file not identified."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 34,
+      "bgg_id": "174430",
+      "title": "Gloomhaven",
+      "list_item_id": "12530401",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530401#12530401",
+      "postdate": "2026-01-29T15:48:04+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Cephalofair Games",
+          "official_url": "https://cephalofair.com/pages/gloomhaven",
+          "source_type": "official_publisher_game_rules_repository_and_errata_page",
+          "edition_scope": "2025 first-printing information; exact direct rulebook PDF edition not pinned",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official support/errata repository; direct edition-specific rulebook PDF still needs confirmation."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 35,
+      "bgg_id": "12",
+      "title": "Ra",
+      "list_item_id": "12530400",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530400#12530400",
+      "postdate": "2026-01-29T15:47:12+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "alea / Rio Grande Games",
+        "result": "No official rules page or PDF located after this pass; third-party and BGG files excluded.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 36,
+      "bgg_id": "66589",
+      "title": "Navegador",
+      "list_item_id": "12530399",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530399#12530399",
+      "postdate": "2026-01-29T15:41:43+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "PD-Verlag / Rio Grande Games",
+          "official_url": "https://pd-verlag.de/Navegador/en",
+          "source_type": "official_publisher_game_page",
+          "edition_scope": "English publisher page; edition not determined",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official game page lead; rules PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 37,
+      "bgg_id": "217372",
+      "title": "The Quest for El Dorado",
+      "list_item_id": "12530246",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530246#12530246",
+      "postdate": "2026-01-29T15:38:19+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Ravensburger",
+          "official_url": "https://product-files.ravensburger.cloud/manuals/665012.pdf",
+          "source_type": "official_publisher_hosted_rules_pdf",
+          "edition_scope": "English; PDF identified as 27456 / manual 665012; likely newer edition",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 38,
+      "bgg_id": "346501",
+      "title": "Mille Fiori",
+      "list_item_id": "12530244",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530244#12530244",
+      "postdate": "2026-01-29T15:37:11+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Schmidt Spiele",
+          "official_url": "https://schmidtspiele.de/files/Retail/300dpi_JPG/88399_Mille%20Fiori_UK.pdf",
+          "source_type": "official_publisher_hosted_rules_pdf",
+          "edition_scope": "Mille Fiori product 88399; English/UK",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 39,
+      "bgg_id": "760",
+      "title": "Battle Line",
+      "list_item_id": "12530243",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530243#12530243",
+      "postdate": "2026-01-29T15:36:35+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "GMT Games",
+          "official_url": "https://www.gmtgames.com/nnbl/battleline_main.html",
+          "source_type": "official_publisher_game_page_with_rules_resources",
+          "edition_scope": "GMT publication, 2000; printing not specified",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official page with rules/resource section; direct PDF identity not independently pinned."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 40,
+      "bgg_id": "208895",
+      "title": "New York Slice",
+      "list_item_id": "12530241",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530241#12530241",
+      "postdate": "2026-01-29T15:30:58+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Bezier Games",
+          "official_url": "https://beziergames.com/collections/board-games/products/new-york-slice",
+          "source_type": "official_publisher_product_page",
+          "edition_scope": "Edition not determined",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official product page; rules PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 41,
+      "bgg_id": "156129",
+      "title": "Deception: Murder in Hong Kong",
+      "list_item_id": "12530240",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530240#12530240",
+      "postdate": "2026-01-29T13:48:38+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Grey Fox Games",
+          "official_url": "https://greyfoxgames.com/collections/all/products/deception-murder-in-hong-kong",
+          "source_type": "official_publisher_product_page",
+          "edition_scope": "Edition not determined",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official product page; rules PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 42,
+      "bgg_id": "318560",
+      "title": "Witchstone",
+      "list_item_id": "12530239",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530239#12530239",
+      "postdate": "2026-01-29T13:46:53+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "no_official_rules_source_located_after_pass",
+      "official_sources": [],
+      "fallback_tier": "source_not_located",
+      "source_search_notes": {
+        "publisher_or_developer": "HUCH! / dlp games",
+        "result": "No official rules page or PDF located after this pass.",
+        "third_party_sources_excluded": true
+      }
+    },
+    {
+      "rank": 43,
+      "bgg_id": "322289",
+      "title": "Darwin's Journey",
+      "list_item_id": "12530238",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530238#12530238",
+      "postdate": "2026-01-29T13:41:51+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Thundergryph Games",
+          "official_url": "https://thundergryph.com/rulebooks/",
+          "source_type": "official_publisher_rulebooks_index",
+          "edition_scope": "Darwin's Journey base game, special editions, expansions, and add-ons; individual language/PDF details to pin",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official rulebooks index; exact base-game PDF should be pinned during ingestion."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 44,
+      "bgg_id": "276182",
+      "title": "Dead Reckoning",
+      "list_item_id": "12530235",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530235#12530235",
+      "postdate": "2026-01-29T13:25:41+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Alderac Entertainment Group (AEG)",
+          "official_url": "https://www.alderac.com/dead-reckoning-rules/",
+          "source_type": "official_publisher_rules_page",
+          "edition_scope": "Base and expansion rules; English, French, and German listed",
+          "language": "English, French, and German",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 45,
+      "bgg_id": "62219",
+      "title": "Dominant Species",
+      "list_item_id": "12530234",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530234#12530234",
+      "postdate": "2026-01-29T13:24:46+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "GMT Games",
+          "official_url": "https://www.gmtgames.com/p-909-dominant-species-6th-printing.aspx",
+          "source_type": "official_publisher_product_page_with_living_rules_pdf",
+          "edition_scope": "Dominant Species 6th Printing; English final rulebook; errata corrected",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 46,
+      "bgg_id": "258779",
+      "title": "Planet Unknown",
+      "list_item_id": "12530233",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530233#12530233",
+      "postdate": "2026-01-29T13:23:11+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Adam's Apple Games",
+          "official_url": "https://adamsapplegames.com/planetunknown/",
+          "source_type": "official_publisher_game_page",
+          "edition_scope": "Edition not determined",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official game page; rulebook PDF not confirmed."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 47,
+      "bgg_id": "342810",
+      "title": "Marrakesh",
+      "list_item_id": "12530231",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530231#12530231",
+      "postdate": "2026-01-29T13:21:46+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Queen Games",
+          "official_url": "https://rules.queen-games.com/marrakesh_en.pdf",
+          "source_type": "official_publisher_hosted_rules_pdf",
+          "edition_scope": "Marrakesh standard/classic edition; English; 2022 file",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 48,
+      "bgg_id": "3",
+      "title": "Samurai",
+      "list_item_id": "12530213",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530213#12530213",
+      "postdate": "2026-01-29T13:24:13+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_source_located_rules_not_confirmed",
+      "official_sources": [
+        {
+          "publisher": "Hans im Gl\u00fcck",
+          "official_url": "https://hans-im-glueck.de/en/games/samurai-en.html",
+          "source_type": "official_publisher_game_page_candidate",
+          "edition_scope": "English page lead; edition not determined",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "URL returned 404 during verification and rules PDF was not confirmed. Keep as unverified lead, not a verified source."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 49,
+      "bgg_id": "163412",
+      "title": "Patchwork",
+      "list_item_id": "12530212",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530212#12530212",
+      "postdate": "2026-01-29T13:13:18+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Lookout Games",
+          "official_url": "https://www.lookout-spiele.de/en/games/patchwork.html",
+          "source_type": "official_publisher_game_page_with_downloads_and_faq",
+          "edition_scope": "Original 2014 edition context; English page; German rules download explicitly listed",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official page verified; exact English PDF identity not pinned."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    {
+      "rank": 50,
+      "bgg_id": "314040",
+      "title": "Pandemic Legacy: Season 0",
+      "list_item_id": "12530211",
+      "list_item_url": "https://boardgamegeek.com/geeklist/372705/top-100-games-of-all-time-2026-edition?itemid=12530211#12530211",
+      "postdate": "2026-01-29T13:00:17+00:00",
+      "rank_verification_status": "verified_derived_from_public_api_order",
+      "source_audit_status": "official_rules_material_located",
+      "official_sources": [
+        {
+          "publisher": "Z-Man Games",
+          "official_url": "https://www.zmangames.com/game/pandemic-legacy-season-0/",
+          "source_type": "official_publisher_product_page_with_rulebook_link",
+          "edition_scope": "Pandemic Legacy: Season 0; English base edition",
+          "language": "English",
+          "source_verification_status": "verified_official_public_reference",
+          "rights_status": "permission_not_granted_or_unclear",
+          "indexability_status": "blocked_pending_explicit_permission",
+          "accessed_on": "2026-08-12",
+          "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text."
+        }
+      ],
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    }
+  ],
+  "summary": {
+    "games_in_scope": 50,
+    "rank_membership_verified": 50,
+    "games_with_official_rules_or_download_material_located": 20,
+    "games_with_official_source_but_rules_not_confirmed": 12,
+    "games_with_no_official_rules_source_located_after_pass": 18,
+    "source_records": 37,
+    "games_with_explicit_full_text_indexing_permission": 0,
+    "note": "This is a source-discovery registry, not a rulebook corpus. It intentionally makes no full-text redistribution claim."
+  },
+  "last_updated": "2026-08-13",
+  "update_notes": "Second-pass audit on Aug 13, 2026. Five gaps (Feast for Odin, Gaia Project, Glass Road, Barrage, 7 Wonders Duel) and one lead (Ark Nova) were promoted to 'official_rules_material_located' after targeted web research. Source: Feuerland Spiele, Cranio Creations, Repos Production."
+}

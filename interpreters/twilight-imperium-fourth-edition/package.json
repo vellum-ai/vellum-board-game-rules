@@ -1,0 +1,9 @@
+{
+  "name": "twilight-imperium-fourth-edition-rules",
+  "version": "0.1.0",
+  "description": "Original-interpretation Twilight Imperium: Fourth Edition rules aid without bundling source text.",
+  "scripts": {
+    "validate": "bun tools/validate.mjs"
+  },
+  "vellum": {}
+}

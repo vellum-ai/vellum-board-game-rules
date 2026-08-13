@@ -1,0 +1,12 @@
+{
+  "name": "wingspan-rules",
+  "version": "0.2.0",
+  "description": "Search a compact, versioned Wingspan interpretation and rules reference corpus without redistributing rulebook text.",
+  "peerDependencies": {
+    "@vellumai/plugin-api": "^0.8.0"
+  },
+  "scripts": {
+    "validate": "bun tools/validate.mjs"
+  },
+  "vellum": {}
+}

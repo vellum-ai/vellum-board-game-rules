@@ -1,0 +1,181 @@
+{
+  "corpus_id": "a-feast-for-odin-rules-corpus",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "game": "A Feast for Odin",
+  "catalogue_identity": "Fixed top-50 snapshot member: rank 5, BGG ID 177736; snapshot identity is separate from source provenance and rights.",
+  "bgg_snapshot": true,
+  "bgg_snapshot_rank": 5,
+  "bgg_id": "177736",
+  "description": "Compact original interpretations and play aids for a likely 2016/base-game English A Feast for Odin rulebook; not a reproduction of the manual or component text.",
+  "full_rulebook_text_included": false,
+  "coverage_disclaimer": "Use this as a bounded aid. Exact occupation, weapon, goods-tile, exploration-board, action-space, card, icon, appendix, solo, expansion, and errata-sensitive details are not bundled; consult an authorized current reference or return not_yet_covered.",
+  "editions": [
+    {
+      "edition_id": "feast-for-odin-base-en-2016-24-page-candidate",
+      "label": "Likely base-game English rulebook; uploaded 24-page 2016 document",
+      "scope_status": "document_scope_only",
+      "edition_uncertainty": "Exact printing, revision, errata state, and publisher provenance unresolved; document title and rules content identify A Feast for Odin with high confidence."
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "a-feast-for-odin-uploaded-candidate-2026-08-13",
+    "title": "A Feast for Odin",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/odin/ODIN_EN_rules-LR.pdf",
+    "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/odin/source-metadata.json",
+    "checksum_record_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/odin/ODIN_EN_rules-LR.pdf.sha256",
+    "sha256": "3307ffb60d71178a8e1bae0a08f260020040e3b53e1b7c349ccde0c2b662b18b",
+    "pages": 24,
+    "language": "likely English",
+    "document_type": "game rulebook",
+    "edition": "Likely 2016/base-game English document; exact printing and errata state not pinned",
+    "provenance": "user_uploaded_attachment; original URL and publisher provenance not supplied",
+    "pdf_metadata": {
+      "pdf_version": "1.6",
+      "creator": "Adobe InDesign CC 2015 (Macintosh)",
+      "producer": "Adobe PDF Library 15.0",
+      "creation_date": "2016-08-29T15:33:09Z",
+      "modification_date": "2016-08-29T15:39:49Z",
+      "encrypted": false,
+      "optimized": true,
+      "page_size_points": "637.276 x 883.89"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "Possession or public availability does not establish permission to index or redistribute source text. This package stores only original interpretations and document-level metadata.",
+  "entries": [
+    {
+      "id": "odin-setup-components-and-player-start",
+      "interpretation_type": "setup",
+      "title": "Setup assembles shared supplies, personal boards, and starting hands",
+      "summary": "Make the goods, ships, special tiles, building tiles, mountain strips, occupation cards, and weapon cards available as directed. Each player receives a home board, their Vikings, a starting occupation card, the specified starter weapons, and a starter food tile; choose the long or short home-board side before play. Keep all personal goods and cards visible, while exact component sorting and starting-card identity remain tied to the selected document and printing.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Components; Setup; Occupation and Weapon Cards; Personal Boards and the Vikings", "page_locator": "pp. 2–5"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-goal-and-board-development",
+      "interpretation_type": "setup",
+      "title": "The strategic target is valuable, well-covered personal boards",
+      "summary": "Build value by acquiring goods, ships, houses, exploration boards, animals, and occupations, then arranging goods on the home and added boards. Coverage matters twice: it can expose income and bonuses during play while also reducing negative spaces for final scoring. Treat the placement geometry as a planning system, not merely storage.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "General Overview; What You Want to Achieve; What You Get Points For", "page_locator": "pp. 6–7"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-round-phase-sequence",
+      "interpretation_type": "play_flow",
+      "title": "Rounds follow a fixed twelve-phase sequence",
+      "summary": "For the multiplayer game described here, resolve in order: add a Viking, harvest, update exploration boards and silver, draw a weapon, place Vikings for actions, determine the next start player, collect income, breed animals, hold the feast, collect bonuses, update mountain strips, and return placed Vikings. The document describes a six-round short game and a seven-round long game; do not silently apply this sequence to solo or expansion rules.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Course of Play; Phases 1–12", "page_locator": "pp. 8–11"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-action-phase-worker-placement",
+      "interpretation_type": "turn_flow",
+      "title": "The action phase is contested worker placement",
+      "summary": "Starting with the current start player and proceeding clockwise, place one or more available Vikings on one unoccupied action space and resolve at least one effect immediately. Continue until each player has passed or placed all available Vikings. A player who passes cannot place again that round, and an action space cannot be occupied twice in the same round.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Phase 5: Actions", "page_locator": "p. 9"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-action-space-costs-and-resolution",
+      "interpretation_type": "core_action",
+      "title": "Action-space column controls the Viking commitment",
+      "summary": "The action board's columns require different numbers of Vikings: the first column uses one, then later columns use two, three, or four. The required Vikings are a placement cost, not a promise that every depicted effect is optional; occupy a space only when you can use at least one effect and pay any required cost. Read the selected action space for its exact production, exchange, ship, expedition, occupation, or risk procedure.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Phase 5: Actions; The Action Spaces", "page_locator": "pp. 9, 14–21"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-hand-and-card-management",
+      "interpretation_type": "hand_management",
+      "title": "Cards are visible tactical inventory, not a hidden hand",
+      "summary": "Starting occupations, drawn weapons, and later occupation cards are kept face up and visible. The action board and occupation actions determine when a card can enter play, while card effects can be immediate or available at any time according to their presentation. Do not infer an occupation or weapon's exact cost, timing, or value from its title; consult the exact component or an authorized current reference.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Setup: Occupation and Weapon Cards; Occupations; About the Occupation Card Effects", "page_locator": "pp. 5, 20–22"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-anytime-placement-and-irreversibility",
+      "interpretation_type": "core_action",
+      "title": "Anytime placement converts inventory into an irreversible board plan",
+      "summary": "Goods, silver, and ore can be placed on eligible home, exploration, or house spaces outside the main action placement, subject to each board's adjacency and covered-space rules. Ships can be bought with silver, and ships may be armed with ore. Once a tile or ore is committed to a board or ship it cannot be taken back, so test layouts before committing and preserve feast or income needs when upgrading goods.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Anytime Actions; Placing Goods; Buying Ships; Arming", "page_locator": "pp. 12–13"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-resource-upgrade-and-trade-boundary",
+      "interpretation_type": "core_action",
+      "title": "Most exchanges advance goods through a constrained value ladder",
+      "summary": "Production, mountain actions, crafting, trading, overseas trading, ship use, exploration, and emigration are distinct action families. The general exchange pattern upgrades goods along their color/value path while respecting the selected action's quantity, shape, ship, or payment limits; a knarr gates overseas trading. Use the printed action space for the exact exchange and never treat an upgrade as permission to ignore feast, placement, or component limits.",
+      "confidence": "medium",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Exchange Spaces; Mountain and Trading Actions; Knarr Action Spaces", "page_locator": "pp. 15–16"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-feast-and-penalty-resolution",
+      "interpretation_type": "core_action",
+      "title": "The feast is a recurring food-placement check",
+      "summary": "During the feast phase, fill empty banquet spaces with eligible food tiles or one-silver coins while respecting the board's adjacency and fit rules. Orange and red food have their own spacing restrictions, and ore is not a feast substitute. Every unfilled space produces a Thing Penalty tile that remains through the game and reduces final value, so income and food planning should be assessed before converting supplies.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Phase 9: Feast; Thing Penalty", "page_locator": "pp. 10–11"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-income-breeding-and-bonus",
+      "interpretation_type": "play_flow",
+      "title": "Income, breeding, and bonuses are separate maintenance windows",
+      "summary": "After actions, determine start-player order, collect silver from the lowest currently uncovered income value, resolve animal breeding in the animal spaces, then collect goods bonuses whose surrounding spaces have been covered. This separation matters: income is silver, breeding changes animal supply, and bonuses are goods; do not merge them into one generic production step.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Phase 6: Determine Start Player; Phase 7: Income; Phase 8: Animal Breeding; Phase 10: Bonus", "page_locator": "pp. 9–11"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-endgame-score-structure",
+      "interpretation_type": "scoring_endgame",
+      "title": "Final value combines assets, coverage, penalties, and occupations",
+      "summary": "After the selected six- or seven-round game ends, evaluate the value of ships, houses, exploration boards, and placed goods, account for animals and occupations, and apply negative spaces and Thing Penalty tiles. The winner is the player with the greatest resulting value. Exact tile values, occupation values, and board-specific scoring must be read from the current components and are not reproduced here.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "What You Get Points For; Thing Penalty; end-of-game scoring summary", "page_locator": "pp. 7, 11, 22–23"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-exact-component-fallback",
+      "interpretation_type": "exact_component_fallback",
+      "title": "Exact component questions require a current component reference",
+      "summary": "If a question names a particular occupation, weapon, goods tile, special tile, ship, house, mountain strip, exploration board, action space, icon, appendix entry, or solo/expansion rule, this package should not guess. Return `not_yet_covered` or consult an authorized current reference because the uploaded document's exact printing and errata state are unresolved and this corpus intentionally omits component wording and artwork.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Components; The Action Spaces; Occupations; Appendix boundary", "page_locator": "pp. 2–3, 14–23"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "odin-coverage-and-edition-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "This is a document-scoped aid, not a universal Odin rules oracle",
+      "summary": "The inspected artifact is a 24-page rulebook with likely English base-game scope and 2016 PDF metadata, but no verified original URL, publisher provenance, exact printing code, or errata mapping was supplied. Use the bundled interpretations for broad procedure only; route edition-sensitive conflicts, exact exceptions, solo rules, expansions, and component text to live lookup or `not_yet_covered`.",
+      "confidence": "high",
+      "edition_ids": ["feast-for-odin-base-en-2016-24-page-candidate"],
+      "source_locator": {"document_section": "Document title/opening overview; rulebook scope and solo-game boundary", "page_locator": "pp. 1, 8, 23–24"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    }
+  ]
+}

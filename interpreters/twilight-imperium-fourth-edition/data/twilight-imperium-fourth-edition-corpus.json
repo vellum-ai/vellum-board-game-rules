@@ -1,0 +1,176 @@
+{
+  "corpus_id": "twilight-imperium-fourth-edition-rules-corpus",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "game": "Twilight Imperium: Fourth Edition",
+  "catalogue_identity": "Out-of-snapshot candidate; BGG identity was not added to the fixed snapshot",
+  "bgg_snapshot": false,
+  "description": "Compact original-interpretation and play-aid corpus for Twilight Imperium: Fourth Edition; it is not a reproduction of a rulebook or guide.",
+  "full_rulebook_text_included": false,
+  "coverage_disclaimer": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+  "editions": [
+    {
+      "edition_id": "ti4-2020-learn-to-play",
+      "label": "Fourth Edition 2020 Learn to Play guide; exact printing context retained",
+      "scope_status": "document_scope_only",
+      "edition_uncertainty": "Out-of-snapshot candidate; BGG identity was not added to the fixed snapshot"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "twilight-imperium-fourth-edition-learn-to-play-upload-2026-08-12",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Twilight-Imperium-Fourth-Edition-Learn-to-Play-2020.pdf",
+    "manifest_path": "/workspace/plugins/board-game-rules-source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+    "sha256": "ac91632f142898db6c784be2bb4287875b31b7a3b4d6836bcef95f5e070d647d",
+    "pages": 24,
+    "language": "English",
+    "document_type": "2020 Learn to Play guide",
+    "edition": "Fourth Edition 2020 Learn to Play document; exact printing context retained from filename",
+    "provenance": "user_uploaded; filename contains TI-K0289 and 2020 date, original source URL not supplied",
+    "pdf_metadata": {
+      "creator": "Adobe InDesign 15.0 (Macintosh)",
+      "producer": "Adobe PDF Library 15.0",
+      "creation_date": "2020-05-04",
+      "page_size": "612 x 792 pts"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "The local PDF is a quarantined internal reference. Upload possession, public availability, or third-party hosting does not establish permission to index or redistribute source text.",
+  "entries": [
+    {
+      "id": "guide-reference-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "Learn-to-Play is a guided first-game slice",
+      "summary": "Use this 24-page guide for the core round, tactical/strategic action overview, status scoring, and first-game setup. It is not the complete Rules Reference; detailed exceptions, faction abilities, technologies, combat, and agendas remain outside local coverage.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Guide scope / First-Game Setup",
+        "page_locator": "Document type and section structure"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "four-phase-round",
+      "interpretation_type": "play_flow",
+      "title": "A round has strategy, action, status, and conditional agenda",
+      "summary": "Resolve Strategy, Action, and Status phases every round. Add the Agenda phase after the Custodians token is removed from Mecatol Rex; repeat until a player reaches the victory threshold or the objective deck cannot reveal further objectives.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Playing the Game",
+        "page_locator": "p. 8"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "initiative-and-passing",
+      "interpretation_type": "timing",
+      "title": "Strategy-card numbers govern repeated action turns",
+      "summary": "Players choose strategy cards in speaker order. During the Action phase, use the card numbers for initiative and keep cycling through turns; a player who passes is skipped thereafter and cannot pass before resolving their strategic action.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Strategy Phase; Action Phase",
+        "page_locator": "pp. 8–9"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "tactical-action-sequence",
+      "interpretation_type": "timing",
+      "title": "A tactical action is a pipeline with optional branches",
+      "summary": "Resolve activation first, then optional movement, space combat if opposing ships remain, invasion/ground combat as applicable, and production if a space dock allows it. Not every tactical action uses every step.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Tactical Action",
+        "page_locator": "p. 9"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "strategic-primary-secondary",
+      "interpretation_type": "timing",
+      "title": "The active player gets primary; others may pay for secondary",
+      "summary": "When a strategy action is taken, resolve that strategy card’s primary ability. Other players then get the opportunity to resolve its secondary ability by paying the required command token; the active player cannot use its own secondary. Exhaust the card afterward.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Strategic Action",
+        "page_locator": "p. 10"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "status-objective-window",
+      "interpretation_type": "scoring",
+      "title": "Objective timing is a scoring window, not a memory test",
+      "summary": "During Status, each player may score up to one public and one secret objective if its requirement is true at that moment. Action-phase objectives must be scored in their stated window; a public objective also requires control of all planets in the player’s home system.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Winning the Game; Status Phase",
+        "page_locator": "pp. 11–12"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    },
+    {
+      "id": "ten-point-end-and-deck-exhaustion",
+      "interpretation_type": "scoring",
+      "title": "Ten points ends the game immediately",
+      "summary": "The first player to reach 10 victory points wins. If the speaker must reveal an objective but none remains, the game ends and the highest score wins, with initiative order breaking a tie.",
+      "confidence": "high",
+      "edition_ids": [
+        "ti4-2020-learn-to-play"
+      ],
+      "source_locator": {
+        "document_section": "Winning the Game / Imperium Rex",
+        "page_locator": "p. 11"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false
+      }
+    }
+  ]
+}

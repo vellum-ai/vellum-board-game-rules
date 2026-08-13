@@ -1,0 +1,151 @@
+{
+  "index_version": "0.4.0",
+  "generated_at": "2026-08-13",
+  "description": "Discovery metadata for separate board-game interpretation packages. No rulebook text is stored here.",
+  "games": [
+    {
+      "package_id": "odin",
+      "corpus_id": "a-feast-for-odin-rules-corpus",
+      "game": "A Feast for Odin",
+      "version": "0.1.0",
+      "entries": 13,
+      "document_type": "game rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "ark-nova",
+      "corpus_id": "ark-nova-rules-interpreter",
+      "game": "Ark Nova",
+      "version": "0.1.0",
+      "entries": 4,
+      "document_type": "supplementary field guide/booklet, not base rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "brass-birmingham",
+      "corpus_id": "brass-birmingham-rules-interpreter",
+      "game": "Brass: Birmingham",
+      "version": "0.1.0",
+      "entries": 8,
+      "document_type": "official rulebook PDF; uploaded duplicate deduplicated against canonical artifact",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "dune-imperium",
+      "corpus_id": "dune-imperium-rules-interpreter",
+      "game": "Dune: Imperium",
+      "version": "0.1.0",
+      "entries": 8,
+      "document_type": "official-style full rulebook PDF",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "dune-imperium-uprising",
+      "corpus_id": "dune-imperium-uprising-rules-interpreter",
+      "game": "Dune: Imperium – Uprising",
+      "version": "0.1.0",
+      "entries": 9,
+      "document_type": "official-style full rulebook PDF",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "gaia-project",
+      "corpus_id": "gaia-project-rules-corpus",
+      "game": "Gaia Project",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "condensed rules reference or abbreviated rulebook; completeness unverified",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "gloomhaven",
+      "corpus_id": "gloomhaven-rules-interpreter",
+      "game": "Gloomhaven",
+      "version": "0.1.0",
+      "entries": 8,
+      "document_type": "third-party/user-authored rules summary, not complete rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "gloomhaven-jaws-of-the-lion",
+      "corpus_id": "gloomhaven-jaws-of-the-lion-rules-corpus",
+      "game": "Gloomhaven: Jaws of the Lion",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "2020 Learn to Play guide; not a complete rules reference",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "lost-ruins-of-arnak",
+      "corpus_id": "lost-ruins-of-arnak-rules-corpus",
+      "game": "Lost Ruins of Arnak",
+      "version": "0.1.0",
+      "entries": 14,
+      "document_type": "game manual / rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "nemesis",
+      "corpus_id": "nemesis-rules-corpus",
+      "game": "Nemesis",
+      "version": "0.1.0",
+      "entries": 13,
+      "document_type": "game manual / likely base-game rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "pandemic-legacy-season-1",
+      "corpus_id": "pandemic-legacy-season-1-rules-interpreter",
+      "game": "Pandemic Legacy: Season 1",
+      "version": "0.1.0",
+      "entries": 8,
+      "document_type": "scanned rules document or rulebook",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "sky-team",
+      "corpus_id": "sky-team-rules-corpus",
+      "game": "Sky Team",
+      "version": "0.1.0",
+      "entries": 15,
+      "document_type": "game rulebook / basic-game landing-procedure booklet",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "star-wars-rebellion",
+      "corpus_id": "star-wars-rebellion-rules-corpus",
+      "game": "Star Wars: Rebellion",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "base-game Learn to Play guide with additional and advanced rules",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "terraforming-mars",
+      "corpus_id": "terraforming-mars-rules-corpus",
+      "game": "Terraforming Mars",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "base-game rulebook copy hosted or produced by a third party",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "twilight-imperium-fourth-edition",
+      "corpus_id": "twilight-imperium-fourth-edition-rules-corpus",
+      "game": "Twilight Imperium: Fourth Edition",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "2020 Learn to Play guide",
+      "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "war-of-the-ring-second-edition",
+      "corpus_id": "war-of-the-ring-second-edition-rules-corpus",
+      "game": "War of the Ring: Second Edition",
+      "version": "0.1.0",
+      "entries": 7,
+      "document_type": "full rulebook",
+      "full_rulebook_text_included": false
+    }
+  ]
+}

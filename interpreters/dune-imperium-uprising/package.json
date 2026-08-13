@@ -1,0 +1,11 @@
+{
+  "name": "dune-imperium-uprising-rules-interpreter",
+  "version": "0.1.0",
+  "description": "Original-interpretation package; no source rulebook text bundled.",
+  "scripts": {
+    "validate": "node tools/validate.mjs"
+  },
+  "vellum": {
+    "corpus_version": "0.1.0"
+  }
+}

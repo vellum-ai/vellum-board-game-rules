@@ -1,0 +1,203 @@
+{
+  "corpus_id": "sky-team-rules-corpus",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "game": "Sky Team",
+  "catalogue_identity": "Out-of-snapshot candidate; Sky Team was not found in the fixed top-50 snapshot",
+  "bgg_snapshot": false,
+  "snapshot_status": "not_in_fixed_top_50_snapshot",
+  "snapshot_source": "/workspace/plugins/board-game-rules-source-audit/data/bgg-top50-derived.v1.0.0.json",
+  "description": "Compact original interpretations and play aids for the uploaded Sky Team basic-game landing-procedure booklet; not a reproduction of the rulebook or component text.",
+  "document_coverage": "12-page likely English basic-game rulebook/booklet; setup and core Montreal landing procedure are covered, while advanced modules and exact component wording are not established.",
+  "full_rulebook_text_included": false,
+  "coverage_disclaimer": "Use this as a bounded aid. Exact card, role, ability, scenario, module, airport, exception, and printing-specific wording is not bundled; consult an authorized current reference and verify the edition, or return not_yet_covered.",
+  "editions": [
+    {
+      "edition_id": "sky-team-base-en-12-page-candidate",
+      "label": "Likely 2023 base-game English basic rules; uploaded 12-page document",
+      "scope_status": "document_scope_only",
+      "edition_uncertainty": "Exact printing, translation state, errata state, and advanced-module coverage unresolved; source host metadata is bghub.org and publisher provenance is unverified"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "sky-team-uploaded-candidate-2026-08-13",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/sky-team/sky-team.pdf",
+    "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/sky-team/source-metadata.json",
+    "checksum_record_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/sky-team/sky-team.pdf.sha256",
+    "sha256": "5dac142ab82f7f4f1b6d2999e19960b871360f641ac1128285909d23455b1618",
+    "pages": 12,
+    "language": "likely English",
+    "document_type": "game rulebook / basic-game landing-procedure booklet",
+    "edition": "Likely 2023 base game; exact printing and errata state not pinned",
+    "provenance": "user_uploaded_attachment; embedded bghub.org metadata; original URL and publisher provenance not supplied",
+    "pdf_metadata": {
+      "pdf_version": "1.7",
+      "creator": "bghub.org",
+      "producer": "bghub.org",
+      "author": "bghub.org",
+      "title": "Sky Team Rulebook - bghub.org",
+      "creation_date": "2026-06-26T05:57:47Z",
+      "modification_date": "2026-06-26T05:57:47Z",
+      "encrypted": false,
+      "page_size_points": "496.063 x 694.488"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "artwork_redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "Possession or public availability does not establish permission to index or redistribute source text or artwork. This package stores only original interpretations, document-level metadata, and source locators.",
+  "entries": [
+    {
+      "id": "sky-team-basic-setup",
+      "interpretation_type": "setup",
+      "title": "Setup creates two asymmetric control consoles",
+      "summary": "Prepare the control panel and its tracks, set the starting approach and altitude, place the aerodynamic and brake markers, assign blue dice and Pilot duties to one player and orange dice and Co-Pilot duties to the other, and stage the traffic, reroll, and coffee supplies. The booklet distinguishes basic-game setup from unopened advanced modules.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "When you first open the box; Before each game", "page_locator": "pp. 2–3"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-cooperative-cockpit-flow",
+      "interpretation_type": "play_flow",
+      "title": "Two players operate one aircraft through shared state",
+      "summary": "The Pilot and Co-Pilot share one cockpit but retain different dice colours and role-specific control sections. They jointly manage approach position, altitude, aircraft attitude, speed, traffic, and landing hardware across seven rounds; success depends on coordinating those coupled tracks rather than optimizing a private score.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Introduction; Before each game; Game structure", "page_locator": "pp. 1, 3–4"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-round-timing",
+      "interpretation_type": "action_timing",
+      "title": "A round has briefing, placement, then descent",
+      "summary": "Each round starts with strategy discussion and private dice rolls, continues with alternating one-die placements, and ends only after all eight dice are placed. Then the players may resume speaking, the altitude decreases, dice return, and the next round begins unless the end-of-game check applies.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Game structure; Strategy discussion and dice rolls; Dice placement; End of round", "page_locator": "pp. 4, 9"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-dice-placement-constraints",
+      "interpretation_type": "dice_placement",
+      "title": "Placement is one die at a time under colour, value, and vacancy checks",
+      "summary": "On a placement turn, put exactly one remaining die onto a free cockpit space. Blue and orange spaces restrict the eligible player, numbered spaces restrict the die value, shared spaces accept either colour, and Radio and Concentration use their own looser constraints. The altitude-screen arrow determines who places first in the round.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Dice placement — General rules", "page_locator": "p. 4"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-silent-communication-window",
+      "interpretation_type": "communication_restriction",
+      "title": "Planning talk ends when dice are rolled",
+      "summary": "The partners may discuss broad strategy before rolling, but they may not disclose die values or prescribe a die-to-space instruction. After rolling behind screens, they remain silent through the round except to correct a rules error. Placement itself becomes the permitted signal: value, timing, and location communicate intent without spoken negotiation.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Strategy discussion and dice rolls; The briefing period; Communication", "page_locator": "pp. 4, 12"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-axis-resolution",
+      "interpretation_type": "dice_resolution",
+      "title": "The Axis resolves when its pair is complete",
+      "summary": "Once both Axis spaces contain dice, compare their values. Equal values leave the aircraft attitude unchanged; unequal values rotate the axis by the difference toward the player who supplied the higher die. The axis marker persists between rounds, and reaching the spin boundary is an immediate loss.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Actions; Axis; Going into a spin", "page_locator": "p. 5"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-engines-and-traffic",
+      "interpretation_type": "dice_resolution",
+      "title": "Engine sum selects zero, one, or two approach steps",
+      "summary": "When the second Engine die is placed, add the pair. Compare that speed to the two aerodynamic thresholds: below the lower threshold means no advance, between thresholds means one step, and above the upper threshold means two. An advance into occupied traffic is safe only as an arrival state; advancing while traffic remains in the current position causes collision, and advancing past the airport causes overshoot.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Actions; Engines; Collision; Overshoot", "page_locator": "pp. 6, 10"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-radio-resolution",
+      "interpretation_type": "dice_resolution",
+      "title": "Radio values clear traffic at counted approach positions",
+      "summary": "A Radio placement immediately checks the approach track using the die value as a distance from the current position and removes one traffic token there if present. Radio capacity is asymmetric between the two roles, and a value of one targets the current position; a missing token produces no effect.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Actions; Radio", "page_locator": "p. 7"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-role-specific-controls",
+      "interpretation_type": "role_flow",
+      "title": "Pilot and Co-Pilot advance different landing controls",
+      "summary": "Landing Gear belongs to the Pilot and moves the blue aerodynamic threshold when activated; Flaps belong to the Co-Pilot and move the orange threshold, with their switches activated in order. Brakes are Pilot-controlled, deployed in sequence, and matter during the final round; Concentration is shared and can generate coffee that modifies later die placement within the normal range.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Actions; Landing Gear; Flaps; Concentration; Brakes", "page_locator": "pp. 7–9"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-mandatory-axis-engines",
+      "interpretation_type": "mandatory_action",
+      "title": "Every round must complete both interactive control pairs",
+      "summary": "The Axis and Engines each require one die from each colour every round. Their spaces need not be filled first, but if a round ends without both colour pairs completed, the team loses immediately. This makes postponing either interactive pair a timing risk even when other cockpit spaces look more urgent.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Actions; Mandatory actions", "page_locator": "p. 5"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-altitude-and-landing-sequence",
+      "interpretation_type": "landing_sequence",
+      "title": "The landing window opens when airport and altitude align",
+      "summary": "At round end, the aircraft descends one altitude step and the dice are recovered. Reaching the airport before the final altitude creates a holding pattern, so the team must manage speed without advancing farther. If the final altitude arrives before the airport, the aircraft crash-lands; when both indicators align, the final round uses the landing-specific engine and brake comparison.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "End of round; Decreasing altitude; Special cases; Final round — landing", "page_locator": "pp. 9–10"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-final-win-boundary",
+      "interpretation_type": "win_condition",
+      "title": "A win requires four simultaneous landing checks",
+      "summary": "At the final landing check, the approach must be clear of traffic, all Flaps and Landing Gear switches must be active, the aircraft axis must be horizontal, and the final engine speed must be lower than the deployed brake strength. Passing all four conditions is a team win; failing a crash or immediate-loss boundary ends the game instead.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Final turn — landing; Victory condition", "page_locator": "p. 11"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-crash-loss-boundaries",
+      "interpretation_type": "loss_condition",
+      "title": "Losses occur at explicit timing and track boundaries",
+      "summary": "The document identifies several hard stops: the axis can reach a spin, an engine advance can cause collision or overshoot, the plane can reach its final altitude without reaching the airport, and the final landing checks can fail. Do not treat a temporary holding pattern as a loss; it is the controlled state for reducing speed before touchdown.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Going into a spin; Collision; Overshoot; Special cases; Final turn — landing", "page_locator": "pp. 5–6, 10–11"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-exact-component-fallback",
+      "interpretation_type": "coverage_boundary",
+      "title": "Exact card, role, ability, and scenario wording is not bundled",
+      "summary": "This package intentionally does not reproduce exact card, role, ability, scenario, airport, advanced-module, or exception wording. For a precision question, use an authorized current reference and verify the edition; if that source is unavailable or the uploaded booklet does not establish the answer, return `not_yet_covered` rather than reconstructing component text.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "Document coverage boundary; advanced modules note; Flight Log reference", "page_locator": "pp. 3, 11 and metadata record"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "sky-team-provenance-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "The artifact identity is strong while provenance remains open",
+      "summary": "The local file is a 12-page, likely English Sky Team rules booklet with consistent PDF metadata, a recorded SHA-256, and an identifiable basic-game landing procedure. The upload does not establish its original URL, publisher-hosted status, exact printing, translation state, or errata state; all interpretations remain document-scoped and the source PDF stays quarantined.",
+      "confidence": "high",
+      "edition_ids": ["sky-team-base-en-12-page-candidate"],
+      "source_locator": {"document_section": "PDF metadata; copyright and document scope; source-metadata record", "page_locator": "PDF metadata, p. 11, and source-metadata.json"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-08-13",
+  "title": "Board-Game Rules Interpretation Catalogue",
+  "purpose": "Canonical inventory of the current original-interpretation knowledge layer for uploaded board-game sources.",
+  "totals": {
+    "games": 17,
+    "interpretation_entries": 169,
+    "fixed_snapshot_games": 6,
+    "non_snapshot_or_candidate_games": 11
+  },
+  "knowledge_representation": {
+    "included": [
+      "original paraphrases",
+      "structured play aids",
+      "timing atoms",
+      "decision boundaries",
+      "edition scopes",
+      "confidence fields",
+      "source locators",
+      "coverage limits",
+      "rights metadata"
+    ],
+    "not_included": [
+      "private chain-of-thought",
+      "full rulebook text",
+      "long quotations",
+      "card text",
+      "scenario text",
+      "artwork",
+      "guarantee of exhaustive rules coverage"
+    ]
+  },
+  "source_of_truth": [
+    "/workspace/plugins/board-game-rules-interpreters/data/game-index.json",
+    "/workspace/plugins/wingspan-rules/data/wingspan-corpus.json",
+    "/workspace/plugins/board-game-rules-source-audit/data/bgg-top50-derived.v1.0.0.json",
+    "/workspace/plugins/board-game-rules-source-audit/data/source-audit-registry.v1.3.0.json",
+    "/workspace/plugins/board-game-rules-source-audit/data/upload-batch-2026-08-12.manifest.json",
+    "/workspace/plugins/board-game-rules-source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json"
+  ],
+  "global_rights_boundary": "Uploaded PDFs are quarantined internal references. Possession or public availability does not establish permission to index or redistribute source text. The catalogue contains original interpretations and metadata only.",
+  "games": [
+    {
+      "game": "A Feast for Odin",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/odin",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/odin/data/odin-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 13,
+      "snapshot_status": "fixed_top_50_rank_5",
+      "bgg_id": "177736",
+      "rank": 5,
+      "coverage": "Use this as a bounded aid. Exact occupation, weapon, goods-tile, exploration-board, action-space, card, icon, appendix, solo, expansion, and errata-sensitive details are not bundled; consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "game rulebook",
+        "pages": 24,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/odin/ODIN_EN_rules-LR.pdf",
+        "sha256": "3307ffb60d71178a8e1bae0a08f260020040e3b53e1b7c349ccde0c2b662b18b"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Ark Nova",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/ark-nova",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/ark-nova/data/ark-nova-corpus.json",
+      "corpus_version": "0.2.0",
+      "interpretation_entries": 14,
+      "snapshot_status": "fixed_top_50_rank_4",
+      "bgg_id": "342942",
+      "rank": 4,
+      "coverage": "The earlier 32-page Zoo Guide remains limited to document identity and animal-reference metadata. The added 20-page rulebook supports broad base-game procedures only; exact card, animal, sponsor, site, icon, and edition-sensitive effects remain outside the bundled interpretation boundary.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "supplementary field guide/booklet, not base rulebook",
+        "pages": 32,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Brass: Birmingham",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/brass-birmingham",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/brass-birmingham/data/brass-birmingham-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 8,
+      "snapshot_status": "fixed_top_50_rank_8",
+      "bgg_id": "224517",
+      "rank": 8,
+      "coverage": "Covers setup, two-era flow, action-card timing, action families, end-of-round turn order/income, era scoring, and final winner. Individual industry, merchant, card, and variant text remains out of scope.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "official rulebook PDF; uploaded duplicate deduplicated against canonical artifact",
+        "pages": 7,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Dune: Imperium",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/dune-imperium",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/dune-imperium/data/dune-imperium-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 8,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Covers the base-game setup loop, Agent/Reveal timing, Combat commitment, Faction thresholds, deck-cycle timing, and end condition. Player-count supplements and board-space minutiae remain out of scope.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "official-style full rulebook PDF",
+        "pages": 20,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Rulebook-2020-10-26.pdf",
+        "sha256": "a689f19e7bda36ec03240ba19cbc481dd4d681f55837529cd8170ec9d19be6db"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Dune: Imperium – Uprising",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/dune-imperium-uprising",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/dune-imperium-uprising/data/dune-imperium-uprising-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 9,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Covers standalone Uprising setup, five-phase timing, Agent/Reveal roles, Spy placement, sandworm/Shield Wall timing, critical-location control, Faction scoring, and game end. Expansion combinations are signposted but not bundled.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "official-style full rulebook PDF",
+        "pages": 20,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Gaia Project",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/gaia-project",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/gaia-project/data/gaia-project-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "fixed_top_50_rank_26",
+      "bgg_id": "220308",
+      "rank": 26,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "condensed rules reference or abbreviated rulebook; completeness unverified",
+        "pages": 7,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Gaia-Project-Rulebook.pdf",
+        "sha256": "86304d54fbcb510f8b7eff8c22b1d6bbab04b207060143e01d703910c491c6e7"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Gloomhaven",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/gloomhaven",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/gloomhaven/data/gloomhaven-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 8,
+      "snapshot_status": "fixed_top_50_rank_34",
+      "bgg_id": "174430",
+      "rank": 34,
+      "coverage": "The uploaded summary supports scenario setup, round planning, initiative, player/monster turn structure, scenario completion, exhaustion, and campaign-state reminders. It does not provide complete game coverage; use official Cephalofair material for omitted or conflicting rules.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "third-party/user-authored rules summary, not complete rulebook",
+        "pages": 11,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Gloomhaven: Jaws of the Lion",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/gloomhaven-jaws-of-the-lion",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/gloomhaven-jaws-of-the-lion/data/gloomhaven-jaws-of-the-lion-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "2020 Learn to Play guide; not a complete rules reference",
+        "pages": 32,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Gloomhaven-Jaws-of-the-Lion-Learn-to-Play.pdf",
+        "sha256": "bf658f635f8677b18db485f62580526190eac334d34bf6b52e74111f9faccb52"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Lost Ruins of Arnak",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/lost-ruins-of-arnak",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/lost-ruins-of-arnak/data/lost-ruins-of-arnak-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 14,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "This corpus stays at document-supported system and flow level. Exact card, site, guardian, assistant, research-bonus, temple-tile, idol, fear, and other component effects are not bundled; consult an authorized current reference and verify the edition, or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "game manual / rulebook",
+        "pages": 24,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/lost-ruins-of-arnak/lost-ruins-of-arnak-rules-en.pdf",
+        "sha256": "95b030c9a8694e3bd53f763b98b77fbec7a4053d0223b8c9bbd96612c78315ef"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Nemesis",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/nemesis",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/nemesis/data/nemesis-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 13,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. Exact card, objective, room, intruder, character, item, weakness, event, and other component exceptions are not bundled; consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "game manual / likely base-game rulebook",
+        "pages": 28,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/nemesis/Nemesis_rulebook_en.pdf",
+        "sha256": "52e9c285521f2351872b24326fbc5171685b42d32de5b9d405249d64827255ac"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Pandemic Legacy: Season 1",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/pandemic-legacy-season-1",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/pandemic-legacy-season-1/data/pandemic-legacy-season-1-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 8,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Covers campaign persistence, month/funding loop, sealed-content handling, core action/draw/infection flow, epidemic order, outbreaks, and end conditions. Exact language, printing, sticker, card, and scenario questions are not covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "scanned rules document or rulebook",
+        "pages": 16,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Pandemic-Legacy-Season-1-Rules-Dutch.pdf",
+        "sha256": "15913deaedac5884522c544356ff5b42af0042cbe8dc1f78ac58beb5457257dd"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Sky Team",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/sky-team",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/sky-team/data/sky-team-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 15,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. Exact card, role, ability, scenario, module, airport, exception, and printing-specific wording is not bundled; consult an authorized current reference and verify the edition, or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "game rulebook / basic-game landing-procedure booklet",
+        "pages": 12,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/sky-team/sky-team.pdf",
+        "sha256": "5dac142ab82f7f4f1b6d2999e19960b871360f641ac1128285909d23455b1618"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Star Wars: Rebellion",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/star-wars-rebellion",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/star-wars-rebellion/data/star-wars-rebellion-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "base-game Learn to Play guide with additional and advanced rules",
+        "pages": 20,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Star-Wars-Rebellion-Learn-to-Play.pdf",
+        "sha256": "b26b98139d694e9f42cb36060ec82fdc3000ab753d29809be03b7bc44d8598fc"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Terraforming Mars",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/terraforming-mars",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/terraforming-mars/data/terraforming-mars-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "fixed_top_50_rank_21",
+      "bgg_id": "167791",
+      "rank": 21,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "base-game rulebook copy hosted or produced by a third party",
+        "pages": 16,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Terraforming-Mars-Rulebook-1jour-1jeu.pdf",
+        "sha256": "800e1f4b857c951e31613ee00b4d6937d3040ffa6145f7eacdd983f10097c2d1"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Twilight Imperium: Fourth Edition",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/twilight-imperium-fourth-edition",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/twilight-imperium-fourth-edition/data/twilight-imperium-fourth-edition-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "2020 Learn to Play guide",
+        "pages": 24,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Twilight-Imperium-Fourth-Edition-Learn-to-Play-2020.pdf",
+        "sha256": "ac91632f142898db6c784be2bb4287875b31b7a3b4d6836bcef95f5e070d647d"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "War of the Ring: Second Edition",
+      "package_path": "/workspace/plugins/board-game-rules-interpreters/war-of-the-ring-second-edition",
+      "corpus_path": "/workspace/plugins/board-game-rules-interpreters/war-of-the-ring-second-edition/data/war-of-the-ring-second-edition-corpus.json",
+      "corpus_version": "0.1.0",
+      "interpretation_entries": 7,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "full rulebook",
+        "pages": 48,
+        "rights_status": "permission_not_established",
+        "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/War-of-the-Ring-Second-Edition-Rulebook.pdf",
+        "sha256": "ebb4d6d4ab1348e8e4c604ea7d9d414e928034d93255d58bd61fa8df6d2f28a4"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    },
+    {
+      "game": "Wingspan",
+      "package_path": "/workspace/plugins/wingspan-rules",
+      "corpus_path": "/workspace/plugins/wingspan-rules/data/wingspan-corpus.json",
+      "corpus_version": "0.2.0",
+      "interpretation_entries": 17,
+      "snapshot_status": "out_of_snapshot_or_candidate",
+      "bgg_id": null,
+      "rank": null,
+      "coverage": "Compact structured reference and original interpretation aids derived from the official Stonemaier Games Wingspan Rules & FAQ page. This is not a reproduction of any rulebook.",
+      "source_artifacts": {
+        "count": 1,
+        "type": "internal reference rulebook metadata",
+        "pages": 12,
+        "rights_status": "internal_reference_only",
+        "local_path": "/workspace/plugins/wingspan-rules-internal/WS_Rulebook_r23-LR.pdf",
+        "sha256": "bf409041c0537729d6ce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d"
+      },
+      "rights_boundary": "original interpretations and metadata only; full source text redistribution blocked"
+    }
+  ]
+}

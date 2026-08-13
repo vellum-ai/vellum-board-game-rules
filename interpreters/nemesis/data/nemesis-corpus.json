@@ -1,0 +1,177 @@
+{
+  "corpus_id": "nemesis-rules-corpus",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "game": "Nemesis",
+  "catalogue_identity": "Out-of-snapshot candidate; Nemesis was not added to the fixed top-50 snapshot",
+  "bgg_snapshot": false,
+  "description": "Compact original interpretations and play aids for a likely base-game English Nemesis rulebook; not a reproduction of the manual or component text.",
+  "full_rulebook_text_included": false,
+  "coverage_disclaimer": "Use this as a bounded aid. Exact card, objective, room, intruder, character, item, weakness, event, and other component exceptions are not bundled; consult an authorized current reference or return not_yet_covered.",
+  "editions": [
+    {
+      "edition_id": "nemesis-base-en-28-page-candidate",
+      "label": "Likely base-game English rulebook; uploaded 28-page document",
+      "scope_status": "document_scope_only",
+      "edition_uncertainty": "Exact printing, errata state, and publisher provenance unresolved; out-of-snapshot candidate"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "nemesis-uploaded-candidate-2026-08-13",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/nemesis/Nemesis_rulebook_en.pdf",
+    "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/nemesis/source-metadata.json",
+    "checksum_record_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/nemesis/Nemesis_rulebook_en.pdf.sha256",
+    "sha256": "52e9c285521f2351872b24326fbc5171685b42d32de5b9d405249d64827255ac",
+    "pages": 28,
+    "language": "likely English",
+    "document_type": "game manual / likely base-game rulebook",
+    "edition": "Likely Nemesis base game; exact printing and errata state not pinned",
+    "provenance": "user_uploaded_attachment; original URL and publisher provenance not supplied",
+    "pdf_metadata": {
+      "pdf_version": "1.5",
+      "creator": "Adobe InDesign CC 14.0 (Windows)",
+      "producer": "Adobe PDF Library 15.0",
+      "creation_date": "2019-01-31T13:15:55Z",
+      "modification_date": "2019-10-21T12:52:33Z",
+      "encrypted": false,
+      "page_size_points": "793.701 x 793.701"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "Possession or public availability does not establish permission to index or redistribute source text. This package stores only original interpretations and document-level metadata.",
+  "entries": [
+    {
+      "id": "nemesis-setup-sequence",
+      "interpretation_type": "setup",
+      "title": "Setup builds a hidden, asymmetric survival problem",
+      "summary": "Prepare the ship layout and shared pools, assign each player a character and its associated starting materials, set the initial objective information, and place the concealed exploration and intruder systems. Keep component identities and exact setup exceptions tied to the selected printing rather than assuming every character or room uses the same start.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Game Setup; Components and preparation", "page_locator": "pp. 3–9"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-round-and-event-flow",
+      "interpretation_type": "play_flow",
+      "title": "Each round alternates player actions with ship events",
+      "summary": "A round begins by refreshing the action economy and resolving the player-action portion in turn order. Once players pass or spend their available actions, resolve the event portion: advance the time track, resolve the event effect, and apply the intruder step as directed. Finish with the next round's order and state checks.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Game Round; Event Phase; Round summary", "page_locator": "pp. 10–12, 27"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-action-card-economy",
+      "interpretation_type": "action_restriction",
+      "title": "Actions spend the right kind of card or resource",
+      "summary": "Character actions generally require paying an action card, while some free or contextual effects use a separate cost rule. Treat the card's action classification as a restriction: a card that supports one action family is not automatically valid for another. Resolve the cost and prerequisites before moving the miniature or changing the board.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Actions; Action cards; In-combat only / out-of-combat only", "page_locator": "pp. 12–13"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-action-only-boundaries",
+      "interpretation_type": "action_restriction",
+      "title": "Combat state gates which actions are legal",
+      "summary": "Before choosing an action, check whether the character is in combat and whether the action is marked for combat-only or out-of-combat use. A legal action also needs its location, target, item, and card requirements. Do not use a broad action description to bypass a state restriction or an unresolved encounter.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Actions; In combat only / out of combat only", "page_locator": "pp. 12–13"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-movement-and-noise",
+      "interpretation_type": "movement",
+      "title": "Movement changes the room state and may create noise",
+      "summary": "A movement action sends a character through an adjacent corridor or into an adjacent room, subject to door and destination conditions. Reveal an unexplored room's marker when entering it. If the destination is an eligible empty space, resolve the noise procedure; occupied or otherwise excluded destinations use their own encounter rule instead. Existing noise can escalate into an encounter.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Rooms and Corridors; Movement Action; Noise", "page_locator": "pp. 14–16"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-exploration-and-room-effects",
+      "interpretation_type": "movement",
+      "title": "Exploration is a reveal step, not just a move",
+      "summary": "Entering an unexplored room resolves its exploration marker before normal room use. That reveal can alter the room, produce noise, or trigger a special result. Computer rooms and other special rooms add conditional options; exact room effects are component-specific and remain outside this bundled interpretation.",
+      "confidence": "medium",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Rooms and Corridors; Exploration Tokens; Rooms with a Computer", "page_locator": "pp. 14–16, 22"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-encounter-and-combat-loop",
+      "interpretation_type": "encounter_combat",
+      "title": "An encounter establishes a threat before attacks resolve",
+      "summary": "When an encounter is triggered, identify the intruder and resolve the encounter procedure before deciding the character's next legal combat choice. Combat then alternates character and intruder consequences through attack, hit or miss handling, and any escape or death result. Attack type, weapon, target, and intruder-specific outcomes must be checked against the current components.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Encounter and Combat; Intruder Attacks", "page_locator": "pp. 18–21"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-escape-and-death",
+      "interpretation_type": "escape_death",
+      "title": "Leaving danger is a state transition with its own checks",
+      "summary": "A character may attempt to escape an intruder by using the movement and encounter rules rather than simply relocating the miniature. Resolve the escape condition, destination legality, and any resulting encounter in order. Death is checked when accumulated harm or an intruder consequence crosses the character's survival boundary; then apply the character's removal and objective consequences from the current reference.",
+      "confidence": "medium",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Encounter and Combat; Escape; Character Death", "page_locator": "pp. 19–21"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-contamination-and-injury",
+      "interpretation_type": "contamination_injury",
+      "title": "Injury and contamination are separate threat tracks",
+      "summary": "Record physical injury when an effect deals it, while contamination enters through the specified character or encounter procedure. Contamination cards are not ordinary damage: scan or otherwise process them only at the prescribed time, and let the resulting state affect later survival checks. Do not infer a card's medical or character consequence from its back or category alone.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Contamination Cards; Character Injury and Death", "page_locator": "pp. 20–21"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-items-search-crafting",
+      "interpretation_type": "items_search_crafting",
+      "title": "Search finds options; crafting converts specified pairs into tools",
+      "summary": "Search is a room-based action that draws from the appropriate item pool and respects hand and inventory limits. Keep heavy and ordinary carrying limits separate. Crafting consumes the required item combination and action opportunity, and it is available only where the action and character state permit it; exact recipes and item effects are not bundled.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Character Hands and Inventory; Items and Objects; Search; Crafting", "page_locator": "pp. 12–13, 22–24"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-victory-check-structure",
+      "interpretation_type": "victory_structure",
+      "title": "Victory is checked against objectives after the survival state is known",
+      "summary": "At the end-of-game victory check, first determine whether the ship and character state allow the game to conclude, then evaluate each surviving character's objective requirements. Objectives can conflict, and a character can fail by death or by an unmet condition even if the ship survives. Exact objective wording, hidden information, and printing-specific exceptions require the current objective card or authorized reference.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Victory Check; Objectives; Victory Condition", "page_locator": "pp. 2, 26–27"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-exact-component-fallback",
+      "interpretation_type": "coverage_boundary",
+      "title": "Exact component exceptions use a live-lookup fallback",
+      "summary": "This package intentionally stops before exact text or exhaustive exceptions for character abilities, objectives, action cards, event cards, rooms, items, intruders, weaknesses, escape pods, and special tokens. For those questions, use an authorized current reference and verify the edition; if a source cannot be checked, answer not_yet_covered rather than reconstructing component text.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Artifact metadata / coverage boundary; component summary pages", "page_locator": "Metadata record and pp. 2–27"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    },
+    {
+      "id": "nemesis-provenance-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "Document identity is plausible but provenance is unresolved",
+      "summary": "The local artifact is a 28-page, likely English base-game Nemesis manual with consistent PDF production metadata and a recorded checksum. The upload does not establish its original URL, publisher provenance, exact printing, or errata state. Treat every bundled statement as document-scoped and keep the quarantined PDF out of the distributable corpus.",
+      "confidence": "high",
+      "edition_ids": ["nemesis-base-en-28-page-candidate"],
+      "source_locator": {"document_section": "Artifact metadata / provenance", "page_locator": "source-metadata.json and PDF metadata"},
+      "rights_flags": {"source_text_stored": false, "full_text_included": false, "long_quotation_included": false, "artwork_included": false}
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "record_version": "1.0.0",
+  "record_type": "out_of_snapshot_candidate_source_lead",
+  "captured_on": "2026-08-12",
+  "game": {
+    "title": "Frosthaven",
+    "bgg_id": null,
+    "snapshot_status": "not_in_fixed_top_50_snapshot",
+    "identity_confidence": "high"
+  },
+  "source": {
+    "title": "Frosthaven Rule Book",
+    "url": "https://pikdonker.github.io/frosthaven-rule-book/",
+    "repository_url": "https://github.com/pikdonker/frosthaven-rule-book",
+    "repository_api_url": "https://api.github.com/repos/pikdonker/frosthaven-rule-book",
+    "source_type": "community-maintained searchable transcription/reference",
+    "maintainer": "pikdonker",
+    "repository_visibility": "public",
+    "repository_default_branch": "main",
+    "repository_created": "2023-03-31T19:29:36Z",
+    "repository_updated": "2026-06-10T17:40:04Z",
+    "repository_license_field": null,
+    "retrieval_status": "verified_http_200",
+    "content_scope": "Searchable Frosthaven rulebook reference with spoiler-sensitive sticker coverage; separate page for rules new to Frosthaven",
+    "attribution_evidence": "The site and README state that all text is taken from the original rulebook uploaded to the any2cards/worldhaven repository, icons are taken from that repository, and mistakes are the community author's responsibility.",
+    "publisher_reference": "Cephalofair Games, LLC is credited in the site and README with a 2022 copyright notice.",
+    "official_companion": {
+      "title": "Frosthaven Errata",
+      "url": "https://cephalofair.com/pages/frosthaven",
+      "publisher": "Cephalofair Games",
+      "retrieval_status": "verified_http_200",
+      "scope": "Official errata and support material, not the complete rulebook"
+    }
+  },
+  "audit_classification": {
+    "publisher_source_status": "third_party_or_user_source_only",
+    "authority_status": "not_authoritative_without_cross_check",
+    "rights_status": "permission_not_granted_or_unclear",
+    "license_status": "no_repository_license_declared",
+    "full_text_indexing_status": "blocked_pending_explicit_permission_or_license",
+    "redistribution_status": "blocked_pending_explicit_permission_or_license",
+    "local_use_status": "source lead only; no local copy created",
+    "recommended_use": "Use for discovery and live lookup only after checking the relevant rule against Cephalofair's official materials and edition/errata context."
+  },
+  "notes": [
+    "Frosthaven is not in the active BGG Geeklist 372705 top-50 identity snapshot; this record must not be merged into that snapshot.",
+    "The public site is useful and searchable, but its own attribution identifies it as a community transcription/reference rather than a publisher-hosted rules source.",
+    "The repository API reports no license object. Public visibility does not establish permission to index or redistribute the copyrighted rule text.",
+    "No rulebook text is reproduced in this record."
+  ]
+}

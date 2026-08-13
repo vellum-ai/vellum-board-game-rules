@@ -1,0 +1,413 @@
+{
+  "corpus_id": "dune-imperium-uprising-rules-interpreter",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "description": "Original, compact play aid for the uploaded standalone Dune: Imperium – Uprising document. It is not a rulebook substitute.",
+  "full_rulebook_text_included": false,
+  "interpretation_schema": {
+    "version": "1.0.0",
+    "description": "Every entry is an original, source-bounded interpretation; source text is never stored.",
+    "required_fields": [
+      "id",
+      "title",
+      "kind",
+      "edition_ids",
+      "topics",
+      "summary",
+      "source_locator",
+      "confidence",
+      "rights_flags"
+    ],
+    "confidence_values": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "rights_policy": "Possession or public availability does not establish permission to reproduce, index, or redistribute source text."
+  },
+  "coverage_boundary": "Covers standalone Uprising setup, five-phase timing, Agent/Reveal roles, Spy placement, sandworm/Shield Wall timing, critical-location control, Faction scoring, and game end. Expansion combinations are signposted but not bundled.",
+  "artifact_provenance": {
+    "artifact_id": "dune-imperium-uprising-upload",
+    "title": "Dune: Imperium – Uprising",
+    "document_type": "official-style full rulebook PDF",
+    "pages": 20,
+    "language": "English",
+    "edition": "Standalone Uprising rulebook; embedded creation date 2023-10-12",
+    "provenance": "user_uploaded; original source URL not supplied",
+    "confidence": "high_for_document_identity_low_for_provenance",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+    "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "source_records": [],
+  "editions": [
+    {
+      "edition_id": "uprising-en-2023-upload",
+      "game": "Dune: Imperium – Uprising",
+      "scope": "Standalone Uprising rulebook; English upload with embedded document date 2023-10-12",
+      "language": "en",
+      "status": "document-identity-high-provenance-low",
+      "notes": "Standalone identity and document date are supported; original URL and permission are not supplied.",
+      "rights_status": "internal-metadata-and-original-paraphrase-only",
+      "full_text_included": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "setup-uprising",
+      "title": "Setup adds Uprising-specific state",
+      "kind": "setup_atom",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "setup",
+        "shield-wall",
+        "sandworms",
+        "objective"
+      ],
+      "summary": "Set up the Conflict deck, Imperium row, Reserve stacks, player starter decks, Faction tracks, garrisons, and the Shield Wall. Place Maker Hooks and sandworms in the bank, distribute Objective cards, and use the Objective-linked first-player marker procedure. Uprising has no Mentat Agent.",
+      "interpretation_type": "setup_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF pp. 4-5: Setup",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "five-phase-round-uprising",
+      "title": "Round loop remains five phases",
+      "kind": "play_flow",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "round",
+        "timing"
+      ],
+      "summary": "Each round reveals a Conflict and draws five cards, then runs Player Turns, Combat, Makers, and Recall. A player’s Reveal turn ends that player’s participation in the Player Turns phase, even if an Agent remained unused.",
+      "interpretation_type": "play_flow",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF p. 8: Round Structure",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "agent-spy-observation-post",
+      "title": "Agent icons and Spies define legal placement",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "agents",
+        "spies",
+        "observation-posts"
+      ],
+      "summary": "An Agent card selects one matching placement icon. A Spy icon is a deliberate exception: it can use a connected board space where that player has a Spy, so observation-post links matter when evaluating legal destinations.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF pp. 9 and 11: Agent turn and Spies",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-agent-reveal-choice",
+      "title": "Agent and Reveal boxes are mutually exclusive per play",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "agent",
+        "reveal",
+        "intrigue"
+      ],
+      "summary": "On an Agent turn, use the Agent box of one played card and place an Agent; on a Reveal turn, use Reveal boxes and acquire from the Imperium row as allowed. Plot Intrigue cards may be used during either kind of own turn, while Combat and Endgame Intrigue stay in their named windows.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF pp. 8-10: Player Turns and card anatomy",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-units-and-shield-wall",
+      "title": "Sandworms are gated combat units",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "combat",
+        "sandworms",
+        "maker-hooks",
+        "shield-wall"
+      ],
+      "summary": "Troops recruited in an Agent turn may be deployed to the active Conflict, while sandworms are summoned directly to combat only when the required Maker Hook and other printed conditions are satisfied. The Shield Wall protects the three critical locations until a detonation effect removes it.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF pp. 10-12: Units, Conflicts, and Shield Wall",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-critical-location-control",
+      "title": "Winning a critical Conflict can create persistent control",
+      "kind": "scoring_interpretation",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "combat",
+        "control",
+        "critical-locations"
+      ],
+      "summary": "A win at a critical Arrakis location can place a Control marker. Later Agent placements at that location can trigger the control benefit, and a Conflict revealed there can grant the controller a defensive troop. Track this separately from ordinary Conflict rewards.",
+      "interpretation_type": "scoring_interpretation",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF p. 10: Critical Locations and Shield Wall",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-influence-thresholds",
+      "title": "Faction thresholds and Alliance transfer still score",
+      "kind": "scoring_interpretation",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "influence",
+        "victory-points",
+        "alliances"
+      ],
+      "summary": "The second Influence threshold awards a point that can be lost if Influence falls; the fourth threshold grants its benefit without a retroactive refund when Influence later drops. The Alliance token and its point follow the leading player on that track.",
+      "interpretation_type": "scoring_interpretation",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF p. 7: Factions",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-end-condition",
+      "title": "Endgame is checked after the round",
+      "kind": "endgame",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "endgame",
+        "victory-points",
+        "conflict-deck"
+      ],
+      "summary": "After a round, ten or more Victory Points by any player, or an empty Conflict deck, ends the game. Resolve the permitted endgame effects and compare the resulting scores.",
+      "interpretation_type": "endgame",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF p. 6: Objective",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    },
+    {
+      "id": "uprising-expansion-boundary",
+      "title": "Combination modules require their own compatibility rules",
+      "kind": "coverage_boundary",
+      "edition_ids": [
+        "uprising-en-2023-upload"
+      ],
+      "topics": [
+        "expansions",
+        "rise-of-ix",
+        "immortality",
+        "choam"
+      ],
+      "summary": "The document contains compatibility notes for CHOAM, Rise of Ix, Immortality, and mixing with base Dune: Imperium. This package records the existence of those boundaries but does not fold expansion card text or module setup into the standalone corpus.",
+      "interpretation_type": "coverage_boundary",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Dune-Imperium-Uprising-Rulebook.pdf",
+        "sha256": "0a8daa36f73c09316143d05bbd5d845183d1ae6f56ce211d93c59b360074f7db",
+        "locator": "PDF pp. 16-18: modules and combinations",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Dire Wolf Digital / Gale Force Nine",
+        "official_source": false
+      }
+    }
+  ]
+}
