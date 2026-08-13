@@ -22,6 +22,8 @@ import updateSittingTool from "../tools/boardgame_update_sitting.ts";
 type EvalTest = {
   label?: string;
   game?: string;
+  /** Optional strict edition filter, passed to askRules as editionId. */
+  edition?: string;
   query: string;
   limit?: number;
   known_games?: string[];
@@ -39,7 +41,6 @@ type EvalTest = {
 
 type EvalSuite = {
   game: string;
-  edition?: string;
   tests: EvalTest[];
 };
 
@@ -56,12 +57,13 @@ let knownGaps = 0;
 
 for (const suite of evalData.suites) {
   if (gameFilter && suite.game !== gameFilter) continue;
-  console.log(`\n=== ${suite.game} (${suite.edition ?? "default"}) ===`);
+  console.log(`\n=== ${suite.game} ===`);
   for (const test of suite.tests) {
     total += 1;
     const result = askRules({
       query: test.query,
       gameId: test.game ?? suite.game,
+      editionId: test.edition,
       limit: test.limit ?? 5,
       knownGames: test.known_games,
     });
@@ -295,6 +297,12 @@ try {
   check(
     "demo: unhooked known game cites without analogizing",
     !citeOnly.abstention && citeOnly.analog_hooks.length === 0,
+  );
+
+  const noGame = askRules({ query: "how do I gain food" });
+  check(
+    "no game specified abstains and lists supported games",
+    noGame.abstention === true && (noGame.abstention_reason ?? "").includes("wingspan"),
   );
 
   const noSittingUpdate = await updateSittingTool.execute(

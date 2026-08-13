@@ -73,7 +73,7 @@ Editions let the plugin distinguish between base games, expansions, and variants
 
 - **`edition_id`**: unique within this corpus, kebab-case
 - **`status`**: `canonical` for the base game, `expansion` for expansions, `variant` for variant rules
-- **`inherits`**: the `edition_id` this edition stacks on top of, or `null` for the root
+- **`inherits`**: the `edition_id` this edition stacks on top of, or `null` for the root. Retrieval honors this: asking with an expansion's `edition_id` also searches the editions it inherits from, so expansion players still get base-game rulings
 - **`scope`**: one-line description of what this edition covers
 
 ### 3. Entries

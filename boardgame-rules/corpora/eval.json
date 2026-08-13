@@ -2,7 +2,6 @@
   "suites": [
     {
       "game": "wingspan",
-      "edition": "base-en-1st-2020",
       "tests": [
         {
           "label": "gaining food mechanics",
@@ -452,12 +451,21 @@
           ],
           "expect_hit_1": true,
           "expect_abstention": false
+        },
+        {
+          "label": "expansion edition inherits base rules",
+          "query": "how do I gain food",
+          "edition": "eu-expansion-en-1st-2019",
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
         }
       ]
     },
     {
       "game": "cribbage",
-      "edition": "two-player-standard-en",
       "tests": [
         {
           "label": "analog poker hook on fifteens and pairs",
@@ -548,6 +556,28 @@
           ],
           "expect_hit_1": true,
           "expect_abstention": false
+        },
+        {
+          "label": "strict edition filter includes the variant's entries",
+          "query": "muggins claim missed points variant",
+          "edition": "muggins-variant",
+          "expect_ids": [
+            "variant-muggins"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "strict edition filter excludes other editions' entries",
+          "query": "muggins claim missed points variant",
+          "edition": "two-player-standard-en",
+          "expect_abstention": true
+        },
+        {
+          "label": "unknown edition abstains",
+          "query": "how do I count fifteens",
+          "edition": "no-such-edition",
+          "expect_abstention": true
         }
       ]
     },

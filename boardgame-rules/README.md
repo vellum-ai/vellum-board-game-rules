@@ -91,7 +91,8 @@ syllabi are deferred.
 
 Every `boardgame_ask_rules` result includes:
 
-- `game_id`, `game_title`, `edition_id`, `corpus_version`
+- `game_id`, `game_title`, `corpus_version`
+- `edition_id` — the edition filter that was applied; `null` means all editions were in scope (per-ruling editions are on `evidence[].edition_ids`). Filtering by an expansion edition also includes the editions it `inherits`
 - `coverage_boundary`
 - `evidence[]` with citation locator, URL, confidence, and rights flags
 - `abstention` and `abstention_reason`

@@ -23,7 +23,7 @@ Answer from the installed `boardgame-rules` plugin. Do not invent a ruling.
 1. Call `boardgame_list_supported_games` if the game is not obviously installed.
 2. Call `boardgame_ask_rules` with the question and `game_id` when known.
 3. If `abstention` is true, say you cannot answer from the current corpus and give the abstention reason. Do not guess.
-4. If `abstention` is false, answer from the top evidence only. Include game, edition, corpus version, and the citation locator.
+4. If `abstention` is false, answer from the top evidence only. Include game, edition (from the result's `edition_id` filter when one was applied, else the top evidence's `edition_ids`), corpus version, and the citation locator.
 5. Stay inside `coverage_boundary`. Limited documents are not complete rulebooks.
 
 Never reproduce rulebook, card, or artwork text. The plugin stores original interpretations only.
