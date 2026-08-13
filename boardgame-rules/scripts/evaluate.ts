@@ -17,6 +17,7 @@ import {
 } from "../src/sitting.ts";
 import type { AskResult, Sitting } from "../src/types.ts";
 import askRulesTool from "../tools/boardgame_ask_rules.ts";
+import checkScenarioTool from "../tools/boardgame_check_scenario.ts";
 import startSittingTool from "../tools/boardgame_start_sitting.ts";
 import updateSittingTool from "../tools/boardgame_update_sitting.ts";
 
@@ -356,6 +357,51 @@ try {
   check(
     "demo: unhooked known game cites without analogizing",
     !citeOnly.abstention && citeOnly.analog_hooks.length === 0,
+  );
+
+  // check_scenario sitting integration (playtest bug: hard "no game_id" error
+  // during an active sitting instead of using the sitting's game).
+  const scenarioConv = "eval-demo-scenario-sitting";
+  await startSittingTool.execute({ game_id: "cribbage" }, toolCtx(scenarioConv));
+  const scenarioHit = JSON.parse(
+    (await checkScenarioTool.execute(
+      { scenario: "hand of 8 7 7 6 with a 2 starter, how many points" },
+      toolCtx(scenarioConv),
+    )).content,
+  );
+  check(
+    "check_scenario uses the sitting's game when game_id is omitted",
+    scenarioHit.game_id === "cribbage" && scenarioHit.abstention === false && scenarioHit.matches.length > 0,
+    `got game=${scenarioHit.game_id} abstention=${scenarioHit.abstention}`,
+  );
+
+  const flipConv = "eval-demo-scenario-flip7";
+  await startSittingTool.execute({ game_id: "flip-7" }, toolCtx(flipConv));
+  const flipScenario = JSON.parse(
+    (await checkScenarioTool.execute(
+      { scenario: "I flipped a seventh unique card, do I bank the bonus" },
+      toolCtx(flipConv),
+    )).content,
+  );
+  check(
+    "check_scenario in a sitting without worked examples abstains gracefully",
+    flipScenario.game_id === "flip-7" &&
+      flipScenario.abstention === true &&
+      (flipScenario.abstention_reason ?? "").includes("No worked examples") &&
+      !(flipScenario.abstention_reason ?? "").includes("No game specified"),
+    `got game=${flipScenario.game_id} reason=${flipScenario.abstention_reason}`,
+  );
+
+  const noSittingScenario = JSON.parse(
+    (await checkScenarioTool.execute(
+      { scenario: "some scenario" },
+      toolCtx("eval-demo-scenario-no-sitting"),
+    )).content,
+  );
+  check(
+    "check_scenario without sitting or game_id abstains listing games",
+    noSittingScenario.abstention === true &&
+      (noSittingScenario.abstention_reason ?? "").includes("No game specified"),
   );
 
   const noGame = askRules({ query: "how do I gain food" });

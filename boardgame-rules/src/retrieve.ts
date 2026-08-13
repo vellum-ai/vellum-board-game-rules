@@ -3,6 +3,16 @@ import { normalizeKnownGames } from "./sitting.ts";
 import type { AnalogHook, AskResult, Citation, Corpus, CorpusEntry, Evidence } from "./types.ts";
 
 const ABSTAIN_THRESHOLD = 5.5;
+/**
+ * A top entry sharing at least this many DISTINCT content tokens with the
+ * query is a strong match even when the ratio-based score is diluted below
+ * ABSTAIN_THRESHOLD by a verbose query ("ok so wait how exactly do I …").
+ * Off-domain queries empirically top out at 2 distinct matches (generic
+ * tokens like "scoring"/"points"), so 3 is the separation point.
+ */
+const MIN_STRONG_DISTINCT_MATCHES = 3;
+/** Floor so a strong-match override still requires non-trivial score mass. */
+const STRONG_MATCH_SCORE_FLOOR = 3.0;
 const DEFAULT_LIMIT = 5;
 const MAX_LIMIT = 10;
 
@@ -24,7 +34,10 @@ function tokenize(text: string, filterStopWords = false): string[] {
   return filterStopWords ? tokens.filter((t) => !STOP_WORDS.has(t)) : tokens;
 }
 
-function scoreEntry(entry: CorpusEntry, queryTokens: string[]): number {
+function scoreEntry(
+  entry: CorpusEntry,
+  queryTokens: string[],
+): { score: number; distinctMatches: number } {
   const haystack = [entry.title, entry.summary, entry.section ?? "", entry.subsection ?? "", ...(entry.topics ?? [])].join(" ");
   const tokens = tokenize(haystack);
   const tokenSet = new Set(tokens);
@@ -34,7 +47,14 @@ function scoreEntry(entry: CorpusEntry, queryTokens: string[]): number {
   const titleTokens = new Set(tokenize(entry.title));
   const titleMatches = queryTokens.reduce((total, token) => total + (titleTokens.has(token) ? 1 : 0), 0);
   const titleBonus = (titleMatches / queryTokens.length) * 5;
-  return (matches / queryTokens.length) * 10 + phraseBonus + titleBonus;
+  let distinctMatches = 0;
+  for (const token of new Set(queryTokens)) {
+    if (tokenSet.has(token)) distinctMatches += 1;
+  }
+  return {
+    score: (matches / queryTokens.length) * 10 + phraseBonus + titleBonus,
+    distinctMatches,
+  };
 }
 
 function citationFor(entry: CorpusEntry): Citation {
@@ -185,10 +205,16 @@ export function askRules(options: {
   }
 
   const scored = scopedEntries
-    .map((entry) => ({ entry, score: scoreEntry(entry, queryTokens) }))
+    .map((entry) => ({ entry, ...scoreEntry(entry, queryTokens) }))
     .sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title));
   const topScore = scored[0]?.score ?? 0;
-  const abstention = topScore < ABSTAIN_THRESHOLD;
+  // A verbose query dilutes the ratio-based score; a top entry that still
+  // shares MIN_STRONG_DISTINCT_MATCHES distinct content tokens with the query
+  // is a real answer, not an abstention-with-evidence.
+  const strongTopMatch =
+    (scored[0]?.distinctMatches ?? 0) >= MIN_STRONG_DISTINCT_MATCHES &&
+    topScore >= STRONG_MATCH_SCORE_FLOOR;
+  const abstention = topScore < ABSTAIN_THRESHOLD && !strongTopMatch;
   const evidence: Evidence[] = scored
     .filter(({ score }) => score > 0)
     .slice(0, limit)

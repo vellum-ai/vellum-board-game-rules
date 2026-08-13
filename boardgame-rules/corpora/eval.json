@@ -610,6 +610,11 @@
           "label": "empty query abstention",
           "query": "",
           "expect_abstention": true
+        },
+        {
+          "label": "near-threshold nonsense still abstains (2 generic matches)",
+          "query": "quantum entanglement scoring rule",
+          "expect_abstention": true
         }
       ]
     },
@@ -848,6 +853,29 @@
           ],
           "expect_hit_1": true,
           "expect_abstention": false
+        },
+        {
+          "label": "verbose table question answers despite score dilution (hit or stay)",
+          "query": "ok wait can I take another card or should I stop and bank my points now",
+          "expect_ids": [
+            "flip-7-hit-or-stay"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "verbose table question answers via strong distinct matches (bust)",
+          "query": "what happens when someone flips a seventh unique number card in this round",
+          "expect_ids": [
+            "flip-7-bust"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "off-domain question still abstains",
+          "query": "how do I castle my king",
+          "expect_abstention": true
         }
       ]
     },
@@ -858,7 +886,7 @@
       "tests": [
         {
           "label": "perfect 29 direct scenario",
-          "query": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit \u2014 counting set J-5-5-5-5",
+          "query": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit — counting set J-5-5-5-5",
           "expect_ids": [
             "counting-perfect-29"
           ],
@@ -884,7 +912,7 @@
         },
         {
           "label": "8-7-7-6-2 direct scenario",
-          "query": "4-card hand of 8, 7, 7, 6, starter is 2 \u2014 counting set 8-7-7-6-2",
+          "query": "4-card hand of 8, 7, 7, 6, starter is 2 — counting set 8-7-7-6-2",
           "expect_ids": [
             "counting-example-8-7-7-6-2"
           ],
@@ -909,6 +937,11 @@
         {
           "label": "wrong-game abstention",
           "query": "how does the birdfeeder work in wingspan",
+          "expect_abstention": true
+        },
+        {
+          "label": "near-threshold nonsense still abstains (2 generic matches)",
+          "query": "quantum entanglement scoring rule",
           "expect_abstention": true
         }
       ]

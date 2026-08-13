@@ -1,5 +1,6 @@
 import type { ToolContext, ToolExecutionResult } from "@vellumai/plugin-api";
 import { checkScenario } from "../src/scenario.ts";
+import { getSitting } from "../src/sitting.ts";
 
 export default {
   description:
@@ -16,7 +17,7 @@ export default {
       game_id: {
         type: "string",
         description:
-          "Optional game id or exact title. Defaults to the first installed game that has at least one worked example.",
+          "Game id or exact title. Optional when a sitting is active (boardgame_start_sitting) — the sitting's game is used; with neither, the tool abstains and lists the games that have worked examples.",
       },
       edition_id: {
         type: "string",
@@ -36,13 +37,25 @@ export default {
   },
   async execute(
     input: Record<string, unknown>,
-    _ctx: ToolContext,
+    ctx: ToolContext,
   ): Promise<ToolExecutionResult> {
     const scenario = String(input.scenario ?? "");
-    const gameId = input.game_id == null ? undefined : String(input.game_id).trim();
-    const editionId =
+    let gameId = input.game_id == null ? undefined : String(input.game_id).trim();
+    let editionId =
       input.edition_id == null ? undefined : String(input.edition_id).trim();
     const limit = input.limit == null ? 3 : Number(input.limit);
+
+    // Mid-game "did I score this right?" questions come from an active
+    // sitting; like boardgame_ask_rules, the sitting supplies the game (and
+    // edition, when the sitting pinned one) so the table never has to restate
+    // it. checkScenario itself still abstains cleanly when neither exists.
+    const sitting = getSitting(ctx.conversationId);
+    if (sitting) {
+      gameId ||= sitting.game_id;
+      if (!editionId && gameId === sitting.game_id && sitting.edition_id) {
+        editionId = sitting.edition_id;
+      }
+    }
 
     if (!Number.isInteger(limit) || limit < 1 || limit > 5) {
       return {
