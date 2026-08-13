@@ -10,7 +10,7 @@ One plugin owns the contract. Games are versioned corpora under `corpora/`. Wing
 | Game | Editions | Entries | Corpus version |
 | --- | --- | --- | --- |
 | Wingspan | Base (2020), European Expansion (2019) | 27 | 0.3.0 |
-| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.1.0 |
+| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.2.0 |
 
 ## First-play companion
 
@@ -28,7 +28,9 @@ Two layers of data make that work:
   `known_game_title`, `likeness`, `exception`). Analogies are corpus-owned so
   they can be *missing* — an entry without a hook makes the tool abstain from
   analogizing rather than improvise. Wingspan currently hooks into Catan,
-  Ticket to Ride, Dominion, and Azul, only where the mapping is real.
+  Ticket to Ride, Dominion, and Azul; Cribbage hooks into Poker and Blackjack.
+  Hooks exist only where the mapping is real — Cribbage has none for the
+  Wingspan target games because none would be honest.
 - **Sittings** are per-conversation state under `data/sittings/`, keyed by the
   conversation id from `ToolContext`: game, edition, known games, last cited
   ruling, last analog used.
@@ -106,7 +108,7 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 46/46
+Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 52/52
 eval tests passing (retrieval + factual assertions + analog filtering +
 sitting store/tool flow).
 
