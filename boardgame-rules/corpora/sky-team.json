@@ -434,5 +434,21 @@
     "original_corpus_id": "sky-team-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-13",
+    "registry_ref": null,
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "sky-team-uploaded-candidate-2026-08-13",
+        "document_type": "game rulebook / basic-game landing-procedure booklet",
+        "sha256": "5dac142ab82f7f4f1b6d2999e19960b871360f641ac1128285909d23455b1618",
+        "manifest_path": null,
+        "rights_status": "permission_not_established"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

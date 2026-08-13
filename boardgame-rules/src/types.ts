@@ -90,6 +90,74 @@ export type CorpusEntry = {
   applies_when?: string[];
 };
 
+/**
+ * One official (publisher/developer) source for a game, as audited by the
+ * source-audit registry. Copied verbatim from the registry record when the
+ * game is in registry scope, or derived from the corpus's `default_source`
+ * when it is not. `rights_status` is always present: a public URL is a
+ * citation target, never permission to index or redistribute.
+ */
+export type SourceAuditOfficialSource = {
+  publisher?: string;
+  official_url?: string;
+  source_type?: string;
+  edition_scope?: string;
+  language?: string;
+  source_verification_status?: string;
+  rights_status: string;
+  indexability_status?: string;
+  accessed_on?: string;
+  notes?: string;
+};
+
+/**
+ * One quarantined source artifact (usually a user-uploaded PDF) backing this
+ * corpus, linked to the upload-batch manifest that catalogued it.
+ */
+export type SourceAuditArtifact = {
+  artifact_id: string;
+  title?: string;
+  document_type?: string;
+  sha256?: string;
+  /** Repo-relative path (under source-audit/) of the manifest or metadata record that catalogues this artifact. Null when the artifact predates the manifests. */
+  manifest_path: string | null;
+  rights_status?: string;
+  redistribution_status?: string;
+  local_use_status?: string;
+};
+
+/**
+ * Corpus-owned summary of the source-audit registry's findings for this game.
+ * Makes each corpus self-describing about its sources: what official sources
+ * exist, which quarantined artifacts back the entries, and the rights posture
+ * — without cross-referencing `source-audit/data/` by hand. Generated and
+ * refreshed by `scripts/sync-source-audit.ts`; shape-checked by the validator.
+ */
+export type SourceAudit = {
+  /** Registry `source_audit_status` when the game is in registry scope, else `not_in_registry_scope`. */
+  audit_status: string;
+  /** Registry audit_run_date, manifest catalogue date, or corpus generated_at — whichever grounds this block. */
+  audited_at: string;
+  /** Link into the registry record, when the game is in the audited list. */
+  registry_ref: {
+    registry_path: string;
+    registry_version: string;
+    bgg_id: string;
+    list_rank: number;
+    fallback_tier?: string;
+  } | null;
+  official_sources: SourceAuditOfficialSource[];
+  source_artifacts: SourceAuditArtifact[];
+  /**
+   * The registry's raw source-search notes, copied verbatim when present.
+   * May contain found URLs the audit did NOT promote to `official_sources` —
+   * leads for citation follow-up, not verified sources.
+   */
+  registry_search_notes?: unknown;
+  /** One-line plain-English rights posture for this corpus's sources. */
+  rights_note: string;
+};
+
 export type Corpus = {
   corpus_id: string;
   game_title: string;
@@ -108,6 +176,8 @@ export type Corpus = {
     rights_status?: string;
     permission_note?: string;
   };
+  /** Required on every corpus in this repo (validator-enforced); optional in the type so third-party corpora without it still load. */
+  source_audit?: SourceAudit;
   editions: Edition[];
   entries: CorpusEntry[];
 };
@@ -125,6 +195,10 @@ export type SupportedGame = {
   coverage_boundary: string;
   entry_count: number;
   full_rulebook_text_included: boolean;
+  /** Registry audit status for this game's sources (from the corpus source_audit block). */
+  source_audit_status: string | null;
+  /** One-line rights posture for this corpus's sources. */
+  rights_note: string | null;
 };
 
 export type Citation = {

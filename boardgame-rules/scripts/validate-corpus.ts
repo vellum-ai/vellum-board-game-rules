@@ -237,6 +237,51 @@ function validateCorpus(corpus: Corpus, filename: string): ValidationError[] {
     }
   }
 
+  // ── source_audit (required: every corpus must be self-describing about its sources) ──
+  const audit = corpus.source_audit;
+  if (!audit) {
+    errors.push({ message: `${filename}: missing "source_audit" — run \`bun scripts/sync-source-audit.ts\` to generate it from the registry and manifests` });
+  } else {
+    for (const field of ["audit_status", "audited_at", "rights_note"] as const) {
+      if (!audit[field]) {
+        errors.push({ message: `${filename}: source_audit missing "${field}"` });
+      }
+    }
+    if (audit.registry_ref !== null && audit.registry_ref !== undefined) {
+      for (const field of ["registry_path", "registry_version", "bgg_id", "list_rank"] as const) {
+        if (audit.registry_ref[field] === undefined || audit.registry_ref[field] === null || audit.registry_ref[field] === "") {
+          errors.push({ message: `${filename}: source_audit.registry_ref missing "${field}"` });
+        }
+      }
+    } else if (audit.registry_ref === undefined) {
+      errors.push({ message: `${filename}: source_audit.registry_ref must be an object or explicit null` });
+    }
+    if (!Array.isArray(audit.official_sources)) {
+      errors.push({ message: `${filename}: source_audit.official_sources must be an array` });
+    } else {
+      for (const source of audit.official_sources) {
+        if (!source.rights_status) {
+          errors.push({ message: `${filename}: source_audit official source ${source.official_url ?? source.publisher ?? "?"} missing "rights_status" — a URL without a rights posture reads as permission` });
+        }
+      }
+    }
+    if (!Array.isArray(audit.source_artifacts)) {
+      errors.push({ message: `${filename}: source_audit.source_artifacts must be an array` });
+    } else {
+      for (const artifact of audit.source_artifacts) {
+        if (!artifact.artifact_id) {
+          errors.push({ message: `${filename}: source_audit artifact missing "artifact_id"` });
+        }
+        if (artifact.manifest_path === undefined) {
+          errors.push({ message: `${filename}: source_audit artifact "${artifact.artifact_id}" missing "manifest_path" (use null when uncatalogued)` });
+        }
+        if (artifact.sha256 !== undefined && !/^[0-9a-f]{64}$/.test(artifact.sha256)) {
+          errors.push({ message: `${filename}: source_audit artifact "${artifact.artifact_id}" sha256 is not 64 lowercase hex characters` });
+        }
+      }
+    }
+  }
+
   // ── interpretation_schema (optional but if present, validate shape) ──
   if (corpus.interpretation_schema) {
     const schema = corpus.interpretation_schema;

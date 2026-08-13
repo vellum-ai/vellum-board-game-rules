@@ -3,7 +3,7 @@ import { listSupportedGames } from "../src/corpus.ts";
 
 export default {
   description:
-    "List installed board games, editions, coverage limits, and corpus versions. Use this before asking a rules question so you know which games and editions are actually supported.",
+    "List installed board games, editions, coverage limits, corpus versions, and each game's source-audit status and rights note (how its sources were audited and what the rights posture is). Use this before asking a rules question so you know which games and editions are actually supported.",
   defaultRiskLevel: "low" as const,
   input_schema: {
     type: "object",

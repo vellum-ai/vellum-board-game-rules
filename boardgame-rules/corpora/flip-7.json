@@ -571,5 +571,24 @@
     "original_corpus_id": "flip-7-rules-interpreter",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-13",
+    "registry_ref": null,
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "flip-7-vengeance-rules-c-upload",
+        "title": "Flip 7",
+        "document_type": "uploaded rulebook",
+        "sha256": "45d0140b69d6f8f322a7bc2bb5a80bf5f03746151f62215da2c79e381dcb83c9",
+        "manifest_path": "source-audit/data/uploaded-game-source-records/flip-7-source-metadata.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

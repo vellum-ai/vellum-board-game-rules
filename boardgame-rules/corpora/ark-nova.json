@@ -734,5 +734,70 @@
     "original_corpus_id": "ark-nova-rules-interpreter",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_rules_material_located",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "342942",
+      "list_rank": 4,
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    "official_sources": [
+      {
+        "publisher": "Capstone Games / Feuerland Spiele",
+        "official_url": "https://capstone-games.com/products/ark-nova",
+        "source_type": "official_publisher_resources_page",
+        "edition_scope": "Capstone English retail; rulebook, guide, glossary, and FAQ listed",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-12",
+        "notes": "Official product/resources page verified."
+      },
+      {
+        "publisher": "Feuerland Spiele",
+        "official_url": "https://feuerland-spiele.de/fileadmin/game/Arche_Nova/Arche_Nova_FAQ_V2_EN_A4_low.pdf",
+        "source_type": "official_developer_hosted_faq_pdf",
+        "edition_scope": "Ark Nova FAQ v2",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-12",
+        "notes": "Official English FAQ PDF. This is supplementary material, not a substitute for the base rulebook."
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "ark-nova-field-guide-upload",
+        "title": "Ark Nova",
+        "document_type": "supplementary field guide/booklet, not base rulebook",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      },
+      {
+        "artifact_id": "ark-nova-rulebook-upload-2026-08-13",
+        "title": "Ark Nova rulebook",
+        "document_type": "game rulebook",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "manifest_path": null,
+        "rights_status": "permission_not_established"
+      }
+    ],
+    "registry_search_notes": {
+      "publisher_or_developer": "Feuerland Spiele",
+      "result": "Official English rulebook PDF confirmed on Feuerland Spiele publisher site. Already a known source.",
+      "found_urls": [
+        "https://www.feuerland-spiele.de/fileadmin/game/Arche_Nova/AN_Rules_Print_EN_V2web.pdf"
+      ]
+    },
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

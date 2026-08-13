@@ -382,5 +382,74 @@
     "original_corpus_id": "a-feast-for-odin-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_rules_material_located",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "177736",
+      "list_rank": 5,
+      "fallback_tier": "source_not_located"
+    },
+    "official_sources": [
+      {
+        "publisher": "Feuerland Spiele",
+        "official_url": "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_rules_2nd_Web.pdf",
+        "source_type": "official_publisher_hosted_rulebook_pdf",
+        "edition_scope": "2nd English edition",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-13",
+        "notes": "Official 2nd edition rulebook PDF confirmed via curl HEAD returning 200 application/pdf."
+      },
+      {
+        "publisher": "Feuerland Spiele",
+        "official_url": "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_Appendix_Web.pdf",
+        "source_type": "official_publisher_hosted_appendix_pdf",
+        "edition_scope": "2nd English edition",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-13",
+        "notes": "Official 2nd edition appendix PDF."
+      },
+      {
+        "publisher": "Feuerland Spiele",
+        "official_url": "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_almanach_Web.pdf",
+        "source_type": "official_publisher_hosted_almanac_pdf",
+        "edition_scope": "2nd English edition",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-13",
+        "notes": "Official 2nd edition almanac PDF."
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "a-feast-for-odin-uploaded-candidate-2026-08-13",
+        "title": "A Feast for Odin",
+        "document_type": "game rulebook",
+        "sha256": "3307ffb60d71178a8e1bae0a08f260020040e3b53e1b7c349ccde0c2b662b18b",
+        "manifest_path": null,
+        "rights_status": "permission_not_established"
+      }
+    ],
+    "registry_search_notes": {
+      "publisher_or_developer": "Feuerland Spiele",
+      "result": "Official 2nd edition English rulebook, appendix, and almanac PDFs found on publisher site.",
+      "found_urls": [
+        "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_rules_2nd_Web.pdf",
+        "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_Appendix_Web.pdf",
+        "https://www.feuerland-spiele.de/fileadmin/game/Ein_Fest_fuer_Odin/ODIN_EN_almanach_Web.pdf"
+      ]
+    },
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

@@ -384,5 +384,43 @@
     "original_corpus_id": "gloomhaven-rules-interpreter",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_rules_material_located",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "174430",
+      "list_rank": 34,
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    "official_sources": [
+      {
+        "publisher": "Cephalofair Games",
+        "official_url": "https://cephalofair.com/pages/gloomhaven",
+        "source_type": "official_publisher_game_rules_repository_and_errata_page",
+        "edition_scope": "2025 first-printing information; exact direct rulebook PDF edition not pinned",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-12",
+        "notes": "Official support/errata repository; direct edition-specific rulebook PDF still needs confirmation."
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "gloomhaven-summary-upload",
+        "title": "Gloomhaven",
+        "document_type": "third-party/user-authored rules summary, not complete rulebook",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

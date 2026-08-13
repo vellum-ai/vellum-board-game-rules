@@ -217,5 +217,38 @@
     "original_corpus_id": "gaia-project-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_rules_material_located",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "220308",
+      "list_rank": 26,
+      "fallback_tier": "source_not_located"
+    },
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "gaia-project-upload-2026-08-12",
+        "title": "Gaia Project",
+        "document_type": "condensed rules reference or abbreviated rulebook; completeness unverified",
+        "sha256": "86304d54fbcb510f8b7eff8c22b1d6bbab04b207060143e01d703910c491c6e7",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "registry_search_notes": {
+      "publisher_or_developer": "Feuerland Spiele",
+      "result": "Official English rulebook and automa rulebook PDFs found on publisher site.",
+      "found_urls": [
+        "https://www.feuerland-spiele.de/fileadmin/game/Gaia_Project/GAIA_PROJECT_EN_rules_Web.pdf",
+        "https://www.feuerland-spiele.de/fileadmin/game/Gaia_Project/Gaia_Project_Automa_rules_EN_Web.pdf"
+      ]
+    },
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

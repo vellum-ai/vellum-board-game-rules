@@ -217,5 +217,24 @@
     "original_corpus_id": "war-of-the-ring-second-edition-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-12",
+    "registry_ref": null,
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "war-of-the-ring-second-edition-upload-2026-08-12",
+        "title": "War of the Ring: Second Edition",
+        "document_type": "full rulebook",
+        "sha256": "ebb4d6d4ab1348e8e4c604ea7d9d414e928034d93255d58bd61fa8df6d2f28a4",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }
