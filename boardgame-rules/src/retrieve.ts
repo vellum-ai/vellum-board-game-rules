@@ -1,16 +1,26 @@
 import { listSupportedGames, loadCorpus } from "./corpus.ts";
 import type { AskResult, Citation, Corpus, CorpusEntry, Evidence } from "./types.ts";
 
-const ABSTAIN_THRESHOLD = 2.0;
+const ABSTAIN_THRESHOLD = 5.5;
 const DEFAULT_LIMIT = 5;
 const MAX_LIMIT = 10;
 
-function tokenize(text: string): string[] {
-  return text
+const STOP_WORDS = new Set([
+  "the", "a", "an", "is", "are", "of", "to", "in", "on", "for", "with",
+  "and", "or", "not", "but", "how", "do", "does", "did", "i", "you",
+  "your", "my", "we", "they", "their", "what", "when", "where", "can",
+  "could", "should", "would", "will", "as", "at", "by", "from", "it",
+  "its", "be", "been", "being", "has", "have", "had", "was", "were",
+  "this", "that", "these", "those", "if", "then", "than", "so",
+]);
+
+function tokenize(text: string, filterStopWords = false): string[] {
+  const tokens = text
     .toLowerCase()
     .replace(/[^a-z0-9\s'-]/g, " ")
     .split(/\s+/)
     .filter(Boolean);
+  return filterStopWords ? tokens.filter((t) => !STOP_WORDS.has(t)) : tokens;
 }
 
 function scoreEntry(entry: CorpusEntry, queryTokens: string[]): number {
@@ -19,7 +29,11 @@ function scoreEntry(entry: CorpusEntry, queryTokens: string[]): number {
   const tokenSet = new Set(tokens);
   const matches = queryTokens.reduce((total, token) => total + (tokenSet.has(token) ? 1 : 0), 0);
   const phraseBonus = tokens.join(" ").includes(queryTokens.join(" ")) ? 5 : 0;
-  return (matches / queryTokens.length) * 10 + phraseBonus;
+  // Title bonus: proportional to how much of the query appears in the title
+  const titleTokens = new Set(tokenize(entry.title));
+  const titleMatches = queryTokens.reduce((total, token) => total + (titleTokens.has(token) ? 1 : 0), 0);
+  const titleBonus = (titleMatches / queryTokens.length) * 5;
+  return (matches / queryTokens.length) * 10 + phraseBonus + titleBonus;
 }
 
 function citationFor(entry: CorpusEntry): Citation {
@@ -103,7 +117,7 @@ export function askRules(options: {
   }
 
   const scopedEntries = corpus.entries.filter((entry) => !editionId || entry.edition_ids.includes(editionId));
-  const queryTokens = tokenize(query);
+  const queryTokens = tokenize(query, true);
   if (queryTokens.length === 0) {
     return emptyAsk({
       query,

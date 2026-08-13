@@ -2,26 +2,31 @@
   "suites": [
     {
       "game": "wingspan",
-      "edition": "1st Edition",
+      "edition": "base-en-1st-2020",
       "tests": [
         {
           "label": "gaining food mechanics",
           "query": "how do I gain food",
-          "expect_ids": ["wingspan-turn-002"],
-          "expect_hit_1": true
+          "expect_ids": ["wingspan-turn-002", "wingspan-rule-003"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["leftmost exposed slot", "right to left"],
+          "expect_summary_not_contains": ["roll the birdfeeder die", "costs 1 food"]
         },
         {
           "label": "laying eggs action",
           "query": "lay eggs on birds",
-          "expect_ids": ["wingspan-turn-003"],
-          "expect_hit_1": true
+          "expect_ids": ["wingspan-turn-003", "wingspan-rule-004"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["leftmost exposed slot"],
+          "expect_summary_not_contains": ["Take 1 egg"]
         },
         {
-          "label": "drawn card placement — known lexical gap",
+          "label": "draw bird cards action",
           "query": "draw bird cards action",
           "expect_ids": ["wingspan-turn-004"],
           "expect_hit_1": true,
-          "known_limitation": true
+          "expect_summary_contains": ["face-up", "deck", "no hand limit"],
+          "expect_summary_not_contains": ["Draw 2 bird cards from the deck", "fewer than 4 cards"]
         },
         {
           "label": "empty query abstention",
@@ -29,30 +34,33 @@
           "expect_abstention": true
         },
         {
-          "label": "nonsense query abstention — known lexical gap",
+          "label": "nonsense query abstention",
           "query": "quantum entanglement scoring rule",
-          "expect_abstention": true,
-          "known_limitation": true
+          "expect_abstention": true
         },
         {
           "label": "end game scoring",
           "query": "end of game scoring points",
           "expect_ids": ["wingspan-rule-001"],
-          "expect_hit_1": true
+          "expect_hit_1": true,
+          "expect_summary_contains": ["Cached food", "Tucked cards", "1 VP"],
+          "expect_summary_not_contains": ["Food tokens and bird cards in hand: 0 points"]
         },
         {
-          "label": "round end bonus scoring — known lexical gap",
-          "query": "round end goal scoring bonus",
+          "label": "round end goal tile scoring",
+          "query": "end of round goal tile scoring positions",
           "expect_ids": ["wingspan-rule-002"],
           "expect_hit_1": true,
-          "known_limitation": true
+          "expect_summary_contains": ["rounded down"],
+          "expect_summary_not_contains": ["rounded up"]
         },
         {
-          "label": "habitat rules forest — known lexical gap",
+          "label": "habitat rules forest",
           "query": "what happens in forest habitat",
           "expect_ids": ["wingspan-rule-003"],
           "expect_hit_1": true,
-          "known_limitation": true
+          "expect_summary_contains": ["right to left"],
+          "expect_summary_not_contains": ["activate from left to right"]
         },
         {
           "label": "unsupported game abstention",
@@ -64,13 +72,96 @@
           "label": "bird power types",
           "query": "brown pink white bird powers",
           "expect_ids": ["wingspan-rule-006"],
-          "expect_hit_1": true
+          "expect_hit_1": true,
+          "expect_summary_contains": ["right to left", "Once Between Turns", "Round End", "Game End", "optional"],
+          "expect_summary_not_contains": ["left to right", "once per round", "nesting icon"]
         },
         {
           "label": "solo mode automa",
           "query": "how to play solo against automa",
           "expect_ids": ["wingspan-rule-012"],
-          "expect_hit_1": true
+          "expect_hit_1": true,
+          "expect_summary_contains": ["go first", "last turn"]
+        },
+        {
+          "label": "setup dice count",
+          "query": "how many dice birdfeeder setup",
+          "expect_ids": ["wingspan-setup-001"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["5 food dice"],
+          "expect_summary_not_contains": ["4 food dice"]
+        },
+        {
+          "label": "setup tray cards",
+          "query": "bird tray setup face up cards",
+          "expect_ids": ["wingspan-setup-001"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["3 face-up bird cards"],
+          "expect_summary_not_contains": ["4 face-up bird cards"]
+        },
+        {
+          "label": "setup starting hand and food",
+          "query": "starting bird cards food bonus setup",
+          "expect_ids": ["wingspan-setup-001"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["5 bird cards", "5 food", "2 bonus cards"],
+          "expect_summary_not_contains": ["2 food tokens", "1 bonus card"]
+        },
+        {
+          "label": "birdfeeder dice faces wild",
+          "query": "birdfeeder dice wild face fish",
+          "expect_ids": ["wingspan-rule-009"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["invertebrate-or-seed", "NOT fish"],
+          "expect_summary_not_contains": ["fish (wild)", "fish is the wild"]
+        },
+        {
+          "label": "birdfeeder reroll cost",
+          "query": "reroll birdfeeder dice cost food",
+          "expect_ids": ["wingspan-turn-002", "wingspan-rule-009", "wingspan-edgecase-002"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["optional and free"],
+          "expect_summary_not_contains": ["costs 1 food token", "each reroll costs"]
+        },
+        {
+          "label": "play a bird nest restriction",
+          "query": "play bird nest type habitat placement",
+          "expect_ids": ["wingspan-turn-005"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["no nest-type restriction"],
+          "expect_summary_not_contains": ["nest type must match"]
+        },
+        {
+          "label": "wingspan does not restrict placement",
+          "query": "wingspan restrict bird placement",
+          "expect_ids": ["wingspan-rule-010"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["does NOT restrict"],
+          "expect_summary_not_contains": ["minimum wingspan requirement"]
+        },
+        {
+          "label": "deck exhaustion reshuffle",
+          "query": "bird deck runs out exhausted",
+          "expect_ids": ["wingspan-edgecase-003"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["reshuffle"],
+          "expect_summary_not_contains": ["tray is not refilled"]
+        },
+        {
+          "label": "brown power direction",
+          "query": "brown power activation direction order",
+          "expect_ids": ["wingspan-edgecase-004", "wingspan-rule-006"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["right to left"],
+          "expect_summary_not_contains": ["left to right"]
+        },
+        {
+          "label": "tied goals rounding",
+          "query": "tied goals positions points rounded",
+          "expect_ids": ["wingspan-edgecase-001"],
+          "expect_hit_1": true,
+          "expect_summary_contains": ["rounded down"],
+          "expect_summary_not_contains": ["rounded up"]
         }
       ]
     }
