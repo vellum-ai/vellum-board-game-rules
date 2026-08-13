@@ -12,6 +12,8 @@ type EvalTest = {
   expect_hit_3?: boolean;
   expect_hit_5?: boolean;
   expect_abstention?: boolean;
+  expect_summary_contains?: string[];
+  expect_summary_not_contains?: string[];
   known_limitation?: boolean;
 };
 
@@ -54,7 +56,7 @@ for (const suite of evalData.suites) {
       const hit1 = expectedIds.size > 0 && expectedIds.has(result.evidence[0]?.entry_id);
       if (hit1 !== test.expect_hit_1) {
         ok = false;
-        messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1}`);
+        messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${result.evidence[0]?.entry_id ?? "none"})`);
       }
     }
     if (test.expect_hit_3 !== undefined) {
@@ -72,17 +74,37 @@ for (const suite of evalData.suites) {
       }
     }
 
+    // Factual correctness: check summary content of the top hit
+    if (test.expect_summary_contains && !result.abstention && result.evidence.length > 0) {
+      const summary = result.evidence[0].summary.toLowerCase();
+      for (const phrase of test.expect_summary_contains) {
+        if (!summary.includes(phrase.toLowerCase())) {
+          ok = false;
+          messages.push(`summary missing "${phrase}"`);
+        }
+      }
+    }
+    if (test.expect_summary_not_contains && !result.abstention && result.evidence.length > 0) {
+      const summary = result.evidence[0].summary.toLowerCase();
+      for (const phrase of test.expect_summary_not_contains) {
+        if (summary.includes(phrase.toLowerCase())) {
+          ok = false;
+          messages.push(`summary should not contain "${phrase}"`);
+        }
+      }
+    }
+
     if (ok) {
       passed += 1;
-      console.log(`  ok ${test.label ?? test.query}`);
+      console.log(`  ok   ${test.label ?? test.query}`);
     } else if (test.known_limitation) {
       knownGaps += 1;
-      console.log(`  known-gap ${test.label ?? test.query}`);
-      for (const message of messages) console.log(`     ${message}`);
+      console.log(`  gap  ${test.label ?? test.query}`);
+      for (const message of messages) console.log(`       ${message}`);
     } else {
       failed += 1;
-      console.log(`  fail ${test.label ?? test.query}`);
-      for (const message of messages) console.log(`     ${message}`);
+      console.log(`  FAIL ${test.label ?? test.query}`);
+      for (const message of messages) console.log(`       ${message}`);
     }
   }
 }
