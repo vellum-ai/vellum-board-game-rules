@@ -1,0 +1,23 @@
+{
+  "artifact_id": "flip-7-vengeance-rules-c-upload",
+  "title": "Flip 7",
+  "document_type": "uploaded rulebook",
+  "pages": 14,
+  "language": "English",
+  "edition": "Ruleset Edition 1; exact retail printing and errata state not independently pinned",
+  "provenance": "user_uploaded_attachment; original source URL not supplied",
+  "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/ad-hoc-flip-7/26_FLIP_7_VENGEANCE_RULES_C.pdf",
+  "sha256": "45d0140b69d6f8f322a7bc2bb5a80bf5f03746151f62215da2c79e381dcb83c9",
+  "pdf_metadata": {
+    "creator": "Adobe InDesign 20.5 (Macintosh)",
+    "producer": "Adobe PDF Library 17.0",
+    "creation_date": "2025-09-15T17:25:22Z",
+    "modification_date": "2025-09-15T17:27:37Z"
+  },
+  "rights_status": "permission_not_established",
+  "full_text_indexing_status": "blocked_pending_explicit_permission",
+  "redistribution_status": "blocked_pending_explicit_permission",
+  "local_use_status": "quarantined_for_internal_reference_only",
+  "selected_for_package": true,
+  "local_quarantine_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/ad-hoc-flip-7/26_FLIP_7_VENGEANCE_RULES_C.pdf"
+}

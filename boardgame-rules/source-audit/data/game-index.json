@@ -146,6 +146,15 @@
       "entries": 7,
       "document_type": "full rulebook",
       "full_rulebook_text_included": false
+    },
+    {
+      "package_id": "flip-7",
+      "corpus_id": "flip-7-rules-interpreter",
+      "game": "Flip 7",
+      "version": "0.1.0",
+      "entries": 14,
+      "document_type": "uploaded rulebook",
+      "full_rulebook_text_included": false
     }
   ]
 }
