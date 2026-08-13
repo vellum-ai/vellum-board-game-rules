@@ -98,8 +98,12 @@ If `abstention` is true, do not invent a ruling — and no analogy is offered.
 assistant plugins install https://github.com/vellum-ai/vellum-board-game-rules/tree/main/boardgame-rules --name boardgame-rules
 ```
 
-Requires assistant 0.10–0.11 (the peer range tracks the loader's
-`semver.satisfies(assistantVersion, range)` check).
+The `peerDependencies["@vellumai/plugin-api"]` range (`>=0.10.0 <0.12.0`)
+declares host compatibility against the running assistant version. Today's
+loader treats an unsatisfied range as a boot-time error log and loads the
+plugin anyway, but that check is slated to harden into a hard reject — keep
+the range tracking the assistant versions the plugin is actually tested on
+(0.10–0.11 as of this writing).
 
 ## Validate and test
 
