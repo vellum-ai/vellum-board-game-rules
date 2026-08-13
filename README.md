@@ -28,6 +28,7 @@ Then ask your assistant about a supported game. The tools are:
 
 - **`boardgame_list_supported_games`** — list installed games, editions, coverage limits, and corpus versions
 - **`boardgame_ask_rules`** — answer a rules question with evidence, or abstain
+- **`boardgame_check_scenario`** — validate a specific play situation ("did I score this hand right?") against a pre-authored worked example, or hard-abstain
 
 ## Supported games
 
@@ -113,7 +114,7 @@ cd boardgame-rules && bun scripts/validate-corpus.ts   # validate all corpora
 cd boardgame-rules && bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: **230 entries, 29 editions, 19 games, 0 validation errors, 73/73 eval tests passing.**
+Current baseline: **230 entries (2 with worked examples), 29 editions, 19 games, 0 validation errors, 88/88 eval tests passing.**
 
 ## Sequencing
 

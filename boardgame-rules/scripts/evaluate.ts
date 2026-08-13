@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { askRules } from "../src/retrieve.ts";
+import { checkScenario } from "../src/scenario.ts";
 import {
   STALE_AFTER_MS,
   clearAllSittings,
@@ -36,11 +37,17 @@ type EvalTest = {
   expect_summary_not_contains?: string[];
   expect_analog_known_game_ids?: string[];
   expect_analog_empty?: boolean;
+  /** Scenario-mode only: assert substrings appear in the top match's expected_outcome. */
+  expect_outcome_contains?: string[];
+  /** Scenario-mode only: assert substrings appear anywhere in the top match's decomposition. */
+  expect_decomposition_contains?: string[];
   known_limitation?: boolean;
 };
 
 type EvalSuite = {
   game: string;
+  /** Which retrieval mode to route through. Defaults to "ask". */
+  mode?: "ask" | "scenario";
   tests: EvalTest[];
 };
 
@@ -57,84 +64,136 @@ let knownGaps = 0;
 
 for (const suite of evalData.suites) {
   if (gameFilter && suite.game !== gameFilter) continue;
-  console.log(`\n=== ${suite.game} ===`);
+  const mode = suite.mode ?? "ask";
+  console.log(`\n=== ${suite.game} [${mode}] ===`);
   for (const test of suite.tests) {
     total += 1;
-    const result = askRules({
-      query: test.query,
-      gameId: test.game ?? suite.game,
-      editionId: test.edition,
-      limit: test.limit ?? 5,
-      knownGames: test.known_games,
-    });
-    const expectedIds = new Set(test.expect_ids ?? []);
+    const gameId = test.game ?? suite.game;
     const messages: string[] = [];
     let ok = true;
+    const expectedIds = new Set(test.expect_ids ?? []);
 
-    if (test.expect_abstention !== undefined && result.abstention !== test.expect_abstention) {
-      ok = false;
-      messages.push(`abstention: expected ${test.expect_abstention}, got ${result.abstention}`);
-    }
-    if (test.expect_hit_1 !== undefined) {
-      const hit1 = expectedIds.size > 0 && expectedIds.has(result.evidence[0]?.entry_id);
-      if (hit1 !== test.expect_hit_1) {
-        ok = false;
-        messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${result.evidence[0]?.entry_id ?? "none"})`);
-      }
-    }
-    if (test.expect_hit_3 !== undefined) {
-      const hit3 = result.evidence.slice(0, 3).some((item) => expectedIds.has(item.entry_id));
-      if (hit3 !== test.expect_hit_3) {
-        ok = false;
-        messages.push(`hit@3: expected ${test.expect_hit_3}, got ${hit3}`);
-      }
-    }
-    if (test.expect_hit_5 !== undefined) {
-      const hit5 = result.evidence.slice(0, 5).some((item) => expectedIds.has(item.entry_id));
-      if (hit5 !== test.expect_hit_5) {
-        ok = false;
-        messages.push(`hit@5: expected ${test.expect_hit_5}, got ${hit5}`);
-      }
-    }
+    if (mode === "scenario") {
+      const result = checkScenario({
+        query: test.query,
+        gameId,
+        limit: test.limit ?? 3,
+      });
+      const topId = result.matches[0]?.entry_id;
+      const hitIds = result.matches.map((m) => m.entry_id);
+      const topOutcome = result.matches[0]?.expected_outcome ?? "";
+      const topDecomp = (result.matches[0]?.decomposition ?? []).join(" | ");
 
-    // Factual correctness: check summary content of the top hit
-    if (test.expect_summary_contains && !result.abstention && result.evidence.length > 0) {
-      const summary = result.evidence[0].summary.toLowerCase();
-      for (const phrase of test.expect_summary_contains) {
-        if (!summary.includes(phrase.toLowerCase())) {
+      if (test.expect_abstention !== undefined && result.abstention !== test.expect_abstention) {
+        ok = false;
+        messages.push(`abstention: expected ${test.expect_abstention}, got ${result.abstention}`);
+      }
+      if (test.expect_hit_1 !== undefined) {
+        const hit1 = expectedIds.size > 0 && !!topId && expectedIds.has(topId);
+        if (hit1 !== test.expect_hit_1) {
           ok = false;
-          messages.push(`summary missing "${phrase}"`);
+          messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${topId ?? "none"})`);
         }
       }
-    }
-    if (test.expect_summary_not_contains && !result.abstention && result.evidence.length > 0) {
-      const summary = result.evidence[0].summary.toLowerCase();
-      for (const phrase of test.expect_summary_not_contains) {
-        if (summary.includes(phrase.toLowerCase())) {
+      if (test.expect_hit_3 !== undefined) {
+        const hit3 = hitIds.slice(0, 3).some((id) => expectedIds.has(id));
+        if (hit3 !== test.expect_hit_3) {
           ok = false;
-          messages.push(`summary should not contain "${phrase}"`);
+          messages.push(`hit@3: expected ${test.expect_hit_3}, got ${hit3}`);
         }
       }
-    }
+      if (test.expect_outcome_contains && !result.abstention && topOutcome) {
+        const lower = topOutcome.toLowerCase();
+        for (const phrase of test.expect_outcome_contains) {
+          if (!lower.includes(phrase.toLowerCase())) {
+            ok = false;
+            messages.push(`outcome missing "${phrase}"`);
+          }
+        }
+      }
+      if (test.expect_decomposition_contains && !result.abstention && topDecomp) {
+        const lower = topDecomp.toLowerCase();
+        for (const phrase of test.expect_decomposition_contains) {
+          if (!lower.includes(phrase.toLowerCase())) {
+            ok = false;
+            messages.push(`decomposition missing "${phrase}"`);
+          }
+        }
+      }
+    } else {
+      const result = askRules({
+        query: test.query,
+        gameId,
+        editionId: test.edition,
+        limit: test.limit ?? 5,
+        knownGames: test.known_games,
+      });
 
-    // Analog hooks: exact set match on returned known-game ids, or explicitly empty.
-    const analogIds = result.analog_hooks.map((hook) => hook.known_game_id).sort();
-    if (test.expect_analog_known_game_ids) {
-      const expected = [...test.expect_analog_known_game_ids].sort();
-      if (JSON.stringify(analogIds) !== JSON.stringify(expected)) {
+      if (test.expect_abstention !== undefined && result.abstention !== test.expect_abstention) {
         ok = false;
-        messages.push(`analog_hooks: expected [${expected.join(", ")}], got [${analogIds.join(", ")}]`);
+        messages.push(`abstention: expected ${test.expect_abstention}, got ${result.abstention}`);
       }
-      for (const hook of result.analog_hooks) {
-        if (!hook.likeness || !hook.exception) {
+      if (test.expect_hit_1 !== undefined) {
+        const hit1 = expectedIds.size > 0 && expectedIds.has(result.evidence[0]?.entry_id);
+        if (hit1 !== test.expect_hit_1) {
           ok = false;
-          messages.push(`analog hook for "${hook.known_game_id}" missing likeness or exception`);
+          messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${result.evidence[0]?.entry_id ?? "none"})`);
         }
       }
-    }
-    if (test.expect_analog_empty && result.analog_hooks.length > 0) {
-      ok = false;
-      messages.push(`analog_hooks: expected [], got [${analogIds.join(", ")}]`);
+      if (test.expect_hit_3 !== undefined) {
+        const hit3 = result.evidence.slice(0, 3).some((item) => expectedIds.has(item.entry_id));
+        if (hit3 !== test.expect_hit_3) {
+          ok = false;
+          messages.push(`hit@3: expected ${test.expect_hit_3}, got ${hit3}`);
+        }
+      }
+      if (test.expect_hit_5 !== undefined) {
+        const hit5 = result.evidence.slice(0, 5).some((item) => expectedIds.has(item.entry_id));
+        if (hit5 !== test.expect_hit_5) {
+          ok = false;
+          messages.push(`hit@5: expected ${test.expect_hit_5}, got ${hit5}`);
+        }
+      }
+
+      // Factual correctness: check summary content of the top hit
+      if (test.expect_summary_contains && !result.abstention && result.evidence.length > 0) {
+        const summary = result.evidence[0].summary.toLowerCase();
+        for (const phrase of test.expect_summary_contains) {
+          if (!summary.includes(phrase.toLowerCase())) {
+            ok = false;
+            messages.push(`summary missing "${phrase}"`);
+          }
+        }
+      }
+      if (test.expect_summary_not_contains && !result.abstention && result.evidence.length > 0) {
+        const summary = result.evidence[0].summary.toLowerCase();
+        for (const phrase of test.expect_summary_not_contains) {
+          if (summary.includes(phrase.toLowerCase())) {
+            ok = false;
+            messages.push(`summary should not contain "${phrase}"`);
+          }
+        }
+      }
+
+      // Analog hooks: exact set match on returned known-game ids, or explicitly empty.
+      const analogIds = result.analog_hooks.map((hook) => hook.known_game_id).sort();
+      if (test.expect_analog_known_game_ids) {
+        const expected = [...test.expect_analog_known_game_ids].sort();
+        if (JSON.stringify(analogIds) !== JSON.stringify(expected)) {
+          ok = false;
+          messages.push(`analog_hooks: expected [${expected.join(", ")}], got [${analogIds.join(", ")}]`);
+        }
+        for (const hook of result.analog_hooks) {
+          if (!hook.likeness || !hook.exception) {
+            ok = false;
+            messages.push(`analog hook for "${hook.known_game_id}" missing likeness or exception`);
+          }
+        }
+      }
+      if (test.expect_analog_empty && result.analog_hooks.length > 0) {
+        ok = false;
+        messages.push(`analog_hooks: expected [], got [${analogIds.join(", ")}]`);
+      }
     }
 
     if (ok) {

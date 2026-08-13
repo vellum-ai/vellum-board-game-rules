@@ -1,7 +1,8 @@
 # boardgame-rules
 
 Installable Vellum plugin for cited board-game rules answers, with a first-play
-companion for teaching a game at the table.
+companion for teaching a game at the table, plus a score validator for
+checking specific play situations against pre-authored worked examples.
 
 One plugin owns the contract. Games are versioned corpora under `corpora/`. Wingspan and Cribbage are the first two.
 
@@ -67,11 +68,37 @@ a sitting untouched for ~12h is treated as over: ignored on read and purged at
 init/shutdown. Live sittings deliberately survive a plain daemon restart — the
 table may still be mid-game.
 
+## Score validator
+
+`boardgame_check_scenario` is a different job from `ask_rules`. Users describe
+a specific play situation ("my 4-card Cribbage hand was J-5-5-5, starter was
+the fourth 5 matching the Jack's suit — did I score 29?") and get back a
+matching pre-authored worked example with its expected outcome and
+point-by-point decomposition. **Hard-abstains when no worked example matches**
+— never falls back to general rules retrieval, because guessing at a score is
+worse than "I don't have this one."
+
+Two pieces of schema power it:
+
+- **`worked_example`** on a corpus entry — `scenario`, `expected_outcome`, optional `decomposition[]`
+- **`applies_when`** on a corpus entry — trigger phrases the retriever also matches against ("did I score 29", "how many points for 8-7-7-6-2", …)
+
+Retrieval only considers entries with a `worked_example` field, scores against
+distinct query tokens (a one-word query cannot leak in via denominator
+shrink), and requires the top result to clear both a score threshold and a
+minimum of 2 distinct-token matches before returning anything.
+
+Cribbage ships with two worked examples: the perfect 29 and the classic
+8-7-7-6-2 double-run counting set. Any of the 19 corpora can add worked
+examples the same way.
+
 ## Surfaces
 
 - `tools/boardgame_ask_rules.ts` — answer a rules question with evidence or
   abstain; sitting-aware (defaults to the sitting's game, filters
   `analog_hooks` to the sitting's known games, records the cited ruling)
+- `tools/boardgame_check_scenario.ts` — validate a specific play situation
+  against a pre-authored worked example, or hard-abstain
 - `tools/boardgame_list_supported_games.ts` — list installed games, editions, coverage
 - `tools/boardgame_start_sitting.ts` / `tools/boardgame_update_sitting.ts` —
   start or update the per-conversation sitting
@@ -79,9 +106,9 @@ table may still be mid-game.
   card when a sitting exists; never rewrites the prompt),
   `conversation-deleted`, `conversations-cleared`
 - `skills/boardgame-rules/` and `skills/first-play-companion/` — assistant skill instructions
-- `src/` — retrieval, corpus loading, sitting store, shared types
+- `src/` — retrieval (ask + scenario), corpus loading, sitting store, shared types
 - `scripts/validate-corpus.ts` — validate all corpora (plain-English errors)
-- `scripts/evaluate.ts` — regression eval suite
+- `scripts/evaluate.ts` — regression eval suite (routes on `mode?: "ask" | "scenario"`)
 - `corpora/` — one JSON file per game plus `eval.json`
 
 Compare, refresh, embeddings, live BGG, PDF ingest, UI, and cross-night
@@ -103,6 +130,32 @@ Every `boardgame_ask_rules` result includes:
 
 If `abstention` is true, do not invent a ruling — and no analogy is offered.
 
+`boardgame_check_scenario` returns worked-example matches or hard-abstains:
+
+- Same identity + rights fields as above
+- `matches[]` — each with `scenario`, `expected_outcome`, optional `decomposition`, plus citation and `distinct_matches`
+- `abstention` is set when either the top score is below threshold OR fewer than two distinct query tokens match — the tool never falls back to general rules retrieval
+
+## Adding a worked example
+
+Any entry can carry an optional `worked_example` payload, which is what `check_scenario` retrieves against:
+
+```json
+{
+  "id": "counting-perfect-29",
+  "kind": "example_walkthrough",
+  "summary": "...",
+  "worked_example": {
+    "scenario": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit — counting set J-5-5-5-5",
+    "expected_outcome": "29 points (the maximum possible score in a Cribbage show)",
+    "decomposition": ["Fifteens (16): ...", "Pairs (12): double pair royal on the four 5s", "..."]
+  },
+  "applies_when": ["perfect 29 cribbage", "four fives and a jack"]
+}
+```
+
+Entries without `worked_example` are still fully usable by `ask_rules`; `check_scenario` simply ignores them.
+
 ## Install
 
 ```bash
@@ -123,9 +176,10 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 230 entries, 29 editions, 19 games, 0 validation errors,
-73/73 eval tests passing (retrieval + factual assertions + analog filtering +
-sitting store/tool flow + a migration smoke test per migrated game).
+Current baseline: 230 entries (2 with worked examples), 29 editions, 19 games,
+0 validation errors, **88/88 eval tests passing** (retrieval + factual
+assertions + analog filtering + sitting store/tool flow + one migration smoke
+test per migrated game + cribbage scenario matching).
 
 ## Contributing
 
