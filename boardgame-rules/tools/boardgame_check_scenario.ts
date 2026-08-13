@@ -11,7 +11,7 @@ export default {
       scenario: {
         type: "string",
         description:
-          "Natural-language description of the scenario to check. Example: J-5-5-5 hand with the starter being the fourth 5, matching the Jack's suit.",
+          "Natural-language description of the scenario to check. Example: 4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit — counting set J-5-5-5-5.",
       },
       game_id: {
         type: "string",

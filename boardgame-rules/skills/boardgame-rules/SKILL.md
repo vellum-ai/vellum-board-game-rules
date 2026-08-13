@@ -22,7 +22,7 @@ Answer from the installed `boardgame-rules` plugin. Do not invent a ruling.
 ## Choose a tool
 
 - `boardgame_ask_rules` — general rule question ("how do birdfeeder food dice work", "what's His Nobs").
-- `boardgame_check_scenario` — user describes a concrete situation and wants the outcome ("I had J-5-5-5 with the starter as a matching-suit 5, did I score 29?"). This tool only returns pre-authored worked examples and hard-abstains when none match.
+- `boardgame_check_scenario` — user describes a concrete situation and wants the outcome ("my 4-card hand was J-5-5-5, starter was the fourth 5 matching the Jack's suit — did I score 29?"). This tool only returns pre-authored worked examples and hard-abstains when none match.
 - `boardgame_list_supported_games` — call first if you don't already know the game is installed.
 
 ## Steps

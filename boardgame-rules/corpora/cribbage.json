@@ -695,7 +695,7 @@
         "internal_only": false
       },
       "worked_example": {
-        "scenario": "Hand of J-5-5-5 with the starter being the fourth 5, matching the Jack's suit",
+        "scenario": "4-card hand of J-5-5-5, starter is the fourth 5 matching the Jack's suit — counting set J-5-5-5-5",
         "expected_outcome": "29 points \u2014 the maximum possible score in a single Cribbage show",
         "decomposition": [
           "Four fifteens from 5+5+5 combinations (8 points)",
