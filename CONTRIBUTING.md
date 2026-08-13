@@ -208,6 +208,7 @@ The validator checks:
 - Confidence values are valid (`high`, `medium`, `low`)
 - All required `rights_flags` keys are present
 - `redistribution_permitted` is `false`
+- A generated `source_audit` block is present, with `audit_status` / `audited_at` / `rights_note`, a complete `registry_ref` (or explicit `null`), a `rights_status` on every official source, an `artifact_id` and `manifest_path` on every source artifact, and 64-character hex `sha256` fingerprints
 - `interpretation_schema` shape is correct if present
 
 **Errors are in plain English.** If you make a typo, you'll see something like:
