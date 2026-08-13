@@ -1,12 +1,30 @@
-import { readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { askRules } from "../src/retrieve.ts";
+import {
+  STALE_AFTER_MS,
+  clearAllSittings,
+  deleteSitting,
+  getSitting,
+  purgeStaleSittings,
+  setStorageDir,
+  sittingStoreDir,
+  startSitting,
+  updateSitting,
+} from "../src/sitting.ts";
+import type { AskResult, Sitting } from "../src/types.ts";
+import askRulesTool from "../tools/boardgame_ask_rules.ts";
+import startSittingTool from "../tools/boardgame_start_sitting.ts";
+import updateSittingTool from "../tools/boardgame_update_sitting.ts";
 
 type EvalTest = {
   label?: string;
   game?: string;
   query: string;
   limit?: number;
+  known_games?: string[];
   expect_ids?: string[];
   expect_hit_1?: boolean;
   expect_hit_3?: boolean;
@@ -14,6 +32,8 @@ type EvalTest = {
   expect_abstention?: boolean;
   expect_summary_contains?: string[];
   expect_summary_not_contains?: string[];
+  expect_analog_known_game_ids?: string[];
+  expect_analog_empty?: boolean;
   known_limitation?: boolean;
 };
 
@@ -43,6 +63,7 @@ for (const suite of evalData.suites) {
       query: test.query,
       gameId: test.game ?? suite.game,
       limit: test.limit ?? 5,
+      knownGames: test.known_games,
     });
     const expectedIds = new Set(test.expect_ids ?? []);
     const messages: string[] = [];
@@ -94,6 +115,26 @@ for (const suite of evalData.suites) {
       }
     }
 
+    // Analog hooks: exact set match on returned known-game ids, or explicitly empty.
+    const analogIds = result.analog_hooks.map((hook) => hook.known_game_id).sort();
+    if (test.expect_analog_known_game_ids) {
+      const expected = [...test.expect_analog_known_game_ids].sort();
+      if (JSON.stringify(analogIds) !== JSON.stringify(expected)) {
+        ok = false;
+        messages.push(`analog_hooks: expected [${expected.join(", ")}], got [${analogIds.join(", ")}]`);
+      }
+      for (const hook of result.analog_hooks) {
+        if (!hook.likeness || !hook.exception) {
+          ok = false;
+          messages.push(`analog hook for "${hook.known_game_id}" missing likeness or exception`);
+        }
+      }
+    }
+    if (test.expect_analog_empty && result.analog_hooks.length > 0) {
+      ok = false;
+      messages.push(`analog_hooks: expected [], got [${analogIds.join(", ")}]`);
+    }
+
     if (ok) {
       passed += 1;
       console.log(`  ok   ${test.label ?? test.query}`);
@@ -107,6 +148,163 @@ for (const suite of evalData.suites) {
       for (const message of messages) console.log(`       ${message}`);
     }
   }
+}
+
+// ─── Sitting store and first-play tool flow ────────────────────────────
+// Runs against a temp dir so eval never touches real sitting rows.
+
+function check(label: string, ok: boolean, detail?: string): void {
+  total += 1;
+  if (ok) {
+    passed += 1;
+    console.log(`  ok   ${label}`);
+  } else {
+    failed += 1;
+    console.log(`  FAIL ${label}`);
+    if (detail) console.log(`       ${detail}`);
+  }
+}
+
+console.log(`\n=== sittings (store + tool flow) ===`);
+const sittingTempDir = mkdtempSync(join(tmpdir(), "boardgame-sittings-"));
+setStorageDir(sittingTempDir);
+
+try {
+  // Store round-trip.
+  const conv = "eval-conversation-1";
+  const started = startSitting({
+    conversationId: conv,
+    gameId: "wingspan",
+    editionId: "base-en-1st-2020",
+    knownGames: ["Catan"],
+  });
+  const readBack = getSitting(conv);
+  check(
+    "sitting start/get round-trip",
+    !started.resumed &&
+      readBack?.game_id === "wingspan" &&
+      readBack?.edition_id === "base-en-1st-2020" &&
+      JSON.stringify(readBack?.known_games) === JSON.stringify(["catan"]),
+    `got ${JSON.stringify(readBack)}`,
+  );
+
+  const resumedStart = startSitting({
+    conversationId: conv,
+    gameId: "wingspan",
+    knownGames: ["Ticket to Ride"],
+  });
+  check(
+    "restarting the same game resumes and merges known games",
+    resumedStart.resumed &&
+      JSON.stringify(resumedStart.sitting.known_games) ===
+        JSON.stringify(["catan", "ticket-to-ride"]),
+    `got resumed=${resumedStart.resumed} known=${JSON.stringify(resumedStart.sitting.known_games)}`,
+  );
+
+  const updated = updateSitting({
+    conversationId: conv,
+    lastRuling: { entry_id: "wingspan-turn-002", title: "Gain Food Action", locator: "rulebook p.5-6" },
+  });
+  check(
+    "update records last ruling",
+    updated?.last_ruling?.entry_id === "wingspan-turn-002",
+    `got ${JSON.stringify(updated?.last_ruling)}`,
+  );
+
+  // Stale sittings are treated as gone, and purged.
+  const staleConv = "eval-conversation-stale";
+  const stale = startSitting({ conversationId: staleConv, gameId: "wingspan" }).sitting;
+  stale.updated_at = new Date(Date.now() - STALE_AFTER_MS - 60_000).toISOString();
+  writeFileSync(join(sittingStoreDir(), `${staleConv}.json`), JSON.stringify(stale));
+  check("stale sitting is ignored on read", getSitting(staleConv) === null);
+
+  writeFileSync(join(sittingStoreDir(), `${staleConv}.json`), JSON.stringify(stale));
+  const purged = purgeStaleSittings();
+  check(
+    "purge removes stale rows and keeps live ones",
+    purged === 1 && getSitting(conv) !== null,
+    `purged=${purged}`,
+  );
+
+  check("deleteSitting removes the row", deleteSitting(conv) && getSitting(conv) === null);
+  startSitting({ conversationId: "a", gameId: "wingspan" });
+  startSitting({ conversationId: "b", gameId: "cribbage" });
+  check("clearAllSittings wipes every row (conversations-cleared path)", clearAllSittings() === 2);
+
+  // Demo flow through the actual tools, keyed by ToolContext.conversationId.
+  const toolCtx = (conversationId: string) =>
+    ({ workingDir: ".", conversationId }) as Parameters<typeof askRulesTool.execute>[1];
+  const parse = (result: { content: string }) => JSON.parse(result.content) as AskResult;
+
+  const demoConv = "eval-demo-teach-wingspan";
+  const startResult = await startSittingTool.execute(
+    { game_id: "wingspan", known_games: ["Catan"] },
+    toolCtx(demoConv),
+  );
+  check("demo: teach-me-wingspan starts a sitting", startResult.isError === false);
+
+  const gainFood = parse(await askRulesTool.execute({ query: "how do I gain food" }, toolCtx(demoConv)));
+  check(
+    "demo: gain food cites wingspan and analogizes to catan",
+    !gainFood.abstention &&
+      gainFood.game_id === "wingspan" &&
+      gainFood.evidence[0]?.entry_id === "wingspan-turn-002" &&
+      gainFood.analog_hooks.length === 1 &&
+      gainFood.analog_hooks[0].known_game_id === "catan",
+    `got ${gainFood.evidence[0]?.entry_id} analogs=[${gainFood.analog_hooks.map((h) => h.known_game_id).join(", ")}]`,
+  );
+  check(
+    "demo: ask_rules recorded the ruling on the sitting",
+    getSitting(demoConv)?.last_ruling?.entry_id === "wingspan-turn-002",
+  );
+
+  const playBird = parse(
+    await askRulesTool.execute({ query: "wait how do I play a bird" }, toolCtx(demoConv)),
+  );
+  check(
+    "demo: mid-sitting question defaults to the sitting's game",
+    playBird.game_id === "wingspan" && playBird.evidence[0]?.entry_id === "wingspan-turn-005",
+    `got game=${playBird.game_id} top=${playBird.evidence[0]?.entry_id}`,
+  );
+
+  const swapResult = await updateSittingTool.execute(
+    { add_known_games: ["Ticket to Ride"] },
+    toolCtx(demoConv),
+  );
+  const drawCards = parse(
+    await askRulesTool.execute({ query: "draw bird cards action" }, toolCtx(demoConv)),
+  );
+  check(
+    "demo: newly known game unlocks its own hook",
+    swapResult.isError === false &&
+      drawCards.analog_hooks.some((hook) => hook.known_game_id === "ticket-to-ride"),
+    `analogs=[${drawCards.analog_hooks.map((h) => h.known_game_id).join(", ")}]`,
+  );
+
+  const abstained = parse(
+    await askRulesTool.execute({ query: "quantum entanglement scoring rule" }, toolCtx(demoConv)),
+  );
+  check(
+    "demo: abstention returns no analogs even with known games",
+    abstained.abstention === true && abstained.analog_hooks.length === 0,
+  );
+
+  const unknownConv = "eval-demo-unknown-games";
+  await startSittingTool.execute({ game_id: "wingspan", known_games: ["chess"] }, toolCtx(unknownConv));
+  const citeOnly = parse(await askRulesTool.execute({ query: "how do I gain food" }, toolCtx(unknownConv)));
+  check(
+    "demo: unhooked known game cites without analogizing",
+    !citeOnly.abstention && citeOnly.analog_hooks.length === 0,
+  );
+
+  const noSittingUpdate = await updateSittingTool.execute(
+    { add_known_games: ["catan"] },
+    toolCtx("eval-demo-no-sitting"),
+  );
+  check("demo: update without a sitting is an explicit error", noSittingUpdate.isError === true);
+} finally {
+  setStorageDir(null);
+  rmSync(sittingTempDir, { recursive: true, force: true });
 }
 
 const gapNote = knownGaps > 0 ? `, ${knownGaps} known gaps` : "";

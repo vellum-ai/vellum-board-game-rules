@@ -1,6 +1,7 @@
 # boardgame-rules
 
-Installable Vellum plugin for cited board-game rules answers.
+Installable Vellum plugin for cited board-game rules answers, with a first-play
+companion for teaching a game at the table.
 
 One plugin owns the contract. Games are versioned corpora under `corpora/`. Wingspan and Cribbage are the first two.
 
@@ -8,20 +9,71 @@ One plugin owns the contract. Games are versioned corpora under `corpora/`. Wing
 
 | Game | Editions | Entries | Corpus version |
 | --- | --- | --- | --- |
-| Wingspan | Base (2020), European Expansion (2019) | 27 | 0.2.0 |
+| Wingspan | Base (2020), European Expansion (2019) | 27 | 0.3.0 |
 | Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.1.0 |
+
+## First-play companion
+
+The companion serves ONE sitting — one table, one game, one night. It asks
+what the players have played before, teaches in layers (goal → turn loop →
+exceptions, with a short comprehension check between layers), stays available
+for mid-game "can I do this now?" questions, and — when the corpus has a real
+mapping — bridges a ruling to a game the players already know ("like claiming
+a route in Ticket to Ride, except…"). Every analogy states both the shared
+mechanic and the important difference.
+
+Two layers of data make that work:
+
+- **Analog hooks** live ON corpus entries (`analog_hooks[]`: `known_game_id`,
+  `known_game_title`, `likeness`, `exception`). Analogies are corpus-owned so
+  they can be *missing* — an entry without a hook makes the tool abstain from
+  analogizing rather than improvise. Wingspan currently hooks into Catan,
+  Ticket to Ride, Dominion, and Azul, only where the mapping is real.
+- **Sittings** are per-conversation state under `data/sittings/`, keyed by the
+  conversation id from `ToolContext`: game, edition, known games, last cited
+  ruling, last analog used.
+
+Invariants: cite first, analog second; never analogize an abstention; the
+analogy is a teaching aid — the citation is the ruling.
+
+### Where "who knows what" lives (do not collapse these)
+
+- **Assistant memory** owns people and which games they already know. The
+  plugin never invents that list.
+- **`config.json`** (optional, user-edited, not shipped) can hold a standing
+  `known_games` list merged into every sitting. Empty or absent is valid.
+- **`data/sittings/`** holds this-sitting-only state, including the known
+  games actually named for this table.
+- **Corpora** own the analogies themselves.
+
+### Sitting lifecycle and cleanup
+
+Sittings are deleted by the `conversation-deleted` hook when their
+conversation is deleted, and wiped wholesale by `conversations-cleared` on the
+clear-all reset (both on the assistant ≥ 0.11 hook surface). As a belt on top,
+a sitting untouched for ~12h is treated as over: ignored on read and purged at
+init/shutdown. Live sittings deliberately survive a plain daemon restart — the
+table may still be mid-game.
 
 ## Surfaces
 
-- `tools/boardgame_ask_rules.ts` — answer a rules question with evidence or abstain
+- `tools/boardgame_ask_rules.ts` — answer a rules question with evidence or
+  abstain; sitting-aware (defaults to the sitting's game, filters
+  `analog_hooks` to the sitting's known games, records the cited ruling)
 - `tools/boardgame_list_supported_games.ts` — list installed games, editions, coverage
-- `skills/boardgame-rules/` — assistant skill instructions
-- `src/` — retrieval, corpus loading, shared types
+- `tools/boardgame_start_sitting.ts` / `tools/boardgame_update_sitting.ts` —
+  start or update the per-conversation sitting
+- `hooks/` — `init`, `shutdown`, `user-prompt-submit` (injects a short sitting
+  card when a sitting exists; never rewrites the prompt),
+  `conversation-deleted`, `conversations-cleared`
+- `skills/boardgame-rules/` and `skills/first-play-companion/` — assistant skill instructions
+- `src/` — retrieval, corpus loading, sitting store, shared types
 - `scripts/validate-corpus.ts` — validate all corpora (plain-English errors)
 - `scripts/evaluate.ts` — regression eval suite
 - `corpora/` — one JSON file per game plus `eval.json`
 
-No hooks. Compare, refresh, embeddings, live BGG, and UI are deferred.
+Compare, refresh, embeddings, live BGG, PDF ingest, UI, and cross-night
+syllabi are deferred.
 
 ## Return contract
 
@@ -32,14 +84,20 @@ Every `boardgame_ask_rules` result includes:
 - `evidence[]` with citation locator, URL, confidence, and rights flags
 - `abstention` and `abstention_reason`
 - `supported_games`
+- `analog_hooks[]` — hooks from the top evidence filtered to the sitting's
+  known games; always `[]` with no sitting, no known-game match, or on
+  abstention
 
-If `abstention` is true, do not invent a ruling.
+If `abstention` is true, do not invent a ruling — and no analogy is offered.
 
 ## Install
 
 ```bash
 assistant plugins install https://github.com/vellum-ai/vellum-board-game-rules/tree/main/boardgame-rules --name boardgame-rules
 ```
+
+Requires assistant 0.10–0.11 (the peer range tracks the loader's
+`semver.satisfies(assistantVersion, range)` check).
 
 ## Validate and test
 
@@ -48,7 +106,9 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 21/21 eval tests passing.
+Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 46/46
+eval tests passing (retrieval + factual assertions + analog filtering +
+sitting store/tool flow).
 
 ## Contributing
 

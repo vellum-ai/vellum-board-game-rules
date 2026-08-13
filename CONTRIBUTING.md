@@ -128,6 +128,7 @@ Each entry is one rules concept — a rule, a scoring atom, a setup step, a powe
 | `topics` | Array of topic tags — helps retrieval match queries |
 | `section` / `subsection` | Section path in the source document |
 | `interpretation_type` | `rule_atom`, `worked_example`, `edge_case`, etc. |
+| `analog_hooks` | Honest mappings to games players may already know, used by the first-play companion. Each hook needs `known_game_id` (lowercase kebab-case), `known_game_title`, `likeness` (what genuinely transfers), and `exception` (where the analogy breaks). Only add a hook when the mapping is real — no hook means the assistant cites without analogizing, which is correct behavior. |
 
 #### Writing good summaries
 
