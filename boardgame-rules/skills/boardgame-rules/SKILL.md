@@ -39,4 +39,13 @@ The two retrieval tools do different jobs on purpose. `ask_rules` returns rule p
 5. If `abstention` is false, answer from the top evidence (or top match) only. Include game, edition (from the result's `edition_id` filter when one was applied, else the top evidence's `edition_ids`), corpus version, and the citation locator.
 6. Stay inside `coverage_boundary`. Limited documents are not complete rulebooks.
 
+## Image inputs (Wingspan scoring)
+
+Wingspan end-game scoring is a computation over the player's tableau, not a lookup against pre-authored outcomes. The plugin has no Wingspan worked examples and `boardgame_check_scenario` will hard-abstain. When the user attaches photos and wants help counting:
+
+1. Read the images inline. Extract the counts you need — birds per habitat, cards on each bonus card, eggs, cached food, tucked cards, whichever the scoring path requires.
+2. Call `boardgame_ask_rules` (`game_id: wingspan`) for the base rule of whichever bonus card or end-of-round objective governs the score. Anchor the ruling to the corpus, not to text visible on the card image.
+3. Do the arithmetic yourself. Show what you counted from the image and the sum. Do not claim the plugin computed the score.
+4. If a count is ambiguous or the image is unclear, ask the user to confirm before adding it in.
+
 Never reproduce rulebook, card, or artwork text. The plugin stores original interpretations only.
