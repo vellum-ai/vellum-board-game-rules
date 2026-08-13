@@ -2,17 +2,26 @@
 
 Installable Vellum plugin for cited board-game rules answers.
 
-One plugin owns the contract. Games are versioned corpora under `corpora/`. Wingspan is the first.
+One plugin owns the contract. Games are versioned corpora under `corpora/`. Wingspan and Cribbage are the first two.
+
+## Supported games
+
+| Game | Editions | Entries | Corpus version |
+| --- | --- | --- | --- |
+| Wingspan | Base (2020), European Expansion (2019) | 27 | 0.2.0 |
+| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.1.0 |
 
 ## Surfaces
 
-- `tools/boardgame_list_supported_games.ts`
-- `tools/boardgame_ask_rules.ts`
-- `skills/boardgame-rules/`
-- `src/` retrieval and shared return shape
-- `corpora/wingspan.json` plus `corpora/eval.json`
+- `tools/boardgame_ask_rules.ts` — answer a rules question with evidence or abstain
+- `tools/boardgame_list_supported_games.ts` — list installed games, editions, coverage
+- `skills/boardgame-rules/` — assistant skill instructions
+- `src/` — retrieval, corpus loading, shared types
+- `scripts/validate-corpus.ts` — validate all corpora (plain-English errors)
+- `scripts/evaluate.ts` — regression eval suite
+- `corpora/` — one JSON file per game plus `eval.json`
 
-No hooks. Compare, refresh, embeddings, live BGG, and extra games are deferred.
+No hooks. Compare, refresh, embeddings, live BGG, and UI are deferred.
 
 ## Return contract
 
@@ -28,16 +37,24 @@ If `abstention` is true, do not invent a ruling.
 
 ## Install
 
-Copy or install this directory as `plugins/boardgame-rules/` in a Vellum workspace.
-
-```text
-assistant plugins list
-cd boardgame-rules && bun scripts/evaluate.ts
+```bash
+assistant plugins install https://github.com/vellum-ai/vellum-board-game-rules/tree/main/boardgame-rules --name boardgame-rules
 ```
 
-Current eval baseline: 8/11 passing, 3 documented lexical gaps, 0 unexpected failures.
+## Validate and test
+
+```bash
+bun scripts/validate-corpus.ts   # validate all corpora
+bun scripts/evaluate.ts           # run regression eval
+```
+
+Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 21/21 eval tests passing.
+
+## Contributing
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full contributor guide. The short version: write one JSON file, validate it, open a PR.
 
 ## Not this package
 
-- `wingspan-rules/` is the FAQ/errata overlay, not this walking-skeleton fixture
-- `interpreters/` and `cribbage-rules/` stay inventory until they become corpora here
+- `wingspan-rules/` is the FAQ/errata overlay, not this plugin's corpus
+- `interpreters/` is pre-corpus inventory, not yet migrated into `corpora/`
