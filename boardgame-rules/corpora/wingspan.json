@@ -94,11 +94,11 @@
       "scope": "probable 2021-era English base-game reference marker; printing mapping unresolved",
       "language": "en",
       "status": "quarantined-internal-reference-marker",
-      "notes": "Metadata observed on a quarantined local upload. It is not treated as an official source or as proof of a Stonemaier printing code. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "notes": "Metadata observed on a quarantined local upload. It is not treated as an official source or as proof of a Stonemaier printing code. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020. Fingerprint reconciled at unification: the overlay edition record carried a truncated 63-character copy of the sha256 that the matching entry (metadata-reference-marker-2021-r23) records in full for the same artifact_path.",
       "source_url": "",
       "source_locator": {
         "artifact_path": "/workspace/plugins/wingspan-rules-internal/WS_Rulebook_r23-LR.pdf",
-        "sha256": "bf409041c0537729dce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d",
+        "sha256": "bf409041c0537729d6ce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d",
         "locator": "PDF metadata only; no text extracted or indexed",
         "source_kind": "quarantined_user_uploaded_artifact",
         "official_source": false,
@@ -1348,7 +1348,7 @@
       "edition_scope": {
         "edition_ids": [
           "base-en-current-printing",
-          "european-expansion-en",
+          "eu-expansion-en-1st-2019",
           "oceania-expansion-en",
           "asia-expansion-en"
         ],
