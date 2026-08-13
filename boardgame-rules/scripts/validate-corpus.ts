@@ -1,0 +1,225 @@
+import { readFileSync, readdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import type { Corpus, CorpusEntry, Edition, RightsFlags } from "../src/types.ts";
+
+// ─── helpers ───────────────────────────────────────────────────────────
+
+type ValidationError = { entry?: string; message: string };
+
+const REQUIRED_ENTRY_FIELDS: (keyof CorpusEntry)[] = [
+  "id",
+  "title",
+  "summary",
+  "edition_ids",
+  "confidence",
+  "source_locator",
+  "rights_flags",
+];
+
+const VALID_CONFIDENCE = new Set(["high", "medium", "low"]);
+
+const REQUIRED_RIGHTS_KEYS: (keyof RightsFlags)[] = [
+  "original_interpretation",
+  "metadata_only",
+  "source_text_stored",
+  "full_text_included",
+  "redistribution_permitted",
+  "internal_only",
+];
+
+// ─── validation ─────────────────────────────────────────────────────────
+
+function validateCorpus(corpus: Corpus, filename: string): ValidationError[] {
+  const errors: ValidationError[] = [];
+
+  // ── corpus-level required fields ──
+  for (const field of ["corpus_id", "game_title", "corpus_version", "editions", "entries", "coverage_boundary"] as const) {
+    if (!corpus[field]) {
+      errors.push({ message: `${filename}: missing required field "${field}"` });
+    }
+  }
+
+  if (errors.length > 0) return errors; // can't validate deeper without basics
+
+  // ── editions ──
+  const editionIds = new Set<string>();
+  const editions = corpus.editions ?? [];
+
+  for (const edition of editions) {
+    if (!edition.edition_id) {
+      errors.push({ message: `${filename}: edition missing "edition_id"` });
+      continue;
+    }
+    if (editionIds.has(edition.edition_id)) {
+      errors.push({ message: `${filename}: duplicate edition_id "${edition.edition_id}"` });
+    }
+    editionIds.add(edition.edition_id);
+
+    for (const field of ["game", "scope", "language", "status", "full_text_included"] as const) {
+      if (edition[field] === undefined || edition[field] === null) {
+        errors.push({ message: `${filename}: edition "${edition.edition_id}" missing "${field}"` });
+      }
+    }
+
+    // inherits chain must resolve
+    if (edition.inherits) {
+      if (!editionIds.has(edition.inherits)) {
+        // might be defined later, defer to second pass
+        // we'll check after all editions are collected
+      }
+    }
+  }
+
+  // second pass: check inherits references resolve
+  for (const edition of editions) {
+    if (edition.inherits && !editionIds.has(edition.inherits)) {
+      errors.push({
+        message: `${filename}: edition "${edition.edition_id}" inherits from unknown edition "${edition.inherits}"`,
+      });
+    }
+    // inherits must not be circular (simple check: must resolve to a different edition)
+    if (edition.inherits === edition.edition_id) {
+      errors.push({
+        message: `${filename}: edition "${edition.edition_id}" inherits from itself`,
+      });
+    }
+  }
+
+  // ── entries ──
+  const entryIds = new Set<string>();
+  const entries = corpus.entries ?? [];
+
+  if (entries.length === 0) {
+    errors.push({ message: `${filename}: corpus has no entries` });
+  }
+
+  for (const entry of entries) {
+    // required fields
+    for (const field of REQUIRED_ENTRY_FIELDS) {
+      if (entry[field] === undefined || entry[field] === null) {
+        errors.push({
+          entry: entry.id ?? "(unknown)",
+          message: `${filename}: entry "${entry.id ?? "?"}" missing required field "${field}"`,
+        });
+      }
+    }
+
+    // unique id
+    if (entry.id) {
+      if (entryIds.has(entry.id)) {
+        errors.push({ message: `${filename}: duplicate entry id "${entry.id}"` });
+      }
+      entryIds.add(entry.id);
+    }
+
+    // edition_ids must resolve to declared editions
+    const entryEditions = entry.edition_ids ?? [];
+    if (entryEditions.length === 0) {
+      errors.push({
+        entry: entry.id,
+        message: `${filename}: entry "${entry.id}" has no edition_ids — every entry must belong to at least one edition`,
+      });
+    }
+    for (const eid of entryEditions) {
+      if (!editionIds.has(eid)) {
+        errors.push({
+          entry: entry.id,
+          message: `${filename}: entry "${entry.id}" references unknown edition "${eid}" — declared editions are: ${[...editionIds].join(", ")}`,
+        });
+      }
+    }
+
+    // confidence must be valid
+    if (entry.confidence && !VALID_CONFIDENCE.has(entry.confidence)) {
+      errors.push({
+        entry: entry.id,
+        message: `${filename}: entry "${entry.id}" has confidence "${entry.confidence}" — valid values are: high, medium, low`,
+      });
+    }
+
+    // source_locator must have a locator string
+    if (entry.source_locator && !entry.source_locator.locator) {
+      errors.push({
+        entry: entry.id,
+        message: `${filename}: entry "${entry.id}" source_locator missing "locator" field`,
+      });
+    }
+
+    // rights_flags must have all required keys
+    if (entry.rights_flags) {
+      for (const key of REQUIRED_RIGHTS_KEYS) {
+        if (entry.rights_flags[key] === undefined) {
+          errors.push({
+            entry: entry.id,
+            message: `${filename}: entry "${entry.id}" rights_flags missing "${key}"`,
+          });
+        }
+      }
+      // redistribution_permitted should be false for a public plugin
+      if (entry.rights_flags.redistribution_permitted === true) {
+        errors.push({
+          entry: entry.id,
+          message: `${filename}: entry "${entry.id}" has redistribution_permitted=true — this plugin only stores original interpretations, not redistributable text`,
+        });
+      }
+    }
+  }
+
+  // ── interpretation_schema (optional but if present, validate shape) ──
+  if (corpus.interpretation_schema) {
+    const schema = corpus.interpretation_schema;
+    for (const field of ["version", "description", "required_fields", "confidence_values", "rights_policy"] as const) {
+      if (!schema[field]) {
+        errors.push({ message: `${filename}: interpretation_schema missing "${field}"` });
+      }
+    }
+  }
+
+  return errors;
+}
+
+// ─── main ───────────────────────────────────────────────────────────────
+
+const corporaDir = fileURLToPath(new URL("../corpora/", import.meta.url));
+const files = readdirSync(corporaDir).filter((f) => f.endsWith(".json") && f !== "eval.json");
+
+let totalErrors = 0;
+let totalEntries = 0;
+let totalEditions = 0;
+const games: string[] = [];
+
+for (const file of files) {
+  const filepath = `${corporaDir}/${file}`;
+  const raw = readFileSync(filepath, "utf8");
+
+  let corpus: Corpus;
+  try {
+    corpus = JSON.parse(raw) as Corpus;
+  } catch (e) {
+    console.log(`\n✗ ${file}: JSON parse error — ${e instanceof Error ? e.message : String(e)}`);
+    totalErrors += 1;
+    continue;
+  }
+
+  const errors = validateCorpus(corpus, file);
+  const entryCount = corpus.entries?.length ?? 0;
+  const editionCount = corpus.editions?.length ?? 0;
+  totalEntries += entryCount;
+  totalEditions += editionCount;
+  games.push(corpus.game_title ?? corpus.corpus_id ?? file);
+
+  if (errors.length === 0) {
+    console.log(`\n✓ ${file}: ${entryCount} entries, ${editionCount} editions — valid`);
+  } else {
+    console.log(`\n✗ ${file}: ${entryCount} entries, ${editionCount} editions — ${errors.length} error(s)`);
+    for (const err of errors) {
+      const prefix = err.entry ? `  [${err.entry}]` : `  [corpus]`;
+      console.log(`${prefix} ${err.message}`);
+    }
+    totalErrors += errors.length;
+  }
+}
+
+console.log(`\n=== ${games.length} game(s): ${games.join(", ")} ===`);
+console.log(`=== ${totalEntries} entries, ${totalEditions} editions, ${totalErrors} error(s) ===`);
+process.exit(totalErrors > 0 ? 1 : 0);

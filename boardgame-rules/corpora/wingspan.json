@@ -25,7 +25,8 @@
       "notes": "1st Edition (2020 printing). Grounded against official Stonemaier FAQ and Rulepop (wingspan.rulepop.com), accessed 2026-08-13.",
       "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
       "rights_status": "original-interpretation-only",
-      "full_text_included": false
+      "full_text_included": false,
+      "inherits": null
     },
     {
       "edition_id": "eu-expansion-en-1st-2019",
@@ -36,7 +37,8 @@
       "notes": "European Expansion overview only. Not a complete expansion corpus.",
       "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
       "rights_status": "original-interpretation-only",
-      "full_text_included": false
+      "full_text_included": false,
+      "inherits": "base-en-1st-2020"
     }
   ],
   "entries": [

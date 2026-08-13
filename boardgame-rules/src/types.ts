@@ -25,10 +25,20 @@ export type Edition = {
   scope: string;
   language: string;
   status: string;
+  /** Optional: the edition this one inherits all base rules from (for expansions/variants that stack on top). */
+  inherits?: string | null;
   notes?: string;
   source_url?: string;
   rights_status?: string;
   full_text_included: boolean;
+};
+
+export type InterpretationSchema = {
+  version: string;
+  description: string;
+  required_fields: string[];
+  confidence_values: string[];
+  rights_policy: string;
 };
 
 export type CorpusEntry = {
@@ -54,6 +64,7 @@ export type Corpus = {
   description: string;
   full_rulebook_text_included: boolean;
   coverage_boundary: string;
+  interpretation_schema?: InterpretationSchema;
   default_source?: {
     publisher?: string;
     title?: string;
