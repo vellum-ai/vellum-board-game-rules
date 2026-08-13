@@ -1,9 +1,0 @@
-{
-  "name": "war-of-the-ring-second-edition-rules",
-  "version": "0.1.0",
-  "description": "Original-interpretation War of the Ring: Second Edition rules aid without bundling source text.",
-  "scripts": {
-    "validate": "bun tools/validate.mjs"
-  },
-  "vellum": {}
-}

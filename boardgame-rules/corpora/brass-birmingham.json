@@ -1,0 +1,412 @@
+{
+  "corpus_id": "brass-birmingham",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "description": "Original, compact play aid for the canonical Roxley Brass: Birmingham rulebook record. No rulebook or tile text is bundled.",
+  "full_rulebook_text_included": false,
+  "interpretation_schema": {
+    "version": "1.0.0",
+    "description": "Every entry is an original, source-bounded interpretation; source text is never stored.",
+    "required_fields": [
+      "id",
+      "title",
+      "kind",
+      "edition_ids",
+      "topics",
+      "summary",
+      "source_locator",
+      "confidence",
+      "rights_flags"
+    ],
+    "confidence_values": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "rights_policy": "Possession or public availability does not establish permission to reproduce, index, or redistribute source text."
+  },
+  "coverage_boundary": "Covers setup, two-era flow, action-card timing, action families, end-of-round turn order/income, era scoring, and final winner. Individual industry, merchant, card, and variant text remains out of scope.",
+  "artifact_provenance": {
+    "artifact_id": "brass-birmingham-canonical-roxley-rulebook-en-2018-11-20",
+    "title": "Brass: Birmingham",
+    "document_type": "official rulebook PDF; uploaded duplicate deduplicated against canonical artifact",
+    "pages": 7,
+    "language": "English",
+    "edition": "Retail/Deluxe gameplay content; English Roxley rulebook v2018.11.20",
+    "provenance": "canonical Roxley source record; local artifact retained under source-audit package",
+    "confidence": "high_for_canonical_record; attachment_hash_comparison_not_independently_repeated_in_this_build",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+    "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+    "source_page": "https://roxley.com/products/brass-birmingham",
+    "source_url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "source_records": [
+    {
+      "publisher": "Roxley Games",
+      "url": "https://roxley.com/products/brass-birmingham",
+      "source_type": "official_publisher_game_page_with_downloadable_rulebook",
+      "edition_scope": "Retail and Deluxe gameplay content; PDF labelled 2018.11.20",
+      "rights_status": "permission_not_granted_or_unclear",
+      "full_text_included": false
+    }
+  ],
+  "editions": [
+    {
+      "edition_id": "retail-deluxe-en-2018-11-upload",
+      "game": "Brass: Birmingham",
+      "scope": "English Roxley rulebook labelled 2018.11.20; retail/Deluxe gameplay scope not explicitly edition-labelled in the PDF",
+      "language": "en",
+      "status": "official-source-identity-high-upload-comparison-not-independent",
+      "notes": "The local file matches the canonical registry checksum recorded by the audit; this build preserves the audit record but does not independently claim a second comparison.",
+      "rights_status": "internal-metadata-and-original-paraphrase-only",
+      "full_text_included": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "setup-board-and-player-area",
+      "title": "Set up markets, cards, merchants, and player mats",
+      "kind": "setup_atom",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "setup",
+        "markets",
+        "cards",
+        "merchants"
+      ],
+      "summary": "Choose the player-count side, remove out-of-count cards and merchants, place Wild cards, shuffle the Draw deck and Merchant tiles, seed markets and beer, then give each player a mat, £17, a character, links, industries, income marker, score marker, and an eight-card hand plus a discard starter.",
+      "interpretation_type": "setup_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF pp. 4-5: Board Setup and Player Area Setup",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "two-era-structure",
+      "title": "Canal and Rail are separate scoring eras",
+      "kind": "play_flow",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "canal-era",
+        "rail-era",
+        "rounds"
+      ],
+      "summary": "The game runs through Canal and Rail eras. Each era continues while the Draw deck and player hands last; the first Canal round grants only one action, while later turns grant two actions.",
+      "interpretation_type": "play_flow",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF p. 6: Goal, Rounds, Player Turns",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "action-card-discard",
+      "title": "Every action consumes a hand card",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "actions",
+        "cards",
+        "turn"
+      ],
+      "summary": "On a turn, choose an action and discard a card to pay the action cost. Build is the action that needs a matching Location or Industry card; the other action types use their own resource and placement requirements. The same action may be chosen twice when legal.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF pp. 6 and 8-10: Actions List and Actions",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "six-action-families",
+      "title": "Action choice changes the network and economy",
+      "kind": "turn_atom",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "build",
+        "network",
+        "develop",
+        "sell",
+        "loan",
+        "scout"
+      ],
+      "summary": "The action menu is Build, Network, Develop, Sell, Loan, or Scout. Build places an industry, Network extends links, Develop removes tiles to reach higher industry levels, Sell flips eligible industries through a merchant transaction, Loan trades future income for cash, and Scout trades hand access for Wild cards. Apply the selected action’s cost before its benefit.",
+      "interpretation_type": "turn_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF pp. 6 and 8-10: Actions List",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "round-order-and-income",
+      "title": "Money spent determines the next round order",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "round",
+        "turn-order",
+        "income"
+      ],
+      "summary": "After all players act, reorder characters from least to most money spent, preserving relative order on ties, then return spent money to the Bank. Collect income at the displayed income level, except do not collect it after the final round; resolve a negative-income shortfall by removing industry tiles as specified.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF p. 6: End of Round",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "era-end-scoring",
+      "title": "Score links and only flipped industries at an era boundary",
+      "kind": "scoring_interpretation",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "scoring",
+        "links",
+        "industries",
+        "era-end"
+      ],
+      "summary": "At the end of each era, score each Link by its adjacent locations and score only flipped industry tiles for their printed Victory Points. Then apply Canal-era cleanup: remove obsolete level-one industries, reset merchant beer, reshuffle discards, and deal new hands for the Rail Era.",
+      "interpretation_type": "scoring_interpretation",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF p. 6: End of Canal & Rail Era and End of Canal Era",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "final-score",
+      "title": "Rail Era scoring determines the winner",
+      "kind": "endgame",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "endgame",
+        "victory-points",
+        "income"
+      ],
+      "summary": "After the Rail Era’s final scoring and required maintenance, the player with the most Victory Points wins. Income is a resource and tie-break context during play, not a replacement for the Victory Point total.",
+      "interpretation_type": "endgame",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF pp. 6-7: End of Era and Winning the Game",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    },
+    {
+      "id": "resource-consumption-order",
+      "title": "Build and network costs use market resources",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "retail-deluxe-en-2018-11-upload"
+      ],
+      "topics": [
+        "coal",
+        "iron",
+        "beer",
+        "resources"
+      ],
+      "summary": "When an action requires coal, iron, or beer, pay or consume it as part of resolving that action; links and industry effects can change who supplies or benefits from those resources. The compact package does not reproduce industry tile text, so tile-specific exceptions require the authorized rulebook.",
+      "interpretation_type": "timing_atom",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/brass-birmingham/Brass-Birmingham-Rulebook.pdf",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "locator": "PDF pp. 8-10 and game concepts: resource consumption",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": true,
+        "accessed_at": "2026-08-13",
+        "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281",
+        "publisher": "Roxley Games"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "Roxley Games",
+        "official_source": false
+      }
+    }
+  ],
+  "game_title": "Brass: Birmingham",
+  "migration": {
+    "migrated_from": "interpreters/brass-birmingham",
+    "original_corpus_id": "brass-birmingham-rules-interpreter",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  }
+}

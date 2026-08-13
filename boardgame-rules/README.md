@@ -7,10 +7,20 @@ One plugin owns the contract. Games are versioned corpora under `corpora/`. Wing
 
 ## Supported games
 
+18 games, one schema. Two are **reference corpora** with first-play analog
+hooks; sixteen are **bounded interpreter corpora** migrated from the former
+`interpreters/` packages — document-scoped, limited coverage, sources with
+unresolved rights, entries marked `internal_only`. Every corpus abstains
+outside its coverage boundary.
+
 | Game | Editions | Entries | Corpus version |
 | --- | --- | --- | --- |
-| Wingspan | Base (2020), European Expansion (2019) | 27 | 0.3.0 |
-| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.2.0 |
+| Wingspan (reference) | Base (2020), EU Expansion (2019), FAQ/errata overlay editions | 37 | 0.4.0 |
+| Cribbage (reference) | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.2.0 |
+| A Feast for Odin · Ark Nova · Brass: Birmingham · Dune: Imperium · Dune: Imperium – Uprising · Gaia Project · Gloomhaven · Gloomhaven: JotL · Lost Ruins of Arnak · Nemesis · Pandemic Legacy S1 · Sky Team · Star Wars: Rebellion · Terraforming Mars · Twilight Imperium 4E · War of the Ring 2E | document-scoped | 7–15 each | 0.1.0–0.2.0 |
+
+Each migrated corpus carries a `migration` block naming its origin package;
+run `boardgame_list_supported_games` for live coverage details.
 
 ## First-play companion
 
@@ -112,15 +122,20 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 54 entries, 6 editions, 2 games, 0 validation errors, 52/52
-eval tests passing (retrieval + factual assertions + analog filtering +
-sitting store/tool flow).
+Current baseline: 216 entries, 28 editions, 18 games, 0 validation errors,
+72/72 eval tests passing (retrieval + factual assertions + analog filtering +
+sitting store/tool flow + a migration smoke test per migrated game).
 
 ## Contributing
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full contributor guide. The short version: write one JSON file, validate it, open a PR.
 
-## Not this package
+## Formerly separate packages
 
-- `wingspan-rules/` is the FAQ/errata overlay, not this plugin's corpus
-- `interpreters/` is pre-corpus inventory, not yet migrated into `corpora/`
+- `wingspan-rules/` (FAQ/errata overlay): its unique entries are merged into
+  `corpora/wingspan.json`; see that file's `migration` block for the imported
+  ids and the dedupe mapping.
+- `interpreters/` (pre-corpus inventory): every package migrated into
+  `corpora/` under the unified schema.
+- `source-audit/` (rights/source discovery): now lives at
+  [`source-audit/`](source-audit/) inside this plugin directory.

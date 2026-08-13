@@ -86,11 +86,15 @@ function analogHooksFor(
   return topEntry.analog_hooks.filter((hook) => known.has(hook.known_game_id));
 }
 
+/**
+ * An explicit edition_id filters strictly (null = unknown edition, abstain).
+ * No edition_id means NO filter — all editions are in scope. Defaulting to
+ * the first edition would hide variant/expansion/overlay entries that are
+ * only tagged with later editions (cribbage variants, wingspan errata).
+ */
 function resolveEdition(corpus: Corpus, editionId?: string): string | null {
-  if (editionId) {
-    return corpus.editions.some((edition) => edition.edition_id === editionId) ? editionId : null;
-  }
-  return corpus.editions[0]?.edition_id ?? null;
+  if (!editionId) return null;
+  return corpus.editions.some((edition) => edition.edition_id === editionId) ? editionId : null;
 }
 
 export function askRules(options: {

@@ -1,7 +1,7 @@
 {
   "corpus_id": "wingspan",
   "game_title": "Wingspan",
-  "corpus_version": "0.3.0",
+  "corpus_version": "0.4.0",
   "generated_at": "2026-08-13",
   "description": "Corrected Wingspan fixture for the installable boardgame-rules plugin. Original interpretations of setup, turn structure, scoring, habitats, bird-power types, Automa overview, and selected edge cases, grounded against the official Stonemaier FAQ and publisher-commissioned Rulepop. Not a complete rulebook and not the FAQ/errata overlay in wingspan-rules/.",
   "full_rulebook_text_included": false,
@@ -39,6 +39,74 @@
       "rights_status": "original-interpretation-only",
       "full_text_included": false,
       "inherits": "base-en-1st-2020"
+    },
+    {
+      "edition_id": "base-en-current-printing",
+      "game": "Wingspan",
+      "scope": "base game",
+      "language": "en",
+      "status": "current-printing-reference",
+      "notes": "The official FAQ says current printings include the Swift-Start Pack; older printings may need the publisher's update pack. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "rights_status": "metadata-and-original-paraphrase-only",
+      "full_text_included": false,
+      "inherits": null
+    },
+    {
+      "edition_id": "base-en-early-printings",
+      "game": "Wingspan",
+      "scope": "base game",
+      "language": "en",
+      "status": "historical-printing-reference",
+      "notes": "The official FAQ identifies first and second English printing codes and lists later printing markers. Exact component or errata questions should be checked against the physical printing and publisher update guidance. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "rights_status": "metadata-and-original-paraphrase-only",
+      "full_text_included": false,
+      "inherits": null
+    },
+    {
+      "edition_id": "oceania-expansion-en",
+      "game": "Wingspan",
+      "scope": "Oceania Expansion",
+      "language": "en",
+      "status": "official-source-pointer",
+      "notes": "The publisher page links an Oceania Expansion rulebook and a separate additional Automa rulebook. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "rights_status": "metadata-and-original-paraphrase-only",
+      "full_text_included": false,
+      "inherits": null
+    },
+    {
+      "edition_id": "asia-expansion-en",
+      "game": "Wingspan",
+      "scope": "Asia Expansion",
+      "language": "en",
+      "status": "official-source-pointer",
+      "notes": "The publisher lists Wingspan Asia among the official Wingspan products. Confirm the relevant rule source and edition at answer time. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "source_url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "rights_status": "metadata-and-original-paraphrase-only",
+      "full_text_included": false,
+      "inherits": null
+    },
+    {
+      "edition_id": "base-en-2021-era-reference-marker",
+      "game": "Wingspan",
+      "scope": "probable 2021-era English base-game reference marker; printing mapping unresolved",
+      "language": "en",
+      "status": "quarantined-internal-reference-marker",
+      "notes": "Metadata observed on a quarantined local upload. It is not treated as an official source or as proof of a Stonemaier printing code. Migrated from the wingspan-rules FAQ/errata overlay; printing mapping is the overlay's, not pinned to base-en-1st-2020.",
+      "source_url": "",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/wingspan-rules-internal/WS_Rulebook_r23-LR.pdf",
+        "sha256": "bf409041c0537729dce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d",
+        "locator": "PDF metadata only; no text extracted or indexed",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_status": "internal-metadata-only",
+      "full_text_included": false,
+      "inherits": null
     }
   ],
   "entries": [
@@ -1114,6 +1182,510 @@
         "redistribution_permitted": false,
         "internal_only": false
       }
+    },
+    {
+      "id": "faq-migrating-bird-token",
+      "title": "Migrating birds leave the action token behind",
+      "kind": "faq_paraphrase",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "migration",
+        "action-token",
+        "habitat"
+      ],
+      "summary": "When a bird migrates, its action token stays in the row where the action began; apply the FAQ positional condition even if the original row has only that bird.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Rule Questions: Game Mechanisms",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "Base English FAQ timing guidance for the listed printings."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Rule Questions: Game Mechanisms",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "metadata-base-card-count",
+      "title": "Early-printing base card count (current scope unresolved)",
+      "kind": "official_metadata",
+      "edition_ids": [
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "components",
+        "cards",
+        "card-size"
+      ],
+      "summary": "A publisher FAQ snapshot lists 212 base-game cards measuring 57 by 87 millimetres. The relationship between that figure, current-printing totals, and Swift-Start components is unresolved here; do not use 212 as a current-printing total.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "General Questions",
+        "publisher": "Stonemaier Games",
+        "rights_status": "metadata",
+        "full_text_included": false
+      },
+      "interpretation_type": "official_metadata_interpretation",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-early-printings"
+        ],
+        "scope_note": "The 212 figure is retained only as an early/FAQ snapshot. Current-printing and Swift-Start reconciliation is unresolved."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "General Questions",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "metadata-swift-start-pack",
+      "title": "Swift-Start Pack marker",
+      "kind": "official_metadata",
+      "edition_ids": [
+        "base-en-current-printing"
+      ],
+      "topics": [
+        "swift-start",
+        "setup",
+        "teaching"
+      ],
+      "summary": "Current printings include a Swift-Start Pack identified by grey corner markers; those cards can be used normally or separated for teaching with the player guides.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Rule Questions: Bird Powers and Bonus Cards",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "official_metadata_interpretation",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing"
+        ],
+        "scope_note": "Applies only to the listed Wingspan edition scopes; verify newer printings at the official source."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Rule Questions: Bird Powers and Bonus Cards",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "metadata-expansion-regions",
+      "title": "Expansion region coverage",
+      "kind": "official_metadata",
+      "edition_ids": [
+        "base-en-current-printing",
+        "eu-expansion-en-1st-2019",
+        "oceania-expansion-en",
+        "asia-expansion-en"
+      ],
+      "topics": [
+        "expansions",
+        "regions",
+        "europe",
+        "oceania",
+        "asia",
+        "americas"
+      ],
+      "summary": "The publisher page identifies the base game and regional products covering Europe, Oceania, Asia, and the Americas; use the linked source for the current product and rules set.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Wingspan related pages / General Questions",
+        "publisher": "Stonemaier Games",
+        "rights_status": "metadata-and-original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "official_metadata_interpretation",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "european-expansion-en",
+          "oceania-expansion-en",
+          "asia-expansion-en"
+        ],
+        "scope_note": "Applies only to the listed Wingspan edition scopes; verify newer printings at the official source."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Wingspan related pages / General Questions",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "metadata-reference-marker-2021-r23",
+      "title": "Quarantined 2021-era reference marker",
+      "kind": "internal_artifact_metadata",
+      "edition_ids": [
+        "base-en-2021-era-reference-marker"
+      ],
+      "topics": [
+        "edition",
+        "printing",
+        "provenance",
+        "reference-marker"
+      ],
+      "summary": "A quarantined local upload has a 2021-11-16 metadata date, a 12-page low-resolution PDF marker, and filename marker r23. These observations do not map it to an official printing code and are not an official-source claim.",
+      "source": {
+        "url": "",
+        "section": "PDF metadata only; no text extracted",
+        "publisher": "Not an official source",
+        "rights_status": "metadata-only-internal",
+        "full_text_included": false
+      },
+      "interpretation_type": "edition_identity_note",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-2021-era-reference-marker"
+        ],
+        "scope_note": "Internal artifact marker only; probable 2021-era English base-game reference, with printing identity unresolved."
+      },
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/wingspan-rules-internal/WS_Rulebook_r23-LR.pdf",
+        "sha256": "bf409041c0537729d6ce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d",
+        "locator": "PDF metadata only; no text extracted or indexed",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": true,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "faq-printing-update-guidance",
+      "title": "Printing and update decision guidance",
+      "kind": "interpretation_guidance",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "edition",
+        "printing",
+        "update-pack",
+        "errata",
+        "swift-start"
+      ],
+      "summary": "Before answering a component or errata question, identify the physical printing and consult the publisher update guidance. Do not use the internal 2021-era marker or the 212-card snapshot as a substitute for current-printing verification.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "General Questions / printing and update guidance",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "decision_guidance",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "Use for English base-game printing questions; verify the physical printing and current publisher page."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "General Questions / printing and update guidance",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "errata-omnivore-expert-16-percent",
+      "title": "Omnivore Expert errata reminder",
+      "kind": "errata_reminder",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "errata",
+        "bonus-card",
+        "percentage"
+      ],
+      "summary": "The publisher FAQ correction uses 16% for Omnivore Expert, replacing the earlier 10% figure.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Errata",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "errata_reminder",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "English base-game errata reminder; confirm the physical card and printing when applying it."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Errata",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "errata-cartographer-prairie",
+      "title": "Cartographer habitat errata reminder",
+      "kind": "errata_reminder",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "errata",
+        "bonus-card",
+        "habitat",
+        "prairie"
+      ],
+      "summary": "The publisher FAQ correction includes prairie in the habitats counted by Cartographer.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Errata",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "errata_reminder",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "English base-game errata reminder; confirm the physical card and printing when applying it."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Errata",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "errata-photographer-4-5-birds",
+      "title": "Photographer scoring errata reminder",
+      "kind": "errata_reminder",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "errata",
+        "bonus-card",
+        "scoring"
+      ],
+      "summary": "The publisher FAQ correction evaluates Photographer against 4–5 birds, not the earlier 2–3 range.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Errata",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "errata_reminder",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "English base-game errata reminder; confirm the physical card and printing when applying it."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Errata",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
+    },
+    {
+      "id": "errata-spotted-sandpiper-5-points",
+      "title": "Spotted Sandpiper scoring errata reminder",
+      "kind": "errata_reminder",
+      "edition_ids": [
+        "base-en-current-printing",
+        "base-en-early-printings"
+      ],
+      "topics": [
+        "errata",
+        "bird",
+        "scoring"
+      ],
+      "summary": "The publisher FAQ correction assigns Spotted Sandpiper a value of 5 points rather than 4.",
+      "source": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "section": "Errata",
+        "publisher": "Stonemaier Games",
+        "rights_status": "original-paraphrase",
+        "full_text_included": false
+      },
+      "interpretation_type": "errata_reminder",
+      "confidence": "high",
+      "edition_scope": {
+        "edition_ids": [
+          "base-en-current-printing",
+          "base-en-early-printings"
+        ],
+        "scope_note": "English base-game errata reminder; confirm the physical card and printing when applying it."
+      },
+      "source_locator": {
+        "url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "publisher": "Stonemaier Games",
+        "locator": "Errata",
+        "source_kind": "official_publisher_webpage",
+        "accessed_at": "2026-08-12"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      }
     }
-  ]
+  ],
+  "migration": {
+    "merged_from": "wingspan-rules/data/wingspan-corpus.json",
+    "migrated_at": "2026-08-13",
+    "imported_entries": [
+      "faq-migrating-bird-token",
+      "metadata-base-card-count",
+      "metadata-swift-start-pack",
+      "metadata-expansion-regions",
+      "metadata-reference-marker-2021-r23",
+      "faq-printing-update-guidance",
+      "errata-omnivore-expert-16-percent",
+      "errata-cartographer-prairie",
+      "errata-photographer-4-5-birds",
+      "errata-spotted-sandpiper-5-points"
+    ],
+    "deduplicated_entries": {
+      "faq-food-dice-one-at-a-time": "wingspan-turn-002 / wingspan-rule-009",
+      "faq-draw-multiple-cards": "wingspan-turn-004",
+      "faq-pink-power-final-turn": "wingspan-rule-006",
+      "faq-played-birds-permanent": "wingspan-turn-005 / wingspan-edgecase-005",
+      "faq-decline-benefit-not-cost": "wingspan-rule-006 / wingspan-edgecase-004",
+      "faq-first-player-timing": "wingspan-setup-001",
+      "faq-automa-turn-order": "wingspan-rule-012"
+    },
+    "note": "FAQ/errata overlay merged. Entries listed in deduplicated_entries were already covered by the unified entries named as their counterparts and were not imported."
+  },
+  "component_count_reconciliation": {
+    "status": "unresolved",
+    "entry_id": "metadata-base-card-count",
+    "note": "The 212-card FAQ snapshot is not scoped to current printings. This corpus does not assert a standard-base-versus-Swift-Start/current total without a directly locatable official source statement.",
+    "source_locator": {
+      "url": "https://stonemaiergames.com/games/wingspan/rules/",
+      "publisher": "Stonemaier Games",
+      "locator": "General Questions",
+      "source_kind": "official_publisher_webpage",
+      "accessed_at": "2026-08-12"
+    }
+  }
 }

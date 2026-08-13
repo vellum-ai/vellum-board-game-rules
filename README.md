@@ -31,12 +31,36 @@ Then ask your assistant about a supported game. The tools are:
 
 ## Supported games
 
+Two tiers share one schema and one contract:
+
+**Reference corpora** — grounded against official or widely published sources,
+with first-play analog hooks:
+
 | Game | Editions | Entries | Corpus version |
 | --- | --- | --- | --- |
-| Wingspan | Base (2020), European Expansion (2019) | 27 | 0.2.0 |
-| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.1.0 |
+| Wingspan | Base (2020), European Expansion (2019), plus FAQ/errata overlay editions | 37 | 0.4.0 |
+| Cribbage | Two-player standard, Muggins, Short (61), Skunk | 27 | 0.2.0 |
 
-Want to add a game? See **[CONTRIBUTING.md](CONTRIBUTING.md)** — you write one JSON file, validate it, and it works.
+**Bounded interpreter corpora** — migrated from the former `interpreters/`
+packages. Deliberately limited coverage from document-scoped, often
+third-party sources whose rights are unresolved; entries are original
+interpretations marked `internal_only`, and the corpus abstains outside its
+coverage boundary:
+
+| Game | Entries | | Game | Entries |
+| --- | --- | --- | --- | --- |
+| A Feast for Odin | 13 | | Lost Ruins of Arnak | 14 |
+| Ark Nova | 14 | | Nemesis | 13 |
+| Brass: Birmingham | 8 | | Pandemic Legacy: Season 1 | 8 |
+| Dune: Imperium | 8 | | Sky Team | 15 |
+| Dune: Imperium – Uprising | 9 | | Star Wars: Rebellion | 7 |
+| Gaia Project | 7 | | Terraforming Mars | 7 |
+| Gloomhaven | 8 | | Twilight Imperium: Fourth Edition | 7 |
+| Gloomhaven: Jaws of the Lion | 7 | | War of the Ring: Second Edition | 7 |
+
+Want to add a game or deepen a bounded corpus? See
+**[CONTRIBUTING.md](CONTRIBUTING.md)** — you write one JSON file, validate it,
+and it works.
 
 ## How it works
 
@@ -65,21 +89,21 @@ If you're contributing: write your own interpretation of the rule. Don't paste t
 ## Repository structure
 
 ```
-boardgame-rules/          The installable plugin
-├── tools/                Model-visible tools (ask_rules, list_supported_games)
-├── skills/               Skill instructions for the assistant
-├── src/                  Retrieval, corpus loading, shared types
+boardgame-rules/          The installable plugin — the repo's only package
+├── tools/                Model-visible tools (ask/list + sitting start/update)
+├── hooks/                Lifecycle hooks (sitting store, sitting card, cleanup)
+├── skills/               Skill instructions (rules answers + first-play companion)
+├── src/                  Retrieval, corpus loading, sitting store, shared types
 ├── scripts/              Validator + evaluation harness
-├── corpora/              Game corpora (one JSON file per game)
-│   ├── wingspan.json     27 entries, 2 editions
-│   ├── cribbage.json     27 entries, 4 editions
-│   └── eval.json         Regression test suite
-└── package.json          Plugin manifest (@vellumai/plugin-api ^0.10.0)
-
-source-audit/             Fixed BGG top-50 identity snapshot + publisher-source audit
-interpreters/             Original-interpretation game packages (pre-corpus inventory)
-wingspan-rules/           Wingspan FAQ/errata overlay (separate from the plugin corpus)
+├── corpora/              Game corpora (one JSON file per game) + eval.json
+└── source-audit/         Fixed BGG top-50 identity snapshot + publisher-source
+                          audit registry (moved from the repo root at unification)
 ```
+
+The former `interpreters/` and `wingspan-rules/` packages are gone: every
+interpreter corpus was migrated into `corpora/` under the unified schema (each
+carries a `migration` block naming its origin), and the Wingspan overlay's
+unique FAQ/errata entries were merged into `corpora/wingspan.json`.
 
 ## Validation
 
@@ -88,7 +112,7 @@ cd boardgame-rules && bun scripts/validate-corpus.ts   # validate all corpora
 cd boardgame-rules && bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: **54 entries, 6 editions, 2 games, 0 validation errors, 21/21 eval tests passing.**
+Current baseline: **216 entries, 28 editions, 18 games, 0 validation errors, 72/72 eval tests passing.**
 
 ## Sequencing
 
@@ -96,10 +120,12 @@ The project grows in gates:
 
 1. **One-game gate** — one game can answer cited, edition-aware questions and abstain honestly. ✅ (Wingspan)
 2. **Two-game gate** — the schema and tool contract work across multiple games without per-game hacks. ✅ (Wingspan + Cribbage)
-3. **Five-game gate** — five varied games prove the schema generalizes across complexity, mechanics, and publisher styles.
+3. **Five-game gate** — varied games prove the schema generalizes across complexity, mechanics, and publisher styles. ✅ (18 games after the interpreter migration — though 16 are bounded, limited-coverage corpora, not reference depth)
 4. **Fifty-game gate** — repeatable contribution with provenance, stratified evaluation, and observability.
 
-We're at the two-game gate. The schema is stable. The contributor contract is documented. The next step is five varied games.
+The schema is stable and every game in the repo now speaks it. The next step
+is deepening the bounded corpora toward reference quality and resolving source
+rights via the `boardgame-rules/source-audit/` registry.
 
 ## License
 

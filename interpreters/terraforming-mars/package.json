@@ -1,9 +1,0 @@
-{
-  "name": "terraforming-mars-rules",
-  "version": "0.1.0",
-  "description": "Original-interpretation Terraforming Mars rules aid without bundling source text.",
-  "scripts": {
-    "validate": "bun tools/validate.mjs"
-  },
-  "vellum": {}
-}
