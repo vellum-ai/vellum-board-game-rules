@@ -374,5 +374,24 @@
     "original_corpus_id": "dune-imperium-rules-interpreter",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-12",
+    "registry_ref": null,
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "dune-imperium-base-2020-upload",
+        "title": "Dune: Imperium",
+        "document_type": "official-style full rulebook PDF",
+        "sha256": "a689f19e7bda36ec03240ba19cbc481dd4d681f55837529cd8170ec9d19be6db",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

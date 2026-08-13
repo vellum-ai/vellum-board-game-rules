@@ -988,5 +988,22 @@
   "migration": {
     "original_corpus_id": "cribbage-rules-reference",
     "note": "corpus_id normalized to match the filename per the CONTRIBUTING.md convention adopted at unification."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-13",
+    "registry_ref": null,
+    "official_sources": [
+      {
+        "publisher": "Bicycle Cards",
+        "official_url": "https://bicyclecards.com/how-to-play/cribbage",
+        "source_type": "widely_published_reference",
+        "rights_status": "publisher-reference-for-a-public-domain-game",
+        "accessed_on": "2026-08-13",
+        "notes": "The game itself is public domain. Only original paraphrases and structured metadata are stored. No verbatim publisher prose is redistributed."
+      }
+    ],
+    "source_artifacts": [],
+    "rights_note": "Grounded on publicly available official or widely published references, cited per entry. No source text is stored or redistributed."
   }
 }

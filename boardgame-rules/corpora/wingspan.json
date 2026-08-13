@@ -1687,5 +1687,29 @@
       "source_kind": "official_publisher_webpage",
       "accessed_at": "2026-08-12"
     }
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-13",
+    "registry_ref": null,
+    "official_sources": [
+      {
+        "publisher": "Stonemaier Games",
+        "official_url": "https://stonemaiergames.com/games/wingspan/rules/",
+        "source_type": "official_publisher_webpage",
+        "rights_status": "original-interpretation-only",
+        "accessed_on": "2026-08-13",
+        "notes": "Only original fixture paraphrases and metadata are stored. No rulebook or card text is redistributed."
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "WS_Rulebook_r23-LR.pdf",
+        "sha256": "bf409041c0537729d6ce3478c3bcf437969aae9d5d3c9ada55ff9883837b0f1d",
+        "manifest_path": null,
+        "rights_status": "internal-metadata-only"
+      }
+    ],
+    "rights_note": "Grounded on publicly available official or widely published references, cited per entry. No source text is stored or redistributed. Quarantined uploads linked here are internal reference markers only."
   }
 }

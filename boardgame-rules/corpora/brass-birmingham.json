@@ -408,5 +408,70 @@
     "original_corpus_id": "brass-birmingham-rules-interpreter",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_rules_material_located",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "224517",
+      "list_rank": 8,
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    "official_sources": [
+      {
+        "publisher": "Roxley Games",
+        "official_url": "https://roxley.com/products/brass-birmingham",
+        "source_type": "official_publisher_game_page_with_downloadable_rulebooks",
+        "edition_scope": "Retail edition; English, Spanish, Italian, French, and German downloads listed",
+        "language": "English, Spanish, Italian, French, and German",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-12",
+        "notes": "Official publisher/developer source located during the source audit. Public access is not permission to index or redistribute full text.",
+        "document_inventory": [
+          {
+            "language": "English",
+            "label": "Brass: Birmingham Rulebook - 2018.11.20",
+            "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook.pdf?v=1758826281"
+          },
+          {
+            "language": "Spanish",
+            "label": "Brass: Birmingham Rulebook (Spanish) - 2018.09.16",
+            "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-SP-2018.09.16.pdf"
+          },
+          {
+            "language": "Italian",
+            "label": "Brass: Birmingham Rulebook (Italian) - 2018.07.11",
+            "url": "https://cdn.shopify.com/s/files/1/0246/2190/8043/files/Brass-Birmingham-Rulebook-IT-2018.07.11.pdf?v=1606762758"
+          },
+          {
+            "language": "French",
+            "label": "Brass: Birmingham Rulebook (French) - 2018.07.11",
+            "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-FR-2018.07.11.pdf"
+          },
+          {
+            "language": "German",
+            "label": "Brass: Birmingham Rulebook (German) - 2018.07.11",
+            "url": "http://files.roxley.com/Brass-Birmingham-Rulebook-DE-2018.07.11.pdf"
+          }
+        ]
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "brass-birmingham-canonical-roxley-rulebook-en-2018-11-20",
+        "title": "Brass: Birmingham",
+        "document_type": "official rulebook PDF; uploaded duplicate deduplicated against canonical artifact",
+        "sha256": "bb627a11c769957fbb5f26a210e3957ae27a2bad054ba9cb3b4fadc6c2ba73e5",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

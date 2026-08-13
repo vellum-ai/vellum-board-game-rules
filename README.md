@@ -110,11 +110,12 @@ unique FAQ/errata entries were merged into `corpora/wingspan.json`.
 ## Validation
 
 ```bash
-cd boardgame-rules && bun scripts/validate-corpus.ts   # validate all corpora
-cd boardgame-rules && bun scripts/evaluate.ts           # run regression eval
+cd boardgame-rules && bun scripts/validate-corpus.ts     # validate all corpora
+cd boardgame-rules && bun scripts/evaluate.ts             # run regression eval
+cd boardgame-rules && bun scripts/sync-source-audit.ts    # refresh corpus source_audit blocks
 ```
 
-Current baseline: **230 entries (2 with worked examples), 29 editions, 19 games, 0 validation errors, 88/88 eval tests passing.**
+Current baseline: **230 entries (2 with worked examples), 29 editions, 19 games, 0 validation errors, 88/88 eval tests passing.** Every corpus carries a validator-enforced `source_audit` block tracing its sources to the audit registry and upload manifests.
 
 ## Sequencing
 

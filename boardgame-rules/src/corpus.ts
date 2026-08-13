@@ -42,6 +42,8 @@ export function listSupportedGames(): SupportedGame[] {
     coverage_boundary: corpus.coverage_boundary,
     entry_count: corpus.entries.length,
     full_rulebook_text_included: corpus.full_rulebook_text_included === true,
+    source_audit_status: corpus.source_audit?.audit_status ?? null,
+    rights_note: corpus.source_audit?.rights_note ?? null,
   }));
 }
 

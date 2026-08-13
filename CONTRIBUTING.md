@@ -169,6 +169,28 @@ Common `source_kind` values:
 - `community_consensus` — widely agreed but not publisher-stated
 - `widely_published_reference` — common reference (e.g., Bicycle Cards for Cribbage)
 
+### 4. Source audit block (auto-generated)
+
+Every corpus also carries a `source_audit` block — the corpus-owned summary of
+the source-audit registry's findings for that game: audit status, official
+sources with rights posture, quarantined source artifacts linked to their
+upload-batch manifests, and a one-line `rights_note`. **Do not write it by
+hand.** After adding or editing a corpus (or anything under
+`source-audit/data/`), regenerate it:
+
+```bash
+cd boardgame-rules && bun scripts/sync-source-audit.ts
+```
+
+The script joins the registry (`source-audit/data/source-audit-registry.latest.json`),
+the upload-batch manifests, and your corpus's own provenance blocks
+(`source_artifact`, `source_artifacts`, `artifact_provenance`,
+edition-level locators). Games outside the registry's fixed list get
+`audit_status: "not_in_registry_scope"` — that is normal, not an error. The
+validator requires the block and checks its shape (including that every
+sha256 is a real 64-hex fingerprint and every official source carries a
+`rights_status`).
+
 ## Validation
 
 Before opening a PR, run:

@@ -217,5 +217,24 @@
     "original_corpus_id": "gloomhaven-jaws-of-the-lion-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "not_in_registry_scope",
+    "audited_at": "2026-08-12",
+    "registry_ref": null,
+    "official_sources": [],
+    "source_artifacts": [
+      {
+        "artifact_id": "gloomhaven-jaws-of-the-lion-upload-2026-08-12",
+        "title": "Gloomhaven: Jaws of the Lion",
+        "document_type": "2020 Learn to Play guide; not a complete rules reference",
+        "sha256": "bf658f635f8677b18db485f62580526190eac334d34bf6b52e74111f9faccb52",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }

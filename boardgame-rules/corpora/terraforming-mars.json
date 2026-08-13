@@ -219,5 +219,46 @@
     "original_corpus_id": "terraforming-mars-rules-corpus",
     "migrated_at": "2026-08-13",
     "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  },
+  "source_audit": {
+    "audit_status": "official_source_located_rules_not_confirmed",
+    "audited_at": "2026-08-13",
+    "registry_ref": {
+      "registry_path": "source-audit/data/source-audit-registry.latest.json",
+      "registry_version": "v1.3.0",
+      "bgg_id": "167791",
+      "list_rank": 21,
+      "fallback_tier": "official_public_reference_pending_rights_review"
+    },
+    "official_sources": [
+      {
+        "publisher": "FryxGames",
+        "official_url": "https://fryxgames.se/product/terraforming-mars/",
+        "source_type": "official_publisher_product_page",
+        "edition_scope": "Base game; English product page",
+        "language": "English",
+        "source_verification_status": "verified_official_public_reference",
+        "rights_status": "permission_not_granted_or_unclear",
+        "indexability_status": "blocked_pending_explicit_permission",
+        "accessed_on": "2026-08-12",
+        "notes": "The discovered TMDG_RULES_ENGi.pdf was excluded because it appears to be Terraforming Mars: The Dice Game, not the BGG base game. No official base-game rules PDF was confirmed in this pass."
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "terraforming-mars-1jour-1jeu-upload-2026-08-12",
+        "title": "Terraforming Mars",
+        "document_type": "base-game rulebook copy hosted or produced by a third party",
+        "sha256": "800e1f4b857c951e31613ee00b4d6937d3040ffa6145f7eacdd983f10097c2d1",
+        "manifest_path": "source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+        "rights_status": "permission_not_established",
+        "redistribution_status": "blocked_pending_explicit_permission",
+        "local_use_status": "quarantined_for_internal_reference_only"
+      }
+    ],
+    "registry_search_notes": {
+      "publisher_or_developer": "FryxGames"
+    },
+    "rights_note": "Backed by quarantined uploaded documents; permission to index or redistribute source text is not established. Entries are original interpretations only."
   }
 }
