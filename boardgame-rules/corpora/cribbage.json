@@ -1,5 +1,5 @@
 {
-  "corpus_id": "cribbage-rules-reference",
+  "corpus_id": "cribbage",
   "corpus_version": "0.2.0",
   "generated_at": "2026-08-13",
   "description": "Compact structured reference and original interpretation aids for the two-player standard Cribbage game and three common scoring variants. This is not a reproduction of any publisher's rulebook.",
@@ -952,5 +952,9 @@
     }
   ],
   "game_title": "Cribbage",
-  "coverage_boundary": "Covers two-player standard Cribbage to 121 points, including setup, deal, play, pegging, counting hands and crib, the go, and selected variants (Muggins, short game to 61, skunk/double-skunk). Multi-player forms (three-hand, four-hand partnership) and tournament-body clarifications are out of scope."
+  "coverage_boundary": "Covers two-player standard Cribbage to 121 points, including setup, deal, play, pegging, counting hands and crib, the go, and selected variants (Muggins, short game to 61, skunk/double-skunk). Multi-player forms (three-hand, four-hand partnership) and tournament-body clarifications are out of scope.",
+  "migration": {
+    "original_corpus_id": "cribbage-rules-reference",
+    "note": "corpus_id normalized to match the filename per the CONTRIBUTING.md convention adopted at unification."
+  }
 }

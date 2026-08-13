@@ -2,31 +2,55 @@
   "suites": [
     {
       "game": "wingspan",
-      "edition": "base-en-1st-2020",
       "tests": [
         {
           "label": "gaining food mechanics",
           "query": "how do I gain food",
-          "expect_ids": ["wingspan-turn-002", "wingspan-rule-003"],
+          "expect_ids": [
+            "wingspan-turn-002",
+            "wingspan-rule-003"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["leftmost exposed slot", "right to left"],
-          "expect_summary_not_contains": ["roll the birdfeeder die", "costs 1 food"]
+          "expect_summary_contains": [
+            "leftmost exposed slot",
+            "right to left"
+          ],
+          "expect_summary_not_contains": [
+            "roll the birdfeeder die",
+            "costs 1 food"
+          ]
         },
         {
           "label": "laying eggs action",
           "query": "lay eggs on birds",
-          "expect_ids": ["wingspan-turn-003", "wingspan-rule-004"],
+          "expect_ids": [
+            "wingspan-turn-003",
+            "wingspan-rule-004"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["leftmost exposed slot"],
-          "expect_summary_not_contains": ["Take 1 egg"]
+          "expect_summary_contains": [
+            "leftmost exposed slot"
+          ],
+          "expect_summary_not_contains": [
+            "Take 1 egg"
+          ]
         },
         {
           "label": "draw bird cards action",
           "query": "draw bird cards action",
-          "expect_ids": ["wingspan-turn-004"],
+          "expect_ids": [
+            "wingspan-turn-004"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["face-up", "deck", "no hand limit"],
-          "expect_summary_not_contains": ["Draw 2 bird cards from the deck", "fewer than 4 cards"]
+          "expect_summary_contains": [
+            "face-up",
+            "deck",
+            "no hand limit"
+          ],
+          "expect_summary_not_contains": [
+            "Draw 2 bird cards from the deck",
+            "fewer than 4 cards"
+          ]
         },
         {
           "label": "empty query abstention",
@@ -41,26 +65,46 @@
         {
           "label": "end game scoring",
           "query": "end of game scoring points",
-          "expect_ids": ["wingspan-rule-001"],
+          "expect_ids": [
+            "wingspan-rule-001"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["Cached food", "Tucked cards", "1 VP"],
-          "expect_summary_not_contains": ["Food tokens and bird cards in hand: 0 points"]
+          "expect_summary_contains": [
+            "Cached food",
+            "Tucked cards",
+            "1 VP"
+          ],
+          "expect_summary_not_contains": [
+            "Food tokens and bird cards in hand: 0 points"
+          ]
         },
         {
           "label": "round end goal tile scoring",
           "query": "end of round goal tile scoring positions",
-          "expect_ids": ["wingspan-rule-002"],
+          "expect_ids": [
+            "wingspan-rule-002"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["rounded down"],
-          "expect_summary_not_contains": ["rounded up"]
+          "expect_summary_contains": [
+            "rounded down"
+          ],
+          "expect_summary_not_contains": [
+            "rounded up"
+          ]
         },
         {
           "label": "habitat rules forest",
           "query": "what happens in forest habitat",
-          "expect_ids": ["wingspan-rule-003"],
+          "expect_ids": [
+            "wingspan-rule-003"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["right to left"],
-          "expect_summary_not_contains": ["activate from left to right"]
+          "expect_summary_contains": [
+            "right to left"
+          ],
+          "expect_summary_not_contains": [
+            "activate from left to right"
+          ]
         },
         {
           "label": "unsupported game abstention",
@@ -71,228 +115,707 @@
         {
           "label": "bird power types",
           "query": "brown pink white bird powers",
-          "expect_ids": ["wingspan-rule-006"],
+          "expect_ids": [
+            "wingspan-rule-006"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["right to left", "Once Between Turns", "Round End", "Game End", "optional"],
-          "expect_summary_not_contains": ["left to right", "once per round", "nesting icon"]
+          "expect_summary_contains": [
+            "right to left",
+            "Once Between Turns",
+            "Round End",
+            "Game End",
+            "optional"
+          ],
+          "expect_summary_not_contains": [
+            "left to right",
+            "once per round",
+            "nesting icon"
+          ]
         },
         {
           "label": "solo mode automa",
           "query": "how to play solo against automa",
-          "expect_ids": ["wingspan-rule-012"],
+          "expect_ids": [
+            "wingspan-rule-012"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["go first", "last turn"]
+          "expect_summary_contains": [
+            "go first",
+            "last turn"
+          ]
         },
         {
           "label": "setup dice count",
           "query": "how many dice birdfeeder setup",
-          "expect_ids": ["wingspan-setup-001"],
+          "expect_ids": [
+            "wingspan-setup-001"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["5 food dice"],
-          "expect_summary_not_contains": ["4 food dice"]
+          "expect_summary_contains": [
+            "5 food dice"
+          ],
+          "expect_summary_not_contains": [
+            "4 food dice"
+          ]
         },
         {
           "label": "setup tray cards",
           "query": "bird tray setup face up cards",
-          "expect_ids": ["wingspan-setup-001"],
+          "expect_ids": [
+            "wingspan-setup-001"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["3 face-up bird cards"],
-          "expect_summary_not_contains": ["4 face-up bird cards"]
+          "expect_summary_contains": [
+            "3 face-up bird cards"
+          ],
+          "expect_summary_not_contains": [
+            "4 face-up bird cards"
+          ]
         },
         {
           "label": "setup starting hand and food",
           "query": "starting bird cards food bonus setup",
-          "expect_ids": ["wingspan-setup-001"],
+          "expect_ids": [
+            "wingspan-setup-001"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["5 bird cards", "5 food", "2 bonus cards"],
-          "expect_summary_not_contains": ["2 food tokens", "1 bonus card"]
+          "expect_summary_contains": [
+            "5 bird cards",
+            "5 food",
+            "2 bonus cards"
+          ],
+          "expect_summary_not_contains": [
+            "2 food tokens",
+            "1 bonus card"
+          ]
         },
         {
           "label": "birdfeeder dice faces wild",
           "query": "birdfeeder dice wild face fish",
-          "expect_ids": ["wingspan-rule-009"],
+          "expect_ids": [
+            "wingspan-rule-009"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["invertebrate-or-seed", "NOT fish"],
-          "expect_summary_not_contains": ["fish (wild)", "fish is the wild"]
+          "expect_summary_contains": [
+            "invertebrate-or-seed",
+            "NOT fish"
+          ],
+          "expect_summary_not_contains": [
+            "fish (wild)",
+            "fish is the wild"
+          ]
         },
         {
           "label": "birdfeeder reroll cost",
           "query": "reroll birdfeeder dice cost food",
-          "expect_ids": ["wingspan-turn-002", "wingspan-rule-009", "wingspan-edgecase-002"],
+          "expect_ids": [
+            "wingspan-turn-002",
+            "wingspan-rule-009",
+            "wingspan-edgecase-002"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["optional and free"],
-          "expect_summary_not_contains": ["costs 1 food token", "each reroll costs"]
+          "expect_summary_contains": [
+            "optional and free"
+          ],
+          "expect_summary_not_contains": [
+            "costs 1 food token",
+            "each reroll costs"
+          ]
         },
         {
           "label": "play a bird nest restriction",
           "query": "play bird nest type habitat placement",
-          "expect_ids": ["wingspan-turn-005"],
+          "expect_ids": [
+            "wingspan-turn-005"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["no nest-type restriction"],
-          "expect_summary_not_contains": ["nest type must match"]
+          "expect_summary_contains": [
+            "no nest-type restriction"
+          ],
+          "expect_summary_not_contains": [
+            "nest type must match"
+          ]
         },
         {
           "label": "wingspan does not restrict placement",
           "query": "wingspan restrict bird placement",
-          "expect_ids": ["wingspan-rule-010"],
+          "expect_ids": [
+            "wingspan-rule-010"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["does NOT restrict"],
-          "expect_summary_not_contains": ["minimum wingspan requirement"]
+          "expect_summary_contains": [
+            "does NOT restrict"
+          ],
+          "expect_summary_not_contains": [
+            "minimum wingspan requirement"
+          ]
         },
         {
           "label": "deck exhaustion reshuffle",
           "query": "bird deck runs out exhausted",
-          "expect_ids": ["wingspan-edgecase-003"],
+          "expect_ids": [
+            "wingspan-edgecase-003"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["reshuffle"],
-          "expect_summary_not_contains": ["tray is not refilled"]
+          "expect_summary_contains": [
+            "reshuffle"
+          ],
+          "expect_summary_not_contains": [
+            "tray is not refilled"
+          ]
         },
         {
           "label": "brown power direction",
           "query": "brown power activation direction order",
-          "expect_ids": ["wingspan-edgecase-004", "wingspan-rule-006"],
+          "expect_ids": [
+            "wingspan-edgecase-004",
+            "wingspan-rule-006"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["right to left"],
-          "expect_summary_not_contains": ["left to right"]
+          "expect_summary_contains": [
+            "right to left"
+          ],
+          "expect_summary_not_contains": [
+            "left to right"
+          ]
         },
         {
           "label": "tied goals rounding",
           "query": "tied goals positions points rounded",
-          "expect_ids": ["wingspan-edgecase-001"],
+          "expect_ids": [
+            "wingspan-edgecase-001"
+          ],
           "expect_hit_1": true,
-          "expect_summary_contains": ["rounded down"],
-          "expect_summary_not_contains": ["rounded up"]
+          "expect_summary_contains": [
+            "rounded down"
+          ],
+          "expect_summary_not_contains": [
+            "rounded up"
+          ]
         },
         {
           "label": "analog returned for known game (catan)",
           "query": "how do I gain food",
-          "known_games": ["catan"],
-          "expect_ids": ["wingspan-turn-002"],
+          "known_games": [
+            "catan"
+          ],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["catan"]
+          "expect_analog_known_game_ids": [
+            "catan"
+          ]
         },
         {
           "label": "analog normalizes known-game names (Ticket to Ride)",
           "query": "draw bird cards action",
-          "known_games": ["Ticket to Ride"],
-          "expect_ids": ["wingspan-turn-004"],
+          "known_games": [
+            "Ticket to Ride"
+          ],
+          "expect_ids": [
+            "wingspan-turn-004"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["ticket-to-ride"]
+          "expect_analog_known_game_ids": [
+            "ticket-to-ride"
+          ]
         },
         {
           "label": "analog offers every hooked known game (play a bird)",
           "query": "play bird nest type habitat placement",
-          "known_games": ["catan", "ticket-to-ride"],
-          "expect_ids": ["wingspan-turn-005"],
+          "known_games": [
+            "catan",
+            "ticket-to-ride"
+          ],
+          "expect_ids": [
+            "wingspan-turn-005"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["catan", "ticket-to-ride"]
+          "expect_analog_known_game_ids": [
+            "catan",
+            "ticket-to-ride"
+          ]
         },
         {
           "label": "analog empty when no known games recorded",
           "query": "how do I gain food",
-          "expect_ids": ["wingspan-turn-002"],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
           "expect_analog_empty": true
         },
         {
           "label": "analog empty when known game has no hook for this rule",
           "query": "how do I gain food",
-          "known_games": ["ticket-to-ride"],
-          "expect_ids": ["wingspan-turn-002"],
+          "known_games": [
+            "ticket-to-ride"
+          ],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
           "expect_analog_empty": true
         },
         {
           "label": "analog empty when known game has no hooks anywhere",
           "query": "how do I gain food",
-          "known_games": ["chess"],
-          "expect_ids": ["wingspan-turn-002"],
+          "known_games": [
+            "chess"
+          ],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
           "expect_analog_empty": true
         },
         {
           "label": "analog azul draft hook on gain food",
           "query": "how do I gain food",
-          "known_games": ["Azul"],
-          "expect_ids": ["wingspan-turn-002"],
+          "known_games": [
+            "Azul"
+          ],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["azul"]
+          "expect_analog_known_game_ids": [
+            "azul"
+          ]
         },
         {
           "label": "analog dominion engine hook on brown power chaining",
           "query": "brown power activation direction order",
-          "known_games": ["dominion"],
-          "expect_ids": ["wingspan-edgecase-004"],
+          "known_games": [
+            "dominion"
+          ],
+          "expect_ids": [
+            "wingspan-edgecase-004"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["dominion"]
+          "expect_analog_known_game_ids": [
+            "dominion"
+          ]
         },
         {
           "label": "analog returns all hooked games the table knows (gain food)",
           "query": "how do I gain food",
-          "known_games": ["catan", "azul", "dominion"],
-          "expect_ids": ["wingspan-turn-002"],
+          "known_games": [
+            "catan",
+            "azul",
+            "dominion"
+          ],
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["catan", "azul"]
+          "expect_analog_known_game_ids": [
+            "catan",
+            "azul"
+          ]
         },
         {
           "label": "abstention never analogizes",
           "query": "quantum entanglement scoring rule",
-          "known_games": ["catan", "ticket-to-ride"],
+          "known_games": [
+            "catan",
+            "ticket-to-ride"
+          ],
           "expect_abstention": true,
           "expect_analog_empty": true
+        },
+        {
+          "label": "overlay errata retrievable (spotted sandpiper)",
+          "query": "Spotted Sandpiper errata scoring points",
+          "expect_ids": [
+            "errata-spotted-sandpiper-5-points"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "overlay metadata retrievable (swift-start pack)",
+          "query": "Swift-Start Pack grey corner markers",
+          "expect_ids": [
+            "metadata-swift-start-pack"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "overlay faq retrievable (migrating bird token)",
+          "query": "migrating bird action token stays behind",
+          "expect_ids": [
+            "faq-migrating-bird-token"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "expansion edition inherits base rules",
+          "query": "how do I gain food",
+          "edition": "eu-expansion-en-1st-2019",
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
         }
       ]
     },
     {
       "game": "cribbage",
-      "edition": "two-player-standard-en",
       "tests": [
         {
           "label": "analog poker hook on fifteens and pairs",
           "query": "how do I count fifteens and pairs in my hand",
-          "known_games": ["Poker"],
-          "expect_ids": ["counting-fifteens-and-pairs"],
+          "known_games": [
+            "Poker"
+          ],
+          "expect_ids": [
+            "counting-fifteens-and-pairs"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["poker"]
+          "expect_analog_known_game_ids": [
+            "poker"
+          ]
         },
         {
           "label": "analog poker hook on flush",
           "query": "counting flush hand crib suit",
-          "known_games": ["poker"],
-          "expect_ids": ["counting-flush"],
+          "known_games": [
+            "poker"
+          ],
+          "expect_ids": [
+            "counting-flush"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["poker"]
+          "expect_analog_known_game_ids": [
+            "poker"
+          ]
         },
         {
           "label": "analog poker hook on runs",
           "query": "runs in the show consecutive cards",
-          "known_games": ["poker"],
-          "expect_ids": ["counting-runs-in-show"],
+          "known_games": [
+            "poker"
+          ],
+          "expect_ids": [
+            "counting-runs-in-show"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["poker"]
+          "expect_analog_known_game_ids": [
+            "poker"
+          ]
         },
         {
           "label": "analog blackjack hook on go and thirty-one",
           "query": "go thirty-one running total play",
-          "known_games": ["blackjack"],
-          "expect_ids": ["play-go-and-thirty-one"],
+          "known_games": [
+            "blackjack"
+          ],
+          "expect_ids": [
+            "play-go-and-thirty-one"
+          ],
           "expect_hit_1": true,
-          "expect_analog_known_game_ids": ["blackjack"]
+          "expect_analog_known_game_ids": [
+            "blackjack"
+          ]
         },
         {
           "label": "cribbage has no forced hooks for the wingspan target games",
           "query": "how do I count fifteens and pairs in my hand",
-          "known_games": ["catan", "ticket-to-ride", "dominion", "azul"],
-          "expect_ids": ["counting-fifteens-and-pairs"],
+          "known_games": [
+            "catan",
+            "ticket-to-ride",
+            "dominion",
+            "azul"
+          ],
+          "expect_ids": [
+            "counting-fifteens-and-pairs"
+          ],
           "expect_hit_1": true,
           "expect_analog_empty": true
         },
         {
           "label": "cribbage abstention never analogizes",
           "query": "quantum entanglement scoring rule",
-          "known_games": ["poker", "blackjack"],
+          "known_games": [
+            "poker",
+            "blackjack"
+          ],
           "expect_abstention": true,
           "expect_analog_empty": true
+        },
+        {
+          "label": "variant entries reachable without an edition filter",
+          "query": "muggins claim missed points variant",
+          "expect_ids": [
+            "variant-muggins"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "strict edition filter includes the variant's entries",
+          "query": "muggins claim missed points variant",
+          "edition": "muggins-variant",
+          "expect_ids": [
+            "variant-muggins"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "strict edition filter excludes other editions' entries",
+          "query": "muggins claim missed points variant",
+          "edition": "two-player-standard-en",
+          "expect_abstention": true
+        },
+        {
+          "label": "unknown edition abstains",
+          "query": "how do I count fifteens",
+          "edition": "no-such-edition",
+          "expect_abstention": true
+        }
+      ]
+    },
+    {
+      "game": "ark-nova",
+      "tests": [
+        {
+          "label": "migration smoke: animal-reference-use retrievable",
+          "query": "Use the guide as thematic reference only",
+          "expect_ids": [
+            "animal-reference-use"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "brass-birmingham",
+      "tests": [
+        {
+          "label": "migration smoke: setup-board-and-player-area retrievable",
+          "query": "Set up markets, cards, merchants, and player mats",
+          "expect_ids": [
+            "setup-board-and-player-area"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "dune-imperium",
+      "tests": [
+        {
+          "label": "migration smoke: setup-and-initial-resources retrievable",
+          "query": "Setup map and player areas",
+          "expect_ids": [
+            "setup-and-initial-resources"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "dune-imperium-uprising",
+      "tests": [
+        {
+          "label": "migration smoke: setup-uprising retrievable",
+          "query": "Setup adds Uprising-specific state",
+          "expect_ids": [
+            "setup-uprising"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "gaia-project",
+      "tests": [
+        {
+          "label": "migration smoke: play-flow-six-rounds retrievable",
+          "query": "Six-round operating rhythm",
+          "expect_ids": [
+            "play-flow-six-rounds"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "gloomhaven",
+      "tests": [
+        {
+          "label": "migration smoke: scenario-start-checklist retrievable",
+          "query": "Scenario setup is a gated sequence",
+          "expect_ids": [
+            "scenario-start-checklist"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "gloomhaven-jaws-of-the-lion",
+      "tests": [
+        {
+          "label": "migration smoke: guide-first-five-scenarios retrievable",
+          "query": "Learn-to-Play scope ends at an onboarding boundary",
+          "expect_ids": [
+            "guide-first-five-scenarios"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "lost-ruins-of-arnak",
+      "tests": [
+        {
+          "label": "migration smoke: arnak-setup-sequence retrievable",
+          "query": "Setup establishes a shared island, card row, and research race",
+          "expect_ids": [
+            "arnak-setup-sequence"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "nemesis",
+      "tests": [
+        {
+          "label": "migration smoke: nemesis-setup-sequence retrievable",
+          "query": "Setup builds a hidden, asymmetric survival problem",
+          "expect_ids": [
+            "nemesis-setup-sequence"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "odin",
+      "tests": [
+        {
+          "label": "migration smoke: odin-setup-components-and-player-start retrievable",
+          "query": "Setup assembles shared supplies, personal boards, and starting hands",
+          "expect_ids": [
+            "odin-setup-components-and-player-start"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "pandemic-legacy-season-1",
+      "tests": [
+        {
+          "label": "migration smoke: month-and-funding-loop retrievable",
+          "query": "Monthly success and failure drive the calendar",
+          "expect_ids": [
+            "month-and-funding-loop"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "sky-team",
+      "tests": [
+        {
+          "label": "migration smoke: sky-team-basic-setup retrievable",
+          "query": "Setup creates two asymmetric control consoles",
+          "expect_ids": [
+            "sky-team-basic-setup"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "star-wars-rebellion",
+      "tests": [
+        {
+          "label": "migration smoke: three-phase-round retrievable",
+          "query": "Each round has assignment, command, and refresh",
+          "expect_ids": [
+            "three-phase-round"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "terraforming-mars",
+      "tests": [
+        {
+          "label": "migration smoke: generation-four-phase-loop retrievable",
+          "query": "A generation is a four-phase loop",
+          "expect_ids": [
+            "generation-four-phase-loop"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "twilight-imperium-fourth-edition",
+      "tests": [
+        {
+          "label": "migration smoke: four-phase-round retrievable",
+          "query": "A round has strategy, action, status, and conditional agenda",
+          "expect_ids": [
+            "four-phase-round"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "war-of-the-ring-second-edition",
+      "tests": [
+        {
+          "label": "migration smoke: second-edition-turn-loop retrievable",
+          "query": "The turn is six phases driven by action dice",
+          "expect_ids": [
+            "second-edition-turn-loop"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "flip-7",
+      "tests": [
+        {
+          "label": "migration smoke: flip-7-press-your-luck-objective retrievable",
+          "query": "Push for points without repeating a number",
+          "expect_ids": [
+            "flip-7-press-your-luck-objective"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
         }
       ]
     }

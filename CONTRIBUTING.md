@@ -29,7 +29,7 @@ One file per game, named `corpora/<game-name>.json`. The file has three parts:
 
 ```json
 {
-  "corpus_id": "wingspan-rules",
+  "corpus_id": "wingspan",
   "game_title": "Wingspan",
   "corpus_version": "0.2.0",
   "generated_at": "2026-08-13",
@@ -39,7 +39,7 @@ One file per game, named `corpora/<game-name>.json`. The file has three parts:
 }
 ```
 
-- **`corpus_id`**: unique identifier, kebab-case, ends with `-rules`
+- **`corpus_id`**: unique identifier, kebab-case, matching the filename (e.g. `ark-nova` for `corpora/ark-nova.json`)
 - **`game_title`**: the game's name as it appears on the box
 - **`corpus_version`**: semantic version; bump when you change entries
 - **`coverage_boundary`**: plain English description of what IS and IS NOT covered. This is shown to users when they ask about your game, so be specific.
@@ -73,7 +73,7 @@ Editions let the plugin distinguish between base games, expansions, and variants
 
 - **`edition_id`**: unique within this corpus, kebab-case
 - **`status`**: `canonical` for the base game, `expansion` for expansions, `variant` for variant rules
-- **`inherits`**: the `edition_id` this edition stacks on top of, or `null` for the root
+- **`inherits`**: the `edition_id` this edition stacks on top of, or `null` for the root. Retrieval honors this: asking with an expansion's `edition_id` also searches the editions it inherits from, so expansion players still get base-game rulings
 - **`scope`**: one-line description of what this edition covers
 
 ### 3. Entries

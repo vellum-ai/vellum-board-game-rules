@@ -1,0 +1,388 @@
+{
+  "corpus_id": "gloomhaven",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "description": "Original, source-bounded interpretation aids for an uploaded Gloomhaven rules summary. The summary is not treated as a complete rulebook.",
+  "full_rulebook_text_included": false,
+  "interpretation_schema": {
+    "version": "1.0.0",
+    "description": "Every entry is an original, source-bounded interpretation; source text is never stored.",
+    "required_fields": [
+      "id",
+      "title",
+      "kind",
+      "edition_ids",
+      "topics",
+      "summary",
+      "source_locator",
+      "confidence",
+      "rights_flags"
+    ],
+    "confidence_values": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "rights_policy": "Possession or public availability does not establish permission to reproduce, index, or redistribute source text."
+  },
+  "coverage_boundary": "The uploaded summary supports scenario setup, round planning, initiative, player/monster turn structure, scenario completion, exhaustion, and campaign-state reminders. It does not provide complete game coverage; use official Cephalofair material for omitted or conflicting rules.",
+  "artifact_provenance": {
+    "artifact_id": "gloomhaven-summary-upload",
+    "title": "Gloomhaven",
+    "document_type": "third-party/user-authored rules summary, not complete rulebook",
+    "pages": 11,
+    "language": "English",
+    "edition": "Edition not pinned; summary references campaign rules and page numbers",
+    "provenance": "user_uploaded; PDF author metadata alexf; original source URL not supplied",
+    "confidence": "high_for_document_type_low_for_provenance",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+    "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "source_records": [
+    {
+      "publisher": "Cephalofair Games",
+      "url": "https://cephalofair.com/pages/gloomhaven",
+      "source_type": "official_support_and_errata_lead",
+      "edition_scope": "2025 first-printing information; direct rulebook edition not pinned",
+      "rights_status": "permission_not_granted_or_unclear",
+      "full_text_included": false
+    }
+  ],
+  "editions": [
+    {
+      "edition_id": "gloomhaven-summary-2018-upload",
+      "game": "Gloomhaven",
+      "scope": "Third-party/user-authored 11-page rules summary; edition not pinned",
+      "language": "en",
+      "status": "limited-document-coverage",
+      "notes": "The summary is not a complete official rulebook and its original URL/provenance are unknown. Use official Cephalofair support for conflicts or omitted systems.",
+      "rights_status": "internal-metadata-and-original-paraphrase-only",
+      "full_text_included": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "summary-boundary",
+      "title": "Summary coverage is intentionally limited",
+      "kind": "coverage_boundary",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "coverage",
+        "provenance",
+        "edition"
+      ],
+      "summary": "This artifact is a concise user-authored summary, not the complete Gloomhaven rules. It can support a scenario-flow checklist, but omitted classes, edge cases, items, monsters, campaign events, and errata must be checked against an official current reference.",
+      "interpretation_type": "coverage_boundary",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF metadata and 11-page summary structure; page-level locator only",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_summary",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "scenario-start-checklist",
+      "title": "Scenario setup is a gated sequence",
+      "kind": "setup_atom",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "scenario",
+        "setup",
+        "campaign"
+      ],
+      "summary": "Before play, select Campaign or Casual mode, verify the scenario is unlocked and eligible for the chosen mode, set the scenario level, lay out only the starting room for inspection, place its figures and modifiers, equip items, choose Battle Goals, build each hand, and initialize elements and curse decks. Treat scenario-specific instructions as overrides.",
+      "interpretation_type": "setup_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 2-3: Start of Scenario",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "round-planning",
+      "title": "Two cards or a Long Rest determine the round",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "round",
+        "initiative",
+        "long-rest"
+      ],
+      "summary": "Each character declares either a Long Rest or two Ability cards. With two cards, the player secretly chooses a Leading card; its initiative value is the primary ordering signal. A Long Rest acts at the late initiative value described by the summary and has its own restricted maintenance steps.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF p. 2: Start of Round",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "initiative-resolution",
+      "title": "Resolve figures in ascending initiative with tie rules",
+      "kind": "timing_atom",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "initiative",
+        "monsters",
+        "summons"
+      ],
+      "summary": "Reveal player cards and monster ability cards, then order figures by initiative. Monster elites precede normals within a type, while player/monster and equal-type ties use the summary’s tie-break procedure. Summons have a defined relationship to their owner’s turn; do not improvise their timing.",
+      "interpretation_type": "timing_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 2-3: Start of Round",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "player-turn-actions",
+      "title": "Resolve one top and one bottom ability",
+      "kind": "turn_atom",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "player-turn",
+        "abilities",
+        "items"
+      ],
+      "summary": "On a normal character turn, choose one card half for its top action and the other card’s bottom action. Resolve movement, attacks, range/line-of-sight, conditions, items, and granted effects in their timing windows; the selected cards then move through the active/discard cycle described by the summary.",
+      "interpretation_type": "turn_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 2-4: Player Turn and Player Abilities",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "monster-turn-resolution",
+      "title": "Monster cards define behavior for the round",
+      "kind": "turn_atom",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "monsters",
+        "ability-cards",
+        "targeting"
+      ],
+      "summary": "Each monster type with a figure uses one revealed ability card for the round. On its initiative, apply that card’s movement, attack, range, and special behavior rather than a generic default; scenario spawning and objective timing can alter when a new figure enters the order.",
+      "interpretation_type": "turn_atom",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 2-4: Monster Ability and Monster Turns",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "objective-and-exhaustion",
+      "title": "Finish the round after an objective is met",
+      "kind": "endgame",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "objective",
+        "exhaustion",
+        "scenario-end"
+      ],
+      "summary": "If the scenario objective is completed during a round, finish the remaining round before ending the scenario. Exhaustion is a loss of the character’s ability to continue when it can no longer perform a legal rest or action sequence; keep this distinct from a failed scenario objective.",
+      "interpretation_type": "endgame",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 2 and 11: round and scenario-end references",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    },
+    {
+      "id": "campaign-persistence",
+      "title": "Campaign activities change future availability",
+      "kind": "campaign_interpretation",
+      "edition_ids": [
+        "gloomhaven-summary-2018-upload"
+      ],
+      "topics": [
+        "campaign",
+        "city",
+        "retirement",
+        "prosperity"
+      ],
+      "summary": "Campaign mode carries city prosperity, unlocked content, character progression, retirement, enhancements, achievements, and event outcomes forward. Casual mode is a replay mode and should not silently mutate campaign state. The summary’s campaign tables are a convenience layer, not a substitute for the full campaign books.",
+      "interpretation_type": "campaign_interpretation",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Gloomhaven-RulesSummary.pdf",
+        "sha256": "1379b161db1be1b968c2586358db5ef8872760d5e4aa241c5edcc1552ddb4b8d",
+        "locator": "PDF pp. 1 and 11: campaign activity summary",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "uploaded_artifact",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "alexf (metadata only)",
+        "official_source": false
+      }
+    }
+  ],
+  "game_title": "Gloomhaven",
+  "migration": {
+    "migrated_from": "interpreters/gloomhaven",
+    "original_corpus_id": "gloomhaven-rules-interpreter",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  }
+}

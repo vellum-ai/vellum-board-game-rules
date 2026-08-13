@@ -86,11 +86,30 @@ function analogHooksFor(
   return topEntry.analog_hooks.filter((hook) => known.has(hook.known_game_id));
 }
 
+/**
+ * An explicit edition_id filters strictly (null = unknown edition, abstain).
+ * No edition_id means NO filter — all editions are in scope. Defaulting to
+ * the first edition would hide variant/expansion/overlay entries that are
+ * only tagged with later editions (cribbage variants, wingspan errata).
+ */
 function resolveEdition(corpus: Corpus, editionId?: string): string | null {
-  if (editionId) {
-    return corpus.editions.some((edition) => edition.edition_id === editionId) ? editionId : null;
+  if (!editionId) return null;
+  return corpus.editions.some((edition) => edition.edition_id === editionId) ? editionId : null;
+}
+
+/**
+ * The requested edition plus every edition it (transitively) inherits from.
+ * An expansion edition declaring `inherits` stacks on its base, so filtering
+ * by the expansion must also surface the base rules it plays on top of.
+ */
+function editionScope(corpus: Corpus, editionId: string): Set<string> {
+  const scope = new Set<string>();
+  let current: string | null | undefined = editionId;
+  while (current && !scope.has(current)) {
+    scope.add(current);
+    current = corpus.editions.find((edition) => edition.edition_id === current)?.inherits;
   }
-  return corpus.editions[0]?.edition_id ?? null;
+  return scope;
 }
 
 export function askRules(options: {
@@ -114,7 +133,16 @@ export function askRules(options: {
     });
   }
 
-  const gameId = options.gameId?.trim() || supported[0].game_id;
+  const gameId = options.gameId?.trim();
+  if (!gameId) {
+    // With many installed games, guessing one (previously: alphabetically
+    // first) silently answers from the wrong corpus. Abstain and say so.
+    return emptyAsk({
+      query,
+      abstention: true,
+      abstention_reason: `No game specified. Pass game_id (or start a sitting) — supported games: ${supported.map((game) => game.game_id).join(", ")}`,
+    });
+  }
   const corpus = loadCorpus(gameId);
   if (!corpus) {
     return emptyAsk({
@@ -138,7 +166,10 @@ export function askRules(options: {
     });
   }
 
-  const scopedEntries = corpus.entries.filter((entry) => !editionId || entry.edition_ids.includes(editionId));
+  const scope = editionId ? editionScope(corpus, editionId) : null;
+  const scopedEntries = corpus.entries.filter(
+    (entry) => !scope || entry.edition_ids.some((id) => scope.has(id)),
+  );
   const queryTokens = tokenize(query, true);
   if (queryTokens.length === 0) {
     return emptyAsk({

@@ -1,0 +1,414 @@
+{
+  "corpus_id": "lost-ruins-of-arnak",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "catalogue_identity": "Out-of-snapshot candidate; Lost Ruins of Arnak was not found in the fixed top-50 snapshot",
+  "bgg_snapshot": false,
+  "snapshot_status": {
+    "in_fixed_snapshot": false,
+    "snapshot_path": "/workspace/plugins/board-game-rules-source-audit/data/bgg-top50-derived.v1.0.0.json",
+    "checked_title": "Lost Ruins of Arnak",
+    "checked_at": "2026-08-13",
+    "result": "no matching title found; fixed snapshot not modified"
+  },
+  "description": "Compact original interpretations and play aids for the uploaded Lost Ruins of Arnak manual; not a reproduction of the manual or component text.",
+  "full_rulebook_text_included": false,
+  "editions": [
+    {
+      "edition_id": "lost-ruins-of-arnak-base-en-24-page-candidate",
+      "game": "Lost Ruins of Arnak",
+      "scope": "Likely base-game English manual; uploaded 24-page document",
+      "status": "document_scope_only",
+      "notes": "Exact printing, errata state, publisher provenance, and language edition are unresolved. Bird Temple is shown as the first-game side; Snake Temple rules are included as a variant.",
+      "language": "en",
+      "full_text_included": false,
+      "rights_status": "permission_not_established"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "lost-ruins-of-arnak-uploaded-candidate-2026-08-13",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/lost-ruins-of-arnak/lost-ruins-of-arnak-rules-en.pdf",
+    "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/lost-ruins-of-arnak/source-metadata.json",
+    "checksum_record_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/lost-ruins-of-arnak/lost-ruins-of-arnak-rules-en.pdf.sha256",
+    "sha256": "95b030c9a8694e3bd53f763b98b77fbec7a4053d0223b8c9bbd96612c78315ef",
+    "pages": 24,
+    "language": "likely English",
+    "document_type": "game manual / rulebook",
+    "edition": "Likely base game; exact printing and errata state not pinned",
+    "provenance": "user_uploaded_attachment; original URL and publisher provenance not supplied",
+    "pdf_metadata": {
+      "pdf_version": "1.7",
+      "creator": "Adobe InDesign 16.0 (Windows)",
+      "producer": "Adobe PDF Library 15.0",
+      "creation_date": "2021-08-01T23:26:05Z",
+      "modification_date": "2021-08-01T23:38:23Z",
+      "encrypted": false,
+      "page_size_points": "651.969 x 907.087"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "Possession or public availability does not establish permission to index or redistribute source text. This package stores only original interpretations and document-level metadata.",
+  "entries": [
+    {
+      "id": "arnak-provenance-and-scope",
+      "interpretation_type": "coverage_boundary",
+      "title": "The upload supports a document-scoped base-game aid, not a pinned edition",
+      "summary": "The artifact is a 24-page, likely English game manual with metadata consistent with a 2021 InDesign export. Its filename and contents support a likely base-game identity, but do not establish the original URL, publisher provenance, exact printing, errata state, or redistribution permission. Treat all interpretations as scoped to this document.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Components; document metadata",
+        "page_locator": "pp. 2–24; source-metadata.json",
+        "locator": "Components; document metadata; pp. 2–24; source-metadata.json"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-setup-sequence",
+      "interpretation_type": "setup",
+      "title": "Setup establishes a shared island, card row, and research race",
+      "summary": "Choose the board side, prepare the card row and shared pools, seed sites and research components, arrange guardians and other island elements, then give each player a color, board, archaeologists, research markers, starting deck, and starting resources. Player-count setup can block spaces, so resolve those restrictions before play.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Setup; Main Board; Card Row; Research Track; Player Setup",
+        "page_locator": "pp. 4–6",
+        "locator": "Setup; Main Board; Card Row; Research Track; Player Setup; pp. 4–6"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-five-round-structure",
+      "interpretation_type": "play_flow",
+      "title": "The expedition unfolds over five rounds",
+      "summary": "At the start of a round, players refill hands to the stated hand size. In turn order, each player takes one main action plus any legal free actions, and may pass permanently for that round. After everyone passes, return used cards as directed, refresh the board, rotate the starting player, and advance the round marker before continuing.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Gameplay; Passing",
+        "page_locator": "pp. 7–8, 17",
+        "locator": "Gameplay; Passing; pp. 7–8, 17"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-one-main-action-turn",
+      "interpretation_type": "turn_structure",
+      "title": "A turn is one main action followed by optional free actions",
+      "summary": "Choose exactly one main action on your turn. Free actions may be added when their prerequisites are met, but they do not replace the main action and their effects must be resolved in the order chosen. A card played for travel is not simultaneously used for its printed effect.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Your Turn; Main Actions; Free Actions",
+        "page_locator": "pp. 8, 13–16",
+        "locator": "Your Turn; Main Actions; Free Actions; pp. 8, 13–16"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-action-menu",
+      "interpretation_type": "action_types",
+      "title": "The main-action menu drives the expedition engine",
+      "summary": "The document groups the central choices into digging at a discovered site, discovering a new site, overcoming a guardian, buying a card, playing a card, and researching. The right choice depends on worker locations, travel costs, available resources, card values, and the current research position.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Your Turn; Main Actions",
+        "page_locator": "p. 8; pp. 9–14",
+        "locator": "Your Turn; Main Actions; p. 8; pp. 9–14"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-worker-placement-and-digging",
+      "interpretation_type": "worker_placement",
+      "title": "An archaeologist at a site converts placement into its reward",
+      "summary": "Send an available archaeologist to a legal site by paying the required travel cost, then resolve that site's action. A site can become occupied, so placement is both an action choice and a competition for limited spaces. Digging at an already discovered site generally yields the local reward or effect; exact site outputs remain component-specific.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Dig at a Site; Where Can You Move?",
+        "page_locator": "pp. 9, 15",
+        "locator": "Dig at a Site; Where Can You Move?; pp. 9, 15"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-discovery-and-exploration",
+      "interpretation_type": "exploration",
+      "title": "Discovering a site expands the action map",
+      "summary": "A discovery action places an archaeologist at a previously unrevealed site, requires the listed travel cost, and reveals the site's components and effect. New sites increase the expedition's future options, but can also introduce a guardian that must be dealt with before the location is fully useful. Exact site and idol outcomes are not generalized here.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Discover a New Site; Where Can You Move?",
+        "page_locator": "p. 10; pp. 15–16",
+        "locator": "Discover a New Site; Where Can You Move?; p. 10; pp. 15–16"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-resources-and-card-economy",
+      "interpretation_type": "resources_cards",
+      "title": "Resources and cards form a conversion economy",
+      "summary": "The expedition gathers several resource types with different roles: compasses support travel and discovery, tablets support purchases or research-related progress, arrowheads help with guardians and some research, and jewels are valuable for purchases and scoring. Artifacts and items enter the card row economy differently, and cards can be bought or played for travel or effects; exact costs and effects belong to the current components.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Resources; Card Row; Buy a Card; Play a Card",
+        "page_locator": "pp. 7, 12–13",
+        "locator": "Resources; Card Row; Buy a Card; Play a Card; pp. 7, 12–13"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-guardian-boundary",
+      "interpretation_type": "guardians",
+      "title": "A guardian is the cost of opening a newly explored site",
+      "summary": "When exploration places a guardian at a site, the guardian creates an unresolved obligation for an archaeologist there. Use the overcome-guardian action to pay the listed requirements and claim the corresponding reward or removal benefit. Do not infer a guardian's exact cost, reward, or special exception from its category; verify the tile for the selected printing.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Discover a New Site; Overcome a Guardian",
+        "page_locator": "pp. 10–11",
+        "locator": "Discover a New Site; Overcome a Guardian; pp. 10–11"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-research-track",
+      "interpretation_type": "research_track",
+      "title": "Research is a branching progression with two linked markers",
+      "summary": "A research action advances one of the player's research markers along the connected track, subject to the movement and payment requirements shown by the destination. Climbing the track can unlock bonuses, temple progress, and end-game value; the two marker positions interact, so check the route rather than treating research as a single linear score.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Research; Where Can You Move?; Research Track",
+        "page_locator": "pp. 5, 14–15",
+        "locator": "Research; Where Can You Move?; Research Track; pp. 5, 14–15"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-assistants-and-free-actions",
+      "interpretation_type": "free_actions",
+      "title": "Assistants add conditional actions outside the main action slot",
+      "summary": "Assistants join an expedition through site effects and provide a separate free-action opportunity when their condition is met. Their silver and upgraded gold states can differ, so resolve the assistant's current side and its exact benefit from the tile rather than applying a generic assistant bonus.",
+      "confidence": "medium",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Assistants; Free Actions",
+        "page_locator": "pp. 13, 16",
+        "locator": "Assistants; Free Actions; pp. 13, 16"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-passing-and-round-cleanup",
+      "interpretation_type": "round_cleanup",
+      "title": "Passing locks a player out while the table finishes the round",
+      "summary": "A player who passes takes no further turns that round, while other players continue until they also pass. Once the round closes, return played cards through the deck procedure, refresh the row and island state as directed, pass the starting-player marker, and move the moon staff to the next round.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Passing; Gameplay",
+        "page_locator": "pp. 7, 17",
+        "locator": "Passing; Gameplay; pp. 7, 17"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-final-scoring-boundary",
+      "interpretation_type": "scoring_endgame",
+      "title": "After the fifth round, score the expedition's accumulated progress",
+      "summary": "The game ends after the fifth round. Final scoring combines the value accumulated through cards, research, idols, guardians, resources, and any other score-bearing components described by the selected setup. Apply the scoring sheet and current component rules, then resolve the stated comparison or tiebreak procedure; this corpus does not reproduce point values or exact exceptions.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Gameplay; Final Scoring",
+        "page_locator": "pp. 7, 18",
+        "locator": "Gameplay; Final Scoring; pp. 7, 18"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "arnak-exact-effect-fallback",
+      "interpretation_type": "coverage_boundary",
+      "title": "Exact component effects require a current-reference fallback",
+      "summary": "This package intentionally stops before exact text or exhaustive exceptions for item and artifact cards, sites, idols, guardians, assistants, research bonuses, temple tiles, fear cards, action spaces, and variant or solo rules. For a precision question, use an authorized current reference and verify the edition; if that cannot be checked, answer not_yet_covered rather than reconstructing component text.",
+      "confidence": "high",
+      "edition_ids": [
+        "lost-ruins-of-arnak-base-en-24-page-candidate"
+      ],
+      "source_locator": {
+        "document_section": "Appendix; Effects and Keywords; artifact metadata / coverage boundary",
+        "page_locator": "pp. 22–24; metadata record",
+        "locator": "Appendix; Effects and Keywords; artifact metadata / coverage boundary; pp. 22–24; metadata record"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    }
+  ],
+  "game_title": "Lost Ruins of Arnak",
+  "coverage_boundary": "This corpus stays at document-supported system and flow level. Exact card, site, guardian, assistant, research-bonus, temple-tile, idol, fear, and other component effects are not bundled; consult an authorized current reference and verify the edition, or return not_yet_covered.",
+  "migration": {
+    "migrated_from": "interpreters/lost-ruins-of-arnak",
+    "original_corpus_id": "lost-ruins-of-arnak-rules-corpus",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  }
+}

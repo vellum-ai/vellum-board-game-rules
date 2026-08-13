@@ -1,0 +1,738 @@
+{
+  "corpus_id": "ark-nova",
+  "corpus_version": "0.2.0",
+  "generated_at": "2026-08-13",
+  "description": "Original, metadata-first Ark Nova interpreter with a limited Zoo Guide source and a second, likely base-game rulebook artifact. No source text, card text, artwork, or long quotations are bundled.",
+  "full_rulebook_text_included": false,
+  "interpretation_schema": {
+    "version": "1.0.0",
+    "description": "Every entry is an original, source-bounded interpretation; source text is never stored.",
+    "required_fields": [
+      "id",
+      "title",
+      "kind",
+      "edition_ids",
+      "topics",
+      "summary",
+      "source_locator",
+      "confidence",
+      "rights_flags"
+    ],
+    "confidence_values": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "rights_policy": "Possession or public availability does not establish permission to reproduce, index, or redistribute source text."
+  },
+  "coverage_boundary": "The earlier 32-page Zoo Guide remains limited to document identity and animal-reference metadata. The added 20-page rulebook supports broad base-game procedures only; exact card, animal, sponsor, site, icon, and edition-sensitive effects remain outside the bundled interpretation boundary.",
+  "artifact_provenance": {
+    "artifact_id": "ark-nova-field-guide-upload",
+    "title": "Ark Nova",
+    "document_type": "supplementary field guide/booklet, not base rulebook",
+    "pages": 32,
+    "language": "English-looking; catalogue records en-GB? provisionally",
+    "edition": "Edition not pinned; 32-page A5 Field Guide booklet",
+    "provenance": "user_uploaded; PDF author metadata YONG Edsel; original source URL not supplied",
+    "confidence": "high_for_document_type_low_for_provenance",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+    "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+    "pdf_metadata": {
+      "author": "YONG Edsel",
+      "creator": "Microsoft Word for Microsoft 365",
+      "creation_date": "2022-09-26"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "source_records": [
+    {
+      "publisher": "Capstone Games / Feuerland Spiele",
+      "url": "https://capstone-games.com/products/ark-nova",
+      "source_type": "official_publisher_resources_page",
+      "edition_scope": "Capstone English retail resources; rulebook, guide, glossary, and FAQ listed",
+      "rights_status": "permission_not_granted_or_unclear",
+      "full_text_included": false
+    },
+    {
+      "publisher": "Feuerland Spiele",
+      "url": "https://feuerland-spiele.de/fileadmin/game/Arche_Nova/Arche_Nova_FAQ_V2_EN_A4_low.pdf",
+      "source_type": "official_developer_hosted_faq_pdf",
+      "edition_scope": "Ark Nova FAQ v2",
+      "rights_status": "permission_not_granted_or_unclear",
+      "full_text_included": false
+    }
+  ],
+  "editions": [
+    {
+      "edition_id": "ark-nova-zoo-guide-unpinned",
+      "game": "Ark Nova",
+      "scope": "32-page A5 English Field Guide/Zoo Guide booklet; edition not pinned",
+      "language": "en-GB?",
+      "status": "supplementary-document-only",
+      "artifact_id": "ark-nova-field-guide-upload",
+      "notes": "Preserved as a separate limited source. It is not the base gameplay rulebook; PDF metadata names author YONG Edsel; original URL and permission are unknown.",
+      "rights_status": "internal-metadata-and-original-paraphrase-only",
+      "full_text_included": false
+    },
+    {
+      "edition_id": "ark-nova-base-en-2022-20-page-rulebook-candidate",
+      "game": "Ark Nova",
+      "scope": "Likely 20-page base-game English rulebook created 2022-02-07; exact printing and errata state unresolved",
+      "language": "likely English",
+      "status": "document-scope-only",
+      "artifact_id": "ark-nova-rulebook-upload-2026-08-13",
+      "notes": "Strong Ark Nova rulebook identity from the uploaded document and section structure, but original URL, publisher provenance, printing code, and permission are not established.",
+      "rights_status": "internal-original-interpretation-only",
+      "full_text_included": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "guide-boundary",
+      "title": "This upload is a field guide, not a gameplay rulebook",
+      "kind": "coverage_boundary",
+      "edition_ids": [
+        "ark-nova-zoo-guide-unpinned"
+      ],
+      "topics": [
+        "coverage",
+        "field-guide",
+        "provenance"
+      ],
+      "summary": "The booklet’s contents are organized around animal groups and zoo-guide entries. It does not provide reliable base-game setup, turn, scoring, or timing coverage, so this package does not invent those rules from the document.",
+      "interpretation_type": "coverage_boundary",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+        "locator": "PDF pp. 1-2: Field Guide title and contents",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_booklet",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "PDF metadata author: YONG Edsel",
+        "official_source": false
+      }
+    },
+    {
+      "id": "animal-reference-use",
+      "title": "Use the guide as thematic reference only",
+      "kind": "metadata_interpretation",
+      "edition_ids": [
+        "ark-nova-zoo-guide-unpinned"
+      ],
+      "topics": [
+        "animals",
+        "reference",
+        "components"
+      ],
+      "summary": "The document can identify that the upload is an animal reference organized by broad habitat or animal-group sections. It should not be treated as a card database, a substitute for the official glossary, or evidence of gameplay effects.",
+      "interpretation_type": "metadata_interpretation",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+        "locator": "PDF pp. 2-32: animal-group headings and entries",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_booklet",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "PDF metadata author: YONG Edsel",
+        "official_source": false
+      }
+    },
+    {
+      "id": "edition-and-language-uncertainty",
+      "title": "Edition and language labels remain provisional",
+      "kind": "coverage_boundary",
+      "edition_ids": [
+        "ark-nova-zoo-guide-unpinned"
+      ],
+      "topics": [
+        "edition",
+        "language",
+        "rights"
+      ],
+      "summary": "The local catalogue records English-looking content and a 2022 PDF creation date, but does not pin a publisher printing or original download. Preserve that uncertainty when answering questions about animal names, components, or compatibility.",
+      "interpretation_type": "coverage_boundary",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+        "locator": "PDF metadata: 32 pages, A5, creation date 2022-09-26; manifest provenance",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_booklet",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "publisher": "PDF metadata author: YONG Edsel",
+        "official_source": false
+      }
+    },
+    {
+      "id": "official-rules-fallback",
+      "title": "Gameplay questions require official-reference lookup",
+      "kind": "fallback_guidance",
+      "edition_ids": [
+        "ark-nova-zoo-guide-unpinned"
+      ],
+      "topics": [
+        "fallback",
+        "official-reference",
+        "faq"
+      ],
+      "summary": "For setup, action order, scoring, or card-effect questions, use a current authorized Ark Nova rulebook/FAQ lookup rather than this booklet. The source audit identified official Capstone and Feuerland resource leads, but public availability did not establish permission to copy them here.",
+      "interpretation_type": "fallback_guidance",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+        "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+        "locator": "Audit record: official Capstone resources page and Feuerland FAQ lead",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "redistribution_permitted": false,
+        "internal_only": false
+      },
+      "source": {
+        "source_kind": "official_public_reference_lead",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "url": "https://capstone-games.com/products/ark-nova",
+        "publisher": "Capstone Games / Feuerland Spiele",
+        "official_source": true
+      }
+    },
+    {
+      "id": "rulebook-setup",
+      "title": "Setup builds a shared zoo system and a personal action row",
+      "kind": "setup",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "setup",
+        "components",
+        "player-count"
+      ],
+      "summary": "Prepare the shared board, Break track, display, Association board, project and final-scoring supplies, then give each player a zoo map, five action cards, counters, workers, money, and the specified starting cards and pieces. Player count changes some starting placements, so use the selected edition’s setup diagram for exact quantities.",
+      "interpretation_type": "setup",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Components; Setup",
+        "page_locator": "pp. 2–5",
+        "locator": "Components; Setup; pp. 2–5",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-game-round-turn-flow",
+      "title": "Rounds alternate individual turns with administrative breaks",
+      "kind": "play_flow",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "game-flow",
+        "rounds",
+        "turns",
+        "break"
+      ],
+      "summary": "Players take turns by choosing one action card, resolving that action, and rotating the chosen card to the weakest slot. The Break track determines when administration interrupts play; breaks refresh selected supplies and workers, advance upkeep, and set up the next cycle. Continue until the end condition is reached, then resolve final scoring.",
+      "interpretation_type": "play_flow",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Gameplay; The Break Track; A Turn / The 5 Action Cards",
+        "page_locator": "pp. 6–9, 18",
+        "locator": "Gameplay; The Break Track; A Turn / The 5 Action Cards; pp. 6–9, 18",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-action-strength-and-order",
+      "title": "Action-card position is the strength and timing control",
+      "kind": "action_strength",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "actions",
+        "strength",
+        "order",
+        "timing"
+      ],
+      "summary": "The selected action’s slot supplies its current strength. Resolve the action using that strength, including any required minimums and any effects that trigger during or after the action; then shift the row and return the used card to the first slot. Do not treat the five action types as a fixed round order—the player chooses the card each turn.",
+      "interpretation_type": "action_strength",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "A Turn / The 5 Action Cards",
+        "page_locator": "pp. 8–9",
+        "locator": "A Turn / The 5 Action Cards; pp. 8–9",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-workers-and-exploration-boundary",
+      "title": "Association workers occupy contested tasks; no generic exploration action is assumed",
+      "kind": "worker_placement",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "workers",
+        "worker-placement",
+        "association",
+        "exploration"
+      ],
+      "summary": "Association workers are committed to tasks on the Association board, where task availability and the action strength determine whether the placement can resolve. A break recalls and refreshes the player’s workers. The base-game sections identify association work rather than a general exploration track or exploration action, so questions using exploration terminology—especially from an expansion or another game—must be checked against the intended edition.",
+      "interpretation_type": "worker_placement",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Association; The Association Board; Break",
+        "page_locator": "pp. 14–16, 18",
+        "locator": "Association; The Association Board; Break; pp. 14–16, 18",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-resources-items-artifacts",
+      "title": "Money, tokens, cards, and zoo components are separate resource classes",
+      "kind": "resources_items",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "resources",
+        "items",
+        "artifacts",
+        "tokens",
+        "components"
+      ],
+      "summary": "Ark Nova’s economy combines money with appeal, conservation, reputation, Break, and X-token tracking, while cards and physical zoo components provide actions, animals, sponsors, projects, buildings, partner zoos, and universities. Treat a named item or “artifact” as a component-specific question rather than inventing a universal artifact resource: its cost, icon, timing, and effect require the exact current component reference.",
+      "interpretation_type": "resources_items",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Components; Your Zoo Map; Appeal and Conservation Points",
+        "page_locator": "pp. 2–7, 18",
+        "locator": "Components; Your Zoo Map; Appeal and Conservation Points; pp. 2–7, 18",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-guardians-boundary",
+      "title": "Guardian terminology is outside the verified base procedure set",
+      "kind": "guardians",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "guardians",
+        "coverage",
+        "fallback"
+      ],
+      "summary": "The uploaded base-game rulebook’s core procedure is organized around zoo actions, association workers, animals, sponsors, projects, and administration breaks; it does not establish a generic guardian subsystem in the covered sections. If a card, scenario, expansion, or translation names a guardian, do not infer its effect from this corpus—use an authorized current reference or return not_yet_covered.",
+      "interpretation_type": "guardians",
+      "confidence": "medium",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Components; Gameplay; document coverage boundary",
+        "page_locator": "pp. 2–3, 6–8",
+        "locator": "Components; Gameplay; document coverage boundary; pp. 2–3, 6–8",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-research-and-universities",
+      "title": "Universities provide research-style infrastructure through association work",
+      "kind": "research",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "research",
+        "universities",
+        "association",
+        "reputation"
+      ],
+      "summary": "Association work can add universities to the zoo. These tiles provide the icons, reputation, and other benefits they show, and their placement changes which future association and card requirements can be met. The strategic interpretation is to treat university acquisition as an infrastructure investment; exact university icons and bonuses remain component-specific.",
+      "interpretation_type": "research",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Association; The Association Board; Gaining a partner university",
+        "page_locator": "pp. 14–16",
+        "locator": "Association; The Association Board; Gaining a partner university; pp. 14–16",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-scoring-and-endgame",
+      "title": "The game ends when the appeal and conservation races intersect",
+      "kind": "scoring_endgame",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "scoring",
+        "endgame",
+        "appeal",
+        "conservation"
+      ],
+      "summary": "Track appeal and conservation separately during play. When a player’s two counters meet, the end sequence is triggered after the remaining turns are handled as specified; then resolve the displayed final-scoring objectives and compare final values. Exact objective conditions, card points, ties, and edition-specific adjustments belong to the current scoring reference rather than this paraphrase.",
+      "interpretation_type": "scoring_endgame",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Appeal and Conservation Points; End of Game & Final Scoring",
+        "page_locator": "pp. 18–20",
+        "locator": "Appeal and Conservation Points; End of Game & Final Scoring; pp. 18–20",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-exact-card-animal-site-fallback",
+      "title": "Exact card, animal, sponsor, project, and site effects require lookup",
+      "kind": "exact_effect_fallback",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "fallback",
+        "cards",
+        "animals",
+        "sites",
+        "effects"
+      ],
+      "summary": "This corpus explains the procedure for playing broad action types but does not reproduce component wording or artwork. For a named animal, sponsor, conservation project, action card, building, enclosure, university, partner zoo, site, icon, or triggered effect, consult an authorized current reference and verify the printing; otherwise return not_yet_covered instead of guessing.",
+      "interpretation_type": "exact_effect_fallback",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Animal Card Layout; Cards; Build; Animals; Association; Sponsors",
+        "page_locator": "pp. 9–17",
+        "locator": "Animal Card Layout; Cards; Build; Animals; Association; Sponsors; pp. 9–17",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    },
+    {
+      "id": "rulebook-edition-conflict-fallback",
+      "title": "The rulebook artifact and Zoo Guide are separate, edition-limited sources",
+      "kind": "edition_conflict",
+      "edition_ids": [
+        "ark-nova-base-en-2022-20-page-rulebook-candidate"
+      ],
+      "topics": [
+        "edition",
+        "conflicts",
+        "provenance",
+        "fallback"
+      ],
+      "summary": "The 20-page uploaded rulebook is a likely base-game English document, while the earlier 32-page Zoo Guide is a separate supplementary artifact with unresolved provenance and edition. Prefer the source whose declared scope matches the question, never merge conflicting component counts or effects silently, and route unresolved printing, language, errata, expansion, and source conflicts to live lookup or not_yet_covered.",
+      "interpretation_type": "edition_conflict",
+      "confidence": "high",
+      "source_locator": {
+        "artifact_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+        "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+        "document_section": "Document identity; Components; End of Game & Final Scoring",
+        "page_locator": "pp. 1–5, 19–20",
+        "locator": "Document identity; Components; End of Game & Final Scoring; pp. 1–5, 19–20",
+        "source_kind": "quarantined_user_uploaded_artifact",
+        "official_source": false,
+        "accessed_at": "2026-08-13"
+      },
+      "rights_flags": {
+        "original_interpretation": true,
+        "metadata_only": false,
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "artwork_included": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      },
+      "source": {
+        "source_kind": "quarantined_user_uploaded_rulebook",
+        "rights_status": "permission_not_established",
+        "full_text_included": false,
+        "official_source": false
+      }
+    }
+  ],
+  "source_artifacts": [
+    {
+      "artifact_id": "ark-nova-field-guide-upload",
+      "title": "Ark Nova Zoo Guide booklet",
+      "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+      "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch/Ark-Nova-Zoo-Guide-Booklet.pdf",
+      "sha256": "55aeeb8b5211ed990a37db5218e639fa9b2f1ca703498568f468576b068165ff",
+      "pages": 32,
+      "language": "English-looking; catalogue records en-GB? provisionally",
+      "document_type": "supplementary field guide/booklet, not base rulebook",
+      "edition": "Edition not pinned; 32-page A5 Field Guide booklet",
+      "provenance": "user_uploaded; PDF author metadata YONG Edsel; original source URL not supplied",
+      "pdf_metadata": {
+        "author": "YONG Edsel",
+        "creator": "Microsoft Word for Microsoft 365",
+        "creation_date": "2022-09-26"
+      },
+      "rights_status": "permission_not_established",
+      "full_text_indexing_status": "blocked_pending_explicit_permission",
+      "redistribution_status": "blocked_pending_explicit_permission",
+      "local_use_status": "quarantined_for_internal_reference_only"
+    },
+    {
+      "artifact_id": "ark-nova-rulebook-upload-2026-08-13",
+      "title": "Ark Nova rulebook",
+      "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf",
+      "metadata_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/source-metadata.json",
+      "checksum_record_path": "/workspace/plugins/board-game-rules-source-audit/sources/candidates/ark-nova-rulebook/Ark-Nova-Rulebook.pdf.sha256",
+      "sha256": "f6b4eedc68e993f61b4c5cb5d99bb4af399da0be3de4781321bcba1ba44516f6",
+      "pages": 20,
+      "language": "likely English",
+      "document_type": "game rulebook",
+      "edition": "Likely base-game English rulebook; exact printing, revision, and errata state not pinned",
+      "provenance": "user_uploaded_attachment; original URL and publisher provenance not supplied",
+      "pdf_metadata": {
+        "pdf_version": "1.4",
+        "creator": "Adobe InDesign 16.4 (Macintosh)",
+        "producer": "Adobe PDF Library 16.0",
+        "creation_date": "2022-02-07T11:18:55Z",
+        "modification_date": "2022-02-07T11:19:07Z",
+        "encrypted": false,
+        "optimized": false,
+        "page_size_points": "595.276 x 841.89"
+      },
+      "rights_status": "permission_not_established",
+      "full_text_indexing_status": "blocked_pending_explicit_permission",
+      "redistribution_status": "blocked_pending_explicit_permission",
+      "local_use_status": "quarantined_for_internal_reference_only"
+    }
+  ],
+  "game_title": "Ark Nova",
+  "migration": {
+    "migrated_from": "interpreters/ark-nova",
+    "original_corpus_id": "ark-nova-rules-interpreter",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  }
+}

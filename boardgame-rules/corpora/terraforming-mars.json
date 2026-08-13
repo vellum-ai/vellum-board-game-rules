@@ -1,0 +1,223 @@
+{
+  "corpus_id": "terraforming-mars",
+  "corpus_version": "0.1.0",
+  "generated_at": "2026-08-13",
+  "catalogue_identity": "Matched fixed top-50 identity (BGG 167791); source provenance is third-party and rights are unresolved",
+  "bgg_snapshot": true,
+  "description": "Compact original-interpretation and play-aid corpus for Terraforming Mars; it is not a reproduction of a rulebook or guide.",
+  "full_rulebook_text_included": false,
+  "editions": [
+    {
+      "edition_id": "tm-base-third-party-unpinned",
+      "game": "Terraforming Mars",
+      "scope": "Base-game third-party PDF attributed to 1jour-1jeu.com; edition/printing not pinned",
+      "status": "document_scope_only",
+      "notes": "Matched fixed top-50 identity (BGG 167791); source provenance is third-party and rights are unresolved",
+      "language": "en",
+      "full_text_included": false,
+      "rights_status": "permission_not_established"
+    }
+  ],
+  "source_artifact": {
+    "artifact_id": "terraforming-mars-1jour-1jeu-upload-2026-08-12",
+    "local_path": "/workspace/plugins/board-game-rules-source-audit/sources/uploaded/2026-08-12-batch-2/Terraforming-Mars-Rulebook-1jour-1jeu.pdf",
+    "manifest_path": "/workspace/plugins/board-game-rules-source-audit/data/upload-batch-2026-08-12-batch-2.manifest.json",
+    "sha256": "800e1f4b857c951e31613ee00b4d6937d3040ffa6145f7eacdd983f10097c2d1",
+    "pages": 16,
+    "language": "English",
+    "document_type": "base-game rulebook copy hosted or produced by a third party",
+    "edition": "Base game; exact edition/printing not pinned",
+    "provenance": "user_uploaded; PDF metadata identifies 1jour-1jeu.com; original source URL not supplied",
+    "pdf_metadata": {
+      "title": "Terraforming mars Rulebook - 1jour-1jeu.com",
+      "author": "1jour-1jeu.com",
+      "creator": "1jour-1jeu.com",
+      "producer": "1jour-1jeu.com",
+      "creation_date": "2016-05-17",
+      "page_size": "581.102 x 722.835 pts"
+    },
+    "rights_status": "permission_not_established",
+    "full_text_indexing_status": "blocked_pending_explicit_permission",
+    "redistribution_status": "blocked_pending_explicit_permission",
+    "local_use_status": "quarantined_for_internal_reference_only"
+  },
+  "rights_policy": "The local PDF is a quarantined internal reference. Upload possession, public availability, or third-party hosting does not establish permission to index or redistribute source text.",
+  "entries": [
+    {
+      "id": "generation-four-phase-loop",
+      "interpretation_type": "play_flow",
+      "title": "A generation is a four-phase loop",
+      "summary": "Run turn order, research, action, then production. During the action phase, players keep cycling around the table until all have passed; production then resets the economy for the next generation.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Game Overview; Generations",
+        "page_locator": "pp. 3, 8–9",
+        "locator": "Game Overview; Generations; pp. 3, 8–9"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "actions-one-or-two-or-pass",
+      "interpretation_type": "timing",
+      "title": "Taking two actions is optional; passing is final",
+      "summary": "On an action turn, take one or two actions in any combination, or pass. Passing removes you from the remaining action phase, so do it only when you are finished for the generation.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Generations / Action Phase",
+        "page_locator": "p. 8",
+        "locator": "Generations / Action Phase; p. 8"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "global-parameter-tr",
+      "interpretation_type": "scoring",
+      "title": "Terraforming raises both a global track and TR",
+      "summary": "Whenever a global parameter rises, increase the acting player’s Terraform Rating by the permitted amount. Once a parameter is at its goal, additional effects may still resolve but do not raise TR for that parameter.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Global Parameters",
+        "page_locator": "p. 3",
+        "locator": "Global Parameters; p. 3"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "production-order",
+      "interpretation_type": "timing",
+      "title": "Convert energy before receiving production",
+      "summary": "At production, convert remaining energy to heat first. Then receive money from TR plus money production and add the other produced resources. Used blue-card actions become available again for the next generation.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Production Phase",
+        "page_locator": "p. 8",
+        "locator": "Production Phase; p. 8"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "game-end-after-production",
+      "interpretation_type": "scoring",
+      "title": "The last generation gets a final conversion window",
+      "summary": "When temperature, oxygen, and oceans all reach their goals, finish that generation through production. Then players get one final player-order opportunity to convert plants to greenery before final scoring.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Game End",
+        "page_locator": "p. 12",
+        "locator": "Game End; p. 12"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "final-score-stack",
+      "interpretation_type": "scoring",
+      "title": "Final scoring layers TR, awards, milestones, board, and cards",
+      "summary": "Score in layers: ending TR, awards, milestones, map tiles, then card points/resources. The highest total wins; the document uses money as the tie-breaker.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Final Scoring",
+        "page_locator": "p. 12",
+        "locator": "Final Scoring; p. 12"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    },
+    {
+      "id": "third-party-provenance-boundary",
+      "interpretation_type": "coverage_boundary",
+      "title": "Third-party copy is not publisher authority",
+      "summary": "The local PDF metadata names 1jour-1jeu.com and does not establish publisher provenance, exact printing, or permission. Use this corpus for its bounded interpretations only; resolve edition conflicts and card-specific questions against an authorized current source.",
+      "confidence": "high",
+      "edition_ids": [
+        "tm-base-third-party-unpinned"
+      ],
+      "source_locator": {
+        "document_section": "Artifact metadata / provenance",
+        "page_locator": "Manifest and embedded PDF metadata",
+        "locator": "Artifact metadata / provenance; Manifest and embedded PDF metadata"
+      },
+      "rights_flags": {
+        "source_text_stored": false,
+        "full_text_included": false,
+        "long_quotation_included": false,
+        "original_interpretation": true,
+        "metadata_only": false,
+        "redistribution_permitted": false,
+        "internal_only": true
+      }
+    }
+  ],
+  "game_title": "Terraforming Mars",
+  "coverage_boundary": "Use this as a bounded aid. For exact wording, card/component text, exceptions, later printings, or questions outside these entries, consult an authorized current reference or return not_yet_covered.",
+  "migration": {
+    "migrated_from": "interpreters/terraforming-mars",
+    "original_corpus_id": "terraforming-mars-rules-corpus",
+    "migrated_at": "2026-08-13",
+    "note": "Entry text copied verbatim from the pre-corpus interpreter package; unified-schema fields normalized, all original metadata preserved."
+  }
+}

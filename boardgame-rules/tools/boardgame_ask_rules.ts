@@ -4,7 +4,7 @@ import { getSitting, updateSitting } from "../src/sitting.ts";
 
 export default {
   description:
-    "Answer a board-game rules question from the installed corpora, or abstain. Always returns game and edition identity, corpus version, citations, rights flags, and an explicit abstention field. Do not invent a ruling when abstention is true. When this conversation has an active sitting (boardgame_start_sitting), the sitting's game is the default, the result may carry analog_hooks mapping the ruling to games the table already knows, and the cited ruling is recorded on the sitting. Cite first; analogize only from a returned hook.",
+    "Answer a board-game rules question from the installed corpora, or abstain. Requires a game: pass game_id or have an active sitting — with neither, the tool abstains and lists the supported games. Returns game identity, corpus version, citations, rights flags, and an explicit abstention field; edition_id echoes the edition filter applied (null means all editions were in scope — read each ruling's own editions from evidence[].edition_ids). Filtering by an expansion edition also surfaces the base-edition rules it inherits. Do not invent a ruling when abstention is true. When this conversation has an active sitting (boardgame_start_sitting), the sitting's game is the default, the result may carry analog_hooks mapping the ruling to games the table already knows, and the cited ruling is recorded on the sitting. Cite first; analogize only from a returned hook.",
   defaultRiskLevel: "low" as const,
   input_schema: {
     type: "object",
@@ -15,7 +15,7 @@ export default {
       },
       game_id: {
         type: "string",
-        description: "Optional game id or exact title. Defaults to the first installed game (currently wingspan).",
+        description: "Game id or exact title (see boardgame_list_supported_games). Optional only when a sitting is active; otherwise omitting it abstains.",
       },
       edition_id: {
         type: "string",

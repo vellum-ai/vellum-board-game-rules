@@ -1,9 +1,0 @@
-{
-  "name": "board-game-rules-source-audit",
-  "version": "0.1.0",
-  "description": "Top-50 board-game identity and publisher-source audit registry; no rules text included.",
-  "peerDependencies": {
-    "@vellumai/plugin-api": "^0.8.0"
-  },
-  "vellum": {}
-}
