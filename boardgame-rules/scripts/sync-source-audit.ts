@@ -177,22 +177,22 @@ for (const name of readdirSync(corporaDir).sort()) {
   const path = join(corporaDir, name);
   const corpus = JSON.parse(readFileSync(path, "utf8")) as Corpus & Record<string, unknown>;
 
-  // 1. registry match
+  // 1. artifact linkage first — a manifest artifact may carry the BGG identity
+  // the registry match needs, so resolve artifacts before looking up the registry.
   const artifactRefs = collectArtifactRefs(corpus);
-  let bggId = corpusBggId(corpus);
-  const registryGame =
-    (bggId && registryByBgg.get(bggId)) || registryByTitle.get(normalizeTitle(corpus.game_title)) || null;
-  if (registryGame && bggId && String(registryGame.bgg_id) !== bggId) {
-    throw new Error(`${name}: corpus BGG id ${bggId} conflicts with registry record ${registryGame.bgg_id}`);
-  }
-
-  // 2. artifact linkage
   const artifacts: SourceAuditArtifact[] = [];
   let manifestDate: string | undefined;
+  let artifactBggId: string | null = null;
   for (const ref of artifactRefs) {
     const found = findManifestArtifact(ref.artifact_id, ref.sha256);
     if (found?.catalogued) manifestDate = found.catalogued;
-    if (found?.artifact.bgg_id && !bggId) bggId = String(found.artifact.bgg_id);
+    if (found?.artifact.bgg_id) {
+      const foundBgg = String(found.artifact.bgg_id);
+      if (artifactBggId && artifactBggId !== foundBgg) {
+        throw new Error(`${name}: manifest artifacts disagree on BGG id (${artifactBggId} vs ${foundBgg})`);
+      }
+      artifactBggId = foundBgg;
+    }
     artifacts.push({
       artifact_id: ref.artifact_id ?? found?.artifact.artifact_id ?? "(unidentified)",
       title: ref.title ?? found?.artifact.title,
@@ -203,6 +203,20 @@ for (const name of readdirSync(corporaDir).sort()) {
       redistribution_status: found?.artifact.redistribution_status,
       local_use_status: found?.artifact.local_use_status,
     });
+  }
+
+  // 2. registry match — by normalized title OR the BGG id the corpus or its
+  // artifacts carry, per the header contract. A title mismatch alone must not
+  // hide an identity a manifest artifact records.
+  const declaredBggId = corpusBggId(corpus);
+  if (declaredBggId && artifactBggId && declaredBggId !== artifactBggId) {
+    throw new Error(`${name}: corpus BGG id ${declaredBggId} conflicts with manifest artifact BGG id ${artifactBggId}`);
+  }
+  const bggId = declaredBggId ?? artifactBggId;
+  const registryGame =
+    (bggId && registryByBgg.get(bggId)) || registryByTitle.get(normalizeTitle(corpus.game_title)) || null;
+  if (registryGame && bggId && String(registryGame.bgg_id) !== bggId) {
+    throw new Error(`${name}: corpus BGG id ${bggId} conflicts with registry record ${registryGame.bgg_id}`);
   }
 
   // 3. official sources
