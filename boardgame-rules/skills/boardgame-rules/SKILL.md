@@ -3,7 +3,8 @@ name: boardgame-rules
 description: >-
   Answer board-game rules questions from the installed boardgame-rules plugin.
   Use when the user asks how a supported game works, what a rule is, or whether
-  a move is legal. Currently only Wingspan is installed.
+  a move is legal. Call boardgame_list_supported_games for what is installed
+  (currently Wingspan and Cribbage).
 metadata:
   vellum:
     display-name: Board Game Rules

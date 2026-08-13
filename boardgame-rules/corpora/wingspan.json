@@ -1,7 +1,7 @@
 {
   "corpus_id": "wingspan",
   "game_title": "Wingspan",
-  "corpus_version": "0.2.0",
+  "corpus_version": "0.3.0",
   "generated_at": "2026-08-13",
   "description": "Corrected Wingspan fixture for the installable boardgame-rules plugin. Original interpretations of setup, turn structure, scoring, habitats, bird-power types, Automa overview, and selected edge cases, grounded against the official Stonemaier FAQ and publisher-commissioned Rulepop. Not a complete rulebook and not the FAQ/errata overlay in wingspan-rules/.",
   "full_rulebook_text_included": false,
@@ -94,6 +94,14 @@
       "section": "Setup",
       "subsection": "Bonus Cards",
       "summary": "During setup, each player draws 2 bonus cards and keeps 1, returning the unkept card to the bonus card deck. You begin the game with exactly 1 bonus card. Additional bonus cards can be gained later through certain bird powers. All bonus cards are scored at the end of the game, whether or not their conditions were met (unmet bonus cards score 0).",
+      "analog_hooks": [
+        {
+          "known_game_id": "ticket-to-ride",
+          "known_game_title": "Ticket to Ride",
+          "likeness": "Bonus cards work like Ticket to Ride destination tickets: a private objective you keep secret and score at the end of the game.",
+          "exception": "An unmet Wingspan bonus card simply scores 0. It never subtracts points the way a failed destination ticket does."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",
@@ -168,6 +176,20 @@
       "section": "Actions",
       "subsection": "Gain Food",
       "summary": "Place an action cube in the leftmost exposed slot of the Forest row on your player mat. Gain the amount of food shown on that slot (this increases as you fill the row from left to right). Take food from the birdfeeder by choosing dice one at a time; each die face shows a food type, and you take a matching food token. You may choose dice one at a time, with the option to reroll if conditions are met between selections. If all dice in the birdfeeder tray show the same face (including if only 1 die remains), you may first throw all 5 dice back in and reroll before gaining food; this is optional and free. If the tray is empty, throw all 5 dice back in automatically. After gaining food, activate any brown (When Activated) powers on your Forest birds, from right to left. All powers are optional. You can always decline a benefit, but you can never decline a cost.",
+      "analog_hooks": [
+        {
+          "known_game_id": "catan",
+          "known_game_title": "Catan",
+          "likeness": "Food tokens are Wingspan's resources, like Catan's wood, brick, grain, ore, and wool: you stockpile them so you can pay costs later.",
+          "exception": "In Catan resources arrive passively when the dice roll matches your settlements, even on other players' turns. In Wingspan gaining food is an action you spend your whole turn on, picking dice out of the birdfeeder."
+        },
+        {
+          "known_game_id": "azul",
+          "known_game_title": "Azul",
+          "likeness": "The birdfeeder is a shared pool like Azul's factory displays: you draft dice out of it, what you take is gone until it refills, and watching what you leave for others matters.",
+          "exception": "You pick dice one at a time — there is no take-all-of-one-color rule — and the feeder refills only when it empties, or when every remaining die shows the same face and you choose the free reroll."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",
@@ -243,6 +265,14 @@
       "section": "Actions",
       "subsection": "Draw Bird Cards",
       "summary": "Place an action cube in the leftmost exposed slot of the Wetland row on your player mat. Draw the number of bird cards shown on that slot (this increases as you fill the row from left to right). For each card, you may draw from either the 3 face-up cards on the bird tray or from the top of the bird deck; you can look at each card before deciding where to draw the next one. When you take a face-up tray card, it is not refilled until the end of your turn. At the end of your turn, refill empty tray spaces from the deck. There is no hand limit. If the bird deck runs out during the game, reshuffle all discarded bird cards to form a new deck. At the end of each round, discard any remaining face-up tray cards and replenish with 3 new ones. After drawing, activate any brown (When Activated) powers on your Wetland birds, from right to left. All powers are optional.",
+      "analog_hooks": [
+        {
+          "known_game_id": "ticket-to-ride",
+          "known_game_title": "Ticket to Ride",
+          "likeness": "Drawing bird cards works like drawing train cards in Ticket to Ride: for each draw you choose between a face-up display (the 3-card bird tray) and the top of the deck, sight unseen.",
+          "exception": "Ticket to Ride refills the display immediately after each pick; the Wingspan bird tray refills at the end of your turn. There is no equivalent of the face-up locomotive costing both draws, and Wingspan has no hand limit."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",
@@ -280,6 +310,20 @@
       "section": "Actions",
       "subsection": "Play a Bird",
       "summary": "Place an action cube in the leftmost exposed slot of the Play a Bird row on your player mat. Pay the bird's food cost by spending matching food tokens from your personal supply (returned to the general supply, not the birdfeeder). Wild (star) food icons on the card can be paid with any food type. Then place the bird card in the leftmost exposed slot of one of your three habitats (Forest, Grassland, or Wetland). For columns 2 through 5, you must also spend the number of eggs printed on that column's slot, removing them from any of your played birds. There is no nest-type restriction on placement; nest type matters only for end-of-round goals and certain bird powers. Once a bird is played, it is permanent and cannot be discarded. Playing a bird does not activate any brown powers in that habitat.",
+      "analog_hooks": [
+        {
+          "known_game_id": "catan",
+          "known_game_title": "Catan",
+          "likeness": "Playing a bird is Wingspan's pay-to-build, like spending wood and brick on a Catan settlement: pay the printed resource cost, place a permanent piece you cannot take back.",
+          "exception": "Birds go on your own player mat, not a shared map — there are no adjacency or placement-blocking rules. Birds in columns 2-5 also cost eggs on top of food, which has no Catan equivalent."
+        },
+        {
+          "known_game_id": "ticket-to-ride",
+          "known_game_title": "Ticket to Ride",
+          "likeness": "Like claiming a route in Ticket to Ride, you pay a printed cost in collected resources (food tokens instead of matching train cards) to make a permanent placement, and wild (star) icons accept any food the way locomotives stand in for any color.",
+          "exception": "Birds are placed on your own mat, so nobody can claim a bird slot ahead of you the way a route gets taken. Columns 2-5 add an egg cost with no Ticket to Ride equivalent."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",
@@ -501,6 +545,14 @@
       "section": "Bird Cards",
       "subsection": "Power Types",
       "summary": "Bird powers come in five types, distinguished by the background color of the power icon: (1) When Played (no colored background, sometimes called white powers): activates only once, when the bird is played. (2) When Activated (brown): activates from right to left whenever you use the corresponding habitat action. (3) Once Between Turns (pink): triggers on opponents' turns, at most once between each of your own turns; it can even activate once after your final turn. (4) Round End (teal): resolved when all turns in the round are complete, before scoring the goal, in player order starting with the first player. (5) Game End (yellow): activates once at the end of the game, after all end-of-round steps. All bird powers are always optional. You can always decline a benefit but never a cost; to avoid a cost entirely, skip the power. Not all birds have powers. Birds in the first column of any habitat row do not have their brown powers activated (no power icon on the mat for that column).",
+      "analog_hooks": [
+        {
+          "known_game_id": "catan",
+          "known_game_title": "Catan",
+          "likeness": "Pink (Once Between Turns) powers mean you are not fully idle while others play — the closest Catan feeling is staying engaged on other players' turns, the way their rolls can pay you resources or the active player can trade with you.",
+          "exception": "A pink power fires only when its specific trigger happens, and at most once between your own turns. It is not open-ended like Catan trading, and nothing in Wingspan is negotiated."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",
@@ -880,6 +932,14 @@
       "section": "Edge Cases",
       "subsection": "Brown Power Timing",
       "summary": "Brown (When Activated) powers activate from right to left, one bird at a time, whenever you take the corresponding habitat action. Each bird's power resolves fully before the next one activates. All brown powers are optional; you may skip any power to avoid its cost or because you do not want its benefit. Birds in the first column of a habitat row do not activate (no power icon on the mat). If a brown power gains a resource (food, egg, or card), that resource is available immediately for subsequent powers in the same activation sequence. Brown powers do not grant extra action cubes; the number of actions per round is fixed by the round and player count.",
+      "analog_hooks": [
+        {
+          "known_game_id": "dominion",
+          "known_game_title": "Dominion",
+          "likeness": "Chaining brown powers right to left is engine-building like Dominion: each bird you add makes the same action produce more, and a resource one power generates is immediately available to the next power in the chain.",
+          "exception": "Your birds are a permanent tableau that fires in fixed row order every time you take the action — nothing cycles through a deck, so the engine is predictable rather than shuffle-dependent."
+        }
+      ],
       "confidence": "high",
       "source_locator": {
         "url": "https://stonemaiergames.com/games/wingspan/rules/",

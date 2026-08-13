@@ -145,6 +145,35 @@ function validateCorpus(corpus: Corpus, filename: string): ValidationError[] {
       });
     }
 
+    // analog_hooks are optional, but a present hook must be complete —
+    // a hook missing its exception reads as "this analogy has no caveats",
+    // which is exactly the failure mode analog hooks exist to prevent.
+    if (entry.analog_hooks !== undefined) {
+      if (!Array.isArray(entry.analog_hooks)) {
+        errors.push({
+          entry: entry.id,
+          message: `${filename}: entry "${entry.id}" analog_hooks must be an array`,
+        });
+      } else {
+        for (const hook of entry.analog_hooks) {
+          for (const field of ["known_game_id", "known_game_title", "likeness", "exception"] as const) {
+            if (!hook[field] || typeof hook[field] !== "string") {
+              errors.push({
+                entry: entry.id,
+                message: `${filename}: entry "${entry.id}" analog hook missing "${field}"`,
+              });
+            }
+          }
+          if (hook.known_game_id && hook.known_game_id !== hook.known_game_id.toLowerCase()) {
+            errors.push({
+              entry: entry.id,
+              message: `${filename}: entry "${entry.id}" analog hook known_game_id "${hook.known_game_id}" must be a lowercase id`,
+            });
+          }
+        }
+      }
+    }
+
     // rights_flags must have all required keys
     if (entry.rights_flags) {
       for (const key of REQUIRED_RIGHTS_KEYS) {

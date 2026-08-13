@@ -41,6 +41,20 @@ export type InterpretationSchema = {
   rights_policy: string;
 };
 
+/**
+ * A corpus-owned mapping from one rule entry to a game the player may already
+ * know. Hooks exist only where the mapping is honest; entries without a real
+ * analog carry no hooks, which lets retrieval abstain from analogizing.
+ */
+export type AnalogHook = {
+  known_game_id: string;
+  known_game_title: string;
+  /** What genuinely transfers from the known game to this rule. */
+  likeness: string;
+  /** Where the analogy breaks down. Always stated so the analogy is never mistaken for the ruling. */
+  exception: string;
+};
+
 export type CorpusEntry = {
   id: string;
   title: string;
@@ -54,6 +68,8 @@ export type CorpusEntry = {
   confidence: string;
   source_locator: SourceLocator;
   rights_flags: RightsFlags;
+  /** Optional. Present only on entries with a real mapping to a common game. */
+  analog_hooks?: AnalogHook[];
 };
 
 export type Corpus = {
@@ -131,4 +147,40 @@ export type AskResult = {
   };
   evidence: Evidence[];
   supported_games: string[];
+  /**
+   * Analog hooks from the top evidence entry, filtered to the caller's known
+   * games. Always `[]` when there is no sitting, no known game matches, the
+   * entry has no hooks, or the result is an abstention. The citation is the
+   * ruling; these are teaching aids only.
+   */
+  analog_hooks: AnalogHook[];
+};
+
+/** The last ruling cited to the table, recorded on the sitting. */
+export type SittingRuling = {
+  entry_id: string;
+  title: string;
+  locator: string;
+};
+
+/** The last analogy offered at the table, recorded on the sitting. */
+export type SittingAnalog = {
+  known_game_id: string;
+  entry_id: string;
+};
+
+/**
+ * One sitting = one conversation teaching one game at the table.
+ * Persisted under the plugin's `data/` directory keyed by conversation id.
+ */
+export type Sitting = {
+  conversation_id: string;
+  game_id: string;
+  edition_id: string | null;
+  /** Games the players at this sitting already know (normalized ids). */
+  known_games: string[];
+  last_ruling: SittingRuling | null;
+  last_analog: SittingAnalog | null;
+  started_at: string;
+  updated_at: string;
 };

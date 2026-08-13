@@ -162,6 +162,84 @@
           "expect_hit_1": true,
           "expect_summary_contains": ["rounded down"],
           "expect_summary_not_contains": ["rounded up"]
+        },
+        {
+          "label": "analog returned for known game (catan)",
+          "query": "how do I gain food",
+          "known_games": ["catan"],
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["catan"]
+        },
+        {
+          "label": "analog normalizes known-game names (Ticket to Ride)",
+          "query": "draw bird cards action",
+          "known_games": ["Ticket to Ride"],
+          "expect_ids": ["wingspan-turn-004"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["ticket-to-ride"]
+        },
+        {
+          "label": "analog offers every hooked known game (play a bird)",
+          "query": "play bird nest type habitat placement",
+          "known_games": ["catan", "ticket-to-ride"],
+          "expect_ids": ["wingspan-turn-005"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["catan", "ticket-to-ride"]
+        },
+        {
+          "label": "analog empty when no known games recorded",
+          "query": "how do I gain food",
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_empty": true
+        },
+        {
+          "label": "analog empty when known game has no hook for this rule",
+          "query": "how do I gain food",
+          "known_games": ["ticket-to-ride"],
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_empty": true
+        },
+        {
+          "label": "analog empty when known game has no hooks anywhere",
+          "query": "how do I gain food",
+          "known_games": ["chess"],
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_empty": true
+        },
+        {
+          "label": "analog azul draft hook on gain food",
+          "query": "how do I gain food",
+          "known_games": ["Azul"],
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["azul"]
+        },
+        {
+          "label": "analog dominion engine hook on brown power chaining",
+          "query": "brown power activation direction order",
+          "known_games": ["dominion"],
+          "expect_ids": ["wingspan-edgecase-004"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["dominion"]
+        },
+        {
+          "label": "analog returns all hooked games the table knows (gain food)",
+          "query": "how do I gain food",
+          "known_games": ["catan", "azul", "dominion"],
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true,
+          "expect_analog_known_game_ids": ["catan", "azul"]
+        },
+        {
+          "label": "abstention never analogizes",
+          "query": "quantum entanglement scoring rule",
+          "known_games": ["catan", "ticket-to-ride"],
+          "expect_abstention": true,
+          "expect_analog_empty": true
         }
       ]
     }

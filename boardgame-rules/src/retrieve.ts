@@ -1,5 +1,6 @@
 import { listSupportedGames, loadCorpus } from "./corpus.ts";
-import type { AskResult, Citation, Corpus, CorpusEntry, Evidence } from "./types.ts";
+import { normalizeKnownGames } from "./sitting.ts";
+import type { AnalogHook, AskResult, Citation, Corpus, CorpusEntry, Evidence } from "./types.ts";
 
 const ABSTAIN_THRESHOLD = 5.5;
 const DEFAULT_LIMIT = 5;
@@ -62,8 +63,27 @@ function emptyAsk(partial: Partial<AskResult> & Pick<AskResult, "query" | "abste
     },
     evidence: [],
     supported_games: listSupportedGames().map((game) => game.game_id),
+    analog_hooks: [],
     ...partial,
   };
+}
+
+/**
+ * Analog hooks for the top evidence entry, filtered to games the caller's
+ * sitting knows. Abstention always wins: an abstained result never
+ * analogizes. No known games, or no hook for a known game, returns [] —
+ * citing without analogizing is the correct behavior, not a failure.
+ */
+function analogHooksFor(
+  topEntry: CorpusEntry | undefined,
+  abstention: boolean,
+  knownGames: readonly string[] | undefined,
+): AnalogHook[] {
+  if (abstention || !topEntry?.analog_hooks?.length || !knownGames?.length) {
+    return [];
+  }
+  const known = new Set(normalizeKnownGames(knownGames));
+  return topEntry.analog_hooks.filter((hook) => known.has(hook.known_game_id));
 }
 
 function resolveEdition(corpus: Corpus, editionId?: string): string | null {
@@ -78,6 +98,8 @@ export function askRules(options: {
   gameId?: string;
   editionId?: string;
   limit?: number;
+  /** Games the current sitting's players already know. Enables analog_hooks on the result. */
+  knownGames?: string[];
 }): AskResult {
   const query = options.query.trim();
   const requestedLimit = options.limit ?? DEFAULT_LIMIT;
@@ -168,5 +190,6 @@ export function askRules(options: {
     },
     evidence,
     supported_games: supported.map((game) => game.game_id),
+    analog_hooks: analogHooksFor(scored[0]?.entry, abstention, options.knownGames),
   };
 }

@@ -13,3 +13,6 @@ node_modules/
 # Local runtime/build output
 **/dist/
 **/.cache/
+
+# Plugin runtime state (sittings live under the installed plugin, never in git)
+boardgame-rules/data/
