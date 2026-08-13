@@ -1,0 +1,78 @@
+{
+  "suites": [
+    {
+      "game": "wingspan",
+      "edition": "1st Edition",
+      "tests": [
+        {
+          "label": "gaining food mechanics",
+          "query": "how do I gain food",
+          "expect_ids": ["wingspan-turn-002"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "laying eggs action",
+          "query": "lay eggs on birds",
+          "expect_ids": ["wingspan-turn-003"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "drawn card placement — known lexical gap",
+          "query": "draw bird cards action",
+          "expect_ids": ["wingspan-turn-004"],
+          "expect_hit_1": true,
+          "known_limitation": true
+        },
+        {
+          "label": "empty query abstention",
+          "query": "",
+          "expect_abstention": true
+        },
+        {
+          "label": "nonsense query abstention — known lexical gap",
+          "query": "quantum entanglement scoring rule",
+          "expect_abstention": true,
+          "known_limitation": true
+        },
+        {
+          "label": "end game scoring",
+          "query": "end of game scoring points",
+          "expect_ids": ["wingspan-rule-001"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "round end bonus scoring — known lexical gap",
+          "query": "round end goal scoring bonus",
+          "expect_ids": ["wingspan-rule-002"],
+          "expect_hit_1": true,
+          "known_limitation": true
+        },
+        {
+          "label": "habitat rules forest — known lexical gap",
+          "query": "what happens in forest habitat",
+          "expect_ids": ["wingspan-rule-003"],
+          "expect_hit_1": true,
+          "known_limitation": true
+        },
+        {
+          "label": "unsupported game abstention",
+          "game": "catan",
+          "query": "settlement placement rules",
+          "expect_abstention": true
+        },
+        {
+          "label": "bird power types",
+          "query": "brown pink white bird powers",
+          "expect_ids": ["wingspan-rule-006"],
+          "expect_hit_1": true
+        },
+        {
+          "label": "solo mode automa",
+          "query": "how to play solo against automa",
+          "expect_ids": ["wingspan-rule-012"],
+          "expect_hit_1": true
+        }
+      ]
+    }
+  ]
+}
