@@ -84,6 +84,9 @@ function emptyAsk(partial: Partial<AskResult> & Pick<AskResult, "query" | "abste
     evidence: [],
     supported_games: listSupportedGames().map((game) => game.game_id),
     analog_hooks: [],
+    // Every emptyAsk caller is an input-error abstention; the coverage
+    // abstention is the scored return path below.
+    abstention_kind: "input",
     ...partial,
   };
 }
@@ -238,6 +241,7 @@ export function askRules(options: {
     coverage_boundary: corpus.coverage_boundary,
     query,
     abstention,
+    abstention_kind: abstention ? "coverage" : null,
     abstention_reason: abstention
       ? "No sufficiently matching rule is in the current corpus. The question may be outside coverage, or phrased differently than the fixture entries."
       : null,

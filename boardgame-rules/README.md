@@ -123,13 +123,22 @@ Every `boardgame_ask_rules` result includes:
 - `edition_id` — the edition filter that was applied; `null` means all editions were in scope (per-ruling editions are on `evidence[].edition_ids`). Filtering by an expansion edition also includes the editions it `inherits`
 - `coverage_boundary`
 - `evidence[]` with citation locator, URL, confidence, and rights flags
-- `abstention` and `abstention_reason`
+- `abstention`, `abstention_reason`, and `abstention_kind` (`"coverage"` = searched but nothing matched, `"input"` = unanswerable request, `null` when answered)
 - `supported_games`
 - `analog_hooks[]` — hooks from the top evidence filtered to the sitting's
   known games; always `[]` with no sitting, no known-game match, or on
   abstention
+- `web_fallback` — on coverage abstentions only, live web-search results
+  fetched in the same call (answer, sources, and a mandatory disclaimer);
+  `null` on answered results and input-error abstentions. `used: true`
+  requires at least one web source; a provider answer without sources is
+  discarded, never relayed as web findings. Needs the host runtime and a
+  provider with native web search; fails open to the plain abstention.
+  Disable with `"web_fallback": false` in `config.json`.
 
 If `abstention` is true, do not invent a ruling — and no analogy is offered.
+Web-fallback content is table guidance with sources, never a corpus-cited
+ruling; `abstention` stays true when it is present.
 
 `boardgame_check_scenario` returns worked-example matches or hard-abstains:
 
