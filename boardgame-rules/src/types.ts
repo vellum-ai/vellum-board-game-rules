@@ -231,6 +231,8 @@ export type AskResult = {
   corpus_version: string | null;
   coverage_boundary: string | null;
   query: string;
+  /** "hybrid" when semantic similarity from the plugin index was fused into scoring; "lexical" otherwise (always outside the daemon). */
+  retrieval_mode: "lexical" | "hybrid";
   abstention: boolean;
   abstention_reason: string | null;
   /**

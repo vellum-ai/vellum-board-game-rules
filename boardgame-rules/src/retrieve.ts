@@ -1,4 +1,5 @@
 import { listSupportedGames, loadCorpus } from "./corpus.ts";
+import type { SemanticScores } from "./semantic.ts";
 import { normalizeKnownGames } from "./sitting.ts";
 import type { AnalogHook, AskResult, Citation, Corpus, CorpusEntry, Evidence } from "./types.ts";
 
@@ -18,6 +19,32 @@ const ABSTAIN_THRESHOLD = 5.5;
  */
 const MIN_STRONG_DISTINCT_MATCHES = 3;
 const MIN_STRONG_TITLE_MATCHES = 2;
+/**
+ * Semantic fusion. When the caller supplies semantic similarity scores (from
+ * the host's plugin index, see semantic.ts), each entry's lexical score is
+ * boosted by SEMANTIC_WEIGHT * (similarity - background), where background is
+ * the MEDIAN similarity across the returned entries. Hybrid-fusion scores are
+ * relative, not absolute: an off-domain query scores ~0.3 against EVERYTHING
+ * (no entry stands out), while a real paraphrase scores its true entry well
+ * above the pack. Subtracting the median makes only the discriminative part
+ * count, so uniform noise adds ~0 and cannot lift near-threshold nonsense
+ * over ABSTAIN_THRESHOLD, while a stand-out entry gains the full lift.
+ * SEMANTIC_MIN_MARGIN additionally requires the stand-out to be meaningful:
+ * an entry must beat the pack by at least this much before any lift applies,
+ * so an off-domain query whose top lexical entry is merely brushed by the
+ * embedding (~0.1 over background) gains nothing, while a real paraphrase
+ * (typically 0.2-0.4 over background) gains the full margin-adjusted lift.
+ * Absent scores = pure lexical.
+ */
+const SEMANTIC_WEIGHT = 8;
+const SEMANTIC_MIN_MARGIN = 0.15;
+
+function medianOf(values: number[]): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 1 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
 /** Floor so a strong-match override still requires non-trivial score mass. */
 const STRONG_MATCH_SCORE_FLOOR = 3.0;
 const DEFAULT_LIMIT = 5;
@@ -94,6 +121,7 @@ function emptyAsk(partial: Partial<AskResult> & Pick<AskResult, "query" | "abste
     evidence: [],
     supported_games: listSupportedGames().map((game) => game.game_id),
     analog_hooks: [],
+    retrieval_mode: "lexical",
     // Every emptyAsk caller is an input-error abstention; the coverage
     // abstention is the scored return path below.
     abstention_kind: "input",
@@ -152,6 +180,12 @@ export function askRules(options: {
   limit?: number;
   /** Games the current sitting's players already know. Enables analog_hooks on the result. */
   knownGames?: string[];
+  /**
+   * Optional semantic similarity per entry_id (0..1) from the plugin index.
+   * Fused into the lexical score; omit for pure lexical retrieval. Kept as an
+   * input so this function stays synchronous and deterministic to test.
+   */
+  semanticScores?: SemanticScores;
 }): AskResult {
   const query = options.query.trim();
   const requestedLimit = options.limit ?? DEFAULT_LIMIT;
@@ -217,8 +251,21 @@ export function askRules(options: {
     });
   }
 
+  const semantic = options.semanticScores;
+  const semanticBackground = semantic ? medianOf([...semantic.values()]) : 0;
   const scored = scopedEntries
-    .map((entry) => ({ entry, ...scoreEntry(entry, queryTokens) }))
+    .map((entry) => {
+      const lexical = scoreEntry(entry, queryTokens);
+      const similarity = semantic?.get(entry.id) ?? 0;
+      const margin = similarity - semanticBackground;
+      const discriminative = margin >= SEMANTIC_MIN_MARGIN ? margin : 0;
+      return {
+        entry,
+        ...lexical,
+        score: lexical.score + SEMANTIC_WEIGHT * discriminative,
+        semantic_similarity: similarity,
+      };
+    })
     .sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title));
   const topScore = scored[0]?.score ?? 0;
   // A verbose query dilutes the ratio-based score; a top entry that still
@@ -243,6 +290,7 @@ export function askRules(options: {
       citation: citationFor(entry),
       rights_flags: entry.rights_flags,
     }));
+  const semanticUsed = semantic !== undefined && semantic.size > 0;
 
   return {
     game_id: corpus.corpus_id,
@@ -251,6 +299,7 @@ export function askRules(options: {
     corpus_version: corpus.corpus_version,
     coverage_boundary: corpus.coverage_boundary,
     query,
+    retrieval_mode: semanticUsed ? "hybrid" : "lexical",
     abstention,
     abstention_kind: abstention ? "coverage" : null,
     abstention_reason: abstention

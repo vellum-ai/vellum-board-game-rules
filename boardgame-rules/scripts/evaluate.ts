@@ -477,6 +477,52 @@ try {
       fbInputError.web_fallback === null,
   );
 
+  // Semantic fusion math (deterministic: simulated similarity maps, since the
+  // harness has no embedding backend). Pins the two properties that make the
+  // fusion safe: a stand-out similarity on the true entry lifts a lexically
+  // near-threshold paraphrase into an answer, while uniform background noise
+  // and mild off-domain brushes add nothing and keep abstaining.
+  const simMap = (ids: string[], boost: string | null, value: number) => {
+    const m = new Map<string, number>(ids.map((id) => [id, 0.3]));
+    if (boost) m.set(boost, value);
+    return m;
+  };
+  const evidenceIds = (game: string, query: string) =>
+    askRules({ query, gameId: game }).evidence.map((e) => e.entry_id);
+
+  const paraphraseLifts: Array<[string, string, string]> = [
+    ["wingspan", "who wins if we have the same score", "wingspan-rule-001"],
+    ["wingspan", "can I put a bird anywhere or does the nest matter", "wingspan-turn-005"],
+    ["wingspan", "how do I get more food from the feeder thing", "wingspan-turn-002"],
+    ["cribbage", "what do I do if I cant play without going over", "play-go-and-thirty-one"],
+    ["cribbage", "is a jack that matches the cut card worth anything", "counting-his-nobs"],
+  ];
+  for (const [game, query, want] of paraphraseLifts) {
+    const r = askRules({ query, gameId: game, semanticScores: simMap(evidenceIds(game, query), want, 0.65) });
+    check(
+      `semantic fusion lifts paraphrase to answer: ${want}`,
+      !r.abstention && r.evidence[0]?.entry_id === want && r.retrieval_mode === "hybrid",
+      `got abstention=${r.abstention} top=${r.evidence[0]?.entry_id} score=${r.evidence[0]?.score}`,
+    );
+  }
+  const offDomain: Array<[string, string]> = [
+    ["wingspan", "quantum entanglement scoring rule"],
+    ["cribbage", "quantum entanglement scoring rule"],
+    ["flip-7", "can I trade resources with another player during my turn for cards"],
+  ];
+  for (const [game, query] of offDomain) {
+    const ids = evidenceIds(game, query);
+    const uniform = askRules({ query, gameId: game, semanticScores: simMap(ids, null, 0.3) });
+    const brushed = askRules({ query, gameId: game, semanticScores: simMap(ids, ids[0] ?? null, 0.42) });
+    check(
+      `semantic fusion does not lift off-domain query (uniform + mild brush): ${query.slice(0, 32)}`,
+      uniform.abstention === true && brushed.abstention === true,
+      `uniform=${uniform.abstention} brushed=${brushed.abstention} score=${brushed.evidence[0]?.score}`,
+    );
+  }
+  const lexicalOnly = askRules({ query: "how do I gain food", gameId: "wingspan" });
+  check("retrieval_mode is lexical without semantic scores", lexicalOnly.retrieval_mode === "lexical");
+
   const noGame = askRules({ query: "how do I gain food" });
   check(
     "no game specified abstains and lists supported games",
