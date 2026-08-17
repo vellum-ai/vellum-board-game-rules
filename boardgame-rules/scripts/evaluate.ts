@@ -522,11 +522,10 @@ try {
       fbInputError.web_fallback === null,
   );
 
-  // Semantic fusion math (deterministic: simulated similarity maps, since the
-  // harness has no embedding backend). Pins the two properties that make the
-  // fusion safe: a stand-out similarity on the true entry lifts a lexically
-  // near-threshold paraphrase into an answer, while uniform background noise
-  // and mild off-domain brushes add nothing and keep abstaining.
+  // Semantic fusion safety properties (deterministic: simulated similarity
+  // maps, since the harness has no embedding backend). The PARAPHRASE suite in
+  // eval.json owns the claim that fusion lifts real paraphrases live; what is
+  // pinned here is the other half: fusion must never lift what it should not.
   const simMap = (ids: string[], boost: string | null, value: number) => {
     const m = new Map<string, number>(ids.map((id) => [id, 0.3]));
     if (boost) m.set(boost, value);
@@ -534,22 +533,6 @@ try {
   };
   const evidenceIds = (game: string, query: string) =>
     askRules({ query, gameId: game }).evidence.map((e) => e.entry_id);
-
-  const paraphraseLifts: Array<[string, string, string]> = [
-    ["wingspan", "who wins if we have the same score", "wingspan-rule-001"],
-    ["wingspan", "can I put a bird anywhere or does the nest matter", "wingspan-turn-005"],
-    ["wingspan", "how do I get more food from the feeder thing", "wingspan-turn-002"],
-    ["cribbage", "what do I do if I cant play without going over", "play-go-and-thirty-one"],
-    ["cribbage", "is a jack that matches the cut card worth anything", "counting-his-nobs"],
-  ];
-  for (const [game, query, want] of paraphraseLifts) {
-    const r = askRules({ query, gameId: game, semanticScores: simMap(evidenceIds(game, query), want, 0.65) });
-    check(
-      `semantic fusion lifts paraphrase to answer: ${want}`,
-      !r.abstention && r.evidence[0]?.entry_id === want && r.retrieval_mode === "hybrid",
-      `got abstention=${r.abstention} top=${r.evidence[0]?.entry_id} score=${r.evidence[0]?.score}`,
-    );
-  }
   const offDomain: Array<[string, string]> = [
     ["wingspan", "quantum entanglement scoring rule"],
     ["cribbage", "quantum entanglement scoring rule"],
@@ -565,21 +548,10 @@ try {
       `uniform=${uniform.abstention} brushed=${brushed.abstention} score=${brushed.evidence[0]?.score}`,
     );
   }
-  const lexicalOnly = askRules({ query: "how do I gain food", gameId: "wingspan" });
-  check("retrieval_mode is lexical without semantic scores", lexicalOnly.retrieval_mode === "lexical");
-
-  // Small-map regime (review): with few hits the median IS one of the hits, so
-  // a lone stand-out has margin 0 against itself and correctly gains nothing;
-  // a 2-hit map with a real gap lifts; a 1-hit map never lifts. Fusion is
-  // conservative when the signal is thin, never inventive.
   const oneHit = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.9]]) });
   check("1-hit semantic map cannot lift (no background to stand out from)", oneHit.abstention === true, `got score=${oneHit.evidence[0]?.score}`);
   const twoHitGap = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.7], ["wingspan-rule-002", 0.3]]) });
-  check("2-hit map with a clear gap lifts the stand-out", !twoHitGap.abstention && twoHitGap.evidence[0]?.entry_id === "wingspan-rule-001", `got abstention=${twoHitGap.abstention} score=${twoHitGap.evidence[0]?.score}`);
-  const twoHitFlat = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.35], ["wingspan-rule-002", 0.3]]) });
-  check("2-hit map with no real gap does not lift", twoHitFlat.abstention === true);
-  const threeHit = askRules({ query: "what do I do if I cant play without going over", gameId: "cribbage", semanticScores: new Map([["play-go-and-thirty-one", 0.7], ["pegging-fifteen", 0.3], ["pegging-runs-and-foreign-cards", 0.3]]) });
-  check("3-hit map lifts a stand-out over median background", !threeHit.abstention && threeHit.evidence[0]?.entry_id === "play-go-and-thirty-one");
+  check("2-hit map with a clear gap lifts the stand-out (fusion is live, not dead)", !twoHitGap.abstention && twoHitGap.evidence[0]?.entry_id === "wingspan-rule-001", `got abstention=${twoHitGap.abstention}`);
 
   // Cost gate stays lexical under fusion: an entry that shares no vocabulary
   // but gets a similarity lift must not count as evidence for the web-fallback

@@ -117,7 +117,7 @@ pin it. Any of the 19 corpora can add worked examples the same way.
   no `used: true` fallback without sources; self-gated to our own tool,
   fail-open), `conversation-deleted`, `conversations-cleared`
 - `skills/boardgame-rules/` and `skills/first-play-companion/` — assistant skill instructions
-- `src/` — retrieval (ask + scenario), corpus loading, sitting store, shared types
+- `src/` — retrieval (`retrieve.ts` for ask, `scenario.ts` for check_scenario, sharing `retrieval-common.ts` for tokenizing, citing, edition scoping, and request validation), corpus loading, sitting store, shared types
 - `scripts/validate-corpus.ts` — validate all corpora (plain-English errors)
 - `scripts/evaluate.ts` — regression eval suite (routes on `mode?: "ask" | "scenario"`)
 - `scripts/sync-source-audit.ts` — regenerate each corpus's `source_audit` block from the registry/manifests
@@ -144,9 +144,13 @@ paraphrase ("feeder thing", "same score") lifts the entry lexical retrieval
 already ranks first over the abstention threshold. Results carry
 `retrieval_mode: "hybrid" | "lexical"`; outside the daemon (the eval harness)
 retrieval is exactly lexical. The paraphrase eval suite is the yardstick:
-its cases are marked `known_limitation` until the live index is smoke-tested,
-and the fusion math itself is pinned deterministically with simulated
-similarity.
+those cases are marked `known_limitation` because the harness has no
+embedding backend, so they can only pass with the live index (fusion's
+safety properties, the half that must hold regardless, are pinned
+deterministically with simulated similarity). There is no separate lexical
+"strong match" override: the host index is hybrid dense+sparse and its
+sparse branch is itself lexical, so any real word-overlap match stands out
+under fusion too.
 
 ## Return contract
 
@@ -224,10 +228,12 @@ bun scripts/validate-corpus.ts   # validate all corpora
 bun scripts/evaluate.ts           # run regression eval
 ```
 
-Current baseline: 230 entries (2 with worked examples), 29 editions, 19 games,
-0 validation errors, **88/88 eval tests passing** (retrieval + factual
-assertions + analog filtering + sitting store/tool flow + one migration smoke
-test per migrated game + cribbage scenario matching).
+Current baseline: 230 entries (6 with worked examples), 29 editions, 19 games,
+0 validation errors, **127/133 eval cases passing, 0 failed** (retrieval +
+factual assertions + analog filtering + sitting/tool flow + one retrieval
+check per migrated corpus + scenario matching). The 6 non-passing cases are
+one known class, marked `known_limitation`: paraphrases that only semantic
+fusion lifts, which the harness cannot exercise without an embedding backend.
 
 ## Contributing
 
