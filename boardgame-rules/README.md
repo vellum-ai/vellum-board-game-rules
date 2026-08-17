@@ -54,7 +54,11 @@ analogy is a teaching aid — the citation is the ruling.
 - **Assistant memory** owns people and which games they already know. The
   plugin never invents that list.
 - **`config.json`** (optional, user-edited, not shipped) can hold a standing
-  `known_games` list merged into every sitting. Empty or absent is valid.
+  `known_games` list merged into every sitting and a `web_fallback` toggle.
+  Empty or absent is valid. It is read through one validated loader:
+  `boardgame_list_supported_games` echoes the effective values plus any
+  `unknown_keys` (typos) or `invalid_keys` (wrong type, default kept), so a
+  misconfiguration is visible rather than silently ignored.
 - **`data/sittings/`** holds this-sitting-only state, including the known
   games actually named for this table.
 - **Corpora** own the analogies themselves.
