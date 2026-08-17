@@ -168,11 +168,16 @@ export function updateSitting(options: {
   lastRuling?: SittingRuling;
   lastAnalog?: SittingAnalog;
   addKnownGames?: readonly string[];
+  /** Count one web-fallback search against this sitting's budget. */
+  countWebFallbackAttempt?: boolean;
 }): Sitting | null {
   const sitting = getSitting(options.conversationId);
   if (!sitting) return null;
   if (options.lastRuling) sitting.last_ruling = options.lastRuling;
   if (options.lastAnalog) sitting.last_analog = options.lastAnalog;
+  if (options.countWebFallbackAttempt) {
+    sitting.web_fallback_attempts = (sitting.web_fallback_attempts ?? 0) + 1;
+  }
   if (options.addKnownGames?.length) {
     sitting.known_games = normalizeKnownGames([
       ...sitting.known_games,

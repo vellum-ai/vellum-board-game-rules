@@ -1,10 +1,16 @@
 import type { ToolContext, ToolExecutionResult } from "@vellumai/plugin-api";
+import { webFallbackEnabled } from "../src/config.ts";
 import { askRules } from "../src/retrieve.ts";
 import { getSitting, updateSitting } from "../src/sitting.ts";
+import type { WebFallback } from "../src/types.ts";
+import { WEB_FALLBACK_DISCLAIMER, webFallbackSearch } from "../src/web-fallback.ts";
+
+/** Live searches an active sitting may spend; without a sitting each call stands alone. */
+const WEB_FALLBACK_MAX_PER_SITTING = 5;
 
 export default {
   description:
-    "Answer a board-game rules question from the installed corpora, or abstain. Requires a game: pass game_id or have an active sitting — with neither, the tool abstains and lists the supported games. Returns game identity, corpus version, citations, rights flags, and an explicit abstention field; edition_id echoes the edition filter applied (null means all editions were in scope — read each ruling's own editions from evidence[].edition_ids). Filtering by an expansion edition also surfaces the base-edition rules it inherits. Do not invent a ruling when abstention is true. When this conversation has an active sitting (boardgame_start_sitting), the sitting's game is the default, the result may carry analog_hooks mapping the ruling to games the table already knows, and the cited ruling is recorded on the sitting. Cite first; analogize only from a returned hook.",
+    "Answer a board-game rules question from the installed corpora, or abstain. Requires a game: pass game_id or have an active sitting — with neither, the tool abstains and lists the supported games. Returns game identity, corpus version, citations, rights flags, and an explicit abstention field; edition_id echoes the edition filter applied (null means all editions were in scope — read each ruling's own editions from evidence[].edition_ids). Filtering by an expansion edition also surfaces the base-edition rules it inherits. Do not invent a ruling when abstention is true. When this conversation has an active sitting (boardgame_start_sitting), the sitting's game is the default, the result may carry analog_hooks mapping the ruling to games the table already knows, and the cited ruling is recorded on the sitting. Cite first; analogize only from a returned hook. When the corpus abstains for lack of coverage (not for input errors), the result carries web_fallback: live web-search results fetched in the same call, clearly labeled as non-corpus guidance, so no second search turn is needed. abstention stays true in that case.",
   defaultRiskLevel: "low" as const,
   input_schema: {
     type: "object",
@@ -60,6 +66,53 @@ export default {
       knownGames: sitting?.known_games,
     });
 
+    // Coverage abstention: the corpus resolved the game and searched but
+    // nothing matched. Fall back to a live web search inline so the table
+    // doesn't wait for a second turn. Input-error abstentions (no game,
+    // unknown game/edition, empty query) keep the plain abstention.
+    // abstention stays true either way.
+    //
+    // Two gates keep the fallback from paying an inference round-trip on
+    // every miss: (1) the query must be on-domain — a coverage abstention
+    // with ZERO scored evidence means the question shares no vocabulary
+    // with the game at all (off-domain or gibberish), and a web search on
+    // it would not help the table; (2) an active sitting spends at most
+    // WEB_FALLBACK_MAX_PER_SITTING searches, so a table that keeps asking
+    // uncovered questions is bounded per night rather than per question.
+    let webFallback: WebFallback | null = null;
+    if (webFallbackEnabled() && result.abstention_kind === "coverage") {
+      if (result.evidence.length === 0) {
+        webFallback = {
+          attempted: false,
+          used: false,
+          note: "Web fallback skipped: the question shares no vocabulary with this game's corpus, so it looks off-domain rather than uncovered.",
+          answer: null,
+          sources: [],
+          disclaimer: WEB_FALLBACK_DISCLAIMER,
+        };
+      } else if (
+        sitting &&
+        (sitting.web_fallback_attempts ?? 0) >= WEB_FALLBACK_MAX_PER_SITTING
+      ) {
+        webFallback = {
+          attempted: false,
+          used: false,
+          note: `Web fallback skipped: this sitting has used its ${WEB_FALLBACK_MAX_PER_SITTING} live searches. Ask the assistant to search directly if this one matters.`,
+          answer: null,
+          sources: [],
+          disclaimer: WEB_FALLBACK_DISCLAIMER,
+        };
+      } else {
+        if (sitting) {
+          updateSitting({ conversationId: ctx.conversationId, countWebFallbackAttempt: true });
+        }
+        webFallback = await webFallbackSearch({
+          gameTitle: result.game_title ?? gameId ?? "this board game",
+          query,
+        });
+      }
+    }
+
     // Record the cited ruling (and analog, when one was returned) on the
     // sitting so the next question picks up mid-game instead of restarting.
     if (sitting && !result.abstention && result.evidence.length > 0 && result.game_id === sitting.game_id) {
@@ -77,6 +130,9 @@ export default {
       });
     }
 
-    return { content: JSON.stringify(result, null, 2), isError: false };
+    return {
+      content: JSON.stringify({ ...result, web_fallback: webFallback }, null, 2),
+      isError: false,
+    };
   },
 };

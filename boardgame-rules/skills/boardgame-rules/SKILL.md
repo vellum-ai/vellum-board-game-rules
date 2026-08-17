@@ -35,7 +35,7 @@ The two retrieval tools do different jobs on purpose. `ask_rules` returns rule p
    - Specific play situation with a score/outcome in mind → `boardgame_check_scenario`.
    - General rules question → `boardgame_ask_rules`.
 3. Pass `game_id` explicitly (there are many games installed and `ask_rules` requires a game — either from `game_id` or from an active sitting).
-4. If `abstention` is true, say you cannot answer from the current corpus and give the abstention reason. Do not guess. Do not fall back from `check_scenario` to `ask_rules` unless the user asks.
+4. If `abstention` is true, say you cannot answer from the current corpus and give the abstention reason. Do not guess. Do not fall back from `check_scenario` to `ask_rules` unless the user asks. If an `ask_rules` result carries `web_fallback` with `used: true`, you may then relay its answer and sources, clearly labeled as live web information rather than a corpus ruling.
 5. If `abstention` is false, answer from the top evidence (or top match) only. Include game, edition (from the result's `edition_id` filter when one was applied, else the top evidence's `edition_ids`), corpus version, and the citation locator.
 6. Stay inside `coverage_boundary`. Limited documents are not complete rulebooks.
 

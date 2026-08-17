@@ -404,6 +404,78 @@ try {
       (noSittingScenario.abstention_reason ?? "").includes("No game specified"),
   );
 
+  // Web fallback: attached only on coverage abstentions; fail-open outside
+  // the daemon (plugin API unavailable here), so attempted=true, used=false,
+  // abstention stays true. Answered results carry web_fallback: null.
+  const fbConv = "eval-demo-web-fallback";
+  await startSittingTool.execute({ game_id: "wingspan" }, toolCtx(fbConv));
+  const fbAbstain = parse(
+    await askRulesTool.execute(
+      { query: "best starting hand strategy opening food picks" },
+      toolCtx(fbConv),
+    ),
+  ) as AskResult & { web_fallback?: { attempted: boolean; used: boolean; disclaimer?: string } | null };
+  check(
+    "web fallback attaches on coverage abstention and fails open in eval env",
+    fbAbstain.abstention === true &&
+      fbAbstain.abstention_kind === "coverage" &&
+      fbAbstain.web_fallback?.attempted === true &&
+      fbAbstain.web_fallback?.used === false &&
+      (fbAbstain.web_fallback?.disclaimer ?? "").includes("never as a cited ruling"),
+    `got abstention=${fbAbstain.abstention} fallback=${JSON.stringify(fbAbstain.web_fallback)}`,
+  );
+  const fbOffDomain = parse(
+    await askRulesTool.execute({ query: "how do I castle my king" }, toolCtx(fbConv)),
+  ) as AskResult & { web_fallback?: { attempted: boolean; note?: string } | null };
+  check(
+    "web fallback skips off-domain abstentions with zero evidence",
+    fbOffDomain.abstention === true &&
+      fbOffDomain.abstention_kind === "coverage" &&
+      fbOffDomain.web_fallback?.attempted === false &&
+      (fbOffDomain.web_fallback?.note ?? "").includes("off-domain"),
+    `got ${JSON.stringify(fbOffDomain.web_fallback)}`,
+  );
+
+  // Per-sitting cap: exhaust the budget with on-domain uncovered questions,
+  // then confirm the next one is skipped rather than searched.
+  const capConv = "eval-demo-web-fallback-cap";
+  await startSittingTool.execute({ game_id: "wingspan" }, toolCtx(capConv));
+  let lastCapResult: (AskResult & { web_fallback?: { attempted: boolean; note?: string } | null }) | null = null;
+  // The same on-domain uncovered question each time: only the sitting's
+  // attempt count changes between iterations, so the 6th call must skip.
+  for (let i = 0; i < 6; i += 1) {
+    lastCapResult = parse(
+      await askRulesTool.execute(
+        { query: "best starting hand strategy opening food picks" },
+        toolCtx(capConv),
+      ),
+    ) as typeof lastCapResult;
+  }
+  check(
+    "web fallback is capped per sitting (6th on-domain miss is skipped)",
+    lastCapResult?.web_fallback?.attempted === false &&
+      (lastCapResult?.web_fallback?.note ?? "").includes("live searches") &&
+      (getSitting(capConv)?.web_fallback_attempts ?? 0) === 5,
+    `attempts=${getSitting(capConv)?.web_fallback_attempts} fallback=${JSON.stringify(lastCapResult?.web_fallback)}`,
+  );
+
+  const fbAnswer = parse(
+    await askRulesTool.execute({ query: "how do I gain food" }, toolCtx(fbConv)),
+  ) as AskResult & { web_fallback?: unknown };
+  check(
+    "answered results carry web_fallback null",
+    fbAnswer.abstention === false && fbAnswer.web_fallback === null,
+  );
+  const fbInputError = parse(
+    await askRulesTool.execute({ query: "settlement rules", game_id: "catan" }, toolCtx("eval-demo-web-fallback-2")),
+  ) as AskResult & { web_fallback?: unknown };
+  check(
+    "input-error abstentions keep the plain abstention (no fallback attempt)",
+    fbInputError.abstention === true &&
+      fbInputError.abstention_kind === "input" &&
+      fbInputError.web_fallback === null,
+  );
+
   const noGame = askRules({ query: "how do I gain food" });
   check(
     "no game specified abstains and lists supported games",
