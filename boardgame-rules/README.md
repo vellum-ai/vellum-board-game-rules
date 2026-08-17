@@ -88,9 +88,13 @@ distinct query tokens (a one-word query cannot leak in via denominator
 shrink), and requires the top result to clear both a score threshold and a
 minimum of 2 distinct-token matches before returning anything.
 
-Cribbage ships with two worked examples: the perfect 29 and the classic
-8-7-7-6-2 double-run counting set. Any of the 19 corpora can add worked
-examples the same way.
+Six worked examples ship today: Cribbage (the perfect 29; the 8-7-7-6-2
+double-run set), Wingspan (two-way and three-way end-of-round goal ties on a
+4/2/1 tile, with the rounding arithmetic), and Flip 7 (a duplicate-number
+bust; the seventh distinct card ending the round). Examples state only what
+their corpus already asserts: the Flip 7 pair give qualitative outcomes and
+explicitly defer the exact bonus value, because that bounded corpus does not
+pin it. Any of the 19 corpora can add worked examples the same way.
 
 ## Surfaces
 

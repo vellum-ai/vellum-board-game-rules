@@ -1,7 +1,7 @@
 {
   "corpus_id": "wingspan",
   "game_title": "Wingspan",
-  "corpus_version": "0.4.0",
+  "corpus_version": "0.5.0",
   "generated_at": "2026-08-13",
   "description": "Corrected Wingspan fixture for the installable boardgame-rules plugin. Original interpretations of setup, turn structure, scoring, habitats, bird-power types, Automa overview, and selected edge cases, grounded against the official Stonemaier FAQ and publisher-commissioned Rulepop. Not a complete rulebook and not the FAQ/errata overlay in wingspan-rules/.",
   "full_rulebook_text_included": false,
@@ -486,7 +486,21 @@
         "long_quotation_included": false,
         "redistribution_permitted": false,
         "internal_only": false
-      }
+      },
+      "worked_example": {
+        "scenario": "End-of-round goal tile shows 4/2/1. Three players tie for first place.",
+        "expected_outcome": "Each tied player scores 2; nobody else scores that goal",
+        "decomposition": [
+          "Combined points of the three positions the tie occupies: 4 + 2 + 1 = 7",
+          "Divide by three and round down: 7 / 3 = 2.33 -> 2 each",
+          "All three scored positions are consumed, so no further player scores this goal"
+        ]
+      },
+      "applies_when": [
+        "three players tied for first goal",
+        "goal tile 4 2 1 three way tie",
+        "did we score the round goal right with a tie"
+      ]
     },
     {
       "id": "wingspan-rule-003",
@@ -904,7 +918,22 @@
         "long_quotation_included": false,
         "redistribution_permitted": false,
         "internal_only": false
-      }
+      },
+      "worked_example": {
+        "scenario": "End-of-round goal tile shows 4/2/1 for 1st/2nd/3rd. Two players tie for first place; a third player is next.",
+        "expected_outcome": "Each tied player scores 3; the next player scores 1",
+        "decomposition": [
+          "Tied players share the combined points of the positions they occupy: 1st (4) + 2nd (2) = 6",
+          "Divide by the number tied and round down: 6 / 2 = 3 each",
+          "The next player takes the next unclaimed position: 3rd = 1"
+        ]
+      },
+      "applies_when": [
+        "two players tied for first on the goal",
+        "4 2 1 goal tile tie",
+        "how many points if we tie for the round goal",
+        "three way tie for first goal points"
+      ]
     },
     {
       "id": "wingspan-edgecase-002",
