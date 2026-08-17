@@ -959,6 +959,105 @@
           "expect_abstention": false
         }
       ]
+    },
+    {
+      "game": "wingspan",
+      "mode": "scenario",
+      "tests": [
+        {
+          "label": "worked example: two-way goal tie on 4/2/1",
+          "query": "two of us tied for first on the goal tile 4 2 1 how many points",
+          "expect_ids": [
+            "wingspan-edgecase-001"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "expect_outcome_contains": [
+            "3",
+            "1"
+          ],
+          "expect_decomposition_contains": [
+            "6 / 2 = 3",
+            "round down"
+          ]
+        },
+        {
+          "label": "scenario hard-abstains on a non-example question",
+          "query": "how do I gain food from the birdfeeder",
+          "expect_abstention": true
+        },
+        {
+          "label": "worked example: three-way goal tie (\"three way tie for first goal points\")",
+          "query": "three way tie for first goal points",
+          "expect_ids": [
+            "wingspan-rule-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "expect_outcome_contains": [
+            "2"
+          ],
+          "expect_decomposition_contains": [
+            "7 / 3"
+          ]
+        },
+        {
+          "label": "worked example: three-way goal tie (\"three of us tied\")",
+          "query": "three of us tied for first on the goal",
+          "expect_ids": [
+            "wingspan-rule-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "worked example: two-way phrasing does not route to the three-way example",
+          "query": "two players tied for first place goal",
+          "expect_ids": [
+            "wingspan-edgecase-001"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        }
+      ]
+    },
+    {
+      "game": "flip-7",
+      "mode": "scenario",
+      "tests": [
+        {
+          "label": "worked example: duplicate number busts",
+          "query": "I got a second 7 in my line do I bust",
+          "expect_ids": [
+            "flip-7-bust"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "expect_outcome_contains": [
+            "bust",
+            "0"
+          ],
+          "expect_decomposition_contains": [
+            "never cause a duplicate bust"
+          ]
+        },
+        {
+          "label": "worked example: seventh unique card ends the round",
+          "query": "seventh unique card what happens now",
+          "expect_ids": [
+            "flip-7-flip-seven"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "expect_outcome_contains": [
+            "ends immediately",
+            "bonus"
+          ],
+          "expect_decomposition_contains": [
+            "outside this bounded corpus"
+          ]
+        }
+      ]
     }
   ]
 }
