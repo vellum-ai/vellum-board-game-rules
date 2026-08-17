@@ -886,7 +886,6 @@
     },
     {
       "game": "cribbage",
-      "edition": "two-player-standard-en",
       "mode": "scenario",
       "tests": [
         {
