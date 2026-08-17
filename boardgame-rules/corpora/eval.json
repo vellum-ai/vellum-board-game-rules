@@ -982,8 +982,13 @@
           ]
         },
         {
-          "label": "worked example: three-way goal tie on 4/2/1",
-          "query": "three way tie for first on the round goal",
+          "label": "scenario hard-abstains on a non-example question",
+          "query": "how do I gain food from the birdfeeder",
+          "expect_abstention": true
+        },
+        {
+          "label": "worked example: three-way goal tie (\"three way tie for first goal points\")",
+          "query": "three way tie for first goal points",
           "expect_ids": [
             "wingspan-rule-002"
           ],
@@ -997,9 +1002,22 @@
           ]
         },
         {
-          "label": "scenario hard-abstains on a non-example question",
-          "query": "how do I gain food from the birdfeeder",
-          "expect_abstention": true
+          "label": "worked example: three-way goal tie (\"three of us tied\")",
+          "query": "three of us tied for first on the goal",
+          "expect_ids": [
+            "wingspan-rule-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
+        },
+        {
+          "label": "worked example: two-way phrasing does not route to the three-way example",
+          "query": "two players tied for first place goal",
+          "expect_ids": [
+            "wingspan-edgecase-001"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
         }
       ]
     },

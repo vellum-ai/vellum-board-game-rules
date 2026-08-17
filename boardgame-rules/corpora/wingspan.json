@@ -498,8 +498,10 @@
       },
       "applies_when": [
         "three players tied for first goal",
+        "three way tie for first goal points",
         "goal tile 4 2 1 three way tie",
-        "did we score the round goal right with a tie"
+        "did we score the round goal right with a three way tie",
+        "three of us tied for first on the goal"
       ]
     },
     {
@@ -930,9 +932,9 @@
       },
       "applies_when": [
         "two players tied for first on the goal",
-        "4 2 1 goal tile tie",
-        "how many points if we tie for the round goal",
-        "three way tie for first goal points"
+        "two of us tied for the goal tile",
+        "4 2 1 goal tile two way tie",
+        "how many points if a pair of us tie for the round goal"
       ]
     },
     {

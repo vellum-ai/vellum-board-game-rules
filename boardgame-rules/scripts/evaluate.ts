@@ -98,6 +98,14 @@ for (const suite of evalData.suites) {
           ok = false;
           messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${topId ?? "none"})`);
         }
+        // A scenario hit@1 decided purely by the alphabetical title tiebreak
+        // is a latent misroute (review on #21): require a real score margin
+        // over the runner-up whenever one exists.
+        const runnerUp = result.matches[1];
+        if (hit1 && runnerUp && result.matches[0] && runnerUp.score >= result.matches[0].score) {
+          ok = false;
+          messages.push(`hit@1 won only by title tiebreak: ${topId}@${result.matches[0].score} vs ${runnerUp.entry_id}@${runnerUp.score}`);
+        }
       }
       if (test.expect_hit_3 !== undefined) {
         const hit3 = hitIds.slice(0, 3).some((id) => expectedIds.has(id));
