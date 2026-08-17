@@ -107,8 +107,11 @@ examples the same way.
 - `tools/boardgame_start_sitting.ts` / `tools/boardgame_update_sitting.ts` —
   start or update the per-conversation sitting
 - `hooks/` — `init`, `shutdown`, `user-prompt-submit` (injects a short sitting
-  card when a sitting exists; never rewrites the prompt),
-  `conversation-deleted`, `conversations-cleared`
+  card when a sitting exists; never rewrites the prompt), `post-tool-use`
+  (enforces the ask_rules invariants on the result before the model reads it:
+  no analogies on an abstention, no web fallback on answers or input errors,
+  no `used: true` fallback without sources; self-gated to our own tool,
+  fail-open), `conversation-deleted`, `conversations-cleared`
 - `skills/boardgame-rules/` and `skills/first-play-companion/` — assistant skill instructions
 - `src/` — retrieval (ask + scenario), corpus loading, sitting store, shared types
 - `scripts/validate-corpus.ts` — validate all corpora (plain-English errors)
