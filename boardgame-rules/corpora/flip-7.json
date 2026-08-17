@@ -1,6 +1,6 @@
 {
   "corpus_id": "flip-7",
-  "corpus_version": "0.1.0",
+  "corpus_version": "0.2.0",
   "generated_at": "2026-08-13",
   "description": "Bounded original-interpretation aid for the uploaded Flip 7 rules artifact. No source rulebook text, exact card or action text, artwork, or long quotations are bundled.",
   "full_rulebook_text_included": false,
@@ -282,7 +282,21 @@
         "original_interpretation": true,
         "metadata_only": false,
         "internal_only": true
-      }
+      },
+      "worked_example": {
+        "scenario": "My line has 3, 7, and 12 face up. The dealer gives me another 7.",
+        "expected_outcome": "You bust: your round score is 0 and your cards leave the round's scoring",
+        "decomposition": [
+          "A second number card matching a number already in your line is a bust",
+          "A busted player scores nothing for the round, regardless of the other cards in the line",
+          "Modifier and interaction cards are not number cards and never cause a duplicate bust"
+        ]
+      },
+      "applies_when": [
+        "got a second 7 do I bust",
+        "duplicate number card what happens to my score",
+        "same number twice in my line"
+      ]
     },
     {
       "id": "flip-7-stayed-player-interaction",
@@ -350,7 +364,21 @@
         "original_interpretation": true,
         "metadata_only": false,
         "internal_only": true
-      }
+      },
+      "worked_example": {
+        "scenario": "I have six different number cards and the dealer gives me a seventh number I do not already have.",
+        "expected_outcome": "Flip 7: the round ends immediately and you earn the special round bonus on top of your qualifying round score",
+        "decomposition": [
+          "Seven distinct number cards is the round-ending condition, resolved at once",
+          "The Flip 7 bonus is added in addition to the number-line score",
+          "The exact bonus value and any special-number-card exception are outside this bounded corpus; confirm against the rulebook"
+        ]
+      },
+      "applies_when": [
+        "seventh unique card what happens",
+        "did I flip seven",
+        "seven different numbers round over"
+      ]
     },
     {
       "id": "flip-7-round-end",

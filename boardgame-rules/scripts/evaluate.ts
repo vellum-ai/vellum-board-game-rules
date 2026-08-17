@@ -98,6 +98,14 @@ for (const suite of evalData.suites) {
           ok = false;
           messages.push(`hit@1: expected ${test.expect_hit_1}, got ${hit1} (got ${topId ?? "none"})`);
         }
+        // A scenario hit@1 decided purely by the alphabetical title tiebreak
+        // is a latent misroute (review on #21): require a real score margin
+        // over the runner-up whenever one exists.
+        const runnerUp = result.matches[1];
+        if (hit1 && runnerUp && result.matches[0] && runnerUp.score >= result.matches[0].score) {
+          ok = false;
+          messages.push(`hit@1 won only by title tiebreak: ${topId}@${result.matches[0].score} vs ${runnerUp.entry_id}@${runnerUp.score}`);
+        }
       }
       if (test.expect_hit_3 !== undefined) {
         const hit3 = hitIds.slice(0, 3).some((id) => expectedIds.has(id));
@@ -378,21 +386,24 @@ try {
     `got game=${scenarioHit.game_id} abstention=${scenarioHit.abstention}`,
   );
 
-  const flipConv = "eval-demo-scenario-flip7";
-  await startSittingTool.execute({ game_id: "flip-7" }, toolCtx(flipConv));
-  const flipScenario = JSON.parse(
+  // Ark Nova has no worked examples (Flip 7 gained some), so it is the
+  // graceful-abstention case: the sitting supplies the game, and the reply
+  // is "no worked examples", never "no game specified".
+  const noExConv = "eval-demo-scenario-no-examples";
+  await startSittingTool.execute({ game_id: "ark-nova" }, toolCtx(noExConv));
+  const noExScenario = JSON.parse(
     (await checkScenarioTool.execute(
-      { scenario: "I flipped a seventh unique card, do I bank the bonus" },
-      toolCtx(flipConv),
+      { scenario: "did I score my zoo right" },
+      toolCtx(noExConv),
     )).content,
   );
   check(
     "check_scenario in a sitting without worked examples abstains gracefully",
-    flipScenario.game_id === "flip-7" &&
-      flipScenario.abstention === true &&
-      (flipScenario.abstention_reason ?? "").includes("No worked examples") &&
-      !(flipScenario.abstention_reason ?? "").includes("No game specified"),
-    `got game=${flipScenario.game_id} reason=${flipScenario.abstention_reason}`,
+    noExScenario.game_id === "ark-nova" &&
+      noExScenario.abstention === true &&
+      (noExScenario.abstention_reason ?? "").includes("No worked examples") &&
+      !(noExScenario.abstention_reason ?? "").includes("No game specified"),
+    `got game=${noExScenario.game_id} reason=${noExScenario.abstention_reason}`,
   );
 
   const noSittingScenario = JSON.parse(
