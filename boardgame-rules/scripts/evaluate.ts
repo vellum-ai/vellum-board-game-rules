@@ -524,6 +524,29 @@ try {
   }
   const lexicalOnly = askRules({ query: "how do I gain food", gameId: "wingspan" });
   check("retrieval_mode is lexical without semantic scores", lexicalOnly.retrieval_mode === "lexical");
+
+  // Small-map regime (review): with few hits the median IS one of the hits, so
+  // a lone stand-out has margin 0 against itself and correctly gains nothing;
+  // a 2-hit map with a real gap lifts; a 1-hit map never lifts. Fusion is
+  // conservative when the signal is thin, never inventive.
+  const oneHit = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.9]]) });
+  check("1-hit semantic map cannot lift (no background to stand out from)", oneHit.abstention === true, `got score=${oneHit.evidence[0]?.score}`);
+  const twoHitGap = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.7], ["wingspan-rule-002", 0.3]]) });
+  check("2-hit map with a clear gap lifts the stand-out", !twoHitGap.abstention && twoHitGap.evidence[0]?.entry_id === "wingspan-rule-001", `got abstention=${twoHitGap.abstention} score=${twoHitGap.evidence[0]?.score}`);
+  const twoHitFlat = askRules({ query: "who wins if we have the same score", gameId: "wingspan", semanticScores: new Map([["wingspan-rule-001", 0.35], ["wingspan-rule-002", 0.3]]) });
+  check("2-hit map with no real gap does not lift", twoHitFlat.abstention === true);
+  const threeHit = askRules({ query: "what do I do if I cant play without going over", gameId: "cribbage", semanticScores: new Map([["play-go-and-thirty-one", 0.7], ["pegging-fifteen", 0.3], ["pegging-runs-and-foreign-cards", 0.3]]) });
+  check("3-hit map lifts a stand-out over median background", !threeHit.abstention && threeHit.evidence[0]?.entry_id === "play-go-and-thirty-one");
+
+  // Cost gate stays lexical under fusion: an entry that shares no vocabulary
+  // but gets a similarity lift must not count as evidence for the web-fallback
+  // off-domain check.
+  const semOnly = askRules({ query: "how do I castle my king", gameId: "flip-7", semanticScores: new Map([["flip-7-bust", 0.8], ["flip-7-round-end", 0.3], ["flip-7-game-end", 0.3]]) });
+  check(
+    "lexical_evidence_count stays 0 when only similarity scored anything",
+    semOnly.lexical_evidence_count === 0,
+    `got lexical_evidence_count=${semOnly.lexical_evidence_count} evidence=${semOnly.evidence.length}`,
+  );
   // Result guard: the machine-checkable half of the cite-first invariants,
   // enforced on the serialized payload the model reads.
   const clean = JSON.stringify({ abstention: false, abstention_kind: null, analog_hooks: [{ known_game_id: "catan" }], web_fallback: null });
@@ -585,6 +608,18 @@ try {
   };
   await postToolUseHook(otherCtx as unknown as Parameters<typeof postToolUseHook>[0]);
   check("post-tool-use hook leaves other tools' results untouched", otherCtx.toolResponse.content === violating);
+
+  // Title-vs-id (review): the tool resolves game_id (which may be an exact
+  // title) to the canonical corpus_id before the semantic lookup. Outside the
+  // daemon the lookup fails open, so pin the resolution itself: a title must
+  // route to the same corpus and produce the same result as the id.
+  const byTitle = parse(await askRulesTool.execute({ query: "how do I gain food", game_id: "Wingspan" }, toolCtx("eval-title-1")));
+  const byId = parse(await askRulesTool.execute({ query: "how do I gain food", game_id: "wingspan" }, toolCtx("eval-title-2")));
+  check(
+    "ask by exact title resolves to the canonical corpus (semantic lookup keyed by corpus_id)",
+    byTitle.game_id === "wingspan" && byTitle.game_id === byId.game_id && byTitle.evidence[0]?.entry_id === byId.evidence[0]?.entry_id,
+    `title->${byTitle.game_id} id->${byId.game_id}`,
+  );
 
   const noGame = askRules({ query: "how do I gain food" });
   check(

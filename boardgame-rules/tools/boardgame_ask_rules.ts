@@ -1,5 +1,6 @@
 import type { ToolContext, ToolExecutionResult } from "@vellumai/plugin-api";
 import { webFallbackEnabled } from "../src/config.ts";
+import { loadCorpus } from "../src/corpus.ts";
 import { askRules } from "../src/retrieve.ts";
 import { semanticScores } from "../src/semantic.ts";
 import { getSitting, updateSitting } from "../src/sitting.ts";
@@ -61,7 +62,10 @@ export default {
 
     // Semantic similarity from the plugin's private index, when the host
     // provides one; empty (pure lexical) outside the daemon or on any error.
-    const semantic = gameId ? await semanticScores(gameId, query) : undefined;
+    // The index is keyed by canonical corpus_id, while game_id may be a
+    // title ("Wingspan"), so resolve first or the lookup silently misses.
+    const canonicalGameId = gameId ? loadCorpus(gameId)?.corpus_id : undefined;
+    const semantic = canonicalGameId ? await semanticScores(canonicalGameId, query) : undefined;
     const result = askRules({
       query,
       gameId,
@@ -86,7 +90,7 @@ export default {
     // uncovered questions is bounded per night rather than per question.
     let webFallback: WebFallback | null = null;
     if (webFallbackEnabled() && result.abstention_kind === "coverage") {
-      if (result.evidence.length === 0) {
+      if (result.lexical_evidence_count === 0) {
         webFallback = {
           attempted: false,
           used: false,

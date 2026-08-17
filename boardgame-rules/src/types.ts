@@ -233,6 +233,13 @@ export type AskResult = {
   query: string;
   /** "hybrid" when semantic similarity from the plugin index was fused into scoring; "lexical" otherwise (always outside the daemon). */
   retrieval_mode: "lexical" | "hybrid";
+  /**
+   * How many entries shared at least one content token with the query
+   * (lexical score > 0), independent of semantic fusion. Zero means the
+   * question shares no vocabulary with the game at all; the web-fallback
+   * cost gate keys on this so similarity alone cannot spend a live search.
+   */
+  lexical_evidence_count: number;
   abstention: boolean;
   abstention_reason: string | null;
   /**

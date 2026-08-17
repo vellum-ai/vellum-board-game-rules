@@ -37,7 +37,7 @@ const init: HookFunction<InitContext> = async (ctx) => {
     );
   } else {
     ctx.logger.info(
-      { plugin: "boardgame-rules", indexed: index.indexed, skipped: index.skipped },
+      { plugin: "boardgame-rules", indexed: index.indexed, skipped: index.skipped, removed: index.removed },
       "Semantic index ready",
     );
   }

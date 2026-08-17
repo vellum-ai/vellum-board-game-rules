@@ -124,8 +124,11 @@ syllabi are deferred.
 and, when the host provides one, fuses in semantic similarity from the
 plugin's **private hybrid index** (`@vellumai/plugin-api` `indexDocument` /
 `queryIndex`, scoped to this plugin and never part of agent recall). The
-`init` hook indexes every corpus entry, content-hashed so unchanged installs
-skip. Fusion is deliberately conservative: only similarity that stands out
+`init` hook indexes every corpus entry (content-hashed so unchanged installs
+skip, and reconciled so deleted or renamed entries are removed). The host
+index has no per-game filter, so each query pulls the whole (small) index and
+keeps the current game's hits, guaranteeing every entry of that game gets a
+similarity rather than a starved global top-N. Fusion is deliberately conservative: only similarity that stands out
 from the query's background level (median across returned entries) by a
 minimum margin counts, so uniform "everything looks a bit related" noise
 adds nothing and off-domain questions keep abstaining, while a genuine

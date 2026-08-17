@@ -26,7 +26,19 @@ import type { CorpusEntry } from "./types.ts";
 /** Semantic hit for one corpus entry: cosine-style similarity in [0, 1]. */
 export type SemanticScores = Map<string, number>;
 
-const QUERY_LIMIT = 12;
+/**
+ * The host index is plugin-scoped but has no metadata filter, so a query
+ * returns hits across ALL installed corpora and this module keeps the ones
+ * for the current game. A small global top-N would starve any single game
+ * (12 slots across 19 corpora leaves Wingspan 0-2 hits and degenerates the
+ * median-background rule), so the query asks for the whole index: 230
+ * entries is tiny for a per-plugin vector search, and it guarantees every
+ * entry of the current game gets a similarity, which is what the fusion's
+ * median background needs to be meaningful. Bounded far above corpus growth.
+ */
+const QUERY_LIMIT = 2_000;
+/** Ids we wrote this run; anything else under our namespace is stale. */
+const DOCUMENT_ID_PREFIX_SEP = "::";
 
 /** Stable, content-addressed document id: same entry text → same id (idempotent upserts). */
 export function documentIdFor(corpusId: string, entry: CorpusEntry): string {
@@ -51,6 +63,7 @@ type PluginApi = {
     opts?: { limit?: number },
   ) => Promise<unknown>;
   getDocument?: (documentId: string) => Promise<unknown>;
+  removeDocument?: (documentId: string) => Promise<unknown>;
 };
 
 async function loadApi(): Promise<PluginApi | null> {
@@ -74,17 +87,21 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 export async function indexAllCorpora(): Promise<{
   indexed: number;
   skipped: number;
+  removed: number;
   unavailable: string | null;
 }> {
   const api = await loadApi();
   if (!api?.indexDocument) {
-    return { indexed: 0, skipped: 0, unavailable: "plugin API unavailable" };
+    return { indexed: 0, skipped: 0, removed: 0, unavailable: "plugin API unavailable" };
   }
   let indexed = 0;
   let skipped = 0;
+  let removed = 0;
+  const live = new Set<string>();
   try {
     for (const corpus of loadCorpora()) {
       for (const entry of corpus.entries) {
+        live.add(documentIdFor(corpus.corpus_id, entry));
         const text = documentTextFor(entry);
         const hash = contentHash(text);
         const documentId = documentIdFor(corpus.corpus_id, entry);
@@ -114,11 +131,31 @@ export async function indexAllCorpora(): Promise<{
         indexed += 1;
       }
     }
-    return { indexed, skipped, unavailable: null };
+    // Reconcile: a document under our namespace whose id is not live belongs
+    // to a deleted or renamed entry. Left in place it would consume query
+    // slots and skew the median background, so remove it. Discovery uses a
+    // wide, content-neutral query; if the host cannot list, we skip quietly.
+    if (api.queryIndex && api.removeDocument) {
+      const hits: unknown = await api.queryIndex(
+        { type: "text", text: "board game rule" },
+        { limit: QUERY_LIMIT },
+      );
+      if (Array.isArray(hits)) {
+        for (const hit of hits) {
+          if (!isRecord(hit) || typeof hit.documentId !== "string") continue;
+          if (!hit.documentId.includes(DOCUMENT_ID_PREFIX_SEP)) continue;
+          if (live.has(hit.documentId)) continue;
+          await api.removeDocument(hit.documentId);
+          removed += 1;
+        }
+      }
+    }
+    return { indexed, skipped, removed, unavailable: null };
   } catch (error) {
     return {
       indexed,
       skipped,
+      removed,
       unavailable: error instanceof Error ? error.message : String(error),
     };
   }

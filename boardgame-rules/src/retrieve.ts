@@ -122,6 +122,7 @@ function emptyAsk(partial: Partial<AskResult> & Pick<AskResult, "query" | "abste
     supported_games: listSupportedGames().map((game) => game.game_id),
     analog_hooks: [],
     retrieval_mode: "lexical",
+    lexical_evidence_count: 0,
     // Every emptyAsk caller is an input-error abstention; the coverage
     // abstention is the scored return path below.
     abstention_kind: "input",
@@ -262,6 +263,7 @@ export function askRules(options: {
       return {
         entry,
         ...lexical,
+        lexicalScore: lexical.score,
         score: lexical.score + SEMANTIC_WEIGHT * discriminative,
         semantic_similarity: similarity,
       };
@@ -291,6 +293,7 @@ export function askRules(options: {
       rights_flags: entry.rights_flags,
     }));
   const semanticUsed = semantic !== undefined && semantic.size > 0;
+  const lexicalEvidenceCount = scored.filter(({ lexicalScore }) => lexicalScore > 0).length;
 
   return {
     game_id: corpus.corpus_id,
@@ -300,6 +303,7 @@ export function askRules(options: {
     coverage_boundary: corpus.coverage_boundary,
     query,
     retrieval_mode: semanticUsed ? "hybrid" : "lexical",
+    lexical_evidence_count: lexicalEvidenceCount,
     abstention,
     abstention_kind: abstention ? "coverage" : null,
     abstention_reason: abstention
