@@ -1,4 +1,5 @@
 import type { ToolContext, ToolExecutionResult } from "@vellumai/plugin-api";
+import { loadPluginConfig } from "../src/config.ts";
 import { listSupportedGames } from "../src/corpus.ts";
 
 export default {
@@ -12,11 +13,21 @@ export default {
   },
   async execute(_input: Record<string, unknown>, _ctx: ToolContext): Promise<ToolExecutionResult> {
     const games = listSupportedGames();
+    const config = loadPluginConfig();
     return {
       content: JSON.stringify(
         {
           games,
           count: games.length,
+          // Effective plugin config, so a misconfigured config.json (typo'd
+          // key, wrong type) is visible here instead of silently ignored.
+          config: {
+            source: config.source,
+            known_games: config.known_games,
+            web_fallback: config.web_fallback,
+            ...(config.unknown_keys.length > 0 ? { unknown_keys: config.unknown_keys } : {}),
+            ...(config.invalid_keys.length > 0 ? { invalid_keys: config.invalid_keys } : {}),
+          },
           note: "Only listed games can be answered. Unlisted games must be refused.",
         },
         null,

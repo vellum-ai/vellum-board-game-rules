@@ -16,9 +16,11 @@ import {
   updateSitting,
 } from "../src/sitting.ts";
 import type { AskResult, Sitting } from "../src/types.ts";
+import { loadPluginConfig } from "../src/config.ts";
 import postToolUseHook from "../hooks/post-tool-use.ts";
 import { guardAskRulesResult } from "../src/result-guard.ts";
 import askRulesTool from "../tools/boardgame_ask_rules.ts";
+import listSupportedGamesTool from "../tools/boardgame_list_supported_games.ts";
 import checkScenarioTool from "../tools/boardgame_check_scenario.ts";
 import startSittingTool from "../tools/boardgame_start_sitting.ts";
 import updateSittingTool from "../tools/boardgame_update_sitting.ts";
@@ -56,6 +58,36 @@ type EvalSuite = {
 
 const evalPath = fileURLToPath(new URL("../corpora/eval.json", import.meta.url));
 const evalData = JSON.parse(readFileSync(evalPath, "utf8")) as { suites: EvalSuite[] };
+
+// Strict keys: a misspelled or stale key in eval.json must fail loudly, not
+// silently pass. (A dead suite-level `edition` once read as an applied filter
+// for months; this makes that class impossible.)
+const SUITE_KEYS = new Set(["game", "mode", "tests"]);
+const TEST_KEYS = new Set([
+  "label", "game", "edition", "query", "limit", "known_games",
+  "expect_ids", "expect_hit_1", "expect_hit_3", "expect_hit_5", "expect_abstention",
+  "expect_summary_contains", "expect_summary_not_contains",
+  "expect_analog_known_game_ids", "expect_analog_empty",
+  "expect_outcome_contains", "expect_decomposition_contains", "known_limitation",
+]);
+{
+  const schemaErrors: string[] = [];
+  evalData.suites.forEach((suite, si) => {
+    for (const key of Object.keys(suite)) {
+      if (!SUITE_KEYS.has(key)) schemaErrors.push(`suites[${si}] (${String(suite.game)}): unknown suite key "${key}"`);
+    }
+    (suite.tests ?? []).forEach((test, ti) => {
+      for (const key of Object.keys(test)) {
+        if (!TEST_KEYS.has(key)) schemaErrors.push(`suites[${si}].tests[${ti}] (${test.label ?? test.query}): unknown test key "${key}"`);
+      }
+    });
+  });
+  if (schemaErrors.length > 0) {
+    console.error("eval.json schema errors:");
+    for (const err of schemaErrors) console.error(`  ${err}`);
+    process.exit(1);
+  }
+}
 const gameFilterArg = process.argv.find((arg) => arg.startsWith("--game="))?.slice("--game=".length);
 const gameFlagIndex = process.argv.indexOf("--game");
 const gameFilter = gameFilterArg ?? (gameFlagIndex >= 0 ? process.argv[gameFlagIndex + 1] : undefined);
@@ -557,6 +589,21 @@ try {
     "lexical_evidence_count stays 0 when only similarity scored anything",
     semOnly.lexical_evidence_count === 0,
     `got lexical_evidence_count=${semOnly.lexical_evidence_count} evidence=${semOnly.evidence.length}`,
+  );
+
+  // Config loader: one validated read, unknown/invalid keys reported not
+  // swallowed. The repo ships no config.json, so exercise the defaults path
+  // and the effective-config echo on list_supported_games.
+  const cfg = loadPluginConfig();
+  check(
+    "config defaults when config.json is absent",
+    cfg.source === "defaults" && cfg.web_fallback === true && cfg.known_games.length === 0 && cfg.unknown_keys.length === 0,
+    `got ${JSON.stringify(cfg)}`,
+  );
+  const listed = JSON.parse((await listSupportedGamesTool.execute({}, toolCtx("eval-cfg"))).content) as { config?: { source: string; web_fallback: boolean } };
+  check(
+    "list_supported_games echoes effective config",
+    listed.config?.source === "defaults" && listed.config?.web_fallback === true,
   );
   // Result guard: the machine-checkable half of the cite-first invariants,
   // enforced on the serialized payload the model reads.
