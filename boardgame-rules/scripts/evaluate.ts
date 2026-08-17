@@ -16,6 +16,8 @@ import {
   updateSitting,
 } from "../src/sitting.ts";
 import type { AskResult, Sitting } from "../src/types.ts";
+import postToolUseHook from "../hooks/post-tool-use.ts";
+import { guardAskRulesResult } from "../src/result-guard.ts";
 import askRulesTool from "../tools/boardgame_ask_rules.ts";
 import checkScenarioTool from "../tools/boardgame_check_scenario.ts";
 import startSittingTool from "../tools/boardgame_start_sitting.ts";
@@ -522,6 +524,67 @@ try {
   }
   const lexicalOnly = askRules({ query: "how do I gain food", gameId: "wingspan" });
   check("retrieval_mode is lexical without semantic scores", lexicalOnly.retrieval_mode === "lexical");
+  // Result guard: the machine-checkable half of the cite-first invariants,
+  // enforced on the serialized payload the model reads.
+  const clean = JSON.stringify({ abstention: false, abstention_kind: null, analog_hooks: [{ known_game_id: "catan" }], web_fallback: null });
+  check("guard passes a clean answered result through untouched", guardAskRulesResult(clean).corrections.length === 0);
+  const abstainWithAnalog = guardAskRulesResult(
+    JSON.stringify({ abstention: true, abstention_kind: "coverage", analog_hooks: [{ known_game_id: "catan" }], web_fallback: null }),
+  );
+  check(
+    "guard strips analog_hooks from an abstention",
+    abstainWithAnalog.corrections.includes("analog_hooks_on_abstention_stripped") &&
+      (JSON.parse(abstainWithAnalog.content) as { analog_hooks: unknown[] }).analog_hooks.length === 0,
+  );
+  const usedNoSources = guardAskRulesResult(
+    JSON.stringify({ abstention: true, abstention_kind: "coverage", analog_hooks: [], web_fallback: { attempted: true, used: true, answer: "from memory", sources: [], note: "", disclaimer: "" } }),
+  );
+  const usedNoSourcesParsed = JSON.parse(usedNoSources.content) as { web_fallback: { used: boolean; answer: unknown } };
+  check(
+    "guard downgrades web_fallback used:true without sources",
+    usedNoSources.corrections.includes("web_fallback_used_without_sources_downgraded") &&
+      usedNoSourcesParsed.web_fallback.used === false &&
+      usedNoSourcesParsed.web_fallback.answer === null,
+  );
+  const fallbackOnAnswer = guardAskRulesResult(
+    JSON.stringify({ abstention: false, abstention_kind: null, analog_hooks: [], web_fallback: { attempted: true, used: true, answer: "x", sources: [{ url: "https://e.x" }] } }),
+  );
+  check(
+    "guard strips web_fallback from an answered result",
+    fallbackOnAnswer.corrections.includes("web_fallback_on_answer_stripped") &&
+      (JSON.parse(fallbackOnAnswer.content) as { web_fallback: unknown }).web_fallback === null,
+  );
+  const fallbackOnInput = guardAskRulesResult(
+    JSON.stringify({ abstention: true, abstention_kind: "input", analog_hooks: [], web_fallback: { attempted: true, used: true, answer: "x", sources: [{ url: "https://e.x" }] } }),
+  );
+  check(
+    "guard strips web_fallback from an input-error abstention",
+    fallbackOnInput.corrections.includes("web_fallback_on_non_coverage_stripped"),
+  );
+  check("guard passes non-JSON and non-ask payloads through", guardAskRulesResult("not json").corrections.length === 0 && guardAskRulesResult(JSON.stringify({ games: [] })).corrections.length === 0);
+
+  // Hook self-gate: only our own tool's results are touched.
+  const hookLog = { warn: () => {}, info: () => {}, debug: () => {}, error: () => {} };
+  const violating = JSON.stringify({ abstention: true, abstention_kind: "coverage", analog_hooks: [{ known_game_id: "catan" }], web_fallback: null });
+  const ownCtx = {
+    conversationId: "eval-hook",
+    logger: hookLog,
+    toolResponse: { type: "tool_result", tool_use_id: "tu-1", content: violating },
+    messages: [{ role: "assistant", content: [{ type: "tool_use", id: "tu-1", name: "boardgame_ask_rules", input: {} }] }],
+  };
+  await postToolUseHook(ownCtx as unknown as Parameters<typeof postToolUseHook>[0]);
+  check(
+    "post-tool-use hook corrects our own tool's violating result",
+    (JSON.parse(ownCtx.toolResponse.content) as { analog_hooks: unknown[] }).analog_hooks.length === 0,
+  );
+  const otherCtx = {
+    conversationId: "eval-hook",
+    logger: hookLog,
+    toolResponse: { type: "tool_result", tool_use_id: "tu-2", content: violating },
+    messages: [{ role: "assistant", content: [{ type: "tool_use", id: "tu-2", name: "some_other_tool", input: {} }] }],
+  };
+  await postToolUseHook(otherCtx as unknown as Parameters<typeof postToolUseHook>[0]);
+  check("post-tool-use hook leaves other tools' results untouched", otherCtx.toolResponse.content === violating);
 
   const noGame = askRules({ query: "how do I gain food" });
   check(
