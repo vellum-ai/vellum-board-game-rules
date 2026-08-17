@@ -876,12 +876,16 @@
           "label": "off-domain question still abstains",
           "query": "how do I castle my king",
           "expect_abstention": true
+        },
+        {
+          "label": "generic-token verbose query still abstains (no title anchor)",
+          "query": "can I trade resources with another player during my turn for cards",
+          "expect_abstention": true
         }
       ]
     },
     {
       "game": "cribbage",
-      "edition": "two-player-standard-en",
       "mode": "scenario",
       "tests": [
         {
@@ -943,6 +947,16 @@
           "label": "near-threshold nonsense still abstains (2 generic matches)",
           "query": "quantum entanglement scoring rule",
           "expect_abstention": true
+        },
+        {
+          "label": "variant edition reaches base worked examples via inherits",
+          "query": "hand of 8 7 7 6 with a 2 starter, how many points",
+          "edition": "muggins-variant",
+          "expect_ids": [
+            "counting-example-8-7-7-6-2"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false
         }
       ]
     }

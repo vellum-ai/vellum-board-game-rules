@@ -121,13 +121,32 @@ function emptyResult(
   };
 }
 
+/**
+ * Mirrors ask_rules edition semantics: an explicit edition_id filters
+ * strictly (unknown id abstains), no edition_id means no filter. The old
+ * first-edition default hid worked examples tagged only to later editions.
+ */
 function resolveEdition(corpus: Corpus, editionId?: string): string | null {
-  if (editionId) {
-    return corpus.editions.some((edition) => edition.edition_id === editionId)
-      ? editionId
-      : null;
+  if (!editionId) return null;
+  return corpus.editions.some((edition) => edition.edition_id === editionId)
+    ? editionId
+    : null;
+}
+
+/**
+ * The requested edition plus every edition it (transitively) inherits from,
+ * exactly like ask_rules retrieval: a table playing the Muggins variant is
+ * still playing standard Cribbage underneath, so the base edition's worked
+ * examples must stay reachable from a variant-pinned sitting.
+ */
+function editionScope(corpus: Corpus, editionId: string): Set<string> {
+  const scope = new Set<string>();
+  let current: string | null | undefined = editionId;
+  while (current && !scope.has(current)) {
+    scope.add(current);
+    current = corpus.editions.find((edition) => edition.edition_id === current)?.inherits;
   }
-  return corpus.editions[0]?.edition_id ?? null;
+  return scope;
 }
 
 export function checkScenario(options: {
@@ -190,10 +209,11 @@ export function checkScenario(options: {
     });
   }
 
+  const scope = editionId ? editionScope(corpus, editionId) : null;
   const scopedEntries = corpus.entries.filter(
     (entry) =>
       hasWorkedExample(entry) &&
-      (!editionId || entry.edition_ids.includes(editionId)),
+      (!scope || entry.edition_ids.some((id) => scope.has(id))),
   );
 
   const identityHeader = {

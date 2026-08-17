@@ -78,6 +78,7 @@ for (const suite of evalData.suites) {
       const result = checkScenario({
         query: test.query,
         gameId,
+        editionId: test.edition,
         limit: test.limit ?? 3,
       });
       const topId = result.matches[0]?.entry_id;
