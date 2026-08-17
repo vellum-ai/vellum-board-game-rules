@@ -1,10 +1,27 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Corpus, SupportedGame } from "./types.ts";
 
 const pluginRoot = fileURLToPath(new URL("..", import.meta.url));
 const corporaDir = join(pluginRoot, "corpora");
+
+/**
+ * Corpora are static JSON on disk, so each file is parsed once and cached
+ * against its mtime: a call costs one stat per file instead of a full
+ * read+parse, and editing a corpus still takes effect on the next call with
+ * no restart. Loaded corpora are treated as read-only by every caller.
+ */
+const corpusCache = new Map<string, { mtimeMs: number; corpus: Corpus }>();
+
+function loadCorpusFile(file: string): Corpus {
+  const mtimeMs = statSync(file).mtimeMs;
+  const cached = corpusCache.get(file);
+  if (cached && cached.mtimeMs === mtimeMs) return cached.corpus;
+  const corpus = JSON.parse(readFileSync(file, "utf8")) as Corpus;
+  corpusCache.set(file, { mtimeMs, corpus });
+  return corpus;
+}
 
 export function listCorpusFiles(): string[] {
   if (!existsSync(corporaDir)) return [];
@@ -15,7 +32,7 @@ export function listCorpusFiles(): string[] {
 }
 
 export function loadCorpora(): Corpus[] {
-  return listCorpusFiles().map((file) => JSON.parse(readFileSync(file, "utf8")) as Corpus);
+  return listCorpusFiles().map(loadCorpusFile);
 }
 
 export function loadCorpus(gameId: string): Corpus | undefined {

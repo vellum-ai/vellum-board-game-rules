@@ -101,7 +101,7 @@ export function checkScenario(options: {
   const request = resolveRequest({
     gameId: options.gameId,
     editionId: options.editionId,
-    noGameHint: `Pass game_id; games with worked examples: ${gamesWithWorkedExamples()};`,
+    noGameHint: () => `Pass game_id; games with worked examples: ${gamesWithWorkedExamples()};`,
   });
   if (!request.ok) {
     return emptyResult({ ...request.identity, query, abstention: true, abstention_reason: request.reason });

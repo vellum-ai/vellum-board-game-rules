@@ -100,12 +100,15 @@ const NO_IDENTITY: RequestIdentity = {
  * corpora installed, a game named, the game known, the edition (if given)
  * known. Every rejection is an input error, and carries as much identity as
  * was resolved before the failure so callers can echo it. `noGameHint` lets
- * each retriever say what to do about a missing game in its own terms.
+ * each retriever say what to do about a missing game in its own terms; it is
+ * a thunk so a hint that costs something to build (check_scenario lists the
+ * games that have worked examples) is only built on the no-game branch, never
+ * on the normal path.
  */
 export function resolveRequest(options: {
   gameId?: string;
   editionId?: string;
-  noGameHint: string;
+  noGameHint: () => string;
 }): ResolvedRequest {
   const supported = listSupportedGames();
   if (supported.length === 0) {
@@ -117,7 +120,7 @@ export function resolveRequest(options: {
   if (!gameId) {
     return {
       ok: false,
-      reason: `No game specified. ${options.noGameHint} supported games: ${supportedIds}`,
+      reason: `No game specified. ${options.noGameHint()} supported games: ${supportedIds}`,
       identity: NO_IDENTITY,
     };
   }

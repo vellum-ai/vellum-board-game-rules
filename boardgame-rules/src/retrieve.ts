@@ -116,7 +116,7 @@ export function askRules(options: {
   const request = resolveRequest({
     gameId: options.gameId,
     editionId: options.editionId,
-    noGameHint: "Pass game_id (or start a sitting);",
+    noGameHint: () => "Pass game_id (or start a sitting);",
   });
   if (!request.ok) {
     return emptyAsk({ ...request.identity, query, abstention: true, abstention_reason: request.reason });
