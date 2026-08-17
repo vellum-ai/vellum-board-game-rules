@@ -132,9 +132,13 @@ Every `boardgame_ask_rules` result includes:
   fetched in the same call (answer, sources, and a mandatory disclaimer);
   `null` on answered results and input-error abstentions. `used: true`
   requires at least one web source; a provider answer without sources is
-  discarded, never relayed as web findings. Needs the host runtime and a
-  provider with native web search; fails open to the plain abstention.
-  Disable with `"web_fallback": false` in `config.json`.
+  discarded, never relayed as web findings. Two cost gates: the search is
+  skipped (`attempted: false`) when the abstention carries zero scored
+  evidence (the question shares no vocabulary with the game, so it is
+  off-domain rather than uncovered) and after 5 searches in one sitting.
+  Needs the host runtime and a provider with native web search; fails open
+  to the plain abstention. Disable with `"web_fallback": false` in
+  `config.json`.
 
 If `abstention` is true, do not invent a ruling — and no analogy is offered.
 Web-fallback content is table guidance with sources, never a corpus-cited

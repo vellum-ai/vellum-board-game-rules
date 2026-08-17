@@ -332,6 +332,8 @@ export type Sitting = {
   known_games: string[];
   last_ruling: SittingRuling | null;
   last_analog: SittingAnalog | null;
+  /** Web-fallback searches spent this sitting; bounded by the ask tool. Absent on rows written before the cap existed. */
+  web_fallback_attempts?: number;
   started_at: string;
   updated_at: string;
 };

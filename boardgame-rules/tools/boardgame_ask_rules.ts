@@ -3,7 +3,10 @@ import { webFallbackEnabled } from "../src/config.ts";
 import { askRules } from "../src/retrieve.ts";
 import { getSitting, updateSitting } from "../src/sitting.ts";
 import type { WebFallback } from "../src/types.ts";
-import { webFallbackSearch } from "../src/web-fallback.ts";
+import { WEB_FALLBACK_DISCLAIMER, webFallbackSearch } from "../src/web-fallback.ts";
+
+/** Live searches an active sitting may spend; without a sitting each call stands alone. */
+const WEB_FALLBACK_MAX_PER_SITTING = 5;
 
 export default {
   description:
@@ -68,12 +71,46 @@ export default {
     // doesn't wait for a second turn. Input-error abstentions (no game,
     // unknown game/edition, empty query) keep the plain abstention.
     // abstention stays true either way.
+    //
+    // Two gates keep the fallback from paying an inference round-trip on
+    // every miss: (1) the query must be on-domain — a coverage abstention
+    // with ZERO scored evidence means the question shares no vocabulary
+    // with the game at all (off-domain or gibberish), and a web search on
+    // it would not help the table; (2) an active sitting spends at most
+    // WEB_FALLBACK_MAX_PER_SITTING searches, so a table that keeps asking
+    // uncovered questions is bounded per night rather than per question.
     let webFallback: WebFallback | null = null;
     if (webFallbackEnabled() && result.abstention_kind === "coverage") {
-      webFallback = await webFallbackSearch({
-        gameTitle: result.game_title ?? gameId ?? "this board game",
-        query,
-      });
+      if (result.evidence.length === 0) {
+        webFallback = {
+          attempted: false,
+          used: false,
+          note: "Web fallback skipped: the question shares no vocabulary with this game's corpus, so it looks off-domain rather than uncovered.",
+          answer: null,
+          sources: [],
+          disclaimer: WEB_FALLBACK_DISCLAIMER,
+        };
+      } else if (
+        sitting &&
+        (sitting.web_fallback_attempts ?? 0) >= WEB_FALLBACK_MAX_PER_SITTING
+      ) {
+        webFallback = {
+          attempted: false,
+          used: false,
+          note: `Web fallback skipped: this sitting has used its ${WEB_FALLBACK_MAX_PER_SITTING} live searches. Ask the assistant to search directly if this one matters.`,
+          answer: null,
+          sources: [],
+          disclaimer: WEB_FALLBACK_DISCLAIMER,
+        };
+      } else {
+        if (sitting) {
+          updateSitting({ conversationId: ctx.conversationId, countWebFallbackAttempt: true });
+        }
+        webFallback = await webFallbackSearch({
+          gameTitle: result.game_title ?? gameId ?? "this board game",
+          query,
+        });
+      }
     }
 
     // Record the cited ruling (and analog, when one was returned) on the
