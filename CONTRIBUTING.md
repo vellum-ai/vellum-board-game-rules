@@ -225,21 +225,31 @@ Fix the error, re-run, repeat until you see:
 
 ## Evaluation (optional)
 
-If you want to test that your corpus returns good answers, add test cases to `corpora/eval.json`:
+If you want to test that your corpus returns good answers, add a suite to `corpora/eval.json`. The harness is strict about keys: an unknown suite or test key stops the run with a named error, so copy this shape exactly.
 
 ```json
 {
-  "game": "your-game-rules",
-  "edition": "base-en-1st-2020",
+  "game": "your-game",
   "tests": [
     {
+      "label": "birdfeeder dice count",
       "query": "How many dice does the birdfeeder have?",
-      "expect_top_hit": "setup-dice-count",
+      "expect_ids": ["setup-dice-count"],
+      "expect_hit_1": true,
       "expect_abstention": false
+    },
+    {
+      "label": "off-domain question abstains",
+      "query": "how do I castle my king",
+      "expect_abstention": true
     }
   ]
 }
 ```
+
+- Suite keys: `game` (the corpus id), optional `mode` (`"ask"` default, or `"scenario"` to route through the score validator), `tests`.
+- Test keys: `label`, `query`, `expect_ids` + `expect_hit_1`/`expect_hit_3`/`expect_hit_5`, `expect_abstention`, `expect_summary_contains`/`expect_summary_not_contains`, and, per test, an optional strict `edition` filter. Scenario mode adds `expect_outcome_contains`/`expect_decomposition_contains`. The full list is `TEST_KEYS` in `scripts/evaluate.ts`.
+- There is no suite-level `edition`; pin editions per test.
 
 Then run:
 
