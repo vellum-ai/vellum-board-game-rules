@@ -461,6 +461,47 @@
           ],
           "expect_hit_1": true,
           "expect_abstention": false
+        },
+        {
+          "label": "paraphrase: feeder food",
+          "query": "how do I get more food from the feeder thing",
+          "expect_ids": [
+            "wingspan-turn-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
+        },
+        {
+          "label": "paraphrase: bird placement",
+          "query": "can I put a bird anywhere or does the nest matter",
+          "expect_ids": [
+            "wingspan-turn-005"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
+        },
+        {
+          "label": "paraphrase: same dice faces",
+          "query": "what if the dice are all showing the same picture",
+          "expect_ids": [
+            "wingspan-rule-009",
+            "wingspan-edgecase-002"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
+        },
+        {
+          "label": "paraphrase: tied score",
+          "query": "who wins if we have the same score",
+          "expect_ids": [
+            "wingspan-rule-001"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
         }
       ]
     },
@@ -615,6 +656,26 @@
           "label": "near-threshold nonsense still abstains (2 generic matches)",
           "query": "quantum entanglement scoring rule",
           "expect_abstention": true
+        },
+        {
+          "label": "paraphrase: go",
+          "query": "what do I do if I cant play without going over",
+          "expect_ids": [
+            "play-go-and-thirty-one"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
+        },
+        {
+          "label": "paraphrase: nobs",
+          "query": "is a jack that matches the cut card worth anything",
+          "expect_ids": [
+            "counting-his-nobs"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
         }
       ]
     },
@@ -881,6 +942,16 @@
           "label": "generic-token verbose query still abstains (no title anchor)",
           "query": "can I trade resources with another player during my turn for cards",
           "expect_abstention": true
+        },
+        {
+          "label": "paraphrase: duplicate number",
+          "query": "what if I draw a number I already have",
+          "expect_ids": [
+            "flip-7-bust"
+          ],
+          "expect_hit_1": true,
+          "expect_abstention": false,
+          "known_limitation": true
         }
       ]
     },

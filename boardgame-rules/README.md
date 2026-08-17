@@ -126,6 +126,28 @@ pin it. Any of the 19 corpora can add worked examples the same way.
 Compare, refresh, embeddings, live BGG, PDF ingest, UI, and cross-night
 syllabi are deferred.
 
+## Retrieval: lexical + semantic fusion
+
+`askRules` scores entries lexically (token overlap, phrase and title bonuses)
+and, when the host provides one, fuses in semantic similarity from the
+plugin's **private hybrid index** (`@vellumai/plugin-api` `indexDocument` /
+`queryIndex`, scoped to this plugin and never part of agent recall). The
+`init` hook indexes every corpus entry (content-hashed so unchanged installs
+skip, and reconciled so deleted or renamed entries are removed). The host
+index has no per-game filter, so each query pulls the whole (small) index and
+keeps the current game's hits, guaranteeing every entry of that game gets a
+similarity rather than a starved global top-N. Fusion is deliberately conservative: only similarity that stands out
+from the query's background level (median across returned entries) by a
+minimum margin counts, so uniform "everything looks a bit related" noise
+adds nothing and off-domain questions keep abstaining, while a genuine
+paraphrase ("feeder thing", "same score") lifts the entry lexical retrieval
+already ranks first over the abstention threshold. Results carry
+`retrieval_mode: "hybrid" | "lexical"`; outside the daemon (the eval harness)
+retrieval is exactly lexical. The paraphrase eval suite is the yardstick:
+its cases are marked `known_limitation` until the live index is smoke-tested,
+and the fusion math itself is pinned deterministically with simulated
+similarity.
+
 ## Return contract
 
 Every `boardgame_ask_rules` result includes:
@@ -134,6 +156,7 @@ Every `boardgame_ask_rules` result includes:
 - `edition_id` — the edition filter that was applied; `null` means all editions were in scope (per-ruling editions are on `evidence[].edition_ids`). Filtering by an expansion edition also includes the editions it `inherits`
 - `coverage_boundary`
 - `evidence[]` with citation locator, URL, confidence, and rights flags
+- `retrieval_mode` — `"hybrid"` when semantic similarity was fused in, `"lexical"` otherwise
 - `abstention`, `abstention_reason`, and `abstention_kind` (`"coverage"` = searched but nothing matched, `"input"` = unanswerable request, `null` when answered)
 - `supported_games`
 - `analog_hooks[]` — hooks from the top evidence filtered to the sitting's
