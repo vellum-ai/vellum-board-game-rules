@@ -5,12 +5,19 @@ import type { AnalogHook, AskResult, Citation, Corpus, CorpusEntry, Evidence } f
 const ABSTAIN_THRESHOLD = 5.5;
 /**
  * A top entry sharing at least this many DISTINCT content tokens with the
- * query is a strong match even when the ratio-based score is diluted below
- * ABSTAIN_THRESHOLD by a verbose query ("ok so wait how exactly do I …").
- * Off-domain queries empirically top out at 2 distinct matches (generic
- * tokens like "scoring"/"points"), so 3 is the separation point.
+ * query is a strong-match candidate even when the ratio-based score is
+ * diluted below ABSTAIN_THRESHOLD by a verbose query ("ok so wait how
+ * exactly do I ..."). Count alone cannot separate real hits from
+ * generic-token noise on small corpora with wordy summaries (review
+ * example: "trade resources with another player..." matched 3 tokens on a
+ * Flip 7 entry, all but one in the summary) - and raising the count bar to
+ * 4 breaks a genuine playtest case that also sits at exactly 3. So the
+ * override ALSO requires MIN_STRONG_TITLE_MATCHES distinct matches anchored
+ * in the entry TITLE: real verbose hits name the concept the title names;
+ * off-domain queries brush titles at most once.
  */
 const MIN_STRONG_DISTINCT_MATCHES = 3;
+const MIN_STRONG_TITLE_MATCHES = 2;
 /** Floor so a strong-match override still requires non-trivial score mass. */
 const STRONG_MATCH_SCORE_FLOOR = 3.0;
 const DEFAULT_LIMIT = 5;
@@ -37,7 +44,7 @@ function tokenize(text: string, filterStopWords = false): string[] {
 function scoreEntry(
   entry: CorpusEntry,
   queryTokens: string[],
-): { score: number; distinctMatches: number } {
+): { score: number; distinctMatches: number; distinctTitleMatches: number } {
   const haystack = [entry.title, entry.summary, entry.section ?? "", entry.subsection ?? "", ...(entry.topics ?? [])].join(" ");
   const tokens = tokenize(haystack);
   const tokenSet = new Set(tokens);
@@ -48,12 +55,15 @@ function scoreEntry(
   const titleMatches = queryTokens.reduce((total, token) => total + (titleTokens.has(token) ? 1 : 0), 0);
   const titleBonus = (titleMatches / queryTokens.length) * 5;
   let distinctMatches = 0;
+  let distinctTitleMatches = 0;
   for (const token of new Set(queryTokens)) {
     if (tokenSet.has(token)) distinctMatches += 1;
+    if (titleTokens.has(token)) distinctTitleMatches += 1;
   }
   return {
     score: (matches / queryTokens.length) * 10 + phraseBonus + titleBonus,
     distinctMatches,
+    distinctTitleMatches,
   };
 }
 
@@ -213,6 +223,7 @@ export function askRules(options: {
   // is a real answer, not an abstention-with-evidence.
   const strongTopMatch =
     (scored[0]?.distinctMatches ?? 0) >= MIN_STRONG_DISTINCT_MATCHES &&
+    (scored[0]?.distinctTitleMatches ?? 0) >= MIN_STRONG_TITLE_MATCHES &&
     topScore >= STRONG_MATCH_SCORE_FLOOR;
   const abstention = topScore < ABSTAIN_THRESHOLD && !strongTopMatch;
   const evidence: Evidence[] = scored
