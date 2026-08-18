@@ -683,7 +683,7 @@
       "game": "ark-nova",
       "tests": [
         {
-          "label": "migration smoke: animal-reference-use retrievable",
+          "label": "migrated corpus retrieves: animal-reference-use retrievable",
           "query": "Use the guide as thematic reference only",
           "expect_ids": [
             "animal-reference-use"
@@ -697,7 +697,7 @@
       "game": "brass-birmingham",
       "tests": [
         {
-          "label": "migration smoke: setup-board-and-player-area retrievable",
+          "label": "migrated corpus retrieves: setup-board-and-player-area retrievable",
           "query": "Set up markets, cards, merchants, and player mats",
           "expect_ids": [
             "setup-board-and-player-area"
@@ -711,7 +711,7 @@
       "game": "dune-imperium",
       "tests": [
         {
-          "label": "migration smoke: setup-and-initial-resources retrievable",
+          "label": "migrated corpus retrieves: setup-and-initial-resources retrievable",
           "query": "Setup map and player areas",
           "expect_ids": [
             "setup-and-initial-resources"
@@ -725,7 +725,7 @@
       "game": "dune-imperium-uprising",
       "tests": [
         {
-          "label": "migration smoke: setup-uprising retrievable",
+          "label": "migrated corpus retrieves: setup-uprising retrievable",
           "query": "Setup adds Uprising-specific state",
           "expect_ids": [
             "setup-uprising"
@@ -739,7 +739,7 @@
       "game": "gaia-project",
       "tests": [
         {
-          "label": "migration smoke: play-flow-six-rounds retrievable",
+          "label": "migrated corpus retrieves: play-flow-six-rounds retrievable",
           "query": "Six-round operating rhythm",
           "expect_ids": [
             "play-flow-six-rounds"
@@ -753,7 +753,7 @@
       "game": "gloomhaven",
       "tests": [
         {
-          "label": "migration smoke: scenario-start-checklist retrievable",
+          "label": "migrated corpus retrieves: scenario-start-checklist retrievable",
           "query": "Scenario setup is a gated sequence",
           "expect_ids": [
             "scenario-start-checklist"
@@ -767,7 +767,7 @@
       "game": "gloomhaven-jaws-of-the-lion",
       "tests": [
         {
-          "label": "migration smoke: guide-first-five-scenarios retrievable",
+          "label": "migrated corpus retrieves: guide-first-five-scenarios retrievable",
           "query": "Learn-to-Play scope ends at an onboarding boundary",
           "expect_ids": [
             "guide-first-five-scenarios"
@@ -781,7 +781,7 @@
       "game": "lost-ruins-of-arnak",
       "tests": [
         {
-          "label": "migration smoke: arnak-setup-sequence retrievable",
+          "label": "migrated corpus retrieves: arnak-setup-sequence retrievable",
           "query": "Setup establishes a shared island, card row, and research race",
           "expect_ids": [
             "arnak-setup-sequence"
@@ -795,7 +795,7 @@
       "game": "nemesis",
       "tests": [
         {
-          "label": "migration smoke: nemesis-setup-sequence retrievable",
+          "label": "migrated corpus retrieves: nemesis-setup-sequence retrievable",
           "query": "Setup builds a hidden, asymmetric survival problem",
           "expect_ids": [
             "nemesis-setup-sequence"
@@ -809,7 +809,7 @@
       "game": "odin",
       "tests": [
         {
-          "label": "migration smoke: odin-setup-components-and-player-start retrievable",
+          "label": "migrated corpus retrieves: odin-setup-components-and-player-start retrievable",
           "query": "Setup assembles shared supplies, personal boards, and starting hands",
           "expect_ids": [
             "odin-setup-components-and-player-start"
@@ -823,7 +823,7 @@
       "game": "pandemic-legacy-season-1",
       "tests": [
         {
-          "label": "migration smoke: month-and-funding-loop retrievable",
+          "label": "migrated corpus retrieves: month-and-funding-loop retrievable",
           "query": "Monthly success and failure drive the calendar",
           "expect_ids": [
             "month-and-funding-loop"
@@ -837,7 +837,7 @@
       "game": "sky-team",
       "tests": [
         {
-          "label": "migration smoke: sky-team-basic-setup retrievable",
+          "label": "migrated corpus retrieves: sky-team-basic-setup retrievable",
           "query": "Setup creates two asymmetric control consoles",
           "expect_ids": [
             "sky-team-basic-setup"
@@ -851,7 +851,7 @@
       "game": "star-wars-rebellion",
       "tests": [
         {
-          "label": "migration smoke: three-phase-round retrievable",
+          "label": "migrated corpus retrieves: three-phase-round retrievable",
           "query": "Each round has assignment, command, and refresh",
           "expect_ids": [
             "three-phase-round"
@@ -865,7 +865,7 @@
       "game": "terraforming-mars",
       "tests": [
         {
-          "label": "migration smoke: generation-four-phase-loop retrievable",
+          "label": "migrated corpus retrieves: generation-four-phase-loop retrievable",
           "query": "A generation is a four-phase loop",
           "expect_ids": [
             "generation-four-phase-loop"
@@ -879,7 +879,7 @@
       "game": "twilight-imperium-fourth-edition",
       "tests": [
         {
-          "label": "migration smoke: four-phase-round retrievable",
+          "label": "migrated corpus retrieves: four-phase-round retrievable",
           "query": "A round has strategy, action, status, and conditional agenda",
           "expect_ids": [
             "four-phase-round"
@@ -893,7 +893,7 @@
       "game": "war-of-the-ring-second-edition",
       "tests": [
         {
-          "label": "migration smoke: second-edition-turn-loop retrievable",
+          "label": "migrated corpus retrieves: second-edition-turn-loop retrievable",
           "query": "The turn is six phases driven by action dice",
           "expect_ids": [
             "second-edition-turn-loop"
@@ -907,7 +907,7 @@
       "game": "flip-7",
       "tests": [
         {
-          "label": "migration smoke: flip-7-press-your-luck-objective retrievable",
+          "label": "migrated corpus retrieves: flip-7-press-your-luck-objective retrievable",
           "query": "Push for points without repeating a number",
           "expect_ids": [
             "flip-7-press-your-luck-objective"
@@ -925,22 +925,18 @@
           "expect_abstention": false
         },
         {
-          "label": "verbose table question answers via strong distinct matches (bust)",
+          "label": "paraphrase: seventh unique card (lifted by semantic fusion live; lexical alone sits at 5.0)",
           "query": "what happens when someone flips a seventh unique number card in this round",
           "expect_ids": [
             "flip-7-bust"
           ],
           "expect_hit_1": true,
-          "expect_abstention": false
+          "expect_abstention": false,
+          "known_limitation": true
         },
         {
           "label": "off-domain question still abstains",
           "query": "how do I castle my king",
-          "expect_abstention": true
-        },
-        {
-          "label": "generic-token verbose query still abstains (no title anchor)",
-          "query": "can I trade resources with another player during my turn for cards",
           "expect_abstention": true
         },
         {

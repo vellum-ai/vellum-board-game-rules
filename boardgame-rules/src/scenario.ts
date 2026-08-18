@@ -1,11 +1,11 @@
 import { listSupportedGames, loadCorpora, loadCorpus } from "./corpus.ts";
-import type {
-  CheckScenarioResult,
-  Citation,
-  Corpus,
-  CorpusEntry,
-  ScenarioMatch,
-} from "./types.ts";
+import {
+  citationFor,
+  resolveRequest,
+  scopedEntries,
+  tokenize,
+} from "./retrieval-common.ts";
+import type { CheckScenarioResult, CorpusEntry, ScenarioMatch } from "./types.ts";
 
 /**
  * check_scenario retrieval.
@@ -23,33 +23,11 @@ const MIN_DISTINCT_MATCHES = 2;
 const DEFAULT_LIMIT = 3;
 const MAX_LIMIT = 5;
 
-const STOP_WORDS = new Set([
-  "the", "a", "an", "is", "are", "of", "to", "in", "on", "for", "with",
-  "and", "or", "not", "but", "how", "do", "does", "did", "i", "you",
-  "your", "my", "we", "they", "their", "what", "when", "where", "can",
-  "could", "should", "would", "will", "as", "at", "by", "from", "it",
-  "its", "be", "been", "being", "has", "have", "had", "was", "were",
-  "this", "that", "these", "those", "if", "then", "than", "so",
-]);
-
-function tokenize(text: string, filterStopWords = false): string[] {
-  const tokens = text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s'-]/g, " ")
-    .split(/\s+/)
-    .filter(Boolean);
-  return filterStopWords ? tokens.filter((t) => !STOP_WORDS.has(t)) : tokens;
-}
-
 function hasWorkedExample(entry: CorpusEntry): boolean {
   return entry.worked_example != null;
 }
 
-type Scored = {
-  entry: CorpusEntry;
-  score: number;
-  distinctMatches: number;
-};
+type Scored = { entry: CorpusEntry; score: number; distinctMatches: number };
 
 function scoreEntry(entry: CorpusEntry, queryTokens: string[]): Scored {
   const distinctQueryTokens = new Set(queryTokens);
@@ -74,11 +52,7 @@ function scoreEntry(entry: CorpusEntry, queryTokens: string[]): Scored {
   }
 
   const normalizedMatchRatio = distinctMatches / distinctQueryTokens.size;
-  const phraseBonus = tokenize(haystack)
-    .join(" ")
-    .includes(queryTokens.join(" "))
-    ? 5
-    : 0;
+  const phraseBonus = tokenize(haystack).join(" ").includes(queryTokens.join(" ")) ? 5 : 0;
 
   // Bonus when query tokens hit the applies_when trigger phrases explicitly.
   const appliesTokenSet = new Set(tokenize(applies.join(" ")));
@@ -88,21 +62,7 @@ function scoreEntry(entry: CorpusEntry, queryTokens: string[]): Scored {
   }
   const appliesBonus = (appliesHits / distinctQueryTokens.size) * 3;
 
-  const score = normalizedMatchRatio * 10 + phraseBonus + appliesBonus;
-  return { entry, score, distinctMatches };
-}
-
-function citationFor(entry: CorpusEntry): Citation {
-  return {
-    entry_id: entry.id,
-    title: entry.title,
-    section: entry.section,
-    subsection: entry.subsection,
-    locator: entry.source_locator.locator,
-    url: entry.source_locator.url,
-    source_kind: entry.source_locator.source_kind,
-    confidence: entry.confidence,
-  };
+  return { entry, score: normalizedMatchRatio * 10 + phraseBonus + appliesBonus, distinctMatches };
 }
 
 function emptyResult(
@@ -121,32 +81,12 @@ function emptyResult(
   };
 }
 
-/**
- * Mirrors ask_rules edition semantics: an explicit edition_id filters
- * strictly (unknown id abstains), no edition_id means no filter. The old
- * first-edition default hid worked examples tagged only to later editions.
- */
-function resolveEdition(corpus: Corpus, editionId?: string): string | null {
-  if (!editionId) return null;
-  return corpus.editions.some((edition) => edition.edition_id === editionId)
-    ? editionId
-    : null;
-}
-
-/**
- * The requested edition plus every edition it (transitively) inherits from,
- * exactly like ask_rules retrieval: a table playing the Muggins variant is
- * still playing standard Cribbage underneath, so the base edition's worked
- * examples must stay reachable from a variant-pinned sitting.
- */
-function editionScope(corpus: Corpus, editionId: string): Set<string> {
-  const scope = new Set<string>();
-  let current: string | null | undefined = editionId;
-  while (current && !scope.has(current)) {
-    scope.add(current);
-    current = corpus.editions.find((edition) => edition.edition_id === current)?.inherits;
-  }
-  return scope;
+/** Games that have at least one worked example, for the no-game hint. */
+function gamesWithWorkedExamples(): string {
+  return listSupportedGames()
+    .filter((game) => (loadCorpus(game.game_id)?.entries ?? []).some(hasWorkedExample))
+    .map((game) => game.game_id)
+    .join(", ");
 }
 
 export function checkScenario(options: {
@@ -156,77 +96,22 @@ export function checkScenario(options: {
   limit?: number;
 }): CheckScenarioResult {
   const query = options.query.trim();
-  const requestedLimit = options.limit ?? DEFAULT_LIMIT;
-  const limit = Math.min(Math.max(requestedLimit, 1), MAX_LIMIT);
-  const supported = listSupportedGames();
+  const limit = Math.min(Math.max(options.limit ?? DEFAULT_LIMIT, 1), MAX_LIMIT);
 
-  if (supported.length === 0) {
-    return emptyResult({
-      query,
-      abstention: true,
-      abstention_reason: "No game corpora are installed.",
-    });
+  const request = resolveRequest({
+    gameId: options.gameId,
+    editionId: options.editionId,
+    noGameHint: () => `Pass game_id; games with worked examples: ${gamesWithWorkedExamples()};`,
+  });
+  if (!request.ok) {
+    return emptyResult({ ...request.identity, query, abstention: true, abstention_reason: request.reason });
   }
+  const { corpus, editionId, identity } = request;
 
-  // Require an explicit game_id. With many installed games, silently guessing
-  // one hides which corpus answered — align with the same policy ask_rules
-  // now enforces.
-  const gameId = options.gameId?.trim();
-  if (!gameId) {
+  const candidates = scopedEntries(corpus, editionId).filter(hasWorkedExample);
+  if (candidates.length === 0) {
     return emptyResult({
-      query,
-      abstention: true,
-      abstention_reason: `No game specified. Pass game_id — supported games with worked examples: ${supported
-        .filter((game) => (loadCorpus(game.game_id)?.entries ?? []).some(hasWorkedExample))
-        .map((game) => game.game_id)
-        .join(", ")}`,
-    });
-  }
-  const corpus = loadCorpus(gameId);
-  if (!corpus) {
-    return emptyResult({
-      query,
-      game_id: gameId,
-      abstention: true,
-      abstention_reason: `Game '${gameId}' is not supported. Supported games: ${supported
-        .map((game) => game.game_id)
-        .join(", ")}`,
-    });
-  }
-
-  const editionId = resolveEdition(corpus, options.editionId);
-  if (options.editionId && !editionId) {
-    return emptyResult({
-      query,
-      game_id: corpus.corpus_id,
-      game_title: corpus.game_title,
-      corpus_version: corpus.corpus_version,
-      coverage_boundary: corpus.coverage_boundary,
-      abstention: true,
-      abstention_reason: `Unknown edition_id '${options.editionId}'. Available editions: ${corpus.editions
-        .map((edition) => edition.edition_id)
-        .join(", ")}`,
-    });
-  }
-
-  const scope = editionId ? editionScope(corpus, editionId) : null;
-  const scopedEntries = corpus.entries.filter(
-    (entry) =>
-      hasWorkedExample(entry) &&
-      (!scope || entry.edition_ids.some((id) => scope.has(id))),
-  );
-
-  const identityHeader = {
-    game_id: corpus.corpus_id,
-    game_title: corpus.game_title,
-    edition_id: editionId,
-    corpus_version: corpus.corpus_version,
-    coverage_boundary: corpus.coverage_boundary,
-  };
-
-  if (scopedEntries.length === 0) {
-    return emptyResult({
-      ...identityHeader,
+      ...identity,
       query,
       abstention: true,
       abstention_reason:
@@ -236,40 +121,25 @@ export function checkScenario(options: {
 
   const queryTokens = tokenize(query, true);
   if (queryTokens.length === 0) {
-    return emptyResult({
-      ...identityHeader,
-      query,
-      abstention: true,
-      abstention_reason: "No search terms provided.",
-    });
+    return emptyResult({ ...identity, query, abstention: true, abstention_reason: "No search terms provided." });
   }
 
-  const scored = scopedEntries
+  const scored = candidates
     .map((entry) => scoreEntry(entry, queryTokens))
-    .sort(
-      (a, b) =>
-        b.score - a.score || a.entry.title.localeCompare(b.entry.title),
-    );
+    .sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title));
 
-  const top = scored[0];
-  const topScore = top?.score ?? 0;
-  const topDistinctMatches = top?.distinctMatches ?? 0;
-  const abstention =
-    topScore < ABSTAIN_SCORE_THRESHOLD ||
-    topDistinctMatches < MIN_DISTINCT_MATCHES;
-
-  if (abstention) {
-    return {
-      ...identityHeader,
+  const topScore = scored[0]?.score ?? 0;
+  const topDistinctMatches = scored[0]?.distinctMatches ?? 0;
+  if (topScore < ABSTAIN_SCORE_THRESHOLD || topDistinctMatches < MIN_DISTINCT_MATCHES) {
+    return emptyResult({
+      ...identity,
       query,
       abstention: true,
       abstention_reason:
         topDistinctMatches < MIN_DISTINCT_MATCHES
-          ? `Query matched fewer than ${MIN_DISTINCT_MATCHES} distinct concepts against the worked-example set — too broad to route to a specific example.`
+          ? `Query matched fewer than ${MIN_DISTINCT_MATCHES} distinct concepts against the worked-example set; too broad to route to a specific example.`
           : "No worked example scores above the confidence threshold. Try phrasing with the specific card, hand, or count in question, or use boardgame_ask_rules for a rules paraphrase.",
-      matches: [],
-      supported_games: supported.map((game) => game.game_id),
-    };
+    });
   }
 
   const matches: ScenarioMatch[] = scored
@@ -290,14 +160,7 @@ export function checkScenario(options: {
       rights_flags: entry.rights_flags,
     }));
 
-  return {
-    ...identityHeader,
-    query,
-    abstention: false,
-    abstention_reason: null,
-    matches,
-    supported_games: supported.map((game) => game.game_id),
-  };
+  return { ...identity, query, abstention: false, abstention_reason: null, matches, supported_games: listSupportedGames().map((game) => game.game_id) };
 }
 
 /**
@@ -306,7 +169,5 @@ export function checkScenario(options: {
  * to retrieve against at all.
  */
 export function countWorkedExamples(): number {
-  return loadCorpora()
-    .flatMap((c) => c.entries)
-    .filter(hasWorkedExample).length;
+  return loadCorpora().flatMap((c) => c.entries).filter(hasWorkedExample).length;
 }
